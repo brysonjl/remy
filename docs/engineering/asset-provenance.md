@@ -24,7 +24,8 @@ A future brand-use policy is an owner decision; this document does not invent on
 
 ## Optional speech fixtures omitted from published source
 
-The six imported WAV files have been removed from the publishable working tree.
+Six WAV files were imported from Dictate Anywhere at upstream commit
+`e420448de6e2099d33e050a4b419722032fd7519` and are not included in this source.
 Their audio-specific redistribution provenance was not established, so this source
 release omits them instead of assuming permission or publishing replacement audio.
 The upstream application's MIT notice is retained; it does not establish a separate
@@ -35,20 +36,11 @@ speaker or voice-output permission for these recordings.
 | `en-recovery.wav` | Imported from Dictate Anywhere; original recording/generation source and speaker/redistribution permission were not independently established |
 | `zh-short.wav`, `zh-question.wav`, `zh-numbers.wav`, `zh-mixed.wav`, `zh-long.wav` | Imported from Dictate Anywhere; the supplied generator uses macOS `say` with Tingting and synthetic phrases, but that alone does not establish how every imported file was generated or authorize redistribution |
 
-All six were imported at `e420448de6e2099d33e050a4b419722032fd7519`.
 Their hashes and original paths remain in the [import manifest](../../research/upstream/mac-dictate-anywhere/IMPORT.json)
-as historical provenance. The existing development checkout preserves ignored local
-copies in `.local/speech-fixtures/imported-unreviewed/`; those copies must not be
-included in source archives, Git commits, app bundles or CI artifacts.
-
-**Earlier Git history still contains all six WAVs.** Deleting the current files does
-not remove those historical blobs. A public Git repository carrying that history
-still requires an explicit publication decision about those recordings. The
-alternative is a reviewed source-only snapshot/new repository assembled from the
-current working tree, excluding `.git`, ignored local data and generated files.
-Do not use `git archive HEAD` before these deletions and other preparation changes
-are committed: it archives the older tree, including the imported audio. No Git
-history rewrite or public publication was performed by this preparation pass.
+as provenance; this repository's history does not contain the recordings. Optional
+ASR tests load recordings only from an explicitly configured local directory
+(`REMY_SPEECH_FIXTURES_DIR`, described below). Keep any local copies out of source
+archives, Git commits, app bundles and CI artifacts.
 
 ## Running the optional local speech tests
 

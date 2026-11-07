@@ -83,9 +83,8 @@ See [asset provenance](docs/engineering/asset-provenance.md) for the generated
 mascot/icon and optional local speech fixtures. Six imported WAV recordings are
 omitted from the publishable working tree because audio-specific redistribution
 provenance was unresolved. Opt-in ASR tests load only explicitly supplied local
-recordings. Earlier Git history still contains the originals; a public
-history-bearing repository needs a separate publication decision, or use a
-reviewed current-tree source snapshot without Git history and local data. No
+recordings. This repository's Git history does not contain the originals;
+their hashes and original paths remain in the upstream import manifest. No
 personal recording or regenerated voice output is cleared for publication by
 this document.
 
