@@ -1,0 +1,49 @@
+[
+  {
+    "name": "Google Chrome",
+    "installed": true,
+    "insertionStatus": "Raw hold insertion observed in textarea/contenteditable; repaired overlay visible with cloud toggle insertion into third textarea, independently read",
+    "path": "/Applications/Google Chrome.app",
+    "bundleIdentifier": "com.google.Chrome",
+    "version": "155.0.8059.80",
+    "build": "8059.80",
+    "focusChangeStatus": "Failed planned copy-only behavior: field1 start, movefield3, stop pasted into field3; exact text and single paste/input independently verified"
+  },
+  {
+    "name": "Arc",
+    "installed": true,
+    "insertionStatus": "User confirmed textarea/contenteditable insertion and visible overlay; exact values not independently read because native capture failed",
+    "path": "/Applications/Arc.app",
+    "bundleIdentifier": "company.thebrowser.Browser",
+    "version": "1.167.1",
+    "build": "88217"
+  },
+  {
+    "name": "Ghostty",
+    "installed": true,
+    "insertionStatus": "User confirmed visible overlay and single unexecuted shell input line; no automatic Return reported, exact value not independently read",
+    "path": "/Applications/Ghostty.app",
+    "bundleIdentifier": "com.mitchellh.ghostty",
+    "version": "1.2.3",
+    "build": "12214"
+  },
+  {
+    "name": "Codex",
+    "installed": true,
+    "insertionStatus": "User confirmed visible overlay and unsent composer text; tool control blocked, exact value not independently read",
+    "path": "/Applications/ChatGPT.app",
+    "bundleIdentifier": "com.openai.codex",
+    "version": "26.930.61225",
+    "build": "13232",
+    "displayName": "ChatGPT (Codex bundle)"
+  },
+  {
+    "name": "TextEdit",
+    "installed": true,
+    "insertionStatus": "raw and cloud toggle insertion observed; immediate Escape cancellation quiet after repair",
+    "path": "/System/Applications/TextEdit.app",
+    "bundleIdentifier": "com.apple.TextEdit",
+    "version": "1.21",
+    "build": "419"
+  }
+]

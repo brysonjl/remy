@@ -1,0 +1,1440 @@
+[
+  {
+    "name": "adler2",
+    "version": "2.0.1",
+    "crate_url": "https://static.crates.io/crates/adler2/adler2-2.0.1.crate",
+    "crate_sha256": "320119579fcad9c21884f5c4861d16174d0e06250625266f50fe6898340abefa",
+    "license": "0BSD OR MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/oyvindln/adler2",
+    "authors": [
+      "Jonas Schievink <jonasschievink@gmail.com>",
+      "oyvindln <oyvindln@users.noreply.github.com>"
+    ],
+    "notice_files": [
+      "LICENSE-0BSD",
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/adler2-2.0.1/LICENSE-0BSD",
+      "docs/third-party/NemoTextProcessing/crates/adler2-2.0.1/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/adler2-2.0.1/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "anyhow",
+    "version": "1.0.103",
+    "crate_url": "https://static.crates.io/crates/anyhow/anyhow-1.0.103.crate",
+    "crate_sha256": "2a4385e2e34eb35d6b3efe798b9eb88096925d87726c0798709bf56d9ed84af3",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/dtolnay/anyhow",
+    "authors": [
+      "David Tolnay <dtolnay@gmail.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/anyhow-1.0.103/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/anyhow-1.0.103/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "autocfg",
+    "version": "1.5.1",
+    "crate_url": "https://static.crates.io/crates/autocfg/autocfg-1.5.1.crate",
+    "crate_sha256": "f2032f911046de80f0a198e0901378627c33f59ea0ac00e363d481118bd70a53",
+    "license": "Apache-2.0 OR MIT",
+    "license_file": null,
+    "repository": "https://github.com/cuviper/autocfg",
+    "authors": [
+      "Josh Stone <cuviper@gmail.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/autocfg-1.5.1/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/autocfg-1.5.1/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "bimap",
+    "version": "0.6.3",
+    "crate_url": "https://static.crates.io/crates/bimap/bimap-0.6.3.crate",
+    "crate_sha256": "230c5f1ca6a325a32553f8640d31ac9b49f2411e901e427570154868b46da4f7",
+    "license": "Apache-2.0/MIT",
+    "license_file": null,
+    "repository": "https://github.com/billyrieger/bimap-rs/",
+    "authors": [
+      "Billy Rieger <wrieger@protonmail.com>"
+    ],
+    "notice_files": [
+      "LICENSE_APACHE",
+      "LICENSE_MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/bimap-0.6.3/LICENSE_APACHE",
+      "docs/third-party/NemoTextProcessing/crates/bimap-0.6.3/LICENSE_MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "bit-set",
+    "version": "0.8.0",
+    "crate_url": "https://static.crates.io/crates/bit-set/bit-set-0.8.0.crate",
+    "crate_sha256": "08807e080ed7f9d5433fa9b275196cfc35414f66a0c79d864dc51a0d825231a3",
+    "license": "Apache-2.0 OR MIT",
+    "license_file": null,
+    "repository": "https://github.com/contain-rs/bit-set",
+    "authors": [
+      "Alexis Beingessner <a.beingessner@gmail.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/bit-set-0.8.0/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/bit-set-0.8.0/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "bit-vec",
+    "version": "0.8.0",
+    "crate_url": "https://static.crates.io/crates/bit-vec/bit-vec-0.8.0.crate",
+    "crate_sha256": "5e764a1d40d510daf35e07be9eb06e75770908c27d411ee6c92109c9840eaaf7",
+    "license": "Apache-2.0 OR MIT",
+    "license_file": null,
+    "repository": "https://github.com/contain-rs/bit-vec",
+    "authors": [
+      "Alexis Beingessner <a.beingessner@gmail.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/bit-vec-0.8.0/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/bit-vec-0.8.0/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "bitflags",
+    "version": "2.13.0",
+    "crate_url": "https://static.crates.io/crates/bitflags/bitflags-2.13.0.crate",
+    "crate_sha256": "b4388bee8683e3d04af747c73422af53102d2bd24d9eadb6cbc100baef4b43f8",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/bitflags/bitflags",
+    "authors": [
+      "The Rust Project Developers"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/bitflags-2.13.0/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/bitflags-2.13.0/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "bumpalo",
+    "version": "3.20.3",
+    "crate_url": "https://static.crates.io/crates/bumpalo/bumpalo-3.20.3.crate",
+    "crate_sha256": "72f5acc6cb2ba439de613abc23857ec3d78374d8ed5ac84e9d11336e87da8649",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/fitzgen/bumpalo",
+    "authors": [
+      "Nick Fitzgerald <fitzgen@gmail.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/bumpalo-3.20.3/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/bumpalo-3.20.3/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "cfg-if",
+    "version": "1.0.4",
+    "crate_url": "https://static.crates.io/crates/cfg-if/cfg-if-1.0.4.crate",
+    "crate_sha256": "9330f8b2ff13f34540b44e946ef35111825727b38d33286ef986142615121801",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/rust-lang/cfg-if",
+    "authors": [
+      "Alex Crichton <alex@alexcrichton.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/cfg-if-1.0.4/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/cfg-if-1.0.4/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "console_error_panic_hook",
+    "version": "0.1.7",
+    "crate_url": "https://static.crates.io/crates/console_error_panic_hook/console_error_panic_hook-0.1.7.crate",
+    "crate_sha256": "a06aeb73f470f66dcdbf7223caeebb85984942f22f1adb2a088cf9668146bbbc",
+    "license": "Apache-2.0/MIT",
+    "license_file": null,
+    "repository": "https://github.com/rustwasm/console_error_panic_hook",
+    "authors": [
+      "Nick Fitzgerald <fitzgen@gmail.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/console_error_panic_hook-0.1.7/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/console_error_panic_hook-0.1.7/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "crc32fast",
+    "version": "1.5.0",
+    "crate_url": "https://static.crates.io/crates/crc32fast/crc32fast-1.5.0.crate",
+    "crate_sha256": "9481c1c90cbf2ac953f07c8d4a58aa3945c425b7185c9154d67a65e4230da511",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/srijs/rust-crc32fast",
+    "authors": [
+      "Sam Rijs <srijs@airpost.net>",
+      "Alex Crichton <alex@alexcrichton.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/crc32fast-1.5.0/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/crc32fast-1.5.0/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "either",
+    "version": "1.16.0",
+    "crate_url": "https://static.crates.io/crates/either/either-1.16.0.crate",
+    "crate_sha256": "91622ff5e7162018101f2fea40d6ebf4a78bbe5a49736a2020649edf9693679e",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/rayon-rs/either",
+    "authors": [],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/either-1.16.0/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/either-1.16.0/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "errno",
+    "version": "0.3.14",
+    "crate_url": "https://static.crates.io/crates/errno/errno-0.3.14.crate",
+    "crate_sha256": "39cab71617ae0d63f51a36d69f866391735b51691dbda63cf6f96d042b63efeb",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/lambda-fairy/rust-errno",
+    "authors": [
+      "Chris Wong <lambda.fairy@gmail.com>",
+      "Dan Gohman <dev@sunfishcode.online>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/errno-0.3.14/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/errno-0.3.14/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "fastrand",
+    "version": "2.4.1",
+    "crate_url": "https://static.crates.io/crates/fastrand/fastrand-2.4.1.crate",
+    "crate_sha256": "9f1f227452a390804cdb637b74a86990f2a7d7ba4b7d5693aac9b4dd6defd8d6",
+    "license": "Apache-2.0 OR MIT",
+    "license_file": null,
+    "repository": "https://github.com/smol-rs/fastrand",
+    "authors": [
+      "Stjepan Glavina <stjepang@gmail.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/fastrand-2.4.1/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/fastrand-2.4.1/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "flate2",
+    "version": "1.1.9",
+    "crate_url": "https://static.crates.io/crates/flate2/flate2-1.1.9.crate",
+    "crate_sha256": "843fba2746e448b37e26a819579957415c8cef339bf08564fe8b7ddbd959573c",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/rust-lang/flate2-rs",
+    "authors": [
+      "Alex Crichton <alex@alexcrichton.com>",
+      "Josh Triplett <josh@joshtriplett.org>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/flate2-1.1.9/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/flate2-1.1.9/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "fnv",
+    "version": "1.0.7",
+    "crate_url": "https://static.crates.io/crates/fnv/fnv-1.0.7.crate",
+    "crate_sha256": "3f9eec918d3f24069decb9af1554cad7c880e2da24a9afd88aca000531ab82c1",
+    "license": "Apache-2.0 / MIT",
+    "license_file": null,
+    "repository": "https://github.com/servo/rust-fnv",
+    "authors": [
+      "Alex Crichton <alex@alexcrichton.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/fnv-1.0.7/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/fnv-1.0.7/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "generic-array",
+    "version": "1.4.3",
+    "crate_url": "https://static.crates.io/crates/generic-array/generic-array-1.4.3.crate",
+    "crate_sha256": "c2e55f16dcf0e9c00efbe2e655ffe45fc98e7066b52bc92f8a79e64060a79351",
+    "license": "MIT",
+    "license_file": null,
+    "repository": "https://github.com/fizyk20/generic-array.git",
+    "authors": [
+      "Bart\u0142omiej Kami\u0144ski <fizyk20@gmail.com>",
+      "Aaron Trent <novacrazy@gmail.com>"
+    ],
+    "notice_files": [
+      "LICENSE"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/generic-array-1.4.3/LICENSE"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "getrandom",
+    "version": "0.3.4",
+    "crate_url": "https://static.crates.io/crates/getrandom/getrandom-0.3.4.crate",
+    "crate_sha256": "899def5c37c4fd7b2664648c28120ecec138e4d395b459e5ca34f9cce2dd77fd",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/rust-random/getrandom",
+    "authors": [
+      "The Rand Project Developers"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/getrandom-0.3.4/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/getrandom-0.3.4/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "getrandom",
+    "version": "0.4.3",
+    "crate_url": "https://static.crates.io/crates/getrandom/getrandom-0.4.3.crate",
+    "crate_sha256": "300e883d756b2e4ec94e02791f39b04b522276138852cfc41d9fb7e904106099",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/rust-random/getrandom",
+    "authors": [
+      "The Rand Project Developers"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/getrandom-0.4.3/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/getrandom-0.4.3/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "itertools",
+    "version": "0.14.0",
+    "crate_url": "https://static.crates.io/crates/itertools/itertools-0.14.0.crate",
+    "crate_sha256": "2b192c782037fadd9cfa75548310488aabdbf3d2da73885b31bd0abd03351285",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/rust-itertools/itertools",
+    "authors": [
+      "bluss"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/itertools-0.14.0/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/itertools-0.14.0/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "lazy_static",
+    "version": "1.5.0",
+    "crate_url": "https://static.crates.io/crates/lazy_static/lazy_static-1.5.0.crate",
+    "crate_sha256": "bbd2bcb4c963f2ddae06a2efc7e9f3591312473c50c6685e1f298068316e66fe",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/rust-lang-nursery/lazy-static.rs",
+    "authors": [
+      "Marvin L\u00f6bel <loebel.marvin@gmail.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/lazy_static-1.5.0/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/lazy_static-1.5.0/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "libc",
+    "version": "0.2.186",
+    "crate_url": "https://static.crates.io/crates/libc/libc-0.2.186.crate",
+    "crate_sha256": "68ab91017fe16c622486840e4c83c9a37afeff978bd239b5293d61ece587de66",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/rust-lang/libc",
+    "authors": [
+      "The Rust Project Developers"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/libc-0.2.186/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/libc-0.2.186/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "linux-raw-sys",
+    "version": "0.12.1",
+    "crate_url": "https://static.crates.io/crates/linux-raw-sys/linux-raw-sys-0.12.1.crate",
+    "crate_sha256": "32a66949e030da00e8c7d4434b251670a91556f4144941d37452769c25d58a53",
+    "license": "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT",
+    "license_file": null,
+    "repository": "https://github.com/sunfishcode/linux-raw-sys",
+    "authors": [
+      "Dan Gohman <dev@sunfishcode.online>"
+    ],
+    "notice_files": [
+      "COPYRIGHT",
+      "LICENSE-APACHE",
+      "LICENSE-Apache-2.0_WITH_LLVM-exception",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/linux-raw-sys-0.12.1/COPYRIGHT",
+      "docs/third-party/NemoTextProcessing/crates/linux-raw-sys-0.12.1/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/linux-raw-sys-0.12.1/LICENSE-Apache-2.0_WITH_LLVM-exception",
+      "docs/third-party/NemoTextProcessing/crates/linux-raw-sys-0.12.1/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "memchr",
+    "version": "2.8.3",
+    "crate_url": "https://static.crates.io/crates/memchr/memchr-2.8.3.crate",
+    "crate_sha256": "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98",
+    "license": "Unlicense OR MIT",
+    "license_file": null,
+    "repository": "https://github.com/BurntSushi/memchr",
+    "authors": [
+      "Andrew Gallant <jamslam@gmail.com>",
+      "bluss"
+    ],
+    "notice_files": [
+      "COPYING",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/memchr-2.8.3/COPYING",
+      "docs/third-party/NemoTextProcessing/crates/memchr-2.8.3/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "minimal-lexical",
+    "version": "0.2.1",
+    "crate_url": "https://static.crates.io/crates/minimal-lexical/minimal-lexical-0.2.1.crate",
+    "crate_sha256": "68354c5c6bd36d73ff3feceb05efa59b6acb7626617f4962be322a825e61f79a",
+    "license": "MIT/Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/Alexhuszagh/minimal-lexical",
+    "authors": [
+      "Alex Huszagh <ahuszagh@gmail.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT",
+      "LICENSE.md"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/minimal-lexical-0.2.1/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/minimal-lexical-0.2.1/LICENSE-MIT",
+      "docs/third-party/NemoTextProcessing/crates/minimal-lexical-0.2.1/LICENSE.md"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "miniz_oxide",
+    "version": "0.8.9",
+    "crate_url": "https://static.crates.io/crates/miniz_oxide/miniz_oxide-0.8.9.crate",
+    "crate_sha256": "1fa76a2c86f704bdb222d66965fb3d63269ce38518b83cb0575fca855ebb6316",
+    "license": "MIT OR Zlib OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide",
+    "authors": [
+      "Frommi <daniil.liferenko@gmail.com>",
+      "oyvindln <oyvindln@users.noreply.github.com>",
+      "Rich Geldreich richgel99@gmail.com"
+    ],
+    "notice_files": [
+      "LICENSE",
+      "LICENSE-APACHE.md",
+      "LICENSE-MIT.md",
+      "LICENSE-ZLIB.md"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/miniz_oxide-0.8.9/LICENSE",
+      "docs/third-party/NemoTextProcessing/crates/miniz_oxide-0.8.9/LICENSE-APACHE.md",
+      "docs/third-party/NemoTextProcessing/crates/miniz_oxide-0.8.9/LICENSE-MIT.md",
+      "docs/third-party/NemoTextProcessing/crates/miniz_oxide-0.8.9/LICENSE-ZLIB.md"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "nom",
+    "version": "7.1.3",
+    "crate_url": "https://static.crates.io/crates/nom/nom-7.1.3.crate",
+    "crate_sha256": "d273983c5a657a70a3e8f2a01329822f3b8c8172b73826411a55751e404a0a4a",
+    "license": "MIT",
+    "license_file": null,
+    "repository": "https://github.com/Geal/nom",
+    "authors": [
+      "contact@geoffroycouprie.com"
+    ],
+    "notice_files": [
+      "LICENSE"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/nom-7.1.3/LICENSE"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "num-traits",
+    "version": "0.2.19",
+    "crate_url": "https://static.crates.io/crates/num-traits/num-traits-0.2.19.crate",
+    "crate_sha256": "071dfc062690e90b734c0b2273ce72ad0ffa95f0c74596bc250dcfd960262841",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/rust-num/num-traits",
+    "authors": [
+      "The Rust Project Developers"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/num-traits-0.2.19/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/num-traits-0.2.19/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "once_cell",
+    "version": "1.21.4",
+    "crate_url": "https://static.crates.io/crates/once_cell/once_cell-1.21.4.crate",
+    "crate_sha256": "9f7c3e4beb33f85d45ae3e3a1792185706c8e16d043238c593331cc7cd313b50",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/matklad/once_cell",
+    "authors": [
+      "Aleksey Kladov <aleksey.kladov@gmail.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/once_cell-1.21.4/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/once_cell-1.21.4/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "ordered-float",
+    "version": "5.3.0",
+    "crate_url": "https://static.crates.io/crates/ordered-float/ordered-float-5.3.0.crate",
+    "crate_sha256": "b7d950ca161dc355eaf28f82b11345ed76c6e1f6eb1f4f4479e0323b9e2fbd0e",
+    "license": "MIT",
+    "license_file": null,
+    "repository": "https://github.com/reem/rust-ordered-float",
+    "authors": [
+      "Jonathan Reem <jonathan.reem@gmail.com>",
+      "Matt Brubeck <mbrubeck@limpet.net>"
+    ],
+    "notice_files": [
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/ordered-float-5.3.0/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "ppv-lite86",
+    "version": "0.2.21",
+    "crate_url": "https://static.crates.io/crates/ppv-lite86/ppv-lite86-0.2.21.crate",
+    "crate_sha256": "85eae3c4ed2f50dcfe72643da4befc30deadb458a9b590d720cde2f2b1e97da9",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/cryptocorrosion/cryptocorrosion",
+    "authors": [
+      "The CryptoCorrosion Contributors"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/ppv-lite86-0.2.21/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/ppv-lite86-0.2.21/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "proc-macro2",
+    "version": "1.0.106",
+    "crate_url": "https://static.crates.io/crates/proc-macro2/proc-macro2-1.0.106.crate",
+    "crate_sha256": "8fd00f0bb2e90d81d1044c2b32617f68fcb9fa3bb7640c23e9c748e53fb30934",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/dtolnay/proc-macro2",
+    "authors": [
+      "David Tolnay <dtolnay@gmail.com>",
+      "Alex Crichton <alex@alexcrichton.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/proc-macro2-1.0.106/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/proc-macro2-1.0.106/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "proptest",
+    "version": "1.11.0",
+    "crate_url": "https://static.crates.io/crates/proptest/proptest-1.11.0.crate",
+    "crate_sha256": "4b45fcc2344c680f5025fe57779faef368840d0bd1f42f216291f0dc4ace4744",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/proptest-rs/proptest",
+    "authors": [
+      "Jason Lingle"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/proptest-1.11.0/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/proptest-1.11.0/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "quick-error",
+    "version": "1.2.3",
+    "crate_url": "https://static.crates.io/crates/quick-error/quick-error-1.2.3.crate",
+    "crate_sha256": "a1d01941d82fa2ab50be1e79e6714289dd7cde78eba4c074bc5a4374f650dfe0",
+    "license": "MIT/Apache-2.0",
+    "license_file": null,
+    "repository": "http://github.com/tailhook/quick-error",
+    "authors": [
+      "Paul Colomiets <paul@colomiets.name>",
+      "Colin Kiegel <kiegel@gmx.de>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/quick-error-1.2.3/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/quick-error-1.2.3/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "quote",
+    "version": "1.0.46",
+    "crate_url": "https://static.crates.io/crates/quote/quote-1.0.46.crate",
+    "crate_sha256": "dfbc457d0c7a0759a614551b11a6409e5951f6c7537be1f1b7682b9ae9230368",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/dtolnay/quote",
+    "authors": [
+      "David Tolnay <dtolnay@gmail.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/quote-1.0.46/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/quote-1.0.46/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "r-efi",
+    "version": "5.3.0",
+    "crate_url": "https://static.crates.io/crates/r-efi/r-efi-5.3.0.crate",
+    "crate_sha256": "69cdb34c158ceb288df11e18b4bd39de994f6657d83847bdffdbd7f346754b0f",
+    "license": "MIT OR Apache-2.0 OR LGPL-2.1-or-later",
+    "license_file": null,
+    "repository": "https://github.com/r-efi/r-efi",
+    "authors": [],
+    "notice_files": [
+      "AUTHORS"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/r-efi-5.3.0/AUTHORS"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "r-efi",
+    "version": "6.0.0",
+    "crate_url": "https://static.crates.io/crates/r-efi/r-efi-6.0.0.crate",
+    "crate_sha256": "f8dcc9c7d52a811697d2151c701e0d08956f92b0e24136cf4cf27b57a6a0d9bf",
+    "license": "MIT OR Apache-2.0 OR LGPL-2.1-or-later",
+    "license_file": null,
+    "repository": "https://github.com/r-efi/r-efi",
+    "authors": [],
+    "notice_files": [
+      "AUTHORS"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/r-efi-6.0.0/AUTHORS"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "rand",
+    "version": "0.9.4",
+    "crate_url": "https://static.crates.io/crates/rand/rand-0.9.4.crate",
+    "crate_sha256": "44c5af06bb1b7d3216d91932aed5265164bf384dc89cd6ba05cf59a35f5f76ea",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/rust-random/rand",
+    "authors": [
+      "The Rand Project Developers",
+      "The Rust Project Developers"
+    ],
+    "notice_files": [
+      "COPYRIGHT",
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/rand-0.9.4/COPYRIGHT",
+      "docs/third-party/NemoTextProcessing/crates/rand-0.9.4/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/rand-0.9.4/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "rand_chacha",
+    "version": "0.9.0",
+    "crate_url": "https://static.crates.io/crates/rand_chacha/rand_chacha-0.9.0.crate",
+    "crate_sha256": "d3022b5f1df60f26e1ffddd6c66e8aa15de382ae63b3a0c1bfc0e4d3e3f325cb",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/rust-random/rand",
+    "authors": [
+      "The Rand Project Developers",
+      "The Rust Project Developers",
+      "The CryptoCorrosion Contributors"
+    ],
+    "notice_files": [
+      "COPYRIGHT",
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/rand_chacha-0.9.0/COPYRIGHT",
+      "docs/third-party/NemoTextProcessing/crates/rand_chacha-0.9.0/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/rand_chacha-0.9.0/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "rand_core",
+    "version": "0.9.5",
+    "crate_url": "https://static.crates.io/crates/rand_core/rand_core-0.9.5.crate",
+    "crate_sha256": "76afc826de14238e6e8c374ddcc1fa19e374fd8dd986b0d2af0d02377261d83c",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/rust-random/rand",
+    "authors": [
+      "The Rand Project Developers",
+      "The Rust Project Developers"
+    ],
+    "notice_files": [
+      "COPYRIGHT",
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/rand_core-0.9.5/COPYRIGHT",
+      "docs/third-party/NemoTextProcessing/crates/rand_core-0.9.5/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/rand_core-0.9.5/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "rand_xorshift",
+    "version": "0.4.0",
+    "crate_url": "https://static.crates.io/crates/rand_xorshift/rand_xorshift-0.4.0.crate",
+    "crate_sha256": "513962919efc330f829edb2535844d1b912b0fbe2ca165d613e4e8788bb05a5a",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/rust-random/rngs",
+    "authors": [
+      "The Rand Project Developers",
+      "The Rust Project Developers"
+    ],
+    "notice_files": [
+      "COPYRIGHT",
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/rand_xorshift-0.4.0/COPYRIGHT",
+      "docs/third-party/NemoTextProcessing/crates/rand_xorshift-0.4.0/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/rand_xorshift-0.4.0/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "regex-syntax",
+    "version": "0.8.11",
+    "crate_url": "https://static.crates.io/crates/regex-syntax/regex-syntax-0.8.11.crate",
+    "crate_sha256": "d6f6ff9a378485b298a5286656da665ba74413d36db0979633275d2e708145d4",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/rust-lang/regex",
+    "authors": [
+      "The Rust Project Developers",
+      "Andrew Gallant <jamslam@gmail.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT",
+      "src/unicode_tables/LICENSE-UNICODE"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/regex-syntax-0.8.11/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/regex-syntax-0.8.11/LICENSE-MIT",
+      "docs/third-party/NemoTextProcessing/crates/regex-syntax-0.8.11/src/unicode_tables/LICENSE-UNICODE"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "rustfst",
+    "version": "1.3.1",
+    "crate_url": "https://static.crates.io/crates/rustfst/rustfst-1.3.1.crate",
+    "crate_sha256": "3096239ad3664245480c50bf34a6ed45af5f40c0f6258d4b28a4c8082813a519",
+    "license": "MIT/Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/Garvys/rustfst",
+    "authors": [
+      "Alexandre Caulier<alexandre.caulier@protonmail.com>"
+    ],
+    "notice_files": [],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/rustfst-1.3.1/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/rustfst-1.3.1/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "rustix",
+    "version": "1.1.4",
+    "crate_url": "https://static.crates.io/crates/rustix/rustix-1.1.4.crate",
+    "crate_sha256": "b6fe4565b9518b83ef4f91bb47ce29620ca828bd32cb7e408f0062e9930ba190",
+    "license": "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT",
+    "license_file": null,
+    "repository": "https://github.com/bytecodealliance/rustix",
+    "authors": [
+      "Dan Gohman <dev@sunfishcode.online>",
+      "Jakub Konka <kubkon@jakubkonka.com>"
+    ],
+    "notice_files": [
+      "COPYRIGHT",
+      "LICENSE-APACHE",
+      "LICENSE-Apache-2.0_WITH_LLVM-exception",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/rustix-1.1.4/COPYRIGHT",
+      "docs/third-party/NemoTextProcessing/crates/rustix-1.1.4/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/rustix-1.1.4/LICENSE-Apache-2.0_WITH_LLVM-exception",
+      "docs/third-party/NemoTextProcessing/crates/rustix-1.1.4/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "rustversion",
+    "version": "1.0.23",
+    "crate_url": "https://static.crates.io/crates/rustversion/rustversion-1.0.23.crate",
+    "crate_sha256": "cf54715a573b99ac80df0bc206da022bcd442c974952c7b9720069370852e21f",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/dtolnay/rustversion",
+    "authors": [
+      "David Tolnay <dtolnay@gmail.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/rustversion-1.0.23/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/rustversion-1.0.23/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "rusty-fork",
+    "version": "0.3.1",
+    "crate_url": "https://static.crates.io/crates/rusty-fork/rusty-fork-0.3.1.crate",
+    "crate_sha256": "cc6bf79ff24e648f6da1f8d1f011e9cac26491b619e6b9280f2b47f1774e6ee2",
+    "license": "MIT/Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/altsysrq/rusty-fork",
+    "authors": [
+      "Jason Lingle"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/rusty-fork-0.3.1/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/rusty-fork-0.3.1/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "serde",
+    "version": "1.0.228",
+    "crate_url": "https://static.crates.io/crates/serde/serde-1.0.228.crate",
+    "crate_sha256": "9a8e94ea7f378bd32cbbd37198a4a91436180c5bb472411e48b5ec2e2124ae9e",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/serde-rs/serde",
+    "authors": [
+      "Erick Tryzelaar <erick.tryzelaar@gmail.com>",
+      "David Tolnay <dtolnay@gmail.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/serde-1.0.228/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/serde-1.0.228/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "serde_core",
+    "version": "1.0.228",
+    "crate_url": "https://static.crates.io/crates/serde_core/serde_core-1.0.228.crate",
+    "crate_sha256": "41d385c7d4ca58e59fc732af25c3983b67ac852c1a25000afe1175de458b67ad",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/serde-rs/serde",
+    "authors": [
+      "Erick Tryzelaar <erick.tryzelaar@gmail.com>",
+      "David Tolnay <dtolnay@gmail.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/serde_core-1.0.228/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/serde_core-1.0.228/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "serde_derive",
+    "version": "1.0.228",
+    "crate_url": "https://static.crates.io/crates/serde_derive/serde_derive-1.0.228.crate",
+    "crate_sha256": "d540f220d3187173da220f885ab66608367b6574e925011a9353e4badda91d79",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/serde-rs/serde",
+    "authors": [
+      "Erick Tryzelaar <erick.tryzelaar@gmail.com>",
+      "David Tolnay <dtolnay@gmail.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/serde_derive-1.0.228/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/serde_derive-1.0.228/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "simd-adler32",
+    "version": "0.3.9",
+    "crate_url": "https://static.crates.io/crates/simd-adler32/simd-adler32-0.3.9.crate",
+    "crate_sha256": "703d5c7ef118737c72f1af64ad2f6f8c5e1921f818cdcb97b8fe6fc69bf66214",
+    "license": "MIT",
+    "license_file": null,
+    "repository": "https://github.com/mcountryman/simd-adler32",
+    "authors": [
+      "Marvin Countryman <me@maar.vin>"
+    ],
+    "notice_files": [
+      "LICENSE.md"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/simd-adler32-0.3.9/LICENSE.md"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "superslice",
+    "version": "1.0.0",
+    "crate_url": "https://static.crates.io/crates/superslice/superslice-1.0.0.crate",
+    "crate_sha256": "ab16ced94dbd8a46c82fd81e3ed9a8727dac2977ea869d217bcc4ea1f122e81f",
+    "license": "Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/alkis/superslice-rs",
+    "authors": [
+      "Alkis Evlogimenos <alkis@evlogimenos.com>"
+    ],
+    "notice_files": [
+      "LICENCE"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/superslice-1.0.0/LICENCE"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "syn",
+    "version": "2.0.118",
+    "crate_url": "https://static.crates.io/crates/syn/syn-2.0.118.crate",
+    "crate_sha256": "1b9ae57f904213ebb649ce6895b8a66c66f0203b9319718f69a5612a065b1422",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/dtolnay/syn",
+    "authors": [
+      "David Tolnay <dtolnay@gmail.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/syn-2.0.118/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/syn-2.0.118/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "tempfile",
+    "version": "3.27.0",
+    "crate_url": "https://static.crates.io/crates/tempfile/tempfile-3.27.0.crate",
+    "crate_sha256": "32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/Stebalien/tempfile",
+    "authors": [
+      "Steven Allen <steven@stebalien.com>",
+      "The Rust Project Developers",
+      "Ashley Mannix <ashleymannix@live.com.au>",
+      "Jason White <me@jasonwhite.io>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/tempfile-3.27.0/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/tempfile-3.27.0/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "typenum",
+    "version": "1.20.1",
+    "crate_url": "https://static.crates.io/crates/typenum/typenum-1.20.1.crate",
+    "crate_sha256": "b6f5e870be6c3b371b77fe0ee0bafb859fa4964b4404c27de1d380043c4dda20",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/paholg/typenum",
+    "authors": [],
+    "notice_files": [
+      "LICENSE",
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/typenum-1.20.1/LICENSE",
+      "docs/third-party/NemoTextProcessing/crates/typenum-1.20.1/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/typenum-1.20.1/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "unarray",
+    "version": "0.1.4",
+    "crate_url": "https://static.crates.io/crates/unarray/unarray-0.1.4.crate",
+    "crate_sha256": "eaea85b334db583fe3274d12b4cd1880032beab409c0d774be044d4480ab9a94",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/cameron1024/unarray",
+    "authors": [],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/unarray-0.1.4/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/unarray-0.1.4/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "unicode-ident",
+    "version": "1.0.24",
+    "crate_url": "https://static.crates.io/crates/unicode-ident/unicode-ident-1.0.24.crate",
+    "crate_sha256": "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75",
+    "license": "(MIT OR Apache-2.0) AND Unicode-3.0",
+    "license_file": null,
+    "repository": "https://github.com/dtolnay/unicode-ident",
+    "authors": [
+      "David Tolnay <dtolnay@gmail.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT",
+      "LICENSE-UNICODE"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/unicode-ident-1.0.24/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/unicode-ident-1.0.24/LICENSE-MIT",
+      "docs/third-party/NemoTextProcessing/crates/unicode-ident-1.0.24/LICENSE-UNICODE"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "wait-timeout",
+    "version": "0.2.1",
+    "crate_url": "https://static.crates.io/crates/wait-timeout/wait-timeout-0.2.1.crate",
+    "crate_sha256": "09ac3b126d3914f9849036f826e054cbabdc8519970b8998ddaf3b5bd3c65f11",
+    "license": "MIT/Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/alexcrichton/wait-timeout",
+    "authors": [
+      "Alex Crichton <alex@alexcrichton.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/wait-timeout-0.2.1/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/wait-timeout-0.2.1/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "wasip2",
+    "version": "1.0.4+wasi-0.2.12",
+    "crate_url": "https://static.crates.io/crates/wasip2/wasip2-1.0.4+wasi-0.2.12.crate",
+    "crate_sha256": "b67efb37e106e55ce722a510d6b5f9c17f083e5fc79afc2badeb12cc313d9487",
+    "license": "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT",
+    "license_file": null,
+    "repository": "https://github.com/bytecodealliance/wasi-rs",
+    "authors": [],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-Apache-2.0_WITH_LLVM-exception",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/wasip2-1.0.4+wasi-0.2.12/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/wasip2-1.0.4+wasi-0.2.12/LICENSE-Apache-2.0_WITH_LLVM-exception",
+      "docs/third-party/NemoTextProcessing/crates/wasip2-1.0.4+wasi-0.2.12/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "wasm-bindgen",
+    "version": "0.2.126",
+    "crate_url": "https://static.crates.io/crates/wasm-bindgen/wasm-bindgen-0.2.126.crate",
+    "crate_sha256": "4b067c0c11094aef6b7a801c1e34a26affafdf3d051dba08456b868789aaf9a4",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/wasm-bindgen/wasm-bindgen",
+    "authors": [
+      "The wasm-bindgen Developers"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/wasm-bindgen-0.2.126/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/wasm-bindgen-0.2.126/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "wasm-bindgen-macro",
+    "version": "0.2.126",
+    "crate_url": "https://static.crates.io/crates/wasm-bindgen-macro/wasm-bindgen-macro-0.2.126.crate",
+    "crate_sha256": "167ce5e579f6bcf889c4f7175a8a5a585de84e8ff93976ce393efa5f2837aab1",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/wasm-bindgen/wasm-bindgen/tree/master/crates/macro",
+    "authors": [
+      "The wasm-bindgen Developers"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/wasm-bindgen-macro-0.2.126/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/wasm-bindgen-macro-0.2.126/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "wasm-bindgen-macro-support",
+    "version": "0.2.126",
+    "crate_url": "https://static.crates.io/crates/wasm-bindgen-macro-support/wasm-bindgen-macro-support-0.2.126.crate",
+    "crate_sha256": "f3997c7839262f4ef12cf90b818d6340c18e80f263f1a94bf157d0ec4420380e",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/wasm-bindgen/wasm-bindgen/tree/master/crates/macro-support",
+    "authors": [
+      "The wasm-bindgen Developers"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/wasm-bindgen-macro-support-0.2.126/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/wasm-bindgen-macro-support-0.2.126/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "wasm-bindgen-shared",
+    "version": "0.2.126",
+    "crate_url": "https://static.crates.io/crates/wasm-bindgen-shared/wasm-bindgen-shared-0.2.126.crate",
+    "crate_sha256": "dc1b4cb0cc549fcf58d7dfc081778139b3d283a081644e833e84682ad71cea24",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/wasm-bindgen/wasm-bindgen/tree/master/crates/shared",
+    "authors": [
+      "The wasm-bindgen Developers"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/wasm-bindgen-shared-0.2.126/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/wasm-bindgen-shared-0.2.126/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "windows-link",
+    "version": "0.2.1",
+    "crate_url": "https://static.crates.io/crates/windows-link/windows-link-0.2.1.crate",
+    "crate_sha256": "f0805222e57f7521d6a62e36fa9163bc891acd422f971defe97d64e70d0a4fe5",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/microsoft/windows-rs",
+    "authors": [],
+    "notice_files": [
+      "license-apache-2.0",
+      "license-mit"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/windows-link-0.2.1/license-apache-2.0",
+      "docs/third-party/NemoTextProcessing/crates/windows-link-0.2.1/license-mit"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "windows-sys",
+    "version": "0.61.2",
+    "crate_url": "https://static.crates.io/crates/windows-sys/windows-sys-0.61.2.crate",
+    "crate_sha256": "ae137229bcbd6cdf0f7b80a31df61766145077ddf49416a728b02cb3921ff3fc",
+    "license": "MIT OR Apache-2.0",
+    "license_file": null,
+    "repository": "https://github.com/microsoft/windows-rs",
+    "authors": [],
+    "notice_files": [
+      "license-apache-2.0",
+      "license-mit"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/windows-sys-0.61.2/license-apache-2.0",
+      "docs/third-party/NemoTextProcessing/crates/windows-sys-0.61.2/license-mit"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "wit-bindgen",
+    "version": "0.57.1",
+    "crate_url": "https://static.crates.io/crates/wit-bindgen/wit-bindgen-0.57.1.crate",
+    "crate_sha256": "1ebf944e87a7c253233ad6766e082e3cd714b5d03812acc24c318f549614536e",
+    "license": "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT",
+    "license_file": null,
+    "repository": "https://github.com/bytecodealliance/wit-bindgen",
+    "authors": [
+      "Alex Crichton <alex@alexcrichton.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-Apache-2.0_WITH_LLVM-exception",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/wit-bindgen-0.57.1/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/wit-bindgen-0.57.1/LICENSE-Apache-2.0_WITH_LLVM-exception",
+      "docs/third-party/NemoTextProcessing/crates/wit-bindgen-0.57.1/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "zerocopy",
+    "version": "0.8.53",
+    "crate_url": "https://static.crates.io/crates/zerocopy/zerocopy-0.8.53.crate",
+    "crate_sha256": "75726053136156d419e285b9b7eddaaea9e3fea6ce32eed44a89901f0bd98de1",
+    "license": "BSD-2-Clause OR Apache-2.0 OR MIT",
+    "license_file": null,
+    "repository": "https://github.com/google/zerocopy",
+    "authors": [
+      "Joshua Liebow-Feeser <joshlf@google.com>",
+      "Jack Wrenn <jswrenn@amazon.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-BSD",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/zerocopy-0.8.53/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/zerocopy-0.8.53/LICENSE-BSD",
+      "docs/third-party/NemoTextProcessing/crates/zerocopy-0.8.53/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  },
+  {
+    "name": "zerocopy-derive",
+    "version": "0.8.53",
+    "crate_url": "https://static.crates.io/crates/zerocopy-derive/zerocopy-derive-0.8.53.crate",
+    "crate_sha256": "4714fd92cf900833d49538023a9b3915155210801d1c1169eba513b2addefd71",
+    "license": "BSD-2-Clause OR Apache-2.0 OR MIT",
+    "license_file": null,
+    "repository": "https://github.com/google/zerocopy",
+    "authors": [
+      "Joshua Liebow-Feeser <joshlf@google.com>",
+      "Jack Wrenn <jswrenn@amazon.com>"
+    ],
+    "notice_files": [
+      "LICENSE-APACHE",
+      "LICENSE-BSD",
+      "LICENSE-MIT"
+    ],
+    "retained_notice_paths": [
+      "docs/third-party/NemoTextProcessing/crates/zerocopy-derive-0.8.53/LICENSE-APACHE",
+      "docs/third-party/NemoTextProcessing/crates/zerocopy-derive-0.8.53/LICENSE-BSD",
+      "docs/third-party/NemoTextProcessing/crates/zerocopy-derive-0.8.53/LICENSE-MIT"
+    ],
+    "scope": "Conservative complete upstream Cargo.lock registry set, including dev/wasm/other-platform dependencies; not all are linked into arm64."
+  }
+]

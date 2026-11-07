@@ -1,0 +1,64 @@
+{
+  "repository": "https://github.com/FluidInference/FluidAudio",
+  "tag": "v0.17.7",
+  "commit": "503b4bd1bbf7220882de39fe8ae6716aae4132da",
+  "retrieved": "2026-10-19",
+  "scope": "Selected unmodified source and documentation files; not a buildable checkout; no model weights downloaded.",
+  "method": "GitHub connector (shell git fetch unavailable due DNS restriction)",
+  "files": [
+    {
+      "path": "Package.swift",
+      "url": "https://github.com/FluidInference/FluidAudio/blob/503b4bd1bbf7220882de39fe8ae6716aae4132da/Package.swift",
+      "sha256": "3be7af4826b7a9647b92d8a0a643e21100a34e7cafdcdefd6250805ea089f40f",
+      "bytes": 2972
+    },
+    {
+      "path": "Package@swift-6.2.swift",
+      "url": "https://github.com/FluidInference/FluidAudio/blob/503b4bd1bbf7220882de39fe8ae6716aae4132da/Package@swift-6.2.swift",
+      "sha256": "1d8273bcda4e6f980e1c67f53796d0e053c9bd178ac0db3432de1c43bc1b3089",
+      "bytes": 3896
+    },
+    {
+      "path": "LICENSE",
+      "url": "https://github.com/FluidInference/FluidAudio/blob/503b4bd1bbf7220882de39fe8ae6716aae4132da/LICENSE",
+      "sha256": "c95bae1d1ce0235ecccd3560b772ec1efb97f348a79f0fbe0a634f0c2ccefe2c",
+      "bytes": 11358
+    },
+    {
+      "path": "Documentation/ASR/Nemotron.md",
+      "url": "https://github.com/FluidInference/FluidAudio/blob/503b4bd1bbf7220882de39fe8ae6716aae4132da/Documentation/ASR/Nemotron.md",
+      "sha256": "48efc6a454111322d5cd8553f07a168c4b409d419051d922dd3a05209dcd24e4",
+      "bytes": 5879
+    },
+    {
+      "path": "Documentation/ASR/ManualModelLoading.md",
+      "url": "https://github.com/FluidInference/FluidAudio/blob/503b4bd1bbf7220882de39fe8ae6716aae4132da/Documentation/ASR/ManualModelLoading.md",
+      "sha256": "c855bcc910edcc8af3c20fef0fdae1ff7ecbc201ec79702bcc81e03d9af9ef3b",
+      "bytes": 4490
+    },
+    {
+      "path": "Sources/FluidAudio/ASR/Parakeet/SlidingWindow/SlidingWindowAsrSession.swift",
+      "url": "https://github.com/FluidInference/FluidAudio/blob/503b4bd1bbf7220882de39fe8ae6716aae4132da/Sources/FluidAudio/ASR/Parakeet/SlidingWindow/SlidingWindowAsrSession.swift",
+      "sha256": "d9d09d849216fa01f9306b57627ce545cbaca1af8e4348327c67e4038e71e37d",
+      "bytes": 6835
+    },
+    {
+      "path": "Sources/FluidAudio/ASR/Parakeet/Streaming/StreamingAsrManager.swift",
+      "url": "https://github.com/FluidInference/FluidAudio/blob/503b4bd1bbf7220882de39fe8ae6716aae4132da/Sources/FluidAudio/ASR/Parakeet/Streaming/StreamingAsrManager.swift",
+      "sha256": "5432bafd58bd4da2f4eddd0737f3bd2110c6b7b7a8d5e4a8289fac38506e89ca",
+      "bytes": 3319
+    },
+    {
+      "path": "Sources/FluidAudio/ASR/Parakeet/Streaming/Nemotron/NemotronChunkSize.swift",
+      "url": "https://github.com/FluidInference/FluidAudio/blob/503b4bd1bbf7220882de39fe8ae6716aae4132da/Sources/FluidAudio/ASR/Parakeet/Streaming/Nemotron/NemotronChunkSize.swift",
+      "sha256": "ad4176dd1b1a9befca5a5abe6f637a4dc6b752979b5f5c9a318a7b6290ba9f79",
+      "bytes": 883
+    },
+    {
+      "path": "Sources/FluidAudio/ASR/Parakeet/Streaming/Nemotron/StreamingNemotronAsrManager.swift",
+      "url": "https://github.com/FluidInference/FluidAudio/blob/503b4bd1bbf7220882de39fe8ae6716aae4132da/Sources/FluidAudio/ASR/Parakeet/Streaming/Nemotron/StreamingNemotronAsrManager.swift",
+      "sha256": "d5ea36f6efc48816a2f6d9156572addae1217b61e6f25e87e72c608a4801c0ad",
+      "bytes": 16489
+    }
+  ]
+}

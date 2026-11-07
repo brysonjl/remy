@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-19",
+  "stableApp": ".local/run/Alfred Dev.app",
+  "ordinaryTests": {
+    "count": 1048,
+    "skipped": 60,
+    "failures": 0
+  },
+  "debug": "passed signed preparation",
+  "release": "passed",
+  "nativeSettings": {
+    "default": "originalField",
+    "currentFieldSurvivesRestart": true,
+    "restoredSelection": "originalField",
+    "bothOptionsVisuallyReviewed": true
+  },
+  "userPreferencesPreserved": {
+    "cleanup": "Saved Profile / Ollama Cloud / gemma4:31b",
+    "sounds": "On / Purr / Pop / 30%",
+    "microphoneBoost": "On"
+  },
+  "originalFieldLive": {
+    "status": "routing confirmed; dispatch count unresolved",
+    "userConfirmed": true,
+    "observedText": "The waiter returns to the original blue field.",
+    "primaryPasteEvents": 2,
+    "primaryInputEvents": 3,
+    "otherFieldsEmpty": true,
+    "userRetryClarification": "One dictation event, but maybe something else happened that I do not remember",
+    "next": "fresh single-attempt retest"
+  },
+  "currentFieldLive": {
+    "status": "passed one controlled trial",
+    "userConfirmed": true,
+    "observedText": "The wader follows the final green field.",
+    "secondaryPasteEvents": 1,
+    "secondaryInputEvents": 1,
+    "otherFieldsEmpty": true,
+    "qualityNote": "waiter transcribed as wader; routing passed, no perfect transcription claim"
+  },
+  "crossAppRestorationLive": "pending",
+  "credentialsReadOrExported": false,
+  "published": false,
+  "restoredSelection": "originalField",
+  "originalFieldRetest": {
+    "date": "2026-10-20",
+    "status": "routing passed; retry-qualified event evidence",
+    "userConfirmedExpectedBehavior": true,
+    "userConfirmedRetryOrEdit": true,
+    "observedText": "The water returns to the blue field.",
+    "primaryPasteEvents": 2,
+    "primaryInputEvents": 3,
+    "otherFieldsEmpty": true,
+    "historyObservation": "Two completed synthetic dictations at 12:04 AM, consistent with user-confirmed retry",
+    "limit": "Not an isolated single-attempt dispatch-count measurement; no claim that every dispatch is verified exactly once"
+  }
+}

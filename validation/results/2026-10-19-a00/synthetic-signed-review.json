@@ -1,0 +1,275 @@
+{
+  "reviewVersion": 1,
+  "source": ".local/runtime-baseline/result-85C8D2FB-3C2B-4EA7-BBB9-52A53DD25972.json",
+  "sourceSHA256": "1f3eede9bb684bdfd664112a1851583f19e82f70b0b3da9ecc8cb8fa31825633",
+  "reviewMethod": "Agent manual inspection of all twenty unique public reference/transcript pairs plus comparison of all forty outputs across passes; agent review, not user/human/blinded acceptance.",
+  "scope": "20 known synthetic Samantha TTS fixtures replayed twice; not held-out human speech and not microphone/stop-to-final latency.",
+  "prepareMs": 363.028458,
+  "prepareCaveat": "First prepare in this test process; OS/CoreML caches uncontrolled; prepare includes internal warmup",
+  "firstReplayMs": 53.133541,
+  "timingMethod": "ContinuousClock file-recovery durations. p50 midpoint median; p95/p99 nearest rank. n=10 per group makes tail percentiles maxima and directional only. Initial short includes first replay.",
+  "timings": {
+    "initial_short": {
+      "n": 10,
+      "p50Ms": 44.687,
+      "p95Ms": 53.134,
+      "p99Ms": 53.134,
+      "minMs": 43.015,
+      "maxMs": 53.134
+    },
+    "initial_long": {
+      "n": 10,
+      "p50Ms": 145.11,
+      "p95Ms": 175.383,
+      "p99Ms": 175.383,
+      "minMs": 138.559,
+      "maxMs": 175.383
+    },
+    "warm_short": {
+      "n": 10,
+      "p50Ms": 43.792,
+      "p95Ms": 47.681,
+      "p99Ms": 47.681,
+      "minMs": 40.018,
+      "maxMs": 47.681
+    },
+    "warm_long": {
+      "n": 10,
+      "p50Ms": 145.174,
+      "p95Ms": 168.765,
+      "p99Ms": 168.765,
+      "minMs": 139.922,
+      "maxMs": 168.765
+    }
+  },
+  "counts": {
+    "attempts": 40,
+    "runtimeFailures": 0,
+    "distinctFixtures": 20,
+    "acceptableFixtures": 15,
+    "repairFixtures": 4,
+    "reviewFixtures": 1,
+    "identicalRepeatedOutputs": 20
+  },
+  "qualitySummary": [
+    "No negation flip, number magnitude change, lost final words or reordered/lost sentence content observed in this limited corpus.",
+    "Repeated lexical/entity/correction/address defects in fixtures 01,02,06,19; fixture12 adds currency notation needing review.",
+    "Raw ASR preservation must not be scored against cleanup references; no normalized WER or comparable baseline was computed.",
+    "No real clipped-endpoint/drain, silence, microphone, streaming, resource, or destination gate established.",
+    "Quotation oh wait preserved in fixtures10/18, unchanged from prior ASR run. File replay does not validate live stop/drain endpoint safety."
+  ],
+  "fixtures": [
+    {
+      "fixture": "01-filler",
+      "passesReviewed": [
+        0,
+        1
+      ],
+      "outputsIdenticalAcrossPasses": true,
+      "rating": "needsRepair",
+      "note": "Filler um became first-person contraction I'm; raw ASR inserted lexical content."
+    },
+    {
+      "fixture": "02-correction",
+      "passesReviewed": [
+        0,
+        1
+      ],
+      "outputsIdenticalAcrossPasses": true,
+      "rating": "needsRepair",
+      "note": "Correction marker oh wait became or wait; Thursday and Friday plus final time retained, but correction cue is degraded."
+    },
+    {
+      "fixture": "03-negation",
+      "passesReviewed": [
+        0,
+        1
+      ],
+      "outputsIdenticalAcrossPasses": true,
+      "rating": "acceptable",
+      "note": "All negation and uncertainty preserved."
+    },
+    {
+      "fixture": "04-budget",
+      "passesReviewed": [
+        0,
+        1
+      ],
+      "outputsIdenticalAcrossPasses": true,
+      "rating": "acceptable",
+      "note": "15,000 versus 50,000 and not preserved; numeric formatting changes only."
+    },
+    {
+      "fixture": "05-emphasis",
+      "passesReviewed": [
+        0,
+        1
+      ],
+      "outputsIdenticalAcrossPasses": true,
+      "rating": "acceptable",
+      "note": "Intentional very very emphasis preserved."
+    },
+    {
+      "fixture": "06-entity",
+      "passesReviewed": [
+        0,
+        1
+      ],
+      "outputsIdenticalAcrossPasses": true,
+      "rating": "needsRepair",
+      "note": "Open Xway became Opens way; entity and imperative segmentation lost."
+    },
+    {
+      "fixture": "07-injection",
+      "passesReviewed": [
+        0,
+        1
+      ],
+      "outputsIdenticalAcrossPasses": true,
+      "rating": "acceptable",
+      "note": "Dictated instruction retained as speech; no extra generated content."
+    },
+    {
+      "fixture": "08-question",
+      "passesReviewed": [
+        0,
+        1
+      ],
+      "outputsIdenticalAcrossPasses": true,
+      "rating": "acceptable",
+      "note": "Question wording retained; question punctuation added."
+    },
+    {
+      "fixture": "09-identifier",
+      "passesReviewed": [
+        0,
+        1
+      ],
+      "outputsIdenticalAcrossPasses": true,
+      "rating": "acceptable",
+      "note": "Spoken identifier foo underscore bar and false retained."
+    },
+    {
+      "fixture": "10-quotation",
+      "passesReviewed": [
+        0,
+        1
+      ],
+      "outputsIdenticalAcrossPasses": true,
+      "rating": "acceptable",
+      "note": "Quoted oh wait words retained."
+    },
+    {
+      "fixture": "11-tail",
+      "passesReviewed": [
+        0,
+        1
+      ],
+      "outputsIdenticalAcrossPasses": true,
+      "rating": "acceptable",
+      "note": "All text retained in order, ending cancellation retained; comma joins final sentence."
+    },
+    {
+      "fixture": "12-numbers",
+      "passesReviewed": [
+        0,
+        1
+      ],
+      "outputsIdenticalAcrossPasses": true,
+      "rating": "needsReview",
+      "note": "Amounts and confirmation digits correct (12.50, 27, 108, 15000, 50000, 7429); added dollar signs to 15000/50000 although those two spoken values have no explicit currency unit. Review unsupported-unit formatting; no changed magnitude/negation."
+    },
+    {
+      "fixture": "13-long-negation",
+      "passesReviewed": [
+        0,
+        1
+      ],
+      "outputsIdenticalAcrossPasses": true,
+      "rating": "acceptable",
+      "note": "All negative clauses, Friday, ordering and final result retained; punctuation joins clauses."
+    },
+    {
+      "fixture": "14-sequence",
+      "passesReviewed": [
+        0,
+        1
+      ],
+      "outputsIdenticalAcrossPasses": true,
+      "rating": "acceptable",
+      "note": "All steps and ordering retained; no sentence loss."
+    },
+    {
+      "fixture": "15-uncertainty",
+      "passesReviewed": [
+        0,
+        1
+      ],
+      "outputsIdenticalAcrossPasses": true,
+      "rating": "acceptable",
+      "note": "Maybe, not sure, alternatives, not final, tentative and might preserved."
+    },
+    {
+      "fixture": "16-long-correction",
+      "passesReviewed": [
+        0,
+        1
+      ],
+      "outputsIdenticalAcrossPasses": true,
+      "rating": "acceptable",
+      "note": "Raw Wednesday/Thursday and two/three self-corrections retained as raw ASR; digit formatting preserves values; Maya retained."
+    },
+    {
+      "fixture": "17-repetition",
+      "passesReviewed": [
+        0,
+        1
+      ],
+      "outputsIdenticalAcrossPasses": true,
+      "rating": "acceptable",
+      "note": "Intentional repetitions and final recording tail retained; several full stops become commas."
+    },
+    {
+      "fixture": "18-punctuation",
+      "passesReviewed": [
+        0,
+        1
+      ],
+      "outputsIdenticalAcrossPasses": true,
+      "rating": "acceptable",
+      "note": "Question, quoted oh wait and final no-answer statement preserved."
+    },
+    {
+      "fixture": "19-technical",
+      "passesReviewed": [
+        0,
+        1
+      ],
+      "outputsIdenticalAcrossPasses": true,
+      "rating": "needsRepair",
+      "note": "Open Xway becomes opens way, address is becomes addresses, and example dot com slash draft becomes example.com/slash draft rather than a faithful spoken address or example.com/draft. Identifier and false preserved."
+    },
+    {
+      "fixture": "20-final-tail",
+      "passesReviewed": [
+        0,
+        1
+      ],
+      "outputsIdenticalAcrossPasses": true,
+      "rating": "acceptable",
+      "note": "All sentences retained in order; final do not delete the backup intact, colon becomes full stop."
+    }
+  ],
+  "decision": "Continue A00 with persistent lexical/entity/correction defects recorded; faster signed replay is actual file-recovery measurement, not live stop latency or gate closure.",
+  "timedReplaySumMs": 3852.046,
+  "preparePlusTimedReplayMs": 4215.074,
+  "signedTestTotalSecondsReportedByIntegrator": 4.356,
+  "comparison": {
+    "priorReview": "validation/results/2026-10-19-a00/synthetic-review.json",
+    "priorPrepareMs": 75990.186875,
+    "sameReferenceAndModelManifestDigests": true,
+    "exactOutputsMatchingPriorRun": 38,
+    "observation": "All lexical/entity/correction/URL/currency issues persist. Fixture12 punctuation additionally merges final statement and every sentence clauses; no new lexical semantic change observed. All 20 fixture outputs identical between initial and warm passes in this run.",
+    "environmentContextReportedByIntegrator": "Signed run followed freeing approximately 51 GiB disk space; earlier run encountered disk-related compilation failures. Signing/cache/disk/workload conditions differ, so the latency difference is not attributable to signing or a source optimization."
+  }
+}

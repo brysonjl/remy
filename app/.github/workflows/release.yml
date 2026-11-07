@@ -1,0 +1,15 @@
+# Historical release automation is disabled for Remy. No tag trigger,
+# release-writing token, packaging, upload or publication action is retained.
+name: Remy release disabled
+
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  disabled:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Explain disabled release workflow
+        run: echo 'Remy release automation is disabled. No release or artifact is created.'

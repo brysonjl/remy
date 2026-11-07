@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-19",
+  "appBundleID": "app.alfred.dictation.dev",
+  "appPath": ".local/run/Alfred Dev.app",
+  "model": "Parakeet TDT 0.6B v2",
+  "modelRevision": "ee09c569f73759e6d44c9bd16766f477b2b36d39",
+  "microphone": "Automatic (MacBook Pro Microphone)",
+  "permissionRecovery": {
+    "action": "User removed and re-added exact signed Alfred Dev entry",
+    "result": "Banner disappeared; Ready to dictate independently observed",
+    "mechanism": "Underlying stale-grant cause not proven",
+    "dynamicSignatureBeforeRecovery": "All Security API lookup/validity/designated-requirement checks returned OSStatus 0"
+  },
+  "currentUserPreference": {
+    "gesture": "Right Option",
+    "mode": "Tap to Toggle",
+    "cleanup": "OpenAI-compatible",
+    "endpoint": "https://ollama.com/v1",
+    "cleanupModel": "gemma4:31b",
+    "vocabulary": [
+      "Ixway",
+      "BEGL"
+    ],
+    "contextCapture": false,
+    "localFillerRemoval": false,
+    "holdToCancel": false
+  },
+  "trials": [
+    {
+      "id": "textedit-raw-toggle-01",
+      "destination": "TextEdit 1.21 / plain text",
+      "gesture": "Right Option toggle; user confirmed",
+      "cleanup": "Off",
+      "requestedSpeech": "Alfred check one two three. Do not delete the final blue folder.",
+      "observedText": "Alfred check one two three do not delete the final blue folder",
+      "result": "pass for live capture/toggle stop/one observed insertion/lexical negation and tail preservation",
+      "notes": "Punctuation omitted. User reported automatic text appearance; agent independently read full destination value. Initial instruction suggested three-key hold, but user confirmed the actual gesture was their newly selected Right Option toggle. No hold pass claimed."
+    },
+    {
+      "id": "textedit-cloud-toggle-02",
+      "destination": "TextEdit 1.21 / rich text",
+      "gesture": "Right Option toggle",
+      "cleanup": "https://ollama.com/v1 / gemma4:31b",
+      "requestedSpeech": "Book Thursday, oh wait, Friday at three. Do not change the fifteen thousand dollar budget.",
+      "observedText": "Book Friday at 3. Do not change the $15,000 budget.",
+      "result": "pass for live cloud cleanup and one observed insertion; correction/negation/numeric magnitude preserved",
+      "notes": "User reported automatic text appearance; agent independently read full destination value. Public deliberate evaluation speech only."
+    },
+    {
+      "id": "textedit-cancel-hold-03",
+      "destination": "TextEdit 1.21 / empty document",
+      "gesture": "Right Option toggle; Escape held one second to cancel",
+      "cleanup": "Cloud configured; cancelled during recording",
+      "requestedSpeech": "This test should never be pasted.",
+      "observedText": "",
+      "result": "Cancellation prevented insertion; usability failure",
+      "notes": "User reported repeated macOS alert bink while holding Escape. Empty destination independently confirmed. User requested immediate Escape instead."
+    },
+    {
+      "id": "textedit-cancel-immediate-04",
+      "destination": "TextEdit 1.21 / same empty document",
+      "gesture": "Right Option toggle; Escape single tap",
+      "cleanup": "Cloud configured; cancelled during recording",
+      "requestedSpeech": "Cancel this test",
+      "observedText": "",
+      "result": "Immediate cancellation prevented insertion; alert sound still reproduced",
+      "notes": "Hold to cancel was set off in UI at user request. User still heard an alert on single Escape. HotkeyService source passes plain Escape to foreground app even in immediate mode; narrow event-consumption repair in progress."
+    },
+    {
+      "id": "textedit-cancel-repaired-05",
+      "destination": "TextEdit 1.21 / same empty document",
+      "gesture": "Right Option toggle; Escape single tap",
+      "requestedSpeech": "Cancel this test",
+      "observedText": "",
+      "result": "pass; user confirmed immediate and quiet cancellation, agent confirmed empty destination",
+      "notes": "After signed HotkeyService event-consumption repair. Accessibility grant persisted through signed tests/rebuild/relaunch."
+    },
+    {
+      "id": "chrome-raw-hold-textarea-06",
+      "destination": "Chrome 155.0.8059.80 / local fixture primary textarea",
+      "gesture": "Right Option hold-to-record",
+      "cleanup": "Off",
+      "requestedSpeech": "Chrome field one keeps the final green word",
+      "observedText": "Chromefield One keeps the final green word",
+      "pasteEvents": 2,
+      "inputEvents": 3,
+      "result": "Live hold capture and selected-field insertion observed; whole floating overlay missing",
+      "notes": "User retried dictation and reports no manual paste/edit. Aggregate counters cannot establish dispatch count per attempt. Merged Chromefield; final words retained."
+    },
+    {
+      "id": "chrome-raw-hold-contenteditable-07",
+      "destination": "Chrome 155.0.8059.80 / local fixture contenteditable",
+      "gesture": "Right Option hold-to-record",
+      "cleanup": "Off",
+      "requestedSpeech": "Chrome field two does not submit anything",
+      "observedText": "Chrome Field 2 does not submit anything.",
+      "pasteEvents": 1,
+      "inputEvents": 1,
+      "result": "Live hold capture and selected-field insertion observed; whole floating overlay missing",
+      "notes": "User clicked each intended field and dictated. Negation and final words retained. No submission action exists on fixture."
+    },
+    {
+      "id": "chrome-toggle-overlay-diagnostic-08",
+      "destination": "Chrome / local fixture empty third textarea; Chrome windowed per user",
+      "gesture": "Right Option Tap to Toggle; user Escape to cancel",
+      "cleanup": "Cloud configured; cancelled while recording",
+      "requestedSpeech": "Checking the recording panel",
+      "observedText": "",
+      "result": "Alfred Listening status independently observed; user reports whole panel missing anywhere; Ready to dictate after user cancellation independently verified",
+      "notes": "CUA-generated Escape did not reach global cancellation; user pressed physical Escape. Browser third field remained empty at inspection. Original window behavior unchanged for this diagnostic. Preparing transcript-free overlay geometry/visibility instrumentation."
+    },
+    {
+      "id": "chrome-cloud-overlay-repaired-09",
+      "destination": "Chrome / local fixture third textarea",
+      "gesture": "Right Option Tap to Toggle",
+      "cleanup": "https://ollama.com/v1 / gemma4:31b",
+      "requestedSpeech": "The teal waiter keeps the final blue word",
+      "observedText": "The teal waiter keeps the final blue word",
+      "pasteEventsBefore": 1,
+      "pasteEventsAfter": 2,
+      "inputEventsBefore": 2,
+      "inputEventsAfter": 3,
+      "result": "User confirmed panel visible over Chrome and text landed correctly; exact field text independently read. Native diagnostic confirms activeSpace/occlusion visible.",
+      "notes": "No field focus stolen in this trial; no full desktop/Spaces reliability matrix claimed."
+    },
+    {
+      "id": "arc-cloud-toggle-10",
+      "destination": "Arc / local fixture textarea and contenteditable",
+      "gesture": "Right Option Tap to Toggle",
+      "cleanup": "https://ollama.com/v1 / gemma4:31b",
+      "requestedSpeech": [
+        "Arc keeps the final amber word.",
+        "Arc does not submit this sentence."
+      ],
+      "result": "User confirmed both fields received text and overlay visible",
+      "evidenceScope": "User reported. CUA initially no window; after user opened Arc, ScreenCaptureKit capture failed, so exact final text/counters were not independently read."
+    },
+    {
+      "id": "ghostty-cloud-toggle-11",
+      "destination": "Ghostty 1.2.3 / fresh shell prompt",
+      "gesture": "Right Option Tap to Toggle",
+      "cleanup": "https://ollama.com/v1 / gemma4:31b",
+      "requestedSpeech": "Terminal check one two three.",
+      "result": "User confirmed visible overlay and text remained a single unexecuted input line",
+      "evidenceScope": "User reported only. Computer-use tool blocks Ghostty control for safety; no alternate automation bypass attempted. Exact output not independently read."
+    },
+    {
+      "id": "codex-cloud-toggle-12",
+      "destination": "Codex native composer / unsent draft",
+      "gesture": "Right Option Tap to Toggle",
+      "cleanup": "https://ollama.com/v1 / gemma4:31b",
+      "requestedSpeech": "Please keep this as an unsent draft",
+      "result": "User confirmed visible overlay and text in unsent composer",
+      "evidenceScope": "User reported only; computer-use tool blocks Codex control for safety, so exact final value not independently read."
+    },
+    {
+      "id": "chrome-field-change-13",
+      "destination": "Chrome fresh local fixture field1 then field3 during recording",
+      "gesture": "Right Option Tap to Toggle",
+      "cleanup": "https://ollama.com/v1 / gemma4:31b",
+      "requestedSpeech": "Keep the final violet word.",
+      "observedTextInOriginalField": "",
+      "observedTextInNewField": "Keep the final violet word.",
+      "originalFieldPasteEvents": 0,
+      "newFieldPasteEvents": 1,
+      "newFieldInputEvents": 1,
+      "result": "FAIL against planned A07 destination identity/copy-only contract: pasted into newly focused field3",
+      "evidenceScope": "User confirmed field3; exact text and counters independently read. Current context-off same-process guard lacks field identity. Retain as A07 repair evidence, not a passed safe-focus case."
+    },
+    {
+      "id": "ghostty-raw-toggle-14",
+      "destination": "Ghostty fresh shell prompt",
+      "gesture": "Right Option Tap to Toggle",
+      "cleanup": "Off selected by user",
+      "requestedSpeech": "Raw terminal check seven eight nine",
+      "result": "User confirmed raw text remained a single unexecuted line; no Return pressed",
+      "evidenceScope": "User report; tool safety blocks native terminal control. User restored cloud; root independently verified CustomOpenAI-compatible/gemma4:31b afterward."
+    }
+  ],
+  "limits": [
+    "No timed stop-to-final measurement from these user-driven trials",
+    "This is a small A00 baseline, not A07/A10 reliability acceptance",
+    "Arc/Ghostty/Codex outcomes user-reported only; exact text not independently read",
+    "Chrome field-change failed planned A07 copy-only contract; repair required before daily-driver acceptance"
+  ],
+  "escapeRepair": {
+    "files": [
+      "app/Dictate Anywhere/HotkeyService.swift",
+      "app/Dictate AnywhereTests/CancellationTests.swift"
+    ],
+    "behavior": "Consume matched immediate plain Escape and its repeats/release while preserving idle Escape and hold-mode passthrough",
+    "validation": "36 focused CancellationTests/HotkeyTests passed, zero failures; signed Debug preparation and Release build passed; user confirmed actual cancellation immediate and quiet, with empty TextEdit independently observed",
+    "logs": [
+      "escape-cancel-tests.log",
+      "escape-cancel-signed-prepare.log",
+      "escape-cancel-release.log"
+    ]
+  },
+  "temporaryValidationSettings": {
+    "status": "restored and independently verified in UI",
+    "gesture": "Right Option Tap to Toggle",
+    "cleanup": "Custom: OpenAI-compatible / gemma4:31b",
+    "holdToCancel": false
+  },
+  "instrumentedChromeTimings": {
+    "evidence": "chrome-live-timings.json",
+    "successfulStopToInserterResultMilliseconds": [
+      93,
+      81,
+      87
+    ],
+    "scope": "Three success traces during Chrome raw hold trials; independent visible acknowledgement not timed; no acceptance distribution claimed"
+  },
+  "overlayRepair": {
+    "beforeEvidence": "overlay-presentation-before.log",
+    "finding": "Four sampled Chrome recordings: native_visible=1, alpha=1000, on_active_space=0, occlusion_visible=0 with frame inside chosen display. One Alfred-active recording: activeSpace=1 and occlusionVisible=1. User reports overlay only visible when Alfred selected.",
+    "implementation": "Nonactivating NSPanel joins all applications and Spaces, does not hide on deactivation, cannot become key/main. Main settings window lookup excludes auxiliary panels.",
+    "style": "Navy/cream, teal waveform and status, small waiter-head mark and Listening header; height includes header.",
+    "validation": "43 focused tests passed; mounted SwiftUI opaque-pixel checks in light/dark and preview on/off through hide/show reuse. Signed Debug preparation passed. Native settings preview inspected compact/comfortable/large; Comfortable restored. Release build passed. Native primary-display traces now report on_active_space=1 and occlusion_visible=1.",
+    "liveStatus": "User confirmed restyled panel visible over Chrome and text delivered to selected third field; independently verified exact text and one additional paste/input event. Limited to this real-use case.",
+    "logs": [
+      "overlay-service-tests-r2.log",
+      "overlay-service-prepare.log",
+      "overlay-service-release.log"
+    ],
+    "afterEvidence": "overlay-presentation-after.log"
+  },
+  "foundationDecision": {
+    "gate": "A00 complete",
+    "decision": "RETAIN / REPAIR existing implementation",
+    "remaining": "A01\u2013A11 implementation/reliability; A07 field identity gap proven, provider/quality/resource/soak limits remain",
+    "notClaimed": "Daily-driver readiness, full20perappmatrix, held-out corpus or1000-cycle/8-hoursoak"
+  }
+}

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Remy insertion fixture</title>
+<style>
+:root {color-scheme:light dark;font:16px system-ui;background:light-dark(#f3f1e9,#101e2a);color:light-dark(#142d3b,#f5f2e9)}
+body {max-width:760px;margin:40px auto;padding:0 24px} h1 {font-size:26px} p {line-height:1.5} label {display:block;font-weight:650;margin:24px 0 8px} textarea,[contenteditable] {box-sizing:border-box;width:100%;min-height:110px;padding:12px;border:2px solid #638c91;border-radius:10px;background:light-dark(#fffdf7,#1a2d3b);color:inherit;font:inherit} :focus-visible {outline:3px solid #15a99e;outline-offset:3px} output {display:block;font:12px ui-monospace,monospace;margin-top:7px} button {font:inherit;padding:9px 14px;margin:24px 10px 0 0;cursor:pointer} .note {border-left:4px solid #15a99e;padding-left:14px}
+</style>
+<body>
+<h1>Remy · controlled insertion check</h1>
+<p class="note">Use harmless test words. This page has no submission action, remote resources, or clipboard reads. Nothing you enter is sent or saved. Reloading clears all fields and counters.</p>
+<label for="primary">1 · Primary textarea</label>
+<textarea id="primary" spellcheck="false"></textarea>
+<output id="primary-count">Paste events: 0 · Input events: 0</output>
+<label id="editable-label">2 · Editable text region</label>
+<div id="editable" contenteditable="true" role="textbox" aria-multiline="true" aria-labelledby="editable-label" spellcheck="false"></div>
+<output id="editable-count">Paste events: 0 · Input events: 0</output>
+<label for="secondary">3 · Second textarea — focus-change target</label>
+<textarea id="secondary" spellcheck="false"></textarea>
+<output id="secondary-count">Paste events: 0 · Input events: 0</output>
+<button type="button" id="clear">Clear fields</button>
+<button type="button" id="reset">Reset counters</button>
+<p>Counts report browser events, not successful Remy delivery. Keyboard typing, manual paste, clearing, and other edits can affect counts. Inspect the exact field text and compare it with the intended text.</p>
+<script>
+'use strict';
+const fields = ['primary', 'editable', 'secondary'].map(id => document.getElementById(id));
+const counts = new Map(fields.map(field => [field, {paste:0,input:0}]));
+function render(field) {
+  const count = counts.get(field);
+  document.getElementById(field.id + '-count').textContent = `Paste events: ${count.paste} · Input events: ${count.input}`;
+}
+for (const field of fields) {
+  for (const type of ['paste','input']) {
+    field.addEventListener(type, () => {counts.get(field)[type]++; render(field);});
+  }
+}
+document.getElementById('clear').addEventListener('click', () => {
+  for (const field of fields) {
+    if (field instanceof HTMLTextAreaElement) field.value = '';
+    else field.textContent = '';
+  }
+});
+document.getElementById('reset').addEventListener('click', () => {
+  for (const field of fields) {counts.set(field,{paste:0,input:0});render(field);}
+});
+</script>
+</body>
+</html>

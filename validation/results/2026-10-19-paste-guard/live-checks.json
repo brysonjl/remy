@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-19",
+  "stableApp": ".local/run/Alfred Dev.app",
+  "fix": "Treat unsupported AXEnabled as absent; retain explicit disabled and other target guards",
+  "focusedTests": {
+    "count": 27,
+    "failures": 0
+  },
+  "signedDebug": "passed",
+  "release": "passed",
+  "textEdit": {
+    "userConfirmedAutomaticPaste": true,
+    "syntheticTextIndependentlyObserved": "The waiter keeps the blue folder",
+    "copiesObserved": 1,
+    "windowAtConfirmation": "Blue Folder (formerly Untitled 4)",
+    "captureProof": "success",
+    "workerProof": "success",
+    "delivery": "AX paste dispatched; destination text observed"
+  },
+  "terminal": {
+    "status": "passed by user report",
+    "automaticInsertion": true,
+    "lineLeftUnexecuted": true,
+    "userReport": "Terminal check was successful",
+    "requestedFixture": "Terminal check blue folder",
+    "exactTextIndependentlyRead": false,
+    "boundedLogCorroboration": "Following TextEdit, captureSuccess, ancestry depth3, matchSuccess, AX paste and delivery success at 19:43:44; no terminal content logged"
+  },
+  "chromeFocusChange": {
+    "status": "passed under previous copy-only policy; user now requests configurable destination",
+    "userConfirmed": true,
+    "primaryTextIndependentlyObserved": "The waiter keeps the final blue word. ",
+    "primaryPasteEvents": 1,
+    "primaryInputEvents": 2,
+    "otherFieldsEmpty": true,
+    "otherFieldsPasteEvents": 0,
+    "manualRecoveryPhraseAbsent": true
+  },
+  "credentialsReadOrExported": false,
+  "published": false
+}

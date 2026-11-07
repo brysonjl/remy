@@ -1,0 +1,1647 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-05",
+  "status": "Exact pinned source notices plus native artifact observations, checksum-verified locked-crate notice superset and byte-matched font attribution; final release gates recorded separately.",
+  "package_pins": [
+    {
+      "identity": "fluidaudio",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/FluidInference/FluidAudio.git",
+      "state": {
+        "revision": "0b1f46289fe27d95b5e66ad8be46e64f5ee02ae7",
+        "version": "0.17.5"
+      }
+    },
+    {
+      "identity": "llama.swift",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/mattt/llama.swift",
+      "state": {
+        "revision": "716419d4d7aa542fce301e809cde7234c68ddbc6",
+        "version": "2.10549.0"
+      }
+    },
+    {
+      "identity": "sparkle",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/sparkle-project/Sparkle.git",
+      "state": {
+        "revision": "ac2def288cbff5cfc7df3ffef6abdf45b72bcb0a",
+        "version": "2.9.6"
+      }
+    }
+  ],
+  "notice_files": [
+    {
+      "component": "fluidaudio",
+      "path": "docs/third-party/FluidAudio/LICENSE",
+      "source": "https://github.com/FluidInference/FluidAudio/blob/0b1f46289fe27d95b5e66ad8be46e64f5ee02ae7/LICENSE",
+      "revision": "0b1f46289fe27d95b5e66ad8be46e64f5ee02ae7",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "component": "llama.swift",
+      "path": "docs/third-party/llama.swift/LICENSE.md",
+      "source": "https://github.com/mattt/llama.swift/blob/716419d4d7aa542fce301e809cde7234c68ddbc6/LICENSE.md",
+      "revision": "716419d4d7aa542fce301e809cde7234c68ddbc6",
+      "sha256": "2f9b695627d569a3ce452b2c03fdd34310df78c8ea94edfafd9ce38381e5b502"
+    },
+    {
+      "component": "sparkle",
+      "path": "docs/third-party/Sparkle/LICENSE",
+      "source": "https://github.com/sparkle-project/Sparkle/blob/ac2def288cbff5cfc7df3ffef6abdf45b72bcb0a/LICENSE",
+      "revision": "ac2def288cbff5cfc7df3ffef6abdf45b72bcb0a",
+      "sha256": "389a4e4e9a32f059775b13a06e25a591445ba229d2838d26dd3e7c0c45127cfe"
+    },
+    {
+      "component": "fluidaudio-supplied-notice",
+      "path": "docs/third-party/FluidAudio/ThirdPartyLicenses/JapaneseG2P-LICENSE.md",
+      "source": "https://github.com/FluidInference/FluidAudio/blob/0b1f46289fe27d95b5e66ad8be46e64f5ee02ae7/ThirdPartyLicenses/JapaneseG2P-LICENSE.md",
+      "revision": "0b1f46289fe27d95b5e66ad8be46e64f5ee02ae7",
+      "sha256": "cb82031f608b056ffb378073d15fd840e070a1dd3063f8975556f9536d447103"
+    },
+    {
+      "component": "fluidaudio-supplied-notice",
+      "path": "docs/third-party/FluidAudio/ThirdPartyLicenses/KokoroAneSpanishFrenchG2P-LICENSE.md",
+      "source": "https://github.com/FluidInference/FluidAudio/blob/0b1f46289fe27d95b5e66ad8be46e64f5ee02ae7/ThirdPartyLicenses/KokoroAneSpanishFrenchG2P-LICENSE.md",
+      "revision": "0b1f46289fe27d95b5e66ad8be46e64f5ee02ae7",
+      "sha256": "82b80894661fb61209fc39f91bb50b2ed5d0c8628f9d1460ccc853b8bcf12043"
+    },
+    {
+      "component": "fluidaudio-supplied-notice",
+      "path": "docs/third-party/FluidAudio/ThirdPartyLicenses/NemoTextProcessing-LICENSE.md",
+      "source": "https://github.com/FluidInference/FluidAudio/blob/0b1f46289fe27d95b5e66ad8be46e64f5ee02ae7/ThirdPartyLicenses/NemoTextProcessing-LICENSE.md",
+      "revision": "0b1f46289fe27d95b5e66ad8be46e64f5ee02ae7",
+      "sha256": "300a31d86c7c5d809f0adc00ef7d35259226acc7e412b9767cd3029a3395c50e"
+    },
+    {
+      "component": "fluidaudio-supplied-notice",
+      "path": "docs/third-party/FluidAudio/ThirdPartyLicenses/fastcluster-LICENSE.md",
+      "source": "https://github.com/FluidInference/FluidAudio/blob/0b1f46289fe27d95b5e66ad8be46e64f5ee02ae7/ThirdPartyLicenses/fastcluster-LICENSE.md",
+      "revision": "0b1f46289fe27d95b5e66ad8be46e64f5ee02ae7",
+      "sha256": "67594dbe4a7477719c8160373e7767c2c319ef966a6042f76846a18af02cde0a"
+    },
+    {
+      "component": "fluidaudio-supplied-notice",
+      "path": "docs/third-party/FluidAudio/ThirdPartyLicenses/vbx-LICENSE.md",
+      "source": "https://github.com/FluidInference/FluidAudio/blob/0b1f46289fe27d95b5e66ad8be46e64f5ee02ae7/ThirdPartyLicenses/vbx-LICENSE.md",
+      "revision": "0b1f46289fe27d95b5e66ad8be46e64f5ee02ae7",
+      "sha256": "08e57fdb5187c816e937916f1e176aadb400ca76f4b3b493d69730ec8f10dd80"
+    },
+    {
+      "component": "llama.cpp",
+      "path": "docs/third-party/llama.cpp/LICENSE",
+      "source": "https://github.com/ggml-org/llama.cpp/blob/b10549/LICENSE",
+      "revision": "b10549",
+      "sha256": "94f29bbed6a22c35b992c5c6ebf0e7c92f13b836b90f36f461c9cf2f0f1d010d"
+    },
+    {
+      "component": "NemoTextProcessing",
+      "path": "docs/third-party/NemoTextProcessing/LICENSE",
+      "source": "https://github.com/FluidInference/text-processing-rs/blob/v0.3.1/LICENSE",
+      "revision": "v0.3.1",
+      "sha256": "ac84752611bfcb8e2f472b17f9cb18f5321c9a75c2a5445b766725b1de67790b"
+    },
+    {
+      "component": "NemoTextProcessing",
+      "path": "docs/third-party/NemoTextProcessing/NOTICE",
+      "source": "https://github.com/FluidInference/text-processing-rs/blob/v0.3.1/NOTICE",
+      "revision": "v0.3.1",
+      "sha256": "886143044515319a91f4447f9b447bb89089b4c9af847300f4b8de830c805852"
+    },
+    {
+      "component": "NemoTextProcessing",
+      "path": "docs/third-party/NemoTextProcessing/THIRD-PARTY-LICENSES.md",
+      "source": "https://github.com/FluidInference/text-processing-rs/blob/v0.3.1/THIRD-PARTY-LICENSES.md",
+      "revision": "v0.3.1",
+      "sha256": "14d21dbb0deb74aa7775f5803c36609aa6ef0c38c94fb03dbc95efb3645f7678"
+    },
+    {
+      "component": "S1-mini by Superwhisper",
+      "path": "docs/third-party/models/S1-mini-LICENSE",
+      "source": "https://huggingface.co/superwhisper/s1-mini-GGUF/blob/ee2c0f56e56345f475749a44ff2893e21c3cb292/LICENSE",
+      "revision": "ee2c0f56e56345f475749a44ff2893e21c3cb292",
+      "sha256": "d956d2d305a0639211c9cbde71501accb0e1474cc9ddf79a47820a522aff6f98"
+    },
+    {
+      "component": "Parakeet v2 CoreML",
+      "path": "docs/third-party/models/Parakeet-v2-MODEL_CARD.md",
+      "source": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v2-coreml/blob/ee09c569f73759e6d44c9bd16766f477b2b36d39/README.md",
+      "revision": "ee09c569f73759e6d44c9bd16766f477b2b36d39",
+      "sha256": "491eac9a160dc7b0f7ce1210dea4fff6df0222124e93ea83ae2cd72827b4ce02"
+    },
+    {
+      "component": "font-inter",
+      "path": "docs/third-party/fonts/inter-OFL.txt",
+      "source": "https://github.com/google/fonts/blob/0b58fb370093f9a9f4ff785d94405710b79de67c/ofl/inter/OFL.txt",
+      "revision": "0b58fb370093f9a9f4ff785d94405710b79de67c",
+      "sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
+    },
+    {
+      "component": "font-fraunces",
+      "path": "docs/third-party/fonts/fraunces-OFL.txt",
+      "source": "https://github.com/google/fonts/blob/4024282d9b0cffcdb8e3024560862746178d741f/ofl/fraunces/OFL.txt",
+      "revision": "4024282d9b0cffcdb8e3024560862746178d741f",
+      "sha256": "bdf4c22802eaf804f998195871c6b8938aac2ac14b2d78a8bd66a6f1eced833b"
+    },
+    {
+      "component": "nemo-build-input",
+      "path": "docs/third-party/NemoTextProcessing/source-review/Cargo.lock",
+      "source": "https://github.com/FluidInference/text-processing-rs/blob/46ebddcea5e1ff673c2cb5256a1b6b0e6c4ff527/Cargo.lock",
+      "revision": "46ebddcea5e1ff673c2cb5256a1b6b0e6c4ff527",
+      "sha256": "b4eb31d0f16867f174dddfd7aa4883fbd94906273545d527e81a721a4b4396f1"
+    },
+    {
+      "component": "nemo-build-input",
+      "path": "docs/third-party/NemoTextProcessing/source-review/Cargo.toml",
+      "source": "https://github.com/FluidInference/text-processing-rs/blob/46ebddcea5e1ff673c2cb5256a1b6b0e6c4ff527/Cargo.toml",
+      "revision": "46ebddcea5e1ff673c2cb5256a1b6b0e6c4ff527",
+      "sha256": "f4e5ff5b07d05ba431d69c320b4c750f157bc70edfa6737e2cae0457d92e6ac8"
+    },
+    {
+      "component": "nemo-build-input",
+      "path": "docs/third-party/NemoTextProcessing/source-review/build-xcframework.sh",
+      "source": "https://github.com/FluidInference/text-processing-rs/blob/46ebddcea5e1ff673c2cb5256a1b6b0e6c4ff527/build-xcframework.sh",
+      "revision": "46ebddcea5e1ff673c2cb5256a1b6b0e6c4ff527",
+      "sha256": "520bc0004cc7320a62555e0c6841a4ec91058994837f557a7ca30ecf19892c63"
+    },
+    {
+      "component": "nemo-build-input",
+      "path": "docs/third-party/NemoTextProcessing/source-review/.github/workflows/xcframework.yml",
+      "source": "https://github.com/FluidInference/text-processing-rs/blob/46ebddcea5e1ff673c2cb5256a1b6b0e6c4ff527/.github/workflows/xcframework.yml",
+      "revision": "46ebddcea5e1ff673c2cb5256a1b6b0e6c4ff527",
+      "sha256": "5f8aed4eb515d38b18a8d633648a3855ad41e80ed5f499d7f009368b9056c515"
+    },
+    {
+      "component": "llama-build-input",
+      "path": "docs/third-party/llama.cpp/source-review/build-xcframework.sh",
+      "source": "https://github.com/ggml-org/llama.cpp/blob/b2e5e9b28b2484fbf94b543432ece638996a8b97/build-xcframework.sh",
+      "revision": "b2e5e9b28b2484fbf94b543432ece638996a8b97",
+      "sha256": "46f2e454739e76536fcbacee41f9b25a9c931ee8278fda1ada7241126f21cee1"
+    },
+    {
+      "component": "llama-build-input",
+      "path": "docs/third-party/llama.cpp/source-review/tools/mtmd/CMakeLists.txt",
+      "source": "https://github.com/ggml-org/llama.cpp/blob/b2e5e9b28b2484fbf94b543432ece638996a8b97/tools/mtmd/CMakeLists.txt",
+      "revision": "b2e5e9b28b2484fbf94b543432ece638996a8b97",
+      "sha256": "f158d9b0a5ff0003ea62d015dad0978b4895c181171601d29013a832fc6cbe45"
+    },
+    {
+      "component": "llama-build-input",
+      "path": "docs/third-party/llama.cpp/source-review/vendor/CMakeLists.txt",
+      "source": "https://github.com/ggml-org/llama.cpp/blob/b2e5e9b28b2484fbf94b543432ece638996a8b97/vendor/CMakeLists.txt",
+      "revision": "b2e5e9b28b2484fbf94b543432ece638996a8b97",
+      "sha256": "97242b05cf7d56231b05afa991036260025b9d6fe4f003dbc997dd7f5d2be06b"
+    },
+    {
+      "component": "llama-build-input",
+      "path": "docs/third-party/llama.cpp/source-review/ggml/CMakeLists.txt",
+      "source": "https://github.com/ggml-org/llama.cpp/blob/b2e5e9b28b2484fbf94b543432ece638996a8b97/ggml/CMakeLists.txt",
+      "revision": "b2e5e9b28b2484fbf94b543432ece638996a8b97",
+      "sha256": "bc8a927d393735deb076c44ac114f4c7e98da7d6f0fda71ec72eaab6393f4624"
+    },
+    {
+      "component": "llama.cpp-vendored",
+      "path": "docs/third-party/llama.cpp/vendor-notices/licenses/LICENSE-jsonhpp",
+      "source": "https://github.com/ggml-org/llama.cpp/blob/b2e5e9b28b2484fbf94b543432ece638996a8b97/licenses/LICENSE-jsonhpp",
+      "revision": "b2e5e9b28b2484fbf94b543432ece638996a8b97",
+      "sha256": "c0d068392ea65358b798b8c165103560f06e9e3b38c4ab4e2d8810a7b931af86"
+    },
+    {
+      "component": "llama.cpp-vendored",
+      "path": "docs/third-party/llama.cpp/vendor-notices/vendor/cpp-httplib/LICENSE",
+      "source": "https://github.com/ggml-org/llama.cpp/blob/b2e5e9b28b2484fbf94b543432ece638996a8b97/vendor/cpp-httplib/LICENSE",
+      "revision": "b2e5e9b28b2484fbf94b543432ece638996a8b97",
+      "sha256": "4b45cbe16d7b71b89ae6127e26e0d90a029198ca5e958ad8e3d0b8bbed364d8b"
+    },
+    {
+      "component": "llama.cpp-vendored",
+      "path": "docs/third-party/llama.cpp/vendor-notices/vendor/hash/rotate-bits/LICENSE.md",
+      "source": "https://github.com/ggml-org/llama.cpp/blob/b2e5e9b28b2484fbf94b543432ece638996a8b97/vendor/hash/rotate-bits/LICENSE.md",
+      "revision": "b2e5e9b28b2484fbf94b543432ece638996a8b97",
+      "sha256": "ca0b44aec101afb6b46f4c39b23369fa06a64fb9c0add37c2689d702156fee55"
+    },
+    {
+      "component": "llama.cpp-vendored",
+      "path": "docs/third-party/llama.cpp/vendor-notices/vendor/hash/sha256/LICENSE",
+      "source": "https://github.com/ggml-org/llama.cpp/blob/b2e5e9b28b2484fbf94b543432ece638996a8b97/vendor/hash/sha256/LICENSE",
+      "revision": "b2e5e9b28b2484fbf94b543432ece638996a8b97",
+      "sha256": "b81d0022ca6367918c67b57e9647d3513ee58809fd4b0ef0b3492f1356bced25"
+    },
+    {
+      "component": "llama.cpp-vendored",
+      "path": "docs/third-party/llama.cpp/vendor-notices/vendor/hash/xxhash/LICENSE",
+      "source": "https://github.com/ggml-org/llama.cpp/blob/b2e5e9b28b2484fbf94b543432ece638996a8b97/vendor/hash/xxhash/LICENSE",
+      "revision": "b2e5e9b28b2484fbf94b543432ece638996a8b97",
+      "sha256": "6ffedbc0f7878612d2b23589f1ff2ab15633e1df7963a5d9fc750ec5500c7e7a"
+    },
+    {
+      "component": "llama.cpp-embedded-license",
+      "path": "docs/third-party/llama.cpp/vendor-notices/stb_image.h-LICENSE.txt",
+      "source": "https://github.com/ggml-org/llama.cpp/blob/b2e5e9b28b2484fbf94b543432ece638996a8b97/vendor/stb/stb_image.h",
+      "revision": "b2e5e9b28b2484fbf94b543432ece638996a8b97",
+      "sha256": "7587efcca32db8f95bf5860dea6dfa4be410ee723e1964db3689c8ddf2a2e4a9",
+      "extraction": "Verbatim complete license comment, byte offsets 280336..283010",
+      "source_sha256": "594c2fe35d49488b4382dbfaec8f98366defca819d916ac95becf3e75f4200b3"
+    },
+    {
+      "component": "llama.cpp-embedded-license",
+      "path": "docs/third-party/llama.cpp/vendor-notices/miniaudio.h-LICENSE.txt",
+      "source": "https://github.com/ggml-org/llama.cpp/blob/b2e5e9b28b2484fbf94b543432ece638996a8b97/vendor/miniaudio/miniaudio.h",
+      "revision": "b2e5e9b28b2484fbf94b543432ece638996a8b97",
+      "sha256": "3a0fd41237bf8341d1e4cdd89a52ff4a96228c4fad26e272840ed0ee03efcaf7",
+      "extraction": "Verbatim complete license comment, byte offsets 4105564..4108168",
+      "source_sha256": "ac7af4de748b7e26b777f37e01cee313a308a7296a3eb080e2906b320cc55c89"
+    },
+    {
+      "component": "llama.cpp-embedded-license",
+      "path": "docs/third-party/llama.cpp/vendor-notices/subprocess.h-LICENSE.txt",
+      "source": "https://github.com/ggml-org/llama.cpp/blob/b2e5e9b28b2484fbf94b543432ece638996a8b97/vendor/sheredom/subprocess.h",
+      "revision": "b2e5e9b28b2484fbf94b543432ece638996a8b97",
+      "sha256": "1c7b71e03e1be684d51dfeb56d6358cc728097d844cfd72484f28835ff4c091b",
+      "extraction": "Verbatim complete license comment, byte offsets 113..1389",
+      "source_sha256": "13a70780fd107b4c6e7ca9af5738215718a18fb778f462f0ec47732b39899255"
+    },
+    {
+      "component": "llama.cpp-embedded-license",
+      "path": "docs/third-party/llama.cpp/vendor-notices/sha1.c-LICENSE.txt",
+      "source": "https://github.com/ggml-org/llama.cpp/blob/b2e5e9b28b2484fbf94b543432ece638996a8b97/vendor/hash/sha1/sha1.c",
+      "revision": "b2e5e9b28b2484fbf94b543432ece638996a8b97",
+      "sha256": "46fc0c6d8b1e82892861b8093beb214f1531d5367d6d6ebbee0b16a9ecc37daa",
+      "extraction": "Verbatim complete license comment, byte offsets 0..339",
+      "source_sha256": "6de78afb7c2e54ccbd742c0307015db4dceaa64d85533709f99de05074d639e4"
+    },
+    {
+      "component": "rust-crate-adler2",
+      "path": "docs/third-party/NemoTextProcessing/crates/adler2-2.0.1/LICENSE-0BSD",
+      "source": "https://static.crates.io/crates/adler2/adler2-2.0.1.crate",
+      "revision": "2.0.1",
+      "sha256": "861399f8c21c042b110517e76dc6b63a2b334276c8cf17412fc3c8908ca8dc17",
+      "crate_sha256": "320119579fcad9c21884f5c4861d16174d0e06250625266f50fe6898340abefa"
+    },
+    {
+      "component": "rust-crate-adler2",
+      "path": "docs/third-party/NemoTextProcessing/crates/adler2-2.0.1/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/adler2/adler2-2.0.1.crate",
+      "revision": "2.0.1",
+      "sha256": "8ada45cd9f843acf64e4722ae262c622a2b3b3007c7310ef36ac1061a30f6adb",
+      "crate_sha256": "320119579fcad9c21884f5c4861d16174d0e06250625266f50fe6898340abefa"
+    },
+    {
+      "component": "rust-crate-adler2",
+      "path": "docs/third-party/NemoTextProcessing/crates/adler2-2.0.1/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/adler2/adler2-2.0.1.crate",
+      "revision": "2.0.1",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "crate_sha256": "320119579fcad9c21884f5c4861d16174d0e06250625266f50fe6898340abefa"
+    },
+    {
+      "component": "rust-crate-anyhow",
+      "path": "docs/third-party/NemoTextProcessing/crates/anyhow-1.0.103/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/anyhow/anyhow-1.0.103.crate",
+      "revision": "1.0.103",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "crate_sha256": "2a4385e2e34eb35d6b3efe798b9eb88096925d87726c0798709bf56d9ed84af3"
+    },
+    {
+      "component": "rust-crate-anyhow",
+      "path": "docs/third-party/NemoTextProcessing/crates/anyhow-1.0.103/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/anyhow/anyhow-1.0.103.crate",
+      "revision": "1.0.103",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "crate_sha256": "2a4385e2e34eb35d6b3efe798b9eb88096925d87726c0798709bf56d9ed84af3"
+    },
+    {
+      "component": "rust-crate-autocfg",
+      "path": "docs/third-party/NemoTextProcessing/crates/autocfg-1.5.1/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/autocfg/autocfg-1.5.1.crate",
+      "revision": "1.5.1",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "f2032f911046de80f0a198e0901378627c33f59ea0ac00e363d481118bd70a53"
+    },
+    {
+      "component": "rust-crate-autocfg",
+      "path": "docs/third-party/NemoTextProcessing/crates/autocfg-1.5.1/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/autocfg/autocfg-1.5.1.crate",
+      "revision": "1.5.1",
+      "sha256": "27995d58ad5c1145c1a8cd86244ce844886958a35eb2b78c6b772748669999ac",
+      "crate_sha256": "f2032f911046de80f0a198e0901378627c33f59ea0ac00e363d481118bd70a53"
+    },
+    {
+      "component": "rust-crate-bimap",
+      "path": "docs/third-party/NemoTextProcessing/crates/bimap-0.6.3/LICENSE_APACHE",
+      "source": "https://static.crates.io/crates/bimap/bimap-0.6.3.crate",
+      "revision": "0.6.3",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "230c5f1ca6a325a32553f8640d31ac9b49f2411e901e427570154868b46da4f7"
+    },
+    {
+      "component": "rust-crate-bimap",
+      "path": "docs/third-party/NemoTextProcessing/crates/bimap-0.6.3/LICENSE_MIT",
+      "source": "https://static.crates.io/crates/bimap/bimap-0.6.3.crate",
+      "revision": "0.6.3",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "crate_sha256": "230c5f1ca6a325a32553f8640d31ac9b49f2411e901e427570154868b46da4f7"
+    },
+    {
+      "component": "rust-crate-bit-set",
+      "path": "docs/third-party/NemoTextProcessing/crates/bit-set-0.8.0/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/bit-set/bit-set-0.8.0.crate",
+      "revision": "0.8.0",
+      "sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90",
+      "crate_sha256": "08807e080ed7f9d5433fa9b275196cfc35414f66a0c79d864dc51a0d825231a3"
+    },
+    {
+      "component": "rust-crate-bit-set",
+      "path": "docs/third-party/NemoTextProcessing/crates/bit-set-0.8.0/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/bit-set/bit-set-0.8.0.crate",
+      "revision": "0.8.0",
+      "sha256": "f51ac2c59a222f7476ce507ca879960e2b64ea64bb2786eefdbeb7b0b538d1b7",
+      "crate_sha256": "08807e080ed7f9d5433fa9b275196cfc35414f66a0c79d864dc51a0d825231a3"
+    },
+    {
+      "component": "rust-crate-bit-vec",
+      "path": "docs/third-party/NemoTextProcessing/crates/bit-vec-0.8.0/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/bit-vec/bit-vec-0.8.0.crate",
+      "revision": "0.8.0",
+      "sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90",
+      "crate_sha256": "5e764a1d40d510daf35e07be9eb06e75770908c27d411ee6c92109c9840eaaf7"
+    },
+    {
+      "component": "rust-crate-bit-vec",
+      "path": "docs/third-party/NemoTextProcessing/crates/bit-vec-0.8.0/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/bit-vec/bit-vec-0.8.0.crate",
+      "revision": "0.8.0",
+      "sha256": "f51ac2c59a222f7476ce507ca879960e2b64ea64bb2786eefdbeb7b0b538d1b7",
+      "crate_sha256": "5e764a1d40d510daf35e07be9eb06e75770908c27d411ee6c92109c9840eaaf7"
+    },
+    {
+      "component": "rust-crate-bitflags",
+      "path": "docs/third-party/NemoTextProcessing/crates/bitflags-2.13.0/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/bitflags/bitflags-2.13.0.crate",
+      "revision": "2.13.0",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "b4388bee8683e3d04af747c73422af53102d2bd24d9eadb6cbc100baef4b43f8"
+    },
+    {
+      "component": "rust-crate-bitflags",
+      "path": "docs/third-party/NemoTextProcessing/crates/bitflags-2.13.0/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/bitflags/bitflags-2.13.0.crate",
+      "revision": "2.13.0",
+      "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+      "crate_sha256": "b4388bee8683e3d04af747c73422af53102d2bd24d9eadb6cbc100baef4b43f8"
+    },
+    {
+      "component": "rust-crate-bumpalo",
+      "path": "docs/third-party/NemoTextProcessing/crates/bumpalo-3.20.3/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/bumpalo/bumpalo-3.20.3.crate",
+      "revision": "3.20.3",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "72f5acc6cb2ba439de613abc23857ec3d78374d8ed5ac84e9d11336e87da8649"
+    },
+    {
+      "component": "rust-crate-bumpalo",
+      "path": "docs/third-party/NemoTextProcessing/crates/bumpalo-3.20.3/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/bumpalo/bumpalo-3.20.3.crate",
+      "revision": "3.20.3",
+      "sha256": "65f94e99ddaf4f5d1782a6dae23f35d4293a9a01444a13135a6887017d353cee",
+      "crate_sha256": "72f5acc6cb2ba439de613abc23857ec3d78374d8ed5ac84e9d11336e87da8649"
+    },
+    {
+      "component": "rust-crate-cfg-if",
+      "path": "docs/third-party/NemoTextProcessing/crates/cfg-if-1.0.4/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/cfg-if/cfg-if-1.0.4.crate",
+      "revision": "1.0.4",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "9330f8b2ff13f34540b44e946ef35111825727b38d33286ef986142615121801"
+    },
+    {
+      "component": "rust-crate-cfg-if",
+      "path": "docs/third-party/NemoTextProcessing/crates/cfg-if-1.0.4/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/cfg-if/cfg-if-1.0.4.crate",
+      "revision": "1.0.4",
+      "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+      "crate_sha256": "9330f8b2ff13f34540b44e946ef35111825727b38d33286ef986142615121801"
+    },
+    {
+      "component": "rust-crate-console_error_panic_hook",
+      "path": "docs/third-party/NemoTextProcessing/crates/console_error_panic_hook-0.1.7/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/console_error_panic_hook/console_error_panic_hook-0.1.7.crate",
+      "revision": "0.1.7",
+      "sha256": "353b508bbc50274d47a23729f568bab2618e3d0eaa10208616f5fd475255b896",
+      "crate_sha256": "a06aeb73f470f66dcdbf7223caeebb85984942f22f1adb2a088cf9668146bbbc"
+    },
+    {
+      "component": "rust-crate-console_error_panic_hook",
+      "path": "docs/third-party/NemoTextProcessing/crates/console_error_panic_hook-0.1.7/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/console_error_panic_hook/console_error_panic_hook-0.1.7.crate",
+      "revision": "0.1.7",
+      "sha256": "77674336af8ded214dc3ae07da631c7dd35cc8205f39298474ba98a889e57272",
+      "crate_sha256": "a06aeb73f470f66dcdbf7223caeebb85984942f22f1adb2a088cf9668146bbbc"
+    },
+    {
+      "component": "rust-crate-crc32fast",
+      "path": "docs/third-party/NemoTextProcessing/crates/crc32fast-1.5.0/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/crc32fast/crc32fast-1.5.0.crate",
+      "revision": "1.5.0",
+      "sha256": "c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08",
+      "crate_sha256": "9481c1c90cbf2ac953f07c8d4a58aa3945c425b7185c9154d67a65e4230da511"
+    },
+    {
+      "component": "rust-crate-crc32fast",
+      "path": "docs/third-party/NemoTextProcessing/crates/crc32fast-1.5.0/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/crc32fast/crc32fast-1.5.0.crate",
+      "revision": "1.5.0",
+      "sha256": "61d383b05b87d78f94d2937e2580cce47226d17823c0430fbcad09596537efcf",
+      "crate_sha256": "9481c1c90cbf2ac953f07c8d4a58aa3945c425b7185c9154d67a65e4230da511"
+    },
+    {
+      "component": "rust-crate-either",
+      "path": "docs/third-party/NemoTextProcessing/crates/either-1.16.0/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/either/either-1.16.0.crate",
+      "revision": "1.16.0",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "91622ff5e7162018101f2fea40d6ebf4a78bbe5a49736a2020649edf9693679e"
+    },
+    {
+      "component": "rust-crate-either",
+      "path": "docs/third-party/NemoTextProcessing/crates/either-1.16.0/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/either/either-1.16.0.crate",
+      "revision": "1.16.0",
+      "sha256": "7576269ea71f767b99297934c0b2367532690f8c4badc695edf8e04ab6a1e545",
+      "crate_sha256": "91622ff5e7162018101f2fea40d6ebf4a78bbe5a49736a2020649edf9693679e"
+    },
+    {
+      "component": "rust-crate-errno",
+      "path": "docs/third-party/NemoTextProcessing/crates/errno-0.3.14/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/errno/errno-0.3.14.crate",
+      "revision": "0.3.14",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "39cab71617ae0d63f51a36d69f866391735b51691dbda63cf6f96d042b63efeb"
+    },
+    {
+      "component": "rust-crate-errno",
+      "path": "docs/third-party/NemoTextProcessing/crates/errno-0.3.14/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/errno/errno-0.3.14.crate",
+      "revision": "0.3.14",
+      "sha256": "8764a597675778ddfd4e25f81b08a05dbcf089ac05662df7613fe67f150e3aa2",
+      "crate_sha256": "39cab71617ae0d63f51a36d69f866391735b51691dbda63cf6f96d042b63efeb"
+    },
+    {
+      "component": "rust-crate-fastrand",
+      "path": "docs/third-party/NemoTextProcessing/crates/fastrand-2.4.1/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/fastrand/fastrand-2.4.1.crate",
+      "revision": "2.4.1",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "9f1f227452a390804cdb637b74a86990f2a7d7ba4b7d5693aac9b4dd6defd8d6"
+    },
+    {
+      "component": "rust-crate-fastrand",
+      "path": "docs/third-party/NemoTextProcessing/crates/fastrand-2.4.1/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/fastrand/fastrand-2.4.1.crate",
+      "revision": "2.4.1",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "crate_sha256": "9f1f227452a390804cdb637b74a86990f2a7d7ba4b7d5693aac9b4dd6defd8d6"
+    },
+    {
+      "component": "rust-crate-flate2",
+      "path": "docs/third-party/NemoTextProcessing/crates/flate2-1.1.9/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/flate2/flate2-1.1.9.crate",
+      "revision": "1.1.9",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "843fba2746e448b37e26a819579957415c8cef339bf08564fe8b7ddbd959573c"
+    },
+    {
+      "component": "rust-crate-flate2",
+      "path": "docs/third-party/NemoTextProcessing/crates/flate2-1.1.9/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/flate2/flate2-1.1.9.crate",
+      "revision": "1.1.9",
+      "sha256": "025436edff4cfcdde17a5811fdea78892d8482efd1abdec5a17872d07a4f2112",
+      "crate_sha256": "843fba2746e448b37e26a819579957415c8cef339bf08564fe8b7ddbd959573c"
+    },
+    {
+      "component": "rust-crate-fnv",
+      "path": "docs/third-party/NemoTextProcessing/crates/fnv-1.0.7/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/fnv/fnv-1.0.7.crate",
+      "revision": "1.0.7",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "3f9eec918d3f24069decb9af1554cad7c880e2da24a9afd88aca000531ab82c1"
+    },
+    {
+      "component": "rust-crate-fnv",
+      "path": "docs/third-party/NemoTextProcessing/crates/fnv-1.0.7/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/fnv/fnv-1.0.7.crate",
+      "revision": "1.0.7",
+      "sha256": "65fdb6c76cd61612070c066eec9ecdb30ee74fb27859d0d9af58b9f499fd0c3e",
+      "crate_sha256": "3f9eec918d3f24069decb9af1554cad7c880e2da24a9afd88aca000531ab82c1"
+    },
+    {
+      "component": "rust-crate-generic-array",
+      "path": "docs/third-party/NemoTextProcessing/crates/generic-array-1.4.3/LICENSE",
+      "source": "https://static.crates.io/crates/generic-array/generic-array-1.4.3.crate",
+      "revision": "1.4.3",
+      "sha256": "c09aae9d3c77b531f56351a9947bc7446511d6b025b3255312d3e3442a9a7583",
+      "crate_sha256": "c2e55f16dcf0e9c00efbe2e655ffe45fc98e7066b52bc92f8a79e64060a79351"
+    },
+    {
+      "component": "rust-crate-getrandom",
+      "path": "docs/third-party/NemoTextProcessing/crates/getrandom-0.3.4/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/getrandom/getrandom-0.3.4.crate",
+      "revision": "0.3.4",
+      "sha256": "aaff376532ea30a0cd5330b9502ad4a4c8bf769c539c87ffe78819d188a18ebf",
+      "crate_sha256": "899def5c37c4fd7b2664648c28120ecec138e4d395b459e5ca34f9cce2dd77fd"
+    },
+    {
+      "component": "rust-crate-getrandom",
+      "path": "docs/third-party/NemoTextProcessing/crates/getrandom-0.3.4/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/getrandom/getrandom-0.3.4.crate",
+      "revision": "0.3.4",
+      "sha256": "29e9fe5074bd27e0e5d5d110394fbbcd841baee2651a3c4b4560a632702cede4",
+      "crate_sha256": "899def5c37c4fd7b2664648c28120ecec138e4d395b459e5ca34f9cce2dd77fd"
+    },
+    {
+      "component": "rust-crate-getrandom",
+      "path": "docs/third-party/NemoTextProcessing/crates/getrandom-0.4.3/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/getrandom/getrandom-0.4.3.crate",
+      "revision": "0.4.3",
+      "sha256": "aaff376532ea30a0cd5330b9502ad4a4c8bf769c539c87ffe78819d188a18ebf",
+      "crate_sha256": "300e883d756b2e4ec94e02791f39b04b522276138852cfc41d9fb7e904106099"
+    },
+    {
+      "component": "rust-crate-getrandom",
+      "path": "docs/third-party/NemoTextProcessing/crates/getrandom-0.4.3/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/getrandom/getrandom-0.4.3.crate",
+      "revision": "0.4.3",
+      "sha256": "523a42c25d245dde9c015f882cec7f4555aad883382a6cf19b4b7d9b2cd5419b",
+      "crate_sha256": "300e883d756b2e4ec94e02791f39b04b522276138852cfc41d9fb7e904106099"
+    },
+    {
+      "component": "rust-crate-itertools",
+      "path": "docs/third-party/NemoTextProcessing/crates/itertools-0.14.0/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/itertools/itertools-0.14.0.crate",
+      "revision": "0.14.0",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "2b192c782037fadd9cfa75548310488aabdbf3d2da73885b31bd0abd03351285"
+    },
+    {
+      "component": "rust-crate-itertools",
+      "path": "docs/third-party/NemoTextProcessing/crates/itertools-0.14.0/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/itertools/itertools-0.14.0.crate",
+      "revision": "0.14.0",
+      "sha256": "7576269ea71f767b99297934c0b2367532690f8c4badc695edf8e04ab6a1e545",
+      "crate_sha256": "2b192c782037fadd9cfa75548310488aabdbf3d2da73885b31bd0abd03351285"
+    },
+    {
+      "component": "rust-crate-lazy_static",
+      "path": "docs/third-party/NemoTextProcessing/crates/lazy_static-1.5.0/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/lazy_static/lazy_static-1.5.0.crate",
+      "revision": "1.5.0",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "bbd2bcb4c963f2ddae06a2efc7e9f3591312473c50c6685e1f298068316e66fe"
+    },
+    {
+      "component": "rust-crate-lazy_static",
+      "path": "docs/third-party/NemoTextProcessing/crates/lazy_static-1.5.0/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/lazy_static/lazy_static-1.5.0.crate",
+      "revision": "1.5.0",
+      "sha256": "0621878e61f0d0fda054bcbe02df75192c28bde1ecc8289cbd86aeba2dd72720",
+      "crate_sha256": "bbd2bcb4c963f2ddae06a2efc7e9f3591312473c50c6685e1f298068316e66fe"
+    },
+    {
+      "component": "rust-crate-libc",
+      "path": "docs/third-party/NemoTextProcessing/crates/libc-0.2.186/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/libc/libc-0.2.186.crate",
+      "revision": "0.2.186",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "crate_sha256": "68ab91017fe16c622486840e4c83c9a37afeff978bd239b5293d61ece587de66"
+    },
+    {
+      "component": "rust-crate-libc",
+      "path": "docs/third-party/NemoTextProcessing/crates/libc-0.2.186/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/libc/libc-0.2.186.crate",
+      "revision": "0.2.186",
+      "sha256": "123a331b5dbf04c30097fa43b8f858bc85df671fe776de498d01f3d6b7c1f69e",
+      "crate_sha256": "68ab91017fe16c622486840e4c83c9a37afeff978bd239b5293d61ece587de66"
+    },
+    {
+      "component": "rust-crate-linux-raw-sys",
+      "path": "docs/third-party/NemoTextProcessing/crates/linux-raw-sys-0.12.1/COPYRIGHT",
+      "source": "https://static.crates.io/crates/linux-raw-sys/linux-raw-sys-0.12.1.crate",
+      "revision": "0.12.1",
+      "sha256": "3290ae0fbc9ddb77d2239121d710f0bb9d31b3b4744e6d97fe01e652b4c1870b",
+      "crate_sha256": "32a66949e030da00e8c7d4434b251670a91556f4144941d37452769c25d58a53"
+    },
+    {
+      "component": "rust-crate-linux-raw-sys",
+      "path": "docs/third-party/NemoTextProcessing/crates/linux-raw-sys-0.12.1/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/linux-raw-sys/linux-raw-sys-0.12.1.crate",
+      "revision": "0.12.1",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "32a66949e030da00e8c7d4434b251670a91556f4144941d37452769c25d58a53"
+    },
+    {
+      "component": "rust-crate-linux-raw-sys",
+      "path": "docs/third-party/NemoTextProcessing/crates/linux-raw-sys-0.12.1/LICENSE-Apache-2.0_WITH_LLVM-exception",
+      "source": "https://static.crates.io/crates/linux-raw-sys/linux-raw-sys-0.12.1.crate",
+      "revision": "0.12.1",
+      "sha256": "268872b9816f90fd8e85db5a28d33f8150ebb8dd016653fb39ef1f94f2686bc5",
+      "crate_sha256": "32a66949e030da00e8c7d4434b251670a91556f4144941d37452769c25d58a53"
+    },
+    {
+      "component": "rust-crate-linux-raw-sys",
+      "path": "docs/third-party/NemoTextProcessing/crates/linux-raw-sys-0.12.1/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/linux-raw-sys/linux-raw-sys-0.12.1.crate",
+      "revision": "0.12.1",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "crate_sha256": "32a66949e030da00e8c7d4434b251670a91556f4144941d37452769c25d58a53"
+    },
+    {
+      "component": "rust-crate-memchr",
+      "path": "docs/third-party/NemoTextProcessing/crates/memchr-2.8.3/COPYING",
+      "source": "https://static.crates.io/crates/memchr/memchr-2.8.3.crate",
+      "revision": "2.8.3",
+      "sha256": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f",
+      "crate_sha256": "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98"
+    },
+    {
+      "component": "rust-crate-memchr",
+      "path": "docs/third-party/NemoTextProcessing/crates/memchr-2.8.3/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/memchr/memchr-2.8.3.crate",
+      "revision": "2.8.3",
+      "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
+      "crate_sha256": "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98"
+    },
+    {
+      "component": "rust-crate-minimal-lexical",
+      "path": "docs/third-party/NemoTextProcessing/crates/minimal-lexical-0.2.1/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/minimal-lexical/minimal-lexical-0.2.1.crate",
+      "revision": "0.2.1",
+      "sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90",
+      "crate_sha256": "68354c5c6bd36d73ff3feceb05efa59b6acb7626617f4962be322a825e61f79a"
+    },
+    {
+      "component": "rust-crate-minimal-lexical",
+      "path": "docs/third-party/NemoTextProcessing/crates/minimal-lexical-0.2.1/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/minimal-lexical/minimal-lexical-0.2.1.crate",
+      "revision": "0.2.1",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "crate_sha256": "68354c5c6bd36d73ff3feceb05efa59b6acb7626617f4962be322a825e61f79a"
+    },
+    {
+      "component": "rust-crate-minimal-lexical",
+      "path": "docs/third-party/NemoTextProcessing/crates/minimal-lexical-0.2.1/LICENSE.md",
+      "source": "https://static.crates.io/crates/minimal-lexical/minimal-lexical-0.2.1.crate",
+      "revision": "0.2.1",
+      "sha256": "dbe1fff0fb1314b6af94f161511406275cf01c5a32441fbf24528a57a051d599",
+      "crate_sha256": "68354c5c6bd36d73ff3feceb05efa59b6acb7626617f4962be322a825e61f79a"
+    },
+    {
+      "component": "rust-crate-miniz_oxide",
+      "path": "docs/third-party/NemoTextProcessing/crates/miniz_oxide-0.8.9/LICENSE",
+      "source": "https://static.crates.io/crates/miniz_oxide/miniz_oxide-0.8.9.crate",
+      "revision": "0.8.9",
+      "sha256": "4108245a1f2df9d4e94df8abed5b4ba0759bb2f9b40a6b939f1be141077ae50b",
+      "crate_sha256": "1fa76a2c86f704bdb222d66965fb3d63269ce38518b83cb0575fca855ebb6316"
+    },
+    {
+      "component": "rust-crate-miniz_oxide",
+      "path": "docs/third-party/NemoTextProcessing/crates/miniz_oxide-0.8.9/LICENSE-APACHE.md",
+      "source": "https://static.crates.io/crates/miniz_oxide/miniz_oxide-0.8.9.crate",
+      "revision": "0.8.9",
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "crate_sha256": "1fa76a2c86f704bdb222d66965fb3d63269ce38518b83cb0575fca855ebb6316"
+    },
+    {
+      "component": "rust-crate-miniz_oxide",
+      "path": "docs/third-party/NemoTextProcessing/crates/miniz_oxide-0.8.9/LICENSE-MIT.md",
+      "source": "https://static.crates.io/crates/miniz_oxide/miniz_oxide-0.8.9.crate",
+      "revision": "0.8.9",
+      "sha256": "799e9ca9d179295ef372f25d3769cdda7d25bb2668add6a6a1e22d1e4c678b8d",
+      "crate_sha256": "1fa76a2c86f704bdb222d66965fb3d63269ce38518b83cb0575fca855ebb6316"
+    },
+    {
+      "component": "rust-crate-miniz_oxide",
+      "path": "docs/third-party/NemoTextProcessing/crates/miniz_oxide-0.8.9/LICENSE-ZLIB.md",
+      "source": "https://static.crates.io/crates/miniz_oxide/miniz_oxide-0.8.9.crate",
+      "revision": "0.8.9",
+      "sha256": "0a54e647fe54104658b5e563c04c6f9edf251710e47bce692e0bd990a4ddaa39",
+      "crate_sha256": "1fa76a2c86f704bdb222d66965fb3d63269ce38518b83cb0575fca855ebb6316"
+    },
+    {
+      "component": "rust-crate-nom",
+      "path": "docs/third-party/NemoTextProcessing/crates/nom-7.1.3/LICENSE",
+      "source": "https://static.crates.io/crates/nom/nom-7.1.3.crate",
+      "revision": "7.1.3",
+      "sha256": "4dbda04344456f09a7a588140455413a9ac59b6b26a1ef7cdf9c800c012d87f0",
+      "crate_sha256": "d273983c5a657a70a3e8f2a01329822f3b8c8172b73826411a55751e404a0a4a"
+    },
+    {
+      "component": "rust-crate-num-traits",
+      "path": "docs/third-party/NemoTextProcessing/crates/num-traits-0.2.19/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/num-traits/num-traits-0.2.19.crate",
+      "revision": "0.2.19",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "071dfc062690e90b734c0b2273ce72ad0ffa95f0c74596bc250dcfd960262841"
+    },
+    {
+      "component": "rust-crate-num-traits",
+      "path": "docs/third-party/NemoTextProcessing/crates/num-traits-0.2.19/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/num-traits/num-traits-0.2.19.crate",
+      "revision": "0.2.19",
+      "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+      "crate_sha256": "071dfc062690e90b734c0b2273ce72ad0ffa95f0c74596bc250dcfd960262841"
+    },
+    {
+      "component": "rust-crate-once_cell",
+      "path": "docs/third-party/NemoTextProcessing/crates/once_cell-1.21.4/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/once_cell/once_cell-1.21.4.crate",
+      "revision": "1.21.4",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "9f7c3e4beb33f85d45ae3e3a1792185706c8e16d043238c593331cc7cd313b50"
+    },
+    {
+      "component": "rust-crate-once_cell",
+      "path": "docs/third-party/NemoTextProcessing/crates/once_cell-1.21.4/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/once_cell/once_cell-1.21.4.crate",
+      "revision": "1.21.4",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "crate_sha256": "9f7c3e4beb33f85d45ae3e3a1792185706c8e16d043238c593331cc7cd313b50"
+    },
+    {
+      "component": "rust-crate-ordered-float",
+      "path": "docs/third-party/NemoTextProcessing/crates/ordered-float-5.3.0/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/ordered-float/ordered-float-5.3.0.crate",
+      "revision": "5.3.0",
+      "sha256": "f7715d38a3fa1b4ac97c5729740752505a39cb92ee83ab5b102aeb5eaa7cdea4",
+      "crate_sha256": "b7d950ca161dc355eaf28f82b11345ed76c6e1f6eb1f4f4479e0323b9e2fbd0e"
+    },
+    {
+      "component": "rust-crate-ppv-lite86",
+      "path": "docs/third-party/NemoTextProcessing/crates/ppv-lite86-0.2.21/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/ppv-lite86/ppv-lite86-0.2.21.crate",
+      "revision": "0.2.21",
+      "sha256": "0218327e7a480793ffdd4eb792379a9709e5c135c7ba267f709d6f6d4d70af0a",
+      "crate_sha256": "85eae3c4ed2f50dcfe72643da4befc30deadb458a9b590d720cde2f2b1e97da9"
+    },
+    {
+      "component": "rust-crate-ppv-lite86",
+      "path": "docs/third-party/NemoTextProcessing/crates/ppv-lite86-0.2.21/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/ppv-lite86/ppv-lite86-0.2.21.crate",
+      "revision": "0.2.21",
+      "sha256": "4cada0bd02ea3692eee6f16400d86c6508bbd3bafb2b65fed0419f36d4f83e8f",
+      "crate_sha256": "85eae3c4ed2f50dcfe72643da4befc30deadb458a9b590d720cde2f2b1e97da9"
+    },
+    {
+      "component": "rust-crate-proc-macro2",
+      "path": "docs/third-party/NemoTextProcessing/crates/proc-macro2-1.0.106/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/proc-macro2/proc-macro2-1.0.106.crate",
+      "revision": "1.0.106",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "crate_sha256": "8fd00f0bb2e90d81d1044c2b32617f68fcb9fa3bb7640c23e9c748e53fb30934"
+    },
+    {
+      "component": "rust-crate-proc-macro2",
+      "path": "docs/third-party/NemoTextProcessing/crates/proc-macro2-1.0.106/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/proc-macro2/proc-macro2-1.0.106.crate",
+      "revision": "1.0.106",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "crate_sha256": "8fd00f0bb2e90d81d1044c2b32617f68fcb9fa3bb7640c23e9c748e53fb30934"
+    },
+    {
+      "component": "rust-crate-proptest",
+      "path": "docs/third-party/NemoTextProcessing/crates/proptest-1.11.0/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/proptest/proptest-1.11.0.crate",
+      "revision": "1.11.0",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "4b45fcc2344c680f5025fe57779faef368840d0bd1f42f216291f0dc4ace4744"
+    },
+    {
+      "component": "rust-crate-proptest",
+      "path": "docs/third-party/NemoTextProcessing/crates/proptest-1.11.0/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/proptest/proptest-1.11.0.crate",
+      "revision": "1.11.0",
+      "sha256": "d8e0806926ce9f0a5030c382ecc0ffdf6de6fbea5c69a458435fd443fa7a5b92",
+      "crate_sha256": "4b45fcc2344c680f5025fe57779faef368840d0bd1f42f216291f0dc4ace4744"
+    },
+    {
+      "component": "rust-crate-quick-error",
+      "path": "docs/third-party/NemoTextProcessing/crates/quick-error-1.2.3/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/quick-error/quick-error-1.2.3.crate",
+      "revision": "1.2.3",
+      "sha256": "c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08",
+      "crate_sha256": "a1d01941d82fa2ab50be1e79e6714289dd7cde78eba4c074bc5a4374f650dfe0"
+    },
+    {
+      "component": "rust-crate-quick-error",
+      "path": "docs/third-party/NemoTextProcessing/crates/quick-error-1.2.3/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/quick-error/quick-error-1.2.3.crate",
+      "revision": "1.2.3",
+      "sha256": "058f01fe181608d027fcde7e528fc03ea3cf90f30903c407644b0a9bbc54f500",
+      "crate_sha256": "a1d01941d82fa2ab50be1e79e6714289dd7cde78eba4c074bc5a4374f650dfe0"
+    },
+    {
+      "component": "rust-crate-quote",
+      "path": "docs/third-party/NemoTextProcessing/crates/quote-1.0.46/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/quote/quote-1.0.46.crate",
+      "revision": "1.0.46",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "crate_sha256": "dfbc457d0c7a0759a614551b11a6409e5951f6c7537be1f1b7682b9ae9230368"
+    },
+    {
+      "component": "rust-crate-quote",
+      "path": "docs/third-party/NemoTextProcessing/crates/quote-1.0.46/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/quote/quote-1.0.46.crate",
+      "revision": "1.0.46",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "crate_sha256": "dfbc457d0c7a0759a614551b11a6409e5951f6c7537be1f1b7682b9ae9230368"
+    },
+    {
+      "component": "rust-crate-r-efi",
+      "path": "docs/third-party/NemoTextProcessing/crates/r-efi-5.3.0/AUTHORS",
+      "source": "https://static.crates.io/crates/r-efi/r-efi-5.3.0.crate",
+      "revision": "5.3.0",
+      "sha256": "ff92bed461f50338dd703a9ba9aee496a425957873df1d91192776e4bdf5dda7",
+      "crate_sha256": "69cdb34c158ceb288df11e18b4bd39de994f6657d83847bdffdbd7f346754b0f"
+    },
+    {
+      "component": "rust-crate-r-efi",
+      "path": "docs/third-party/NemoTextProcessing/crates/r-efi-6.0.0/AUTHORS",
+      "source": "https://static.crates.io/crates/r-efi/r-efi-6.0.0.crate",
+      "revision": "6.0.0",
+      "sha256": "d027e91dbc9cdbb2f1190068e498bd6b61cff022b6a032b191021ba658d96111",
+      "crate_sha256": "f8dcc9c7d52a811697d2151c701e0d08956f92b0e24136cf4cf27b57a6a0d9bf"
+    },
+    {
+      "component": "rust-crate-rand",
+      "path": "docs/third-party/NemoTextProcessing/crates/rand-0.9.4/COPYRIGHT",
+      "source": "https://static.crates.io/crates/rand/rand-0.9.4.crate",
+      "revision": "0.9.4",
+      "sha256": "90eb64f0279b0d9432accfa6023ff803bc4965212383697eee27a0f426d5f8d5",
+      "crate_sha256": "44c5af06bb1b7d3216d91932aed5265164bf384dc89cd6ba05cf59a35f5f76ea"
+    },
+    {
+      "component": "rust-crate-rand",
+      "path": "docs/third-party/NemoTextProcessing/crates/rand-0.9.4/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/rand/rand-0.9.4.crate",
+      "revision": "0.9.4",
+      "sha256": "35242e7a83f69875e6edeff02291e688c97caafe2f8902e4e19b49d3e78b4cab",
+      "crate_sha256": "44c5af06bb1b7d3216d91932aed5265164bf384dc89cd6ba05cf59a35f5f76ea"
+    },
+    {
+      "component": "rust-crate-rand",
+      "path": "docs/third-party/NemoTextProcessing/crates/rand-0.9.4/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/rand/rand-0.9.4.crate",
+      "revision": "0.9.4",
+      "sha256": "209fbbe0ad52d9235e37badf9cadfe4dbdc87203179c0899e738b39ade42177b",
+      "crate_sha256": "44c5af06bb1b7d3216d91932aed5265164bf384dc89cd6ba05cf59a35f5f76ea"
+    },
+    {
+      "component": "rust-crate-rand_chacha",
+      "path": "docs/third-party/NemoTextProcessing/crates/rand_chacha-0.9.0/COPYRIGHT",
+      "source": "https://static.crates.io/crates/rand_chacha/rand_chacha-0.9.0.crate",
+      "revision": "0.9.0",
+      "sha256": "90eb64f0279b0d9432accfa6023ff803bc4965212383697eee27a0f426d5f8d5",
+      "crate_sha256": "d3022b5f1df60f26e1ffddd6c66e8aa15de382ae63b3a0c1bfc0e4d3e3f325cb"
+    },
+    {
+      "component": "rust-crate-rand_chacha",
+      "path": "docs/third-party/NemoTextProcessing/crates/rand_chacha-0.9.0/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/rand_chacha/rand_chacha-0.9.0.crate",
+      "revision": "0.9.0",
+      "sha256": "35242e7a83f69875e6edeff02291e688c97caafe2f8902e4e19b49d3e78b4cab",
+      "crate_sha256": "d3022b5f1df60f26e1ffddd6c66e8aa15de382ae63b3a0c1bfc0e4d3e3f325cb"
+    },
+    {
+      "component": "rust-crate-rand_chacha",
+      "path": "docs/third-party/NemoTextProcessing/crates/rand_chacha-0.9.0/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/rand_chacha/rand_chacha-0.9.0.crate",
+      "revision": "0.9.0",
+      "sha256": "209fbbe0ad52d9235e37badf9cadfe4dbdc87203179c0899e738b39ade42177b",
+      "crate_sha256": "d3022b5f1df60f26e1ffddd6c66e8aa15de382ae63b3a0c1bfc0e4d3e3f325cb"
+    },
+    {
+      "component": "rust-crate-rand_core",
+      "path": "docs/third-party/NemoTextProcessing/crates/rand_core-0.9.5/COPYRIGHT",
+      "source": "https://static.crates.io/crates/rand_core/rand_core-0.9.5.crate",
+      "revision": "0.9.5",
+      "sha256": "90eb64f0279b0d9432accfa6023ff803bc4965212383697eee27a0f426d5f8d5",
+      "crate_sha256": "76afc826de14238e6e8c374ddcc1fa19e374fd8dd986b0d2af0d02377261d83c"
+    },
+    {
+      "component": "rust-crate-rand_core",
+      "path": "docs/third-party/NemoTextProcessing/crates/rand_core-0.9.5/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/rand_core/rand_core-0.9.5.crate",
+      "revision": "0.9.5",
+      "sha256": "6df43f6f4b5d4587f3d8d71e45532c688fd168afa5fe89d571cb32fa09c4ef51",
+      "crate_sha256": "76afc826de14238e6e8c374ddcc1fa19e374fd8dd986b0d2af0d02377261d83c"
+    },
+    {
+      "component": "rust-crate-rand_core",
+      "path": "docs/third-party/NemoTextProcessing/crates/rand_core-0.9.5/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/rand_core/rand_core-0.9.5.crate",
+      "revision": "0.9.5",
+      "sha256": "209fbbe0ad52d9235e37badf9cadfe4dbdc87203179c0899e738b39ade42177b",
+      "crate_sha256": "76afc826de14238e6e8c374ddcc1fa19e374fd8dd986b0d2af0d02377261d83c"
+    },
+    {
+      "component": "rust-crate-rand_xorshift",
+      "path": "docs/third-party/NemoTextProcessing/crates/rand_xorshift-0.4.0/COPYRIGHT",
+      "source": "https://static.crates.io/crates/rand_xorshift/rand_xorshift-0.4.0.crate",
+      "revision": "0.4.0",
+      "sha256": "90eb64f0279b0d9432accfa6023ff803bc4965212383697eee27a0f426d5f8d5",
+      "crate_sha256": "513962919efc330f829edb2535844d1b912b0fbe2ca165d613e4e8788bb05a5a"
+    },
+    {
+      "component": "rust-crate-rand_xorshift",
+      "path": "docs/third-party/NemoTextProcessing/crates/rand_xorshift-0.4.0/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/rand_xorshift/rand_xorshift-0.4.0.crate",
+      "revision": "0.4.0",
+      "sha256": "35242e7a83f69875e6edeff02291e688c97caafe2f8902e4e19b49d3e78b4cab",
+      "crate_sha256": "513962919efc330f829edb2535844d1b912b0fbe2ca165d613e4e8788bb05a5a"
+    },
+    {
+      "component": "rust-crate-rand_xorshift",
+      "path": "docs/third-party/NemoTextProcessing/crates/rand_xorshift-0.4.0/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/rand_xorshift/rand_xorshift-0.4.0.crate",
+      "revision": "0.4.0",
+      "sha256": "209fbbe0ad52d9235e37badf9cadfe4dbdc87203179c0899e738b39ade42177b",
+      "crate_sha256": "513962919efc330f829edb2535844d1b912b0fbe2ca165d613e4e8788bb05a5a"
+    },
+    {
+      "component": "rust-crate-regex-syntax",
+      "path": "docs/third-party/NemoTextProcessing/crates/regex-syntax-0.8.11/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/regex-syntax/regex-syntax-0.8.11.crate",
+      "revision": "0.8.11",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "d6f6ff9a378485b298a5286656da665ba74413d36db0979633275d2e708145d4"
+    },
+    {
+      "component": "rust-crate-regex-syntax",
+      "path": "docs/third-party/NemoTextProcessing/crates/regex-syntax-0.8.11/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/regex-syntax/regex-syntax-0.8.11.crate",
+      "revision": "0.8.11",
+      "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+      "crate_sha256": "d6f6ff9a378485b298a5286656da665ba74413d36db0979633275d2e708145d4"
+    },
+    {
+      "component": "rust-crate-regex-syntax",
+      "path": "docs/third-party/NemoTextProcessing/crates/regex-syntax-0.8.11/src/unicode_tables/LICENSE-UNICODE",
+      "source": "https://static.crates.io/crates/regex-syntax/regex-syntax-0.8.11.crate",
+      "revision": "0.8.11",
+      "sha256": "74db5baf44a41b1000312c673544b3374e4198af5605c7f9080a402cec42cfa3",
+      "crate_sha256": "d6f6ff9a378485b298a5286656da665ba74413d36db0979633275d2e708145d4"
+    },
+    {
+      "component": "rust-crate-rustfst",
+      "path": "docs/third-party/NemoTextProcessing/crates/rustfst-1.3.1/LICENSE-APACHE",
+      "source": "https://github.com/Garvys/rustfst/blob/8e1391df1ef3dfb85e309dd4ee8af45251d28c9f/LICENSE-APACHE",
+      "revision": "8e1391df1ef3dfb85e309dd4ee8af45251d28c9f",
+      "sha256": "769f80b5bcb42ed0af4e4d2fd74e1ac9bf843cb80c5a29219d1ef3544428a6bb",
+      "crate_sha256": "3096239ad3664245480c50bf34a6ed45af5f40c0f6258d4b28a4c8082813a519"
+    },
+    {
+      "component": "rust-crate-rustfst",
+      "path": "docs/third-party/NemoTextProcessing/crates/rustfst-1.3.1/LICENSE-MIT",
+      "source": "https://github.com/Garvys/rustfst/blob/8e1391df1ef3dfb85e309dd4ee8af45251d28c9f/LICENSE-MIT",
+      "revision": "8e1391df1ef3dfb85e309dd4ee8af45251d28c9f",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "crate_sha256": "3096239ad3664245480c50bf34a6ed45af5f40c0f6258d4b28a4c8082813a519"
+    },
+    {
+      "component": "rust-crate-rustix",
+      "path": "docs/third-party/NemoTextProcessing/crates/rustix-1.1.4/COPYRIGHT",
+      "source": "https://static.crates.io/crates/rustix/rustix-1.1.4.crate",
+      "revision": "1.1.4",
+      "sha256": "377c2e7c53250cc5905c0b0532d35973392af16ffb9596a41d99d202cf3617c9",
+      "crate_sha256": "b6fe4565b9518b83ef4f91bb47ce29620ca828bd32cb7e408f0062e9930ba190"
+    },
+    {
+      "component": "rust-crate-rustix",
+      "path": "docs/third-party/NemoTextProcessing/crates/rustix-1.1.4/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/rustix/rustix-1.1.4.crate",
+      "revision": "1.1.4",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "b6fe4565b9518b83ef4f91bb47ce29620ca828bd32cb7e408f0062e9930ba190"
+    },
+    {
+      "component": "rust-crate-rustix",
+      "path": "docs/third-party/NemoTextProcessing/crates/rustix-1.1.4/LICENSE-Apache-2.0_WITH_LLVM-exception",
+      "source": "https://static.crates.io/crates/rustix/rustix-1.1.4.crate",
+      "revision": "1.1.4",
+      "sha256": "268872b9816f90fd8e85db5a28d33f8150ebb8dd016653fb39ef1f94f2686bc5",
+      "crate_sha256": "b6fe4565b9518b83ef4f91bb47ce29620ca828bd32cb7e408f0062e9930ba190"
+    },
+    {
+      "component": "rust-crate-rustix",
+      "path": "docs/third-party/NemoTextProcessing/crates/rustix-1.1.4/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/rustix/rustix-1.1.4.crate",
+      "revision": "1.1.4",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "crate_sha256": "b6fe4565b9518b83ef4f91bb47ce29620ca828bd32cb7e408f0062e9930ba190"
+    },
+    {
+      "component": "rust-crate-rustversion",
+      "path": "docs/third-party/NemoTextProcessing/crates/rustversion-1.0.23/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/rustversion/rustversion-1.0.23.crate",
+      "revision": "1.0.23",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "crate_sha256": "cf54715a573b99ac80df0bc206da022bcd442c974952c7b9720069370852e21f"
+    },
+    {
+      "component": "rust-crate-rustversion",
+      "path": "docs/third-party/NemoTextProcessing/crates/rustversion-1.0.23/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/rustversion/rustversion-1.0.23.crate",
+      "revision": "1.0.23",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "crate_sha256": "cf54715a573b99ac80df0bc206da022bcd442c974952c7b9720069370852e21f"
+    },
+    {
+      "component": "rust-crate-rusty-fork",
+      "path": "docs/third-party/NemoTextProcessing/crates/rusty-fork-0.3.1/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/rusty-fork/rusty-fork-0.3.1.crate",
+      "revision": "0.3.1",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "cc6bf79ff24e648f6da1f8d1f011e9cac26491b619e6b9280f2b47f1774e6ee2"
+    },
+    {
+      "component": "rust-crate-rusty-fork",
+      "path": "docs/third-party/NemoTextProcessing/crates/rusty-fork-0.3.1/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/rusty-fork/rusty-fork-0.3.1.crate",
+      "revision": "0.3.1",
+      "sha256": "d8e0806926ce9f0a5030c382ecc0ffdf6de6fbea5c69a458435fd443fa7a5b92",
+      "crate_sha256": "cc6bf79ff24e648f6da1f8d1f011e9cac26491b619e6b9280f2b47f1774e6ee2"
+    },
+    {
+      "component": "rust-crate-serde",
+      "path": "docs/third-party/NemoTextProcessing/crates/serde-1.0.228/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/serde/serde-1.0.228.crate",
+      "revision": "1.0.228",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "crate_sha256": "9a8e94ea7f378bd32cbbd37198a4a91436180c5bb472411e48b5ec2e2124ae9e"
+    },
+    {
+      "component": "rust-crate-serde",
+      "path": "docs/third-party/NemoTextProcessing/crates/serde-1.0.228/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/serde/serde-1.0.228.crate",
+      "revision": "1.0.228",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "crate_sha256": "9a8e94ea7f378bd32cbbd37198a4a91436180c5bb472411e48b5ec2e2124ae9e"
+    },
+    {
+      "component": "rust-crate-serde_core",
+      "path": "docs/third-party/NemoTextProcessing/crates/serde_core-1.0.228/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/serde_core/serde_core-1.0.228.crate",
+      "revision": "1.0.228",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "crate_sha256": "41d385c7d4ca58e59fc732af25c3983b67ac852c1a25000afe1175de458b67ad"
+    },
+    {
+      "component": "rust-crate-serde_core",
+      "path": "docs/third-party/NemoTextProcessing/crates/serde_core-1.0.228/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/serde_core/serde_core-1.0.228.crate",
+      "revision": "1.0.228",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "crate_sha256": "41d385c7d4ca58e59fc732af25c3983b67ac852c1a25000afe1175de458b67ad"
+    },
+    {
+      "component": "rust-crate-serde_derive",
+      "path": "docs/third-party/NemoTextProcessing/crates/serde_derive-1.0.228/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/serde_derive/serde_derive-1.0.228.crate",
+      "revision": "1.0.228",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "crate_sha256": "d540f220d3187173da220f885ab66608367b6574e925011a9353e4badda91d79"
+    },
+    {
+      "component": "rust-crate-serde_derive",
+      "path": "docs/third-party/NemoTextProcessing/crates/serde_derive-1.0.228/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/serde_derive/serde_derive-1.0.228.crate",
+      "revision": "1.0.228",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "crate_sha256": "d540f220d3187173da220f885ab66608367b6574e925011a9353e4badda91d79"
+    },
+    {
+      "component": "rust-crate-simd-adler32",
+      "path": "docs/third-party/NemoTextProcessing/crates/simd-adler32-0.3.9/LICENSE.md",
+      "source": "https://static.crates.io/crates/simd-adler32/simd-adler32-0.3.9.crate",
+      "revision": "0.3.9",
+      "sha256": "42a35170233e83e18856792e748de4c1ce4a63b2afce9a370c89ef3fe23f9f2d",
+      "crate_sha256": "703d5c7ef118737c72f1af64ad2f6f8c5e1921f818cdcb97b8fe6fc69bf66214"
+    },
+    {
+      "component": "rust-crate-superslice",
+      "path": "docs/third-party/NemoTextProcessing/crates/superslice-1.0.0/LICENCE",
+      "source": "https://static.crates.io/crates/superslice/superslice-1.0.0.crate",
+      "revision": "1.0.0",
+      "sha256": "5ad8c213095c573921d7388edf93f6a9f54490b8ebf3b165ae8ef1947cf70846",
+      "crate_sha256": "ab16ced94dbd8a46c82fd81e3ed9a8727dac2977ea869d217bcc4ea1f122e81f"
+    },
+    {
+      "component": "rust-crate-syn",
+      "path": "docs/third-party/NemoTextProcessing/crates/syn-2.0.118/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/syn/syn-2.0.118.crate",
+      "revision": "2.0.118",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "crate_sha256": "1b9ae57f904213ebb649ce6895b8a66c66f0203b9319718f69a5612a065b1422"
+    },
+    {
+      "component": "rust-crate-syn",
+      "path": "docs/third-party/NemoTextProcessing/crates/syn-2.0.118/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/syn/syn-2.0.118.crate",
+      "revision": "2.0.118",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "crate_sha256": "1b9ae57f904213ebb649ce6895b8a66c66f0203b9319718f69a5612a065b1422"
+    },
+    {
+      "component": "rust-crate-tempfile",
+      "path": "docs/third-party/NemoTextProcessing/crates/tempfile-3.27.0/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/tempfile/tempfile-3.27.0.crate",
+      "revision": "3.27.0",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd"
+    },
+    {
+      "component": "rust-crate-tempfile",
+      "path": "docs/third-party/NemoTextProcessing/crates/tempfile-3.27.0/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/tempfile/tempfile-3.27.0.crate",
+      "revision": "3.27.0",
+      "sha256": "8b427f5bc501764575e52ba4f9d95673cf8f6d80a86d0d06599852e1a9a20a36",
+      "crate_sha256": "32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd"
+    },
+    {
+      "component": "rust-crate-typenum",
+      "path": "docs/third-party/NemoTextProcessing/crates/typenum-1.20.1/LICENSE",
+      "source": "https://static.crates.io/crates/typenum/typenum-1.20.1.crate",
+      "revision": "1.20.1",
+      "sha256": "db11fec9946737df39ca3898d9cd8c10ec6f6c3a884a6802b0ad0b81b4e8f23a",
+      "crate_sha256": "b6f5e870be6c3b371b77fe0ee0bafb859fa4964b4404c27de1d380043c4dda20"
+    },
+    {
+      "component": "rust-crate-typenum",
+      "path": "docs/third-party/NemoTextProcessing/crates/typenum-1.20.1/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/typenum/typenum-1.20.1.crate",
+      "revision": "1.20.1",
+      "sha256": "516b24e051bf5630880ebbd55c40a25ce9552ebaf8970a53e8976eb70e522406",
+      "crate_sha256": "b6f5e870be6c3b371b77fe0ee0bafb859fa4964b4404c27de1d380043c4dda20"
+    },
+    {
+      "component": "rust-crate-typenum",
+      "path": "docs/third-party/NemoTextProcessing/crates/typenum-1.20.1/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/typenum/typenum-1.20.1.crate",
+      "revision": "1.20.1",
+      "sha256": "a825bd853ab71619a4923d7b4311221427848070ff44d990da39b0b274c1683f",
+      "crate_sha256": "b6f5e870be6c3b371b77fe0ee0bafb859fa4964b4404c27de1d380043c4dda20"
+    },
+    {
+      "component": "rust-crate-unarray",
+      "path": "docs/third-party/NemoTextProcessing/crates/unarray-0.1.4/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/unarray/unarray-0.1.4.crate",
+      "revision": "0.1.4",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "crate_sha256": "eaea85b334db583fe3274d12b4cd1880032beab409c0d774be044d4480ab9a94"
+    },
+    {
+      "component": "rust-crate-unarray",
+      "path": "docs/third-party/NemoTextProcessing/crates/unarray-0.1.4/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/unarray/unarray-0.1.4.crate",
+      "revision": "0.1.4",
+      "sha256": "002c2696d92b5c8cf956c11072baa58eaf9f6ade995c031ea635c6a1ee342ad1",
+      "crate_sha256": "eaea85b334db583fe3274d12b4cd1880032beab409c0d774be044d4480ab9a94"
+    },
+    {
+      "component": "rust-crate-unicode-ident",
+      "path": "docs/third-party/NemoTextProcessing/crates/unicode-ident-1.0.24/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/unicode-ident/unicode-ident-1.0.24.crate",
+      "revision": "1.0.24",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "crate_sha256": "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75"
+    },
+    {
+      "component": "rust-crate-unicode-ident",
+      "path": "docs/third-party/NemoTextProcessing/crates/unicode-ident-1.0.24/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/unicode-ident/unicode-ident-1.0.24.crate",
+      "revision": "1.0.24",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "crate_sha256": "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75"
+    },
+    {
+      "component": "rust-crate-unicode-ident",
+      "path": "docs/third-party/NemoTextProcessing/crates/unicode-ident-1.0.24/LICENSE-UNICODE",
+      "source": "https://static.crates.io/crates/unicode-ident/unicode-ident-1.0.24.crate",
+      "revision": "1.0.24",
+      "sha256": "f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1",
+      "crate_sha256": "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75"
+    },
+    {
+      "component": "rust-crate-wait-timeout",
+      "path": "docs/third-party/NemoTextProcessing/crates/wait-timeout-0.2.1/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/wait-timeout/wait-timeout-0.2.1.crate",
+      "revision": "0.2.1",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "09ac3b126d3914f9849036f826e054cbabdc8519970b8998ddaf3b5bd3c65f11"
+    },
+    {
+      "component": "rust-crate-wait-timeout",
+      "path": "docs/third-party/NemoTextProcessing/crates/wait-timeout-0.2.1/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/wait-timeout/wait-timeout-0.2.1.crate",
+      "revision": "0.2.1",
+      "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+      "crate_sha256": "09ac3b126d3914f9849036f826e054cbabdc8519970b8998ddaf3b5bd3c65f11"
+    },
+    {
+      "component": "rust-crate-wasip2",
+      "path": "docs/third-party/NemoTextProcessing/crates/wasip2-1.0.4+wasi-0.2.12/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/wasip2/wasip2-1.0.4+wasi-0.2.12.crate",
+      "revision": "1.0.4+wasi-0.2.12",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "b67efb37e106e55ce722a510d6b5f9c17f083e5fc79afc2badeb12cc313d9487"
+    },
+    {
+      "component": "rust-crate-wasip2",
+      "path": "docs/third-party/NemoTextProcessing/crates/wasip2-1.0.4+wasi-0.2.12/LICENSE-Apache-2.0_WITH_LLVM-exception",
+      "source": "https://static.crates.io/crates/wasip2/wasip2-1.0.4+wasi-0.2.12.crate",
+      "revision": "1.0.4+wasi-0.2.12",
+      "sha256": "268872b9816f90fd8e85db5a28d33f8150ebb8dd016653fb39ef1f94f2686bc5",
+      "crate_sha256": "b67efb37e106e55ce722a510d6b5f9c17f083e5fc79afc2badeb12cc313d9487"
+    },
+    {
+      "component": "rust-crate-wasip2",
+      "path": "docs/third-party/NemoTextProcessing/crates/wasip2-1.0.4+wasi-0.2.12/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/wasip2/wasip2-1.0.4+wasi-0.2.12.crate",
+      "revision": "1.0.4+wasi-0.2.12",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "crate_sha256": "b67efb37e106e55ce722a510d6b5f9c17f083e5fc79afc2badeb12cc313d9487"
+    },
+    {
+      "component": "rust-crate-wasm-bindgen",
+      "path": "docs/third-party/NemoTextProcessing/crates/wasm-bindgen-0.2.126/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/wasm-bindgen/wasm-bindgen-0.2.126.crate",
+      "revision": "0.2.126",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "4b067c0c11094aef6b7a801c1e34a26affafdf3d051dba08456b868789aaf9a4"
+    },
+    {
+      "component": "rust-crate-wasm-bindgen",
+      "path": "docs/third-party/NemoTextProcessing/crates/wasm-bindgen-0.2.126/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/wasm-bindgen/wasm-bindgen-0.2.126.crate",
+      "revision": "0.2.126",
+      "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+      "crate_sha256": "4b067c0c11094aef6b7a801c1e34a26affafdf3d051dba08456b868789aaf9a4"
+    },
+    {
+      "component": "rust-crate-wasm-bindgen-macro",
+      "path": "docs/third-party/NemoTextProcessing/crates/wasm-bindgen-macro-0.2.126/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/wasm-bindgen-macro/wasm-bindgen-macro-0.2.126.crate",
+      "revision": "0.2.126",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "167ce5e579f6bcf889c4f7175a8a5a585de84e8ff93976ce393efa5f2837aab1"
+    },
+    {
+      "component": "rust-crate-wasm-bindgen-macro",
+      "path": "docs/third-party/NemoTextProcessing/crates/wasm-bindgen-macro-0.2.126/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/wasm-bindgen-macro/wasm-bindgen-macro-0.2.126.crate",
+      "revision": "0.2.126",
+      "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+      "crate_sha256": "167ce5e579f6bcf889c4f7175a8a5a585de84e8ff93976ce393efa5f2837aab1"
+    },
+    {
+      "component": "rust-crate-wasm-bindgen-macro-support",
+      "path": "docs/third-party/NemoTextProcessing/crates/wasm-bindgen-macro-support-0.2.126/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/wasm-bindgen-macro-support/wasm-bindgen-macro-support-0.2.126.crate",
+      "revision": "0.2.126",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "f3997c7839262f4ef12cf90b818d6340c18e80f263f1a94bf157d0ec4420380e"
+    },
+    {
+      "component": "rust-crate-wasm-bindgen-macro-support",
+      "path": "docs/third-party/NemoTextProcessing/crates/wasm-bindgen-macro-support-0.2.126/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/wasm-bindgen-macro-support/wasm-bindgen-macro-support-0.2.126.crate",
+      "revision": "0.2.126",
+      "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+      "crate_sha256": "f3997c7839262f4ef12cf90b818d6340c18e80f263f1a94bf157d0ec4420380e"
+    },
+    {
+      "component": "rust-crate-wasm-bindgen-shared",
+      "path": "docs/third-party/NemoTextProcessing/crates/wasm-bindgen-shared-0.2.126/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/wasm-bindgen-shared/wasm-bindgen-shared-0.2.126.crate",
+      "revision": "0.2.126",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "dc1b4cb0cc549fcf58d7dfc081778139b3d283a081644e833e84682ad71cea24"
+    },
+    {
+      "component": "rust-crate-wasm-bindgen-shared",
+      "path": "docs/third-party/NemoTextProcessing/crates/wasm-bindgen-shared-0.2.126/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/wasm-bindgen-shared/wasm-bindgen-shared-0.2.126.crate",
+      "revision": "0.2.126",
+      "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+      "crate_sha256": "dc1b4cb0cc549fcf58d7dfc081778139b3d283a081644e833e84682ad71cea24"
+    },
+    {
+      "component": "rust-crate-windows-link",
+      "path": "docs/third-party/NemoTextProcessing/crates/windows-link-0.2.1/license-apache-2.0",
+      "source": "https://static.crates.io/crates/windows-link/windows-link-0.2.1.crate",
+      "revision": "0.2.1",
+      "sha256": "c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b",
+      "crate_sha256": "f0805222e57f7521d6a62e36fa9163bc891acd422f971defe97d64e70d0a4fe5"
+    },
+    {
+      "component": "rust-crate-windows-link",
+      "path": "docs/third-party/NemoTextProcessing/crates/windows-link-0.2.1/license-mit",
+      "source": "https://static.crates.io/crates/windows-link/windows-link-0.2.1.crate",
+      "revision": "0.2.1",
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "crate_sha256": "f0805222e57f7521d6a62e36fa9163bc891acd422f971defe97d64e70d0a4fe5"
+    },
+    {
+      "component": "rust-crate-windows-sys",
+      "path": "docs/third-party/NemoTextProcessing/crates/windows-sys-0.61.2/license-apache-2.0",
+      "source": "https://static.crates.io/crates/windows-sys/windows-sys-0.61.2.crate",
+      "revision": "0.61.2",
+      "sha256": "c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b",
+      "crate_sha256": "ae137229bcbd6cdf0f7b80a31df61766145077ddf49416a728b02cb3921ff3fc"
+    },
+    {
+      "component": "rust-crate-windows-sys",
+      "path": "docs/third-party/NemoTextProcessing/crates/windows-sys-0.61.2/license-mit",
+      "source": "https://static.crates.io/crates/windows-sys/windows-sys-0.61.2.crate",
+      "revision": "0.61.2",
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "crate_sha256": "ae137229bcbd6cdf0f7b80a31df61766145077ddf49416a728b02cb3921ff3fc"
+    },
+    {
+      "component": "rust-crate-wit-bindgen",
+      "path": "docs/third-party/NemoTextProcessing/crates/wit-bindgen-0.57.1/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/wit-bindgen/wit-bindgen-0.57.1.crate",
+      "revision": "0.57.1",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "crate_sha256": "1ebf944e87a7c253233ad6766e082e3cd714b5d03812acc24c318f549614536e"
+    },
+    {
+      "component": "rust-crate-wit-bindgen",
+      "path": "docs/third-party/NemoTextProcessing/crates/wit-bindgen-0.57.1/LICENSE-Apache-2.0_WITH_LLVM-exception",
+      "source": "https://static.crates.io/crates/wit-bindgen/wit-bindgen-0.57.1.crate",
+      "revision": "0.57.1",
+      "sha256": "268872b9816f90fd8e85db5a28d33f8150ebb8dd016653fb39ef1f94f2686bc5",
+      "crate_sha256": "1ebf944e87a7c253233ad6766e082e3cd714b5d03812acc24c318f549614536e"
+    },
+    {
+      "component": "rust-crate-wit-bindgen",
+      "path": "docs/third-party/NemoTextProcessing/crates/wit-bindgen-0.57.1/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/wit-bindgen/wit-bindgen-0.57.1.crate",
+      "revision": "0.57.1",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "crate_sha256": "1ebf944e87a7c253233ad6766e082e3cd714b5d03812acc24c318f549614536e"
+    },
+    {
+      "component": "rust-crate-zerocopy",
+      "path": "docs/third-party/NemoTextProcessing/crates/zerocopy-0.8.53/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/zerocopy/zerocopy-0.8.53.crate",
+      "revision": "0.8.53",
+      "sha256": "9d185ac6703c4b0453974c0d85e9eee43e6941009296bb1f5eb0b54e2329e9f3",
+      "crate_sha256": "75726053136156d419e285b9b7eddaaea9e3fea6ce32eed44a89901f0bd98de1"
+    },
+    {
+      "component": "rust-crate-zerocopy",
+      "path": "docs/third-party/NemoTextProcessing/crates/zerocopy-0.8.53/LICENSE-BSD",
+      "source": "https://static.crates.io/crates/zerocopy/zerocopy-0.8.53.crate",
+      "revision": "0.8.53",
+      "sha256": "83c1763356e822adde0a2cae748d938a73fdc263849ccff6b27776dff213bd32",
+      "crate_sha256": "75726053136156d419e285b9b7eddaaea9e3fea6ce32eed44a89901f0bd98de1"
+    },
+    {
+      "component": "rust-crate-zerocopy",
+      "path": "docs/third-party/NemoTextProcessing/crates/zerocopy-0.8.53/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/zerocopy/zerocopy-0.8.53.crate",
+      "revision": "0.8.53",
+      "sha256": "1a2f5c12ddc934d58956aa5dbdd3255fe55fd957633ab7d0d39e4f0daa73f7df",
+      "crate_sha256": "75726053136156d419e285b9b7eddaaea9e3fea6ce32eed44a89901f0bd98de1"
+    },
+    {
+      "component": "rust-crate-zerocopy-derive",
+      "path": "docs/third-party/NemoTextProcessing/crates/zerocopy-derive-0.8.53/LICENSE-APACHE",
+      "source": "https://static.crates.io/crates/zerocopy-derive/zerocopy-derive-0.8.53.crate",
+      "revision": "0.8.53",
+      "sha256": "9d185ac6703c4b0453974c0d85e9eee43e6941009296bb1f5eb0b54e2329e9f3",
+      "crate_sha256": "4714fd92cf900833d49538023a9b3915155210801d1c1169eba513b2addefd71"
+    },
+    {
+      "component": "rust-crate-zerocopy-derive",
+      "path": "docs/third-party/NemoTextProcessing/crates/zerocopy-derive-0.8.53/LICENSE-BSD",
+      "source": "https://static.crates.io/crates/zerocopy-derive/zerocopy-derive-0.8.53.crate",
+      "revision": "0.8.53",
+      "sha256": "83c1763356e822adde0a2cae748d938a73fdc263849ccff6b27776dff213bd32",
+      "crate_sha256": "4714fd92cf900833d49538023a9b3915155210801d1c1169eba513b2addefd71"
+    },
+    {
+      "component": "rust-crate-zerocopy-derive",
+      "path": "docs/third-party/NemoTextProcessing/crates/zerocopy-derive-0.8.53/LICENSE-MIT",
+      "source": "https://static.crates.io/crates/zerocopy-derive/zerocopy-derive-0.8.53.crate",
+      "revision": "0.8.53",
+      "sha256": "1a2f5c12ddc934d58956aa5dbdd3255fe55fd957633ab7d0d39e4f0daa73f7df",
+      "crate_sha256": "4714fd92cf900833d49538023a9b3915155210801d1c1169eba513b2addefd71"
+    },
+    {
+      "component": "rust-standard-library",
+      "path": "docs/third-party/NemoTextProcessing/rust-runtime/LICENSE-APACHE",
+      "source": "https://github.com/rust-lang/rust/blob/48a229ceaefd4985c50990b14116b6d856af0985/LICENSE-APACHE",
+      "revision": "48a229ceaefd4985c50990b14116b6d856af0985",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    {
+      "component": "rust-standard-library",
+      "path": "docs/third-party/NemoTextProcessing/rust-runtime/LICENSE-MIT",
+      "source": "https://github.com/rust-lang/rust/blob/48a229ceaefd4985c50990b14116b6d856af0985/LICENSE-MIT",
+      "revision": "48a229ceaefd4985c50990b14116b6d856af0985",
+      "sha256": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1"
+    },
+    {
+      "component": "rust-standard-library",
+      "path": "docs/third-party/NemoTextProcessing/rust-runtime/COPYRIGHT",
+      "source": "https://github.com/rust-lang/rust/blob/48a229ceaefd4985c50990b14116b6d856af0985/COPYRIGHT",
+      "revision": "48a229ceaefd4985c50990b14116b6d856af0985",
+      "sha256": "172020dbfd5b53a226dfde77616190a48dcff519b0bc0e6deb91a8450782c4af"
+    },
+    {
+      "component": "rust-standard-library",
+      "path": "docs/third-party/NemoTextProcessing/rust-runtime/library/compiler-builtins/LICENSE.txt",
+      "source": "https://github.com/rust-lang/rust/blob/48a229ceaefd4985c50990b14116b6d856af0985/library/compiler-builtins/LICENSE.txt",
+      "revision": "48a229ceaefd4985c50990b14116b6d856af0985",
+      "sha256": "ab6eec6caf0fa5775e411c7a8bc6a45c4ef2956b0980b157ab74fc5cd62a928b"
+    },
+    {
+      "component": "rust-standard-library",
+      "path": "docs/third-party/NemoTextProcessing/rust-runtime/COPYRIGHT-library.html",
+      "source": "https://static.rust-lang.org/dist/rustc-1.98.1-aarch64-apple-darwin.tar.xz",
+      "revision": "1.98.1",
+      "sha256": "68129500b616d5838629e68f55ff3aed5e096dacf60ce9eb41bbe599a563afa6",
+      "archive_sha256": "738e3f60114b20550fcf4f8a57c9cea0544239f214709f45594ff3fde327f577",
+      "scope": "Complete upstream generated standard-library copyright bundle, not the larger compiler/toolchain bundle."
+    },
+    {
+      "component": "model-review-FluidInference/parakeet-tdt-0.6b-v3-coreml",
+      "path": "docs/third-party/models/reviewed-options/FluidInference--parakeet-tdt-0.6b-v3-coreml/README.md",
+      "source": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v3-coreml/resolve/7dd20fe6b1797d35f5e3307e8b1732d9a178edfe/README.md",
+      "revision": "7dd20fe6b1797d35f5e3307e8b1732d9a178edfe",
+      "sha256": "4155baa7d7d6f0ada748e1db3c1b91d18c9f7eb7155efc1abfbbe9d4a6507712"
+    },
+    {
+      "component": "model-review-FluidInference/parakeet-ultra-coreml",
+      "path": "docs/third-party/models/reviewed-options/FluidInference--parakeet-ultra-coreml/README.md",
+      "source": "https://huggingface.co/FluidInference/parakeet-ultra-coreml/resolve/95eaa59a39d4394f047a4dc5cce480388a60d1b6/README.md",
+      "revision": "95eaa59a39d4394f047a4dc5cce480388a60d1b6",
+      "sha256": "9e9e26b6da628a0dc34b9c55f2029e486fc02304ccd7f83825333572ae11c158"
+    },
+    {
+      "component": "model-review-FluidInference/parakeet-ctc-110m-coreml",
+      "path": "docs/third-party/models/reviewed-options/FluidInference--parakeet-ctc-110m-coreml/README.md",
+      "source": "https://huggingface.co/FluidInference/parakeet-ctc-110m-coreml/resolve/accdafd8cf8a2ff1cabe3c11e54416b405d409aa/README.md",
+      "revision": "accdafd8cf8a2ff1cabe3c11e54416b405d409aa",
+      "sha256": "1aa99e33e37d4d36f01f15b7d81f878a43a85210c184aebebf1f27d5a4c3b189"
+    },
+    {
+      "component": "model-review-FluidInference/parakeet-tdt-ctc-110m-coreml",
+      "path": "docs/third-party/models/reviewed-options/FluidInference--parakeet-tdt-ctc-110m-coreml/README.md",
+      "source": "https://huggingface.co/FluidInference/parakeet-tdt-ctc-110m-coreml/resolve/9bc92ead6e8f17eca92a869fd578ae76842b82ba/README.md",
+      "revision": "9bc92ead6e8f17eca92a869fd578ae76842b82ba",
+      "sha256": "9ff65c55dfc1eb9e385760c90c1bb8d38e74136db1adc6d74f8b741ba5de2d1c"
+    },
+    {
+      "component": "model-review-FluidInference/parakeet-realtime-eou-120m-coreml",
+      "path": "docs/third-party/models/reviewed-options/FluidInference--parakeet-realtime-eou-120m-coreml/README.md",
+      "source": "https://huggingface.co/FluidInference/parakeet-realtime-eou-120m-coreml/resolve/40a23f4c0b333aa17ad8c0f2ea47ec2347f2f355/README.md",
+      "revision": "40a23f4c0b333aa17ad8c0f2ea47ec2347f2f355",
+      "sha256": "aa118bc396f4bf5a0e5801761c1b2eafa584683492605b4f945cf57427b1fb49"
+    },
+    {
+      "component": "model-review-FluidInference/nemotron-speech-streaming-en-0.6b-coreml",
+      "path": "docs/third-party/models/reviewed-options/FluidInference--nemotron-speech-streaming-en-0.6b-coreml/README.md",
+      "source": "https://huggingface.co/FluidInference/nemotron-speech-streaming-en-0.6b-coreml/resolve/e673531caa6d25ab7baf5a8c14c9b99ba1551838/README.md",
+      "revision": "e673531caa6d25ab7baf5a8c14c9b99ba1551838",
+      "sha256": "9d9d997e953780619073cdf31aef0d5c2e95ef609145127b6fc59950ad58286d"
+    },
+    {
+      "component": "model-review-FluidInference/sensevoice-small-coreml",
+      "path": "docs/third-party/models/reviewed-options/FluidInference--sensevoice-small-coreml/README.md",
+      "source": "https://huggingface.co/FluidInference/sensevoice-small-coreml/resolve/74bdbe74b2258f25b5400db72f6cbfbef7c74ded/README.md",
+      "revision": "74bdbe74b2258f25b5400db72f6cbfbef7c74ded",
+      "sha256": "516a8f6638e3a97499ab56d4e628ef9c7bf6a350f9ae21ea58c88aa8ee650335"
+    },
+    {
+      "component": "model-review-FluidInference/Nemotron-3.5-ASR-Streaming-Multilingual-0.6b-CoreML",
+      "path": "docs/third-party/models/reviewed-options/FluidInference--Nemotron-3.5-ASR-Streaming-Multilingual-0.6b-CoreML/README.md",
+      "source": "https://huggingface.co/FluidInference/Nemotron-3.5-ASR-Streaming-Multilingual-0.6b-CoreML/resolve/1a41b75758b0337ff67db7d5408280aaaf23074e/README.md",
+      "revision": "1a41b75758b0337ff67db7d5408280aaaf23074e",
+      "sha256": "cb98a61839f512528ca728e80e084d793f26c3cefb79fdbfff41f1929b317e78"
+    },
+    {
+      "component": "model-review-FluidInference/silero-vad-coreml",
+      "path": "docs/third-party/models/reviewed-options/FluidInference--silero-vad-coreml/README.md",
+      "source": "https://huggingface.co/FluidInference/silero-vad-coreml/resolve/b419383c55c110e2c9271fa6ee0ea83d03c70d96/README.md",
+      "revision": "b419383c55c110e2c9271fa6ee0ea83d03c70d96",
+      "sha256": "c31dbec3e24a014a51fc06c645b3cb04897c97ecdbad9a90645466019c933ef4"
+    },
+    {
+      "component": "model-review-nvidia/parakeet-tdt-0.6b-v2",
+      "path": "docs/third-party/models/reviewed-options/nvidia--parakeet-tdt-0.6b-v2/README.md",
+      "source": "https://huggingface.co/nvidia/parakeet-tdt-0.6b-v2/resolve/ae9ad07059c7c739ffaf932226a8fe64ae2620b0/README.md",
+      "revision": "ae9ad07059c7c739ffaf932226a8fe64ae2620b0",
+      "sha256": "e2d10f955eb14a871092de134d2e82a59f494f001a181111fb95c74805763c65"
+    },
+    {
+      "component": "model-review-Qwen/Qwen3-0.6B",
+      "path": "docs/third-party/models/reviewed-options/Qwen--Qwen3-0.6B/LICENSE",
+      "source": "https://huggingface.co/Qwen/Qwen3-0.6B/resolve/c1899de289a04d12100db370d81485cdf75e47ca/LICENSE",
+      "revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+      "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e"
+    },
+    {
+      "component": "model-review-Qwen/Qwen3-0.6B",
+      "path": "docs/third-party/models/reviewed-options/Qwen--Qwen3-0.6B/README.md",
+      "source": "https://huggingface.co/Qwen/Qwen3-0.6B/resolve/c1899de289a04d12100db370d81485cdf75e47ca/README.md",
+      "revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+      "sha256": "1ab64a26fcb3b461423b89a433a8c858f1bf8d4086f979cbb3ff878d47cf20e9"
+    }
+  ],
+  "open_release_gates": [
+    "Reconcile final signed app resources and embedded notices with this inventory; dependency-input hashes do not attest final signed bytes.",
+    "Resolve unused FluidAudio LuxTTS resources and compiled G2P rule provenance. Exact SDK docs describe espeak-derived data and behavior; no conclusion about license violation is asserted. Data omission alone does not settle compiled-code provenance.",
+    "If exposing optional speech models in a binary release, resolve conflicting source model-card licenses and tie license snapshots to immutable downloader revisions/checksums. See docs/engineering/model-release-policy.md.",
+    "Only a reviewed current-tree source snapshot avoids earlier omitted audio in Git history; a history-bearing public repository requires separate history publication review."
+  ],
+  "font_assets": [
+    {
+      "component": "inter",
+      "path": "app/Dictate Anywhere/Fonts/Inter-VariableFont.ttf",
+      "sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
+      "source": "https://github.com/google/fonts/blob/0b58fb370093f9a9f4ff785d94405710b79de67c/ofl/inter/Inter[opsz,wght].ttf",
+      "revision": "0b58fb370093f9a9f4ff785d94405710b79de67c",
+      "license": "OFL-1.1",
+      "verification": "Exact byte equality with immutable upstream font file; embedded name-table license also inspected.",
+      "notice_path": "docs/third-party/fonts/inter-OFL.txt"
+    },
+    {
+      "component": "fraunces",
+      "path": "app/Dictate Anywhere/Fonts/Fraunces-VariableFont.ttf",
+      "sha256": "177ff6c0f14e5550a3c624247cd1189611d4eb65d000b14944c63d967958abbb",
+      "source": "https://github.com/google/fonts/blob/4024282d9b0cffcdb8e3024560862746178d741f/ofl/fraunces/Fraunces[SOFT,WONK,opsz,wght].ttf",
+      "revision": "4024282d9b0cffcdb8e3024560862746178d741f",
+      "license": "OFL-1.1",
+      "verification": "Exact byte equality with immutable upstream font file; embedded name-table license also inspected.",
+      "notice_path": "docs/third-party/fonts/fraunces-OFL.txt"
+    }
+  ],
+  "native_source_revisions": {
+    "nemo": "46ebddcea5e1ff673c2cb5256a1b6b0e6c4ff527",
+    "llama": "b2e5e9b28b2484fbf94b543432ece638996a8b97"
+  },
+  "native_artifacts": [
+    {
+      "component": "NemoTextProcessing",
+      "path": "app/.build/SourcePackages/artifacts/fluidaudio/NemoTextProcessing/NemoTextProcessing.xcframework/macos-arm64_x86_64/libtext_processing_rs.a",
+      "sha256": "59688dbc67453e3d73b5c61274cce4f98a9ad87aea4faff8db36b1d259662490",
+      "arm64_sha256": "1e15a07ec12970ab619252e951acd827e22ffb95770c7d6f8370ecb6a20b2279",
+      "scope": "Dependency input; signing/linking may change final app bytes."
+    },
+    {
+      "component": "llama.cpp",
+      "path": "app/.build/SourcePackages/artifacts/llama.swift/llama-cpp/llama.xcframework/macos-arm64_x86_64/llama.framework/Versions/A/llama",
+      "sha256": "50c1ff767da21528de1d3fd4436d2033b3096cc44ff57bea483f916e6e7b8fd4",
+      "arm64_sha256": "fed3ec792a7de3b0f9d7e65e63225f9cd5928d823c63fbb102f7d6e01c117ae7",
+      "scope": "Dependency input; signing/linking may change final app bytes."
+    }
+  ],
+  "rust_runtime": {
+    "version": "1.98.1",
+    "revision": "48a229ceaefd4985c50990b14116b6d856af0985",
+    "evidence": "Compiler version and /rustc source revision strings in the inspected NeMo arm64 archive.",
+    "copyright_bundle": "docs/third-party/NemoTextProcessing/rust-runtime/COPYRIGHT-library.html",
+    "archive_sha256": "738e3f60114b20550fcf4f8a57c9cea0544239f214709f45594ff3fde327f577"
+  },
+  "binary_observations": {
+    "nemo_embedded_crate_versions": [
+      "anyhow-1.0.103",
+      "flate2-1.1.9",
+      "generic-array-1.4.3",
+      "itertools-0.14.0",
+      "lazy_static-1.5.0",
+      "memchr-2.8.3",
+      "miniz_oxide-0.8.9",
+      "nom-7.1.3",
+      "num-traits-0.2.19",
+      "rand-0.9.4",
+      "rand_chacha-0.9.0",
+      "rand_core-0.9.5",
+      "rustfst-1.3.1",
+      "serde_core-1.0.228",
+      "superslice-1.0.0"
+    ],
+    "all_embedded_versions_match_retained_release_lock": true,
+    "llama_exported_symbol_prefix_counts": {
+      "_mtmd_": 82,
+      "_stbi_": 43,
+      "_ma_": 1,
+      "_XXH": 49,
+      "_subprocess_": 12
+    },
+    "scope": "Positive observations identify linked component families; absence of a symbol/string is not proof that a component is absent."
+  }
+}

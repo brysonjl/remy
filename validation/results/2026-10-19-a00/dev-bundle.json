@@ -1,0 +1,10 @@
+{
+  "bundleIdentifier": "app.alfred.dictation.dev",
+  "displayName": "Alfred Dev",
+  "executable": "Alfred Dev",
+  "updaterFeedPresent": false,
+  "updaterKeyPresent": false,
+  "automaticChecks": false,
+  "automaticUpdates": false,
+  "lockSHA256": "8f72a9d408f6be83aa17962e0671f0322160407f83eacf990e8b464664cf52e1"
+}

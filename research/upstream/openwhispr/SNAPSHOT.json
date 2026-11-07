@@ -1,0 +1,155 @@
+{
+  "repository": "OpenWhispr/openwhispr",
+  "commit": "bcd5ba61d05455761011964e5f4764cb5aa303a7",
+  "retrieved": "2026-10-19",
+  "scope": "Selected complete source files, not a clone or buildable checkout. Shell clone failed due to DNS restrictions; retrieved through the connected GitHub tool. No upstream scripts, binaries, or tests executed.",
+  "files": [
+    {
+      "path": "LICENSE",
+      "gitBlobSha": "96cbe9720e34c13191bda9c9704e1353c0760dc7",
+      "source": "https://github.com/OpenWhispr/openwhispr/blob/bcd5ba61d05455761011964e5f4764cb5aa303a7/LICENSE",
+      "sha256": "ecf1a12d3dc51085d2f3a720dc177c7da3cd075ea3fadcc6a1b719fb44ed30e0",
+      "bytes": 1071
+    },
+    {
+      "path": "package.json",
+      "gitBlobSha": "0fcf7f2d2523536df6258565e9b79d90f08142c9",
+      "source": "https://github.com/OpenWhispr/openwhispr/blob/bcd5ba61d05455761011964e5f4764cb5aa303a7/package.json",
+      "sha256": "619c02914ef606ccc2d5ef02e128419ca7918ecbc13840e103fea9d26d57510d",
+      "bytes": 13296
+    },
+    {
+      "path": "src/helpers/hotkeyManager.js",
+      "gitBlobSha": "13979427d6e618e17b77305ce11b70ddc2919566",
+      "source": "https://github.com/OpenWhispr/openwhispr/blob/bcd5ba61d05455761011964e5f4764cb5aa303a7/src/helpers/hotkeyManager.js",
+      "sha256": "8d940f22a11e9c0e0bbf448938530b0ca0199be544af6f297d31d337c11512a6",
+      "bytes": 63363
+    },
+    {
+      "path": "src/helpers/clipboard.js",
+      "gitBlobSha": "8ad3a8ecb4c4fd334b31b46d4cc72e65fafa2d34",
+      "source": "https://github.com/OpenWhispr/openwhispr/blob/bcd5ba61d05455761011964e5f4764cb5aa303a7/src/helpers/clipboard.js",
+      "sha256": "f2bbbc5ecfefd087be4bdcc91c98e396f1bac8e8be320d30043cf8d3ea90930e",
+      "bytes": 89282
+    },
+    {
+      "path": "resources/macos-fast-paste.swift",
+      "gitBlobSha": "784f241560cef1a3eb51711b4e60158d3ebcadf7",
+      "source": "https://github.com/OpenWhispr/openwhispr/blob/bcd5ba61d05455761011964e5f4764cb5aa303a7/resources/macos-fast-paste.swift",
+      "sha256": "36fbc16f177fe2425afde5b8dd6f5999ef0c6966866c341bfc94cec9f5c2293a",
+      "bytes": 3263
+    },
+    {
+      "path": "src/helpers/parakeet.js",
+      "gitBlobSha": "6a6309c4195c57a13939114a8b5e93cca7b924ef",
+      "source": "https://github.com/OpenWhispr/openwhispr/blob/bcd5ba61d05455761011964e5f4764cb5aa303a7/src/helpers/parakeet.js",
+      "sha256": "aa0cae10df9f7d3e5bcffde9d557f4e15d92501750f79cae0284ef989ce4bdf8",
+      "bytes": 24695
+    },
+    {
+      "path": "src/helpers/parakeetServer.js",
+      "gitBlobSha": "e8d613c79277bdcb37d13c3999d7dd7f7a591480",
+      "source": "https://github.com/OpenWhispr/openwhispr/blob/bcd5ba61d05455761011964e5f4764cb5aa303a7/src/helpers/parakeetServer.js",
+      "sha256": "383aebe5b204527a50072a8473ac69b50869199dff7ce1cc887cf4a262395c59",
+      "bytes": 9750
+    },
+    {
+      "path": "src/helpers/parakeetWsServer.js",
+      "gitBlobSha": "b059b40c4568084c15794238a49454ab92f9c198",
+      "source": "https://github.com/OpenWhispr/openwhispr/blob/bcd5ba61d05455761011964e5f4764cb5aa303a7/src/helpers/parakeetWsServer.js",
+      "sha256": "cc613892759a7668a392f05e7b322f825be81ec06dce5469ece5ca4f9686b1e0",
+      "bytes": 20856
+    },
+    {
+      "path": "src/helpers/database.js",
+      "gitBlobSha": "32f9e3439e0f0741530e78bc2b62689de8183996",
+      "source": "https://github.com/OpenWhispr/openwhispr/blob/bcd5ba61d05455761011964e5f4764cb5aa303a7/src/helpers/database.js",
+      "sha256": "ed745e0bf505b2a8359926a751ccc1851b614e186ab904ed3b5c31d4300734b4",
+      "bytes": 316095
+    },
+    {
+      "path": "src/helpers/audioManager.js",
+      "gitBlobSha": "74641c762006031d1f16cf57d7dcb4caa84944a8",
+      "source": "https://github.com/OpenWhispr/openwhispr/blob/bcd5ba61d05455761011964e5f4764cb5aa303a7/src/helpers/audioManager.js",
+      "sha256": "47aa9a554d127441dbcf76173aeb56fe0e7b4ae3f3c1da9bc85fd27a93248d29",
+      "bytes": 247461
+    },
+    {
+      "path": "src/services/ReasoningService.ts",
+      "gitBlobSha": "0b6caf7be2b230f37fbf9d513ef0527970120515",
+      "source": "https://github.com/OpenWhispr/openwhispr/blob/bcd5ba61d05455761011964e5f4764cb5aa303a7/src/services/ReasoningService.ts",
+      "sha256": "590403182d42b53c3892ef556cebf5b532b313fccd976aa82a886f0a6cd24f4b",
+      "bytes": 52826
+    },
+    {
+      "path": "src/services/ai/transcriptHistory.ts",
+      "gitBlobSha": "2ed207552ca3c3d842f27ae6e26bda59ad65c5c3",
+      "source": "https://github.com/OpenWhispr/openwhispr/blob/bcd5ba61d05455761011964e5f4764cb5aa303a7/src/services/ai/transcriptHistory.ts",
+      "sha256": "c532347281b9cf32fc76b64daf5013ababeee4a06f7c2105ba2c205bb2e9888d",
+      "bytes": 2848
+    },
+    {
+      "path": "src/services/ai/inferenceProviders/openai.ts",
+      "gitBlobSha": "5b592a19e19d906dcf16cf95c9f997bef09b576d",
+      "source": "https://github.com/OpenWhispr/openwhispr/blob/bcd5ba61d05455761011964e5f4764cb5aa303a7/src/services/ai/inferenceProviders/openai.ts",
+      "sha256": "463ed5848a4f7f704d9c45012a454fe7f8b68bf5eccbf397870e6b403b864892",
+      "bytes": 16593
+    },
+    {
+      "path": "src/helpers/recordingSpool.js",
+      "gitBlobSha": "bb3777970995dad0ea49e51da655269d3d788c81",
+      "source": "https://github.com/OpenWhispr/openwhispr/blob/bcd5ba61d05455761011964e5f4764cb5aa303a7/src/helpers/recordingSpool.js",
+      "sha256": "84f19d9cae6e86b1671c1fbe4a1fd4858403ce6ec419c1338e4e845b5027edb6",
+      "bytes": 4534
+    },
+    {
+      "path": "test/helpers/clipboardRestore.test.js",
+      "gitBlobSha": "734c8b2920e40e2f2b48428417e7eca888737d19",
+      "source": "https://github.com/OpenWhispr/openwhispr/blob/bcd5ba61d05455761011964e5f4764cb5aa303a7/test/helpers/clipboardRestore.test.js",
+      "sha256": "67065ce97f0b030d7ede652e4ef920a0f0b321cd3db02bf4a5d6d293e6209968",
+      "bytes": 58459
+    },
+    {
+      "path": "test/helpers/audioManagerCleanupFallback.test.js",
+      "gitBlobSha": "57b51e5b6d240da9c193c46267a640797682f03a",
+      "source": "https://github.com/OpenWhispr/openwhispr/blob/bcd5ba61d05455761011964e5f4764cb5aa303a7/test/helpers/audioManagerCleanupFallback.test.js",
+      "sha256": "6c37483b371af9ce58af5bf8c3bf33a7e2c2886582dac44ef634f12ae4840923",
+      "bytes": 12223
+    },
+    {
+      "path": "test/helpers/audioManagerPasteRecovery.test.js",
+      "gitBlobSha": "e4060c07a07e4db58793367a962c7a47df282bf9",
+      "source": "https://github.com/OpenWhispr/openwhispr/blob/bcd5ba61d05455761011964e5f4764cb5aa303a7/test/helpers/audioManagerPasteRecovery.test.js",
+      "sha256": "fecc7031d9991114760e4e47ff5584edbe6165770e7b241b18d161e0035fa7ee",
+      "bytes": 2394
+    },
+    {
+      "path": "test/helpers/audioManagerStreamingFinalization.test.js",
+      "gitBlobSha": "1b4a3b000e7d93b4cfbf71153090471fc83b7d56",
+      "source": "https://github.com/OpenWhispr/openwhispr/blob/bcd5ba61d05455761011964e5f4764cb5aa303a7/test/helpers/audioManagerStreamingFinalization.test.js",
+      "sha256": "bcdfe59dca7b5905193a496a8baa234973ca85a0e7e9053ed7e01fbe9bdc2258",
+      "bytes": 94815
+    },
+    {
+      "path": "src/helpers/parakeetModelInfo.js",
+      "gitBlobSha": "a7f8c47ad4890fee87a1c5b349bde90b0cb7ce0c",
+      "source": "https://github.com/OpenWhispr/openwhispr/blob/bcd5ba61d05455761011964e5f4764cb5aa303a7/src/helpers/parakeetModelInfo.js",
+      "sha256": "c11f0ac627ee95cb5f86254b1f4b30da19a40f2db8289cf9cec20664fc771098",
+      "bytes": 2216
+    },
+    {
+      "path": "src/helpers/reasoningRouting.js",
+      "gitBlobSha": "54ec1719d374c18e4a07ffa110f59285485ffe40",
+      "source": "https://github.com/OpenWhispr/openwhispr/blob/bcd5ba61d05455761011964e5f4764cb5aa303a7/src/helpers/reasoningRouting.js",
+      "sha256": "95c36eb2c1be8153b22acc45c7e05af2082bc22524dd2f74146af2066503a6da",
+      "bytes": 2973
+    },
+    {
+      "path": "src/helpers/analytics.js",
+      "gitBlobSha": "a6820cadebf03bd719ab814daa22467837c3d774",
+      "source": "https://github.com/OpenWhispr/openwhispr/blob/bcd5ba61d05455761011964e5f4764cb5aa303a7/src/helpers/analytics.js",
+      "sha256": "8f6a95419ef436abba5d37f85b2e68a56458ab182728732b29f76c000b825cd7",
+      "bytes": 6142
+    }
+  ]
+}

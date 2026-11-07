@@ -1,0 +1,8 @@
+# Speech recordings/reference transcripts are local-only inputs supplied through
+# REMY_SPEECH_FIXTURES_DIR, never bundled test resources.
+*.wav
+*.aiff
+*.m4a
+*.mp3
+*.caf
+*.txt

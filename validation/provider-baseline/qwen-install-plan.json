@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-10-19T21:34:30.355312+00:00",
+  "status": "read-only install plan; no pull or local settings changes",
+  "model": "qwen3.5:4b",
+  "runner": "llamacpp",
+  "format": "gguf",
+  "manifest_url": "https://registry.ollama.ai/v2/library/qwen3.5/manifests/4b",
+  "manifest_sha256": "d8b0f5e9760cd1682034f292d7ef72ec46f432149be0df7574bf2d6e92e38c04",
+  "manifest": {
+    "schemaVersion": 2,
+    "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+    "config": {
+      "mediaType": "application/vnd.docker.container.image.v1+json",
+      "digest": "sha256:788a4d94bc3f431ac0cd067005be4b838a09330427962952420b05d10ecf84db",
+      "size": 177
+    },
+    "layers": [
+      {
+        "mediaType": "application/vnd.ollama.image.projector",
+        "digest": "sha256:e56a899b1540860385465756dd308c84417410b94dbc1c380adffd20a921ca60",
+        "size": 675569120,
+        "from": "mmproj.gguf"
+      },
+      {
+        "mediaType": "application/vnd.ollama.image.model",
+        "digest": "sha256:a9d0a3e1d8c91732a3812becd31f8d4a8ff57414903f226306069f0437e2ac50",
+        "size": 2648593216,
+        "from": "model.gguf"
+      },
+      {
+        "mediaType": "application/vnd.ollama.image.template",
+        "digest": "sha256:b507b9c2f6ca642bffcd06665ea7c91f235fd32daeefdf875a0f938db05fb315",
+        "size": 13
+      },
+      {
+        "mediaType": "application/vnd.ollama.image.license",
+        "digest": "sha256:50cbab8a892c5f2993b8c7351a99182507472def3b1374558308605d99b86b32",
+        "size": 11343
+      },
+      {
+        "mediaType": "application/vnd.ollama.image.params",
+        "digest": "sha256:9371364b27a52acac9d87f88bd93c9db1174d8d6ec57f6888925cdc1788871ff",
+        "size": 65
+      }
+    ],
+    "runner": "llamacpp",
+    "format": "gguf"
+  },
+  "blob_availability": [
+    {
+      "mediaType": "application/vnd.docker.container.image.v1+json",
+      "digest": "sha256:788a4d94bc3f431ac0cd067005be4b838a09330427962952420b05d10ecf84db",
+      "size": 177,
+      "local_head_status": 404,
+      "missing": true
+    },
+    {
+      "mediaType": "application/vnd.ollama.image.projector",
+      "digest": "sha256:e56a899b1540860385465756dd308c84417410b94dbc1c380adffd20a921ca60",
+      "size": 675569120,
+      "from": "mmproj.gguf",
+      "local_head_status": 404,
+      "missing": true
+    },
+    {
+      "mediaType": "application/vnd.ollama.image.model",
+      "digest": "sha256:a9d0a3e1d8c91732a3812becd31f8d4a8ff57414903f226306069f0437e2ac50",
+      "size": 2648593216,
+      "from": "model.gguf",
+      "local_head_status": 404,
+      "missing": true
+    },
+    {
+      "mediaType": "application/vnd.ollama.image.template",
+      "digest": "sha256:b507b9c2f6ca642bffcd06665ea7c91f235fd32daeefdf875a0f938db05fb315",
+      "size": 13,
+      "local_head_status": 404,
+      "missing": true
+    },
+    {
+      "mediaType": "application/vnd.ollama.image.license",
+      "digest": "sha256:50cbab8a892c5f2993b8c7351a99182507472def3b1374558308605d99b86b32",
+      "size": 11343,
+      "local_head_status": 404,
+      "missing": true
+    },
+    {
+      "mediaType": "application/vnd.ollama.image.params",
+      "digest": "sha256:9371364b27a52acac9d87f88bd93c9db1174d8d6ec57f6888925cdc1788871ff",
+      "size": 65,
+      "local_head_status": 404,
+      "missing": true
+    }
+  ],
+  "missing_blob_bytes": 3324173934,
+  "model_parameters": "4.2B per config; 4.21B on library page",
+  "quantization": "Q4_K_M",
+  "projector_quantization": "BF16 per official library page",
+  "license": "Apache-2.0 (license layer fetched and SHA256 verified)",
+  "minimum_ollama": "0.30.0 (config requires)",
+  "observed_ollama": "0.35.1",
+  "thinking": {
+    "library_capability": true,
+    "config_renderer": "qwen3.5",
+    "config_parser": "qwen3.5",
+    "runtime_metadata": "Not available until installed; inspect /api/show thinking.values/default and capabilities. No installed-model capability claim established.",
+    "evaluation": "Use explicit top-level think:false only if /api/show permits; keep thinking separate from content and require completed answer."
+  },
+  "disk": {
+    "workspace_free_bytes_at_observation": 431763456,
+    "installation_allowed_by_space": false,
+    "reason": "Available disk is below required 3324173934 bytes. Even earlier 5GB would leave little operating-system/build headroom. Recheck actual Ollama store filesystem before installation.",
+    "transient": "Pinned Ollama0.35.1 GGUF downloader writes digest-partial, truncates to layer size, then renames to final blob. Source does not require a second full copy; partial data plus existing completed missing layers accumulate toward total missing bytes, with small part metadata/manifests overhead. Failed downloads may retain partials. No automatic disk reservation guarantee; keep substantial additional working space."
+  },
+  "controlled_install": {
+    "immutable_cli_or_api_syntax_verified": false,
+    "reason": "Official pull docs accept model name only; inspected0.35.1 parser has no functional digest field (comment says removed), and registry manifest-by-digest metadata request returned404. Do not invent model@sha256 syntax.",
+    "fallback": "Only after disk is adequate: fetch current manifest, hash exact bytes, require expected d8b0... digest; perform documented tag-based pull; require local /api/tags qwen3.5:4b digest equals full expected manifest SHA256, then re-fetch remote manifest and require unchanged digest before evaluating. If any mismatch, do not evaluate or activate; report drift without deleting models. Tag-based fallback has a time-of-check/use race; it is detection, not immutable pinning.",
+    "api_request_not_executed": {
+      "method": "POST",
+      "url": "http://127.0.0.1:11434/api/pull",
+      "json": {
+        "model": "qwen3.5:4b",
+        "stream": false
+      }
+    },
+    "cli_not_executed": "ollama pull qwen3.5:4b"
+  },
+  "sources": [
+    "https://ollama.com/library/qwen3.5:4b",
+    "https://docs.ollama.com/api/pull",
+    "https://docs.ollama.com/api/tags",
+    "https://docs.ollama.com/capabilities/thinking",
+    "https://github.com/ollama/ollama/blob/v0.35.1/server/download.go",
+    "https://github.com/ollama/ollama/blob/v0.35.1/server/images.go",
+    "https://github.com/ollama/ollama/blob/v0.35.1/types/model/name.go"
+  ],
+  "metadata_notes": [
+    "Small config/template/license/params layers fetched remotely and checked against registry SHA256; no GGUF or projector data fetched.",
+    "Library page offers MLX alternative 7f3251fa6878 approx4GB alongside selected llamacpp digest d8b0f5e9760c approx3.3GB. Do not mix runners; compare installed manifest digest.",
+    "Matching Ollama User-Agent HEAD returned same digest; matching User-Agent GET returned401, default curl GET succeeded. No credentials accessed or auth attempted."
+  ]
+}

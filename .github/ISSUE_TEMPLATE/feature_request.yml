@@ -1,0 +1,21 @@
+name: Feature request
+description: Explain a problem and the behavior that would help.
+title: "[Feature]: "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case
+      description: Use synthetic examples and omit private information.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior and alternatives
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Affected platforms, providers, or destinations

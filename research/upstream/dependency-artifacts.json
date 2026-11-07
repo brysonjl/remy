@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-10-19",
+  "purpose": "Read-only A00 dependency prerequisite audit; artifact hashes are declared by pinned upstream manifests, not independently downloaded/verified.",
+  "app_repository": "https://github.com/hoomanaskari/mac-dictate-anywhere",
+  "app_revision": "e420448de6e2099d33e050a4b419722032fd7519",
+  "lockfile": "research/upstream/mac-dictate-anywhere/Dictate Anywhere.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved",
+  "packages": [
+    {
+      "identity": "fluidaudio",
+      "repository": "https://github.com/FluidInference/FluidAudio.git",
+      "version": "0.17.5",
+      "revision": "0b1f46289fe27d95b5e66ad8be46e64f5ee02ae7",
+      "manifest_url": "https://github.com/FluidInference/FluidAudio/blob/0b1f46289fe27d95b5e66ad8be46e64f5ee02ae7/Package@swift-6.2.swift",
+      "artifacts": [
+        {
+          "target": "NemoTextProcessing",
+          "version": "0.3.1",
+          "url": "https://github.com/FluidInference/text-processing-rs/releases/download/v0.3.1/NemoTextProcessing.xcframework.zip",
+          "sha256": "5fa8c10d4ec26c1bb2413125f351a7222a4c68a23b74476680fbada7e26fc6aa",
+          "condition": "Default-enabled NemoTextProcessing trait in the Swift 6.2 manifest. Preserve baseline package composition.",
+          "cached": false
+        }
+      ]
+    },
+    {
+      "identity": "llama.swift",
+      "repository": "https://github.com/mattt/llama.swift",
+      "version": "2.10549.0",
+      "revision": "716419d4d7aa542fce301e809cde7234c68ddbc6",
+      "manifest_url": "https://github.com/mattt/llama.swift/blob/716419d4d7aa542fce301e809cde7234c68ddbc6/Package.swift",
+      "artifacts": [
+        {
+          "target": "llama-cpp",
+          "version": "b10549",
+          "url": "https://github.com/ggml-org/llama.cpp/releases/download/b10549/llama-b10549-xcframework.zip",
+          "sha256": "636709d4a7b49ac7f2ed6dc8a4de3f278c257cac7248fe40d6a513f671e4bff4",
+          "condition": "Required by LlamaSwift target.",
+          "cached": false
+        }
+      ]
+    },
+    {
+      "identity": "sparkle",
+      "repository": "https://github.com/sparkle-project/Sparkle.git",
+      "version": "2.9.6",
+      "revision": "ac2def288cbff5cfc7df3ffef6abdf45b72bcb0a",
+      "manifest_url": "https://github.com/sparkle-project/Sparkle/blob/ac2def288cbff5cfc7df3ffef6abdf45b72bcb0a/Package.swift",
+      "artifacts": [
+        {
+          "target": "Sparkle",
+          "version": "2.9.6",
+          "url": "https://github.com/sparkle-project/Sparkle/releases/download/2.9.6/Sparkle-for-Swift-Package-Manager.zip",
+          "sha256": "8d5fb41d960b43f4a68aa14126bf62b098544ec8d191cdcc73eb14e63a8e7606",
+          "condition": "Required even when updater startup/feed are disabled at runtime.",
+          "cached": false
+        }
+      ]
+    }
+  ],
+  "local_status": {
+    "source_dependencies_cached": false,
+    "binary_artifacts_cached": false,
+    "downloads_performed": false,
+    "build_attempted_by_this_audit": false,
+    "blockers": [
+      "Shell GitHub DNS resolution unavailable",
+      "Pinned package checkouts absent from inspected local caches",
+      "Required release ZIP artifacts absent from inspected local caches"
+    ],
+    "scope": "Standard Xcode/SwiftPM caches plus matching package/artifact files under ~/Documents/ai_projects; not a claim to have searched every filesystem location."
+  }
+}

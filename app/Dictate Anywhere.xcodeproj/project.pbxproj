@@ -1,0 +1,565 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E2FLUID0001 /* FluidAudio in Frameworks */ = {isa = PBXBuildFile; productRef = E2FLUID0002 /* FluidAudio */; };
+		E2LLAMA0001 /* LlamaSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E2LLAMA0002 /* LlamaSwift */; };
+		E2SPARKLE001 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = E2SPARKLE002 /* Sparkle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E2TEST00000B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2A66B502F18203C00DABF41 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E2A66B572F18203C00DABF41;
+			remoteInfo = "Dictate Anywhere";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E2A66B582F18203C00DABF41 /* Remy Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Remy Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2A66B6B2F18203D00DABF41 /* Config/Signing.shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config/Signing.shared.xcconfig; sourceTree = "<group>"; };
+		E2TEST000002 /* Dictate AnywhereTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dictate AnywhereTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E2A66B6A2F18203D00DABF41 /* Exceptions for "Dictate Anywhere" folder in "Dictate Anywhere" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = E2A66B572F18203C00DABF41 /* Dictate Anywhere */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		E2A66B5A2F18203C00DABF41 /* Dictate Anywhere */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E2A66B6A2F18203D00DABF41 /* Exceptions for "Dictate Anywhere" folder in "Dictate Anywhere" target */,
+			);
+			path = "Dictate Anywhere";
+			sourceTree = "<group>";
+		};
+		E2TEST000009 /* Dictate AnywhereTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Dictate AnywhereTests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E2A66B552F18203C00DABF41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2FLUID0001 /* FluidAudio in Frameworks */,
+				E2LLAMA0001 /* LlamaSwift in Frameworks */,
+				E2SPARKLE001 /* Sparkle in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2TEST000007 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E2A66B4F2F18203C00DABF41 = {
+			isa = PBXGroup;
+			children = (
+				E2A66B5A2F18203C00DABF41 /* Dictate Anywhere */,
+				E2TEST000009 /* Dictate AnywhereTests */,
+				E2A66B6B2F18203D00DABF41 /* Config/Signing.shared.xcconfig */,
+				E2A66B592F18203C00DABF41 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E2A66B592F18203C00DABF41 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E2A66B582F18203C00DABF41 /* Remy Dev.app */,
+				E2TEST000002 /* Dictate AnywhereTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E2A66B572F18203C00DABF41 /* Dictate Anywhere */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E2A66B632F18203D00DABF41 /* Build configuration list for PBXNativeTarget "Dictate Anywhere" */;
+			buildPhases = (
+				E2A66B542F18203C00DABF41 /* Sources */,
+				E2A66B552F18203C00DABF41 /* Frameworks */,
+				E2A66B562F18203C00DABF41 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E2A66B5A2F18203C00DABF41 /* Dictate Anywhere */,
+			);
+			name = "Dictate Anywhere";
+			packageProductDependencies = (
+				E2FLUID0002 /* FluidAudio */,
+				E2LLAMA0002 /* LlamaSwift */,
+				E2SPARKLE002 /* Sparkle */,
+			);
+			productName = Remy;
+			productReference = E2A66B582F18203C00DABF41 /* Remy Dev.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E2TEST000001 /* Dictate AnywhereTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E2TEST000003 /* Build configuration list for PBXNativeTarget "Dictate AnywhereTests" */;
+			buildPhases = (
+				E2TEST000006 /* Sources */,
+				E2TEST000007 /* Frameworks */,
+				E2TEST000008 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E2TEST00000A /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E2TEST000009 /* Dictate AnywhereTests */,
+			);
+			name = "Dictate AnywhereTests";
+			packageProductDependencies = (
+			);
+			productName = "Dictate AnywhereTests";
+			productReference = E2TEST000002 /* Dictate AnywhereTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E2A66B502F18203C00DABF41 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2620;
+				LastUpgradeCheck = 2630;
+				TargetAttributes = {
+					E2A66B572F18203C00DABF41 = {
+						CreatedOnToolsVersion = 26.2;
+					};
+					E2TEST000001 = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = E2A66B572F18203C00DABF41;
+					};
+				};
+			};
+			buildConfigurationList = E2A66B532F18203C00DABF41 /* Build configuration list for PBXProject "Dictate Anywhere" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E2A66B4F2F18203C00DABF41;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				E2FLUID0003 /* XCRemoteSwiftPackageReference "FluidAudio" */,
+				E2LLAMA0003 /* XCRemoteSwiftPackageReference "llama" */,
+				E2SPARKLE003 /* XCRemoteSwiftPackageReference "Sparkle" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = E2A66B592F18203C00DABF41 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E2A66B572F18203C00DABF41 /* Dictate Anywhere */,
+				E2TEST000001 /* Dictate AnywhereTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E2A66B562F18203C00DABF41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2TEST000008 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E2A66B542F18203C00DABF41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2TEST000006 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E2TEST00000A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E2A66B572F18203C00DABF41 /* Dictate Anywhere */;
+			targetProxy = E2TEST00000B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E2A66B612F18203D00DABF41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMPILATION_CACHE_ENABLE_CACHING = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E2A66B622F18203D00DABF41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMPILATION_CACHE_ENABLE_CACHING = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		E2A66B642F18203D00DABF41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2A66B6B2F18203D00DABF41 /* Config/Signing.shared.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Dictate Anywhere/Dictate_Anywhere.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 58;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Dictate Anywhere/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Remy Dev";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Remy uses Apple Events to paste transcribed text into other applications.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Based on Dictate Anywhere. Copyright (c) 2026 Hooman Askari. MIT License.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Remy needs microphone access to transcribe your speech in real-time.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 2.12.16;
+				REMY_APPLICATION_BUNDLE_IDENTIFIER = "io.github.brysonjl.remy.dev";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(REMY_APPLICATION_BUNDLE_IDENTIFIER)";
+				PRODUCT_MODULE_NAME = Dictate_Anywhere;
+				PRODUCT_NAME = "Remy Dev";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		E2A66B652F18203D00DABF41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2A66B6B2F18203D00DABF41 /* Config/Signing.shared.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Dictate Anywhere/Dictate_Anywhere.entitlements";
+				CODE_SIGN_IDENTITY = "$(DEVELOPER_ID_APPLICATION_IDENTITY)";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 58;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Dictate Anywhere/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Remy;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Remy uses Apple Events to paste transcribed text into other applications.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Based on Dictate Anywhere. Copyright (c) 2026 Hooman Askari. MIT License.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Remy needs microphone access to transcribe your speech in real-time.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 2.12.16;
+				REMY_APPLICATION_BUNDLE_IDENTIFIER = "io.github.brysonjl.remy";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(REMY_APPLICATION_BUNDLE_IDENTIFIER)";
+				PRODUCT_MODULE_NAME = Dictate_Anywhere;
+				PRODUCT_NAME = Remy;
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		E2TEST000004 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2A66B6B2F18203D00DABF41 /* Config/Signing.shared.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 58;
+				DEAD_CODE_STRIPPING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 2.12.16;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.brysonjl.remy.tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Remy Dev.app/Contents/MacOS/Remy Dev";
+			};
+			name = Debug;
+		};
+		E2TEST000005 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 58;
+				DEAD_CODE_STRIPPING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 2.12.16;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.brysonjl.remy.tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Remy.app/Contents/MacOS/Remy";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E2A66B532F18203C00DABF41 /* Build configuration list for PBXProject "Dictate Anywhere" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2A66B612F18203D00DABF41 /* Debug */,
+				E2A66B622F18203D00DABF41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E2A66B632F18203D00DABF41 /* Build configuration list for PBXNativeTarget "Dictate Anywhere" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2A66B642F18203D00DABF41 /* Debug */,
+				E2A66B652F18203D00DABF41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E2TEST000003 /* Build configuration list for PBXNativeTarget "Dictate AnywhereTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2TEST000004 /* Debug */,
+				E2TEST000005 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E2FLUID0003 /* XCRemoteSwiftPackageReference "FluidAudio" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/FluidInference/FluidAudio.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.17.5;
+			};
+		};
+		E2LLAMA0003 /* XCRemoteSwiftPackageReference "llama" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mattt/llama.swift";
+			requirement = {
+				kind = exactVersion;
+				version = 2.10549.0;
+			};
+		};
+		E2SPARKLE003 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.9.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E2FLUID0002 /* FluidAudio */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E2FLUID0003 /* XCRemoteSwiftPackageReference "FluidAudio" */;
+			productName = FluidAudio;
+		};
+		E2LLAMA0002 /* LlamaSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E2LLAMA0003 /* XCRemoteSwiftPackageReference "llama" */;
+			productName = LlamaSwift;
+		};
+		E2SPARKLE002 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E2SPARKLE003 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = E2A66B502F18203C00DABF41 /* Project object */;
+}

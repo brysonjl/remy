@@ -1,0 +1,330 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-19",
+  "result": "No hidden telemetry found in reviewed source; privacy/security issues found. Not certified zero-egress.",
+  "scope": {
+    "workspace": "<WORKSPACE>",
+    "application_swift_files": 108,
+    "upstream_repository": "hoomanaskari/mac-dictate-anywhere",
+    "upstream_commit": "e420448de6e2099d33e050a4b419722032fd7519",
+    "upstream_default_branch_compare": "GitHub compare pinned commit...HEAD returned identical during audit",
+    "upstream_runtime_swift_files_restored_and_hash_verified": 106,
+    "upstream_code_build_script_files_restored_and_hash_verified": 181,
+    "upstream_reconstruction": "212 imported files still match original import hashes. Changed production source/build files retrieved at pinned commit; original selected snapshots and unchanged imports reused after SHA256 verification. Eleven modified upstream tests were not re-fetched. No missing production Swift files.",
+    "dependencies": [
+      "FluidAudio 0.17.5 / 0b1f46289fe27d95b5e66ad8be46e64f5ee02ae7",
+      "llama.swift 2.10549.0 / 716419d4d7aa542fce301e809cde7234c68ddbc6",
+      "Sparkle 2.9.6 / ac2def288cbff5cfc7df3ffef6abdf45b72bcb0a"
+    ],
+    "application_source_sha256": {
+      "app/Dictate Anywhere/AIPostProcessingService.swift": "3d6d9b581184f3ece8756acb521acb8c75e300741aeea969f6cdb9a86b92b06f",
+      "app/Dictate Anywhere/AIPostProcessingView.swift": "d20b2e0f723b712235803259707db35bcd218d52f29fe8dcc888f39257372adf",
+      "app/Dictate Anywhere/AboutView.swift": "a7ccb412b2df0b3e7292e0a7a14f29a6ad1c06f4f1493b8c43964f3b9c5ceb9e",
+      "app/Dictate Anywhere/AccessibilityMessagingTimeout.swift": "e4dbb9277d8e7845352c4aca7b3a9c8c53991222a6c4032c1e651fe57415a4ef",
+      "app/Dictate Anywhere/AlfredParakeetAssets.swift": "74027f37d80c63572218bdaae129a2459b87f246f8ef0b48c59363094cd223e0",
+      "app/Dictate Anywhere/AlfredStoragePaths.swift": "d7cdb1d0327adad7721f83f88a292e17b6063edfa6980415d6446a2ab929bc34",
+      "app/Dictate Anywhere/App.swift": "9bcb7785bff4ce7bf6fa5afc0cd633e83fb2182dcd73ba1c324036cad71645f3",
+      "app/Dictate Anywhere/AppDelegate.swift": "625220183f30a571cc751cb4b0a8b7b30a6de0a5a1a71ef3f3b436976ccab22f",
+      "app/Dictate Anywhere/AppState.swift": "cd6b8620b33e8185fe899911ef412fd085426dd51d89c97b442b24175a0dd0c2",
+      "app/Dictate Anywhere/AppleIntelligenceCleanup.swift": "5ba2cafa2118ca3f3bf9a4e77a3fcd9ac32ad30e2c638c3a637e78bac4e3deee",
+      "app/Dictate Anywhere/AppleSpeechEngine.swift": "5288eb40c3005b7c47a1cfcac83e98878c64f54188342bfa3dbcd2a7c7a49df6",
+      "app/Dictate Anywhere/AssemblyAIEngine.swift": "814a78f062a667d887b429e0fcb3c495a458748be4d68185087111705ebe607c",
+      "app/Dictate Anywhere/AssemblyAIInternalPrompt.swift": "e30823248e4781cd485cae2a7bda8ae5dab80d85ca07fdfe079a2abad1061959",
+      "app/Dictate Anywhere/AttentionIssue.swift": "a24bfccb6b34de7bd2ddc5beb5876978d321c95a59f0034492358c84a7b1e319",
+      "app/Dictate Anywhere/AudioCaptureStartup.swift": "9c850f7b31ceb2f276c10c7f34a013da767c9ce59f9395c7fa2086993c5f6d14",
+      "app/Dictate Anywhere/AudioMonitor.swift": "2359ed5a22370c58832087ab316ff96b9e18729f8b88bb511828a60291d5294e",
+      "app/Dictate Anywhere/AudioSampleBuffer.swift": "9eb7f0aad9e4211de7968960dc2354fb4febdb4d18ad8d6c17efa44da99fe0f4",
+      "app/Dictate Anywhere/AudioVolumeGate.swift": "27d030532f5361a57559afa2233b0a8fb04da817ebde7abc745c7bac25a0ce4a",
+      "app/Dictate Anywhere/BatchSpeechDetection.swift": "324a8f4f30857ab22142a7d03f80def15288fe1a65b6605494859e2aa417ceef",
+      "app/Dictate Anywhere/BatchTranscriptionPolicy.swift": "e845e513ac60d42c2ac22183a8d8c84fd0d548e4ccace58af322aa854eae27ea",
+      "app/Dictate Anywhere/BatchTranscriptionSession.swift": "fd15ea43c0630a273d9845ca6b5e2fb79f91ae0e2f332e501c88253e002c0f47",
+      "app/Dictate Anywhere/CJKText.swift": "d6364005b3a801a78f31e611a408c33d776018c6e71945d91416d9a483573892",
+      "app/Dictate Anywhere/CancellationShortcut.swift": "1293ab5e05ebabf1e16347666a181039798731cc15ad063f4f471deda5ade7a7",
+      "app/Dictate Anywhere/CleanupMethodMenu.swift": "f0ee313230731fa30ddd5b2ec619f5572c0397dfc63a27dd7caf103c6a43fb33",
+      "app/Dictate Anywhere/CleanupModelCapabilities.swift": "151a064a57245c85cbc5335db03dcfa3e7a99276f2efeccf783df0a60a987b0b",
+      "app/Dictate Anywhere/CompactSpeechModelLoader.swift": "87e7fecb9bde39ffe3dd1c996e0b1ff7d76a1d261ba305e0412322dc5ffdb7b4",
+      "app/Dictate Anywhere/DesignSystem/Atoms/DSButtons.swift": "3c9ff1179b087b6d7137185017b55ef2fa5863dd4f51e9aff64a6f1bd5d3378e",
+      "app/Dictate Anywhere/DesignSystem/Atoms/DSChip.swift": "42355ece43236f32e00cb03232d6d5b8b5c103721629592f2335bcb5da3f321e",
+      "app/Dictate Anywhere/DesignSystem/Atoms/DSControlSurface.swift": "85d1ddf9f207bcaedea9c9ef4004fe621933a312e41235e8fc0707988b9d5032",
+      "app/Dictate Anywhere/DesignSystem/Atoms/DSControls.swift": "fc55176eb8d6d3447bb9c0263813b94a5d3be749bc7e37424b890bc3580910d8",
+      "app/Dictate Anywhere/DesignSystem/Atoms/DSText.swift": "f68b97a0f0a72fca8c68c60652aba4716044963048f34523e99892a21f9335a3",
+      "app/Dictate Anywhere/DesignSystem/Atoms/HotkeyKeycaps.swift": "95efbab3507cc256646d719a27c72636ce61543524b8f421456b8036338d7d9f",
+      "app/Dictate Anywhere/DesignSystem/Atoms/WindowDragArea.swift": "c5301b84beeae96525ed53d3c8f7c648d5c3ef8f2105f9b112355b58872503b7",
+      "app/Dictate Anywhere/DesignSystem/DesignTokens.swift": "b2bf053d555e7563a5c803f99521e0615e1391c069674825ba1470ec85c6e275",
+      "app/Dictate Anywhere/DesignSystem/Molecules/DSBrand.swift": "fcd56d5e2f9cdce683d7bbb7bf34594f8405c143878b80b6c07c8a0923a18c64",
+      "app/Dictate Anywhere/DesignSystem/Molecules/DSCard.swift": "7f267d834f3429cbe41214e748909dd23dd37206f94a2a24a4ab7243895ad6e2",
+      "app/Dictate Anywhere/DesignSystem/Molecules/DSModelReadiness.swift": "218628248de8c83d8830fa7ffbb3bd6af2bf0b208290c7ac11ca27974202794b",
+      "app/Dictate Anywhere/DesignSystem/Molecules/DSRows.swift": "c62aac2703d8a1721d766c455b184d404c1ad2db21bb1c932cbf49ed19ad1f8f",
+      "app/Dictate Anywhere/DictationContext.swift": "ff135a2f4f1a448f657667ab2638a03ef882c54b86c2d2dd3f0d25cf6f8daf5f",
+      "app/Dictate Anywhere/DictationFocusResolver.swift": "0096c0efba52640bfce7d7946ccf78f752e6a5c5c60152c4f89d1597b64e9b06",
+      "app/Dictate Anywhere/DictationListInsertion.swift": "0d52a849071b59754bb34d848c215b9947956046e8601c5be67ae874ae0730c8",
+      "app/Dictate Anywhere/DictationRecovery.swift": "638f5b38dc089c8f4a6547d9671f894d8d68696921ffe0b3654ddb34a606bc59",
+      "app/Dictate Anywhere/DictationRichListCapture.swift": "3b3077de013e13a78b09e2a0d0298fe1f37a8cd7e372e9a566de1fe70199f559",
+      "app/Dictate Anywhere/DictationTextMarkerCapture.swift": "a0e00d27032ab4fc6c2204c7ec4c298fa0022fa1d592e51c7dd2095d85e070cc",
+      "app/Dictate Anywhere/Hardware.swift": "ee16e54571cfb4d86727032b7e97d5e1081f62f5330b17bd49c0b758ba1b949b",
+      "app/Dictate Anywhere/HotkeyService.swift": "91d63f3d7fd96f06b54ce6a5bfa2b2adc0e2043643a02cbc2d8fc8af1e50d9d8",
+      "app/Dictate Anywhere/InputSourceMonitor.swift": "b66cce8d3576011dd5fc4ed94f1bbfca454e57d3e97fc3f2bfbe6b8918e6455d",
+      "app/Dictate Anywhere/InputSourceProfileResolver.swift": "19fcfb76b2931bd28c1574156afdd014c652bf7bc14a4b543fb700865c35a5e4",
+      "app/Dictate Anywhere/InputSourceSettingsSection.swift": "5c58169197889daa5e1c5fdbaea622f8f34d1f26fea5c5b2f2837c898f875e9a",
+      "app/Dictate Anywhere/InternalPromptsView.swift": "ee63004c75dbdbc3f7630ad90019a1842b6d136fede4808e4b9041b250ce1976",
+      "app/Dictate Anywhere/MainWindow.swift": "ae5695734e56ea6d946d62702aa33001b812209157d260cded02220f3f9f0850",
+      "app/Dictate Anywhere/MainWindowSizing.swift": "62c10dbe39c9446a3dee2574705b209d428b58f39515aa9981c0d0f4151f6ae7",
+      "app/Dictate Anywhere/ModelInsertionPlan.swift": "dd0b87dee6e6ab5cb4a9c5ebd71862c43323986472a17457579c322938ebf50b",
+      "app/Dictate Anywhere/ModelReadiness.swift": "d317095db39cf3e43a68ace2c7964e3204b4cc18c7c679cc760bd7534ca9fb5e",
+      "app/Dictate Anywhere/ModelsView.swift": "b6799553b0b2ab106846fc70e0a2af5167d41b06028f7dc95fcd4872775495a3",
+      "app/Dictate Anywhere/OllamaPostProcessingService.swift": "a5547ad350fdaa9208c598233eb1a8238fb46b79a19c16da976c7398c2fbac8b",
+      "app/Dictate Anywhere/OpenAICompatiblePostProcessingService.swift": "7964b856196172add6afee6cdd7f9ccd4d85c0f48896875b52a69f9d849d45aa",
+      "app/Dictate Anywhere/OpenRouterCredentialPreferences.swift": "c765ceab0f27dc7e8dec1f230c9b94e8285078676ab5bb442ddad0da977fc438",
+      "app/Dictate Anywhere/OpenRouterPostProcessingService.swift": "773e040711dff024c51e7472b56765841329e3c81eef4c20fad988af6a0feaf5",
+      "app/Dictate Anywhere/OverlayContent.swift": "80c2ee3778543caf4c815d3676f93b5eb8c8b3a28c2fe9dfd1b42e3f366ce524",
+      "app/Dictate Anywhere/OverlayPalette.swift": "f8eee91e3bd0c4992c1206fdc4464816ea6c304bdd110d088a5911fc0cf85bce",
+      "app/Dictate Anywhere/OverlayPill.swift": "2efed8420d687a9b082fc168a017874110346b36bf350280e60a042a0cffe562",
+      "app/Dictate Anywhere/OverlayScreenPicker.swift": "e141ff6bcd7f76f5185dc1b1becc8807f27ae360deaa9b43eb748da178ee3508",
+      "app/Dictate Anywhere/OverlayScreenResolver.swift": "208fcbd14e230eec22bcb40c1d0448b8211307159ea658767bbf9a0519a5add3",
+      "app/Dictate Anywhere/OverlayScreenSession.swift": "4b19f593f0284f46f1194e3938602abdc7c9922acf5046fc072ed842d2e44b68",
+      "app/Dictate Anywhere/OverlaySettingsPreview.swift": "1a277d1585f7d05521198e9b4ad52a011584a0fa9a3f40090fe3d035dfb38f9e",
+      "app/Dictate Anywhere/OverlaySize.swift": "f4f132669e8af82c2b90a60f0d8a8fe9d8f7cadeba22daad5986c3efeef2ea17",
+      "app/Dictate Anywhere/OverlaySizeControl.swift": "1c3e124a1c63fc52708de3bdc33a3cfa473d9a9db69f6faaaff9caaf4c335c3d",
+      "app/Dictate Anywhere/OverlaySystemAppearance.swift": "6f6d08896633a91c63b133bb9d3852f8cdfd18e71744f2a853b8fe4d5ff10237",
+      "app/Dictate Anywhere/OverlayTranscriptContent.swift": "6191bcdce17465f651fba0c91f9265717baa8bbc99eeeb6c4feb724173505dae",
+      "app/Dictate Anywhere/OverlayWindow.swift": "0e31a169b9bd4c95632b22ce1714379ff6796b5b6c19dba60926202e6ac43bc9",
+      "app/Dictate Anywhere/PCMStreamConverter.swift": "20ce70578834de5ae2caa74bcf9a6453008262ec6c6af6a55f6956ff1b5ed32c",
+      "app/Dictate Anywhere/PerfTrace.swift": "5e1263924ea451ef4b9dbc7ef597848fbffc239967608501ba7c22d3895e9e6a",
+      "app/Dictate Anywhere/Permissions.swift": "d379afc57ade197b58ea60d07a304eed7f6ee5f09858897d5a6cadc8a279eacd",
+      "app/Dictate Anywhere/PlainTextListEdit.swift": "cf44ab01831c1263afc08d6f83e48009f7f00445782615aa09c308144a8eafd9",
+      "app/Dictate Anywhere/PreparedTDTVocabulary.swift": "fe60c124ea9e4a90a88695ca2682a14bec43f7020b6635b30b0ee1bf109f53d0",
+      "app/Dictate Anywhere/QuickVocabularyPanel.swift": "62c55ad44daa6583bda0b15f2ba24892999b749e9f770304aadb433f0f8a8856",
+      "app/Dictate Anywhere/S1MiniCPUConfiguration.swift": "6a847e07f052a6eebe6a06e2f47e2c149f9e791f1638c703a40190cdee85342d",
+      "app/Dictate Anywhere/S1MiniInputDraft.swift": "30ff3bc046f1fbaaac7565c2e61d2f256199636d65fab6749201b810fa258e20",
+      "app/Dictate Anywhere/S1MiniModelManager.swift": "e14acda039512eb667599be7a876373922e911c92a81828e6a61c5b79d37939e",
+      "app/Dictate Anywhere/S1MiniOutputSafety.swift": "71c12b6b0746f2154c107299cde53e1939f105aabc9a4fda68c3f96d99eac4ce",
+      "app/Dictate Anywhere/S1MiniPostProcessingService.swift": "36814d589d9e6dccf187be77a7c1a28756830ed08250bde0531340ae1730d5cf",
+      "app/Dictate Anywhere/Settings.swift": "a88234b99ff827c007d8012252e0f1c5f2ed001f7d972af11d22d36371ddfc87",
+      "app/Dictate Anywhere/SettingsMultilineTextArea.swift": "9d53b46ebadb93d2bd4629df715253221bbf6ad9670738d0fd93e3e23696137b",
+      "app/Dictate Anywhere/SettingsView.swift": "8f4600b2086a0659e179473a25f35a73bf0fddea597dfacc5a475854aaa8f634",
+      "app/Dictate Anywhere/SharedCTCVocabularySession.swift": "0ff3daf5fdf1822a2847d4db9e0f3b61341e52445b80f14b959e66121c4f65a2",
+      "app/Dictate Anywhere/ShortcutRecorderView.swift": "c1cdd76e1d152ad16f1e840154ac9a24cb2458115931b971941dddf341e3fdae",
+      "app/Dictate Anywhere/ShortcutsView.swift": "b84bbd0010e86939fdc209c480de033653335e14758eef1599d5ec602e3cfe54",
+      "app/Dictate Anywhere/SidebarView.swift": "9bdcb1de13512aff1162915139d4a1aba701c63ce23e3276b564396413ef6c02",
+      "app/Dictate Anywhere/SoftwareUpdater.swift": "24ecfcf02a8970536317472666583e91d96ea967418a9ca5bd477d764184939f",
+      "app/Dictate Anywhere/SpeechModelMenu.swift": "2d07299b2222f692c63ba1bc1759a9f901cdb62f81773a7483fb2e5f3863f3ec",
+      "app/Dictate Anywhere/SupportedLanguage.swift": "e6a18d67c5efd35075627d74efe1f2c340c349058aa353f28dab3c5c35134701",
+      "app/Dictate Anywhere/TextInserter.swift": "a4228ced579cacff762e168f4f878fbe95d8b1a00bd62d06edfeec4e9432b8d9",
+      "app/Dictate Anywhere/TextOverlayView.swift": "0d9e9a5b5a5fe4cacda3226aa70f4a65575f4baced9491b83b3ea81ca03cee50",
+      "app/Dictate Anywhere/ThemeMode+Overlay.swift": "023ce6ca2fee8e5cce11a64eaae79c06528fa903ae129c2198fcc415886856ed",
+      "app/Dictate Anywhere/TimedRequestCache.swift": "ea45c84ffb03f492e222e12f5c4e09a03be910414f40d48b4602413ba5bd4529",
+      "app/Dictate Anywhere/TranscriptCleanupIntegrity.swift": "2b77fb119eb082c52fb9034b158d126c5eb23a6f3fad3352da540adb3f6aa134",
+      "app/Dictate Anywhere/TranscriptCleanupPlan.swift": "84a5e9ed3ff89b1d1933557daef4c810a54e7b50118fde38e324d86fbf1545ce",
+      "app/Dictate Anywhere/TranscriptHistoryPersistence.swift": "e0c84e41ee6d2d597559185184a6291484dbbd2c7f2ff87eef3f407911b83e91",
+      "app/Dictate Anywhere/TranscriptHistoryView.swift": "aff096e1d71ad21a7950dabfcff733eb92bffe8d5f343e1160e9d5766d283f4e",
+      "app/Dictate Anywhere/TranscriptionEngine.swift": "8a588273d3efed4a046204a85473ab6f5ed2aeeb1ee195e4ba3439dc7118f5af",
+      "app/Dictate Anywhere/VocabularyHeadLoader.swift": "cb90aa4dba9df8c7cc7df2c00ff6a53c2bd1af5f29e34fb25c6eedbaae2d9bd0",
+      "app/Dictate Anywhere/VocabularyInput.swift": "1102b49a899bb9577c3e101c80dce261efc37637aee6b8ed4f1a77e61fd39fa0",
+      "app/Dictate Anywhere/VocabularyRescoringPolicy.swift": "c93b63d20ad8c40deb4038ec6e7991c33110f25abd1255feda91f8ccc3f595ac",
+      "app/Dictate Anywhere/VolumeController.swift": "579899e2bfd64c3bde9a6b99d98317b283cb72e090449fa93174cddb2cbcadd6",
+      "app/Dictate Anywhere/WaveformDrawing.swift": "05728ed3691c2334d0ea0b5cd2c32715715683605740b841afa6cea462c79c54",
+      "app/Dictate Anywhere/WaveformGeometry.swift": "e01160c2114c3f7b58471a2ea5697092017b11189f844ee803b165ad71635c39",
+      "app/Dictate Anywhere/WaveformView.swift": "397830e75d3803447cc298196c8ca2e5e4a48fbe3d3c5af0db99d101bce192be"
+    }
+  },
+  "findings": [
+    {
+      "id": "PRIV-001",
+      "priority": "high",
+      "status": "confirmed source and existing runtime cache",
+      "title": "URLSession shared disk cache retains bearer credentials and cleanup request/response text",
+      "evidence": [
+        "app/Dictate Anywhere/OpenAICompatiblePostProcessingService.swift:75",
+        "app/Dictate Anywhere/OpenAICompatiblePostProcessingService.swift:191",
+        "app/Dictate Anywhere/OpenAICompatiblePostProcessingService.swift:219",
+        "app/Dictate Anywhere/OpenAICompatiblePostProcessingService.swift:252",
+        "app/Dictate Anywhere/OpenAICompatiblePostProcessingService.swift:255"
+      ],
+      "observation": "Read-only inspection of ~/Library/Caches/app.alfred.dictation.dev/Cache.db found archived Bearer Authorization values for ollama.com /v1/models and /v1/chat/completions. The chat request contains serialized messages with 3384 and 90 characters; the cached response contains 63 characters of message content. No token or content values were displayed or copied into this report.",
+      "impact": "Sensitive data exists outside Keychain and transcript-history controls. Deleting history or a Keychain entry does not remove an independent URL cache record.",
+      "upstream": "Same provider source and shared session defaults present in original pinned upstream.",
+      "recommendation": "Use a dedicated ephemeral URLSession with urlCache=nil and no persistent cookie/credential storage for sensitive providers, explicitly disable caching, and block caching in its delegate. Purge existing application URL caches when deploying the fix; consider rotating the cached credential based on exposure. Verify with fake credentials that disk cache stays empty."
+    },
+    {
+      "id": "PRIV-002",
+      "priority": "medium",
+      "status": "confirmed source",
+      "title": "Raw and processed transcripts always persist in ordinary preferences",
+      "evidence": [
+        "app/Dictate Anywhere/AppState.swift:2019",
+        "app/Dictate Anywhere/TranscriptHistoryPersistence.swift:18",
+        "app/Dictate Anywhere/TranscriptHistoryPersistence.swift:27",
+        "app/Dictate Anywhere/Settings.swift:2143"
+      ],
+      "impact": "History stores last 50 entries without application-level encryption, retention expiry, or a history-disable setting. Disk encryption and filesystem access controls may still apply.",
+      "upstream": "Inherited.",
+      "recommendation": "Add an explicit history opt-out and age retention; use a protected dedicated store if persistence is enabled. Clear-history should also address associated caches."
+    },
+    {
+      "id": "PRIV-003",
+      "priority": "medium",
+      "status": "confirmed source; sensitive echoed errors conditional",
+      "title": "Provider-controlled error text is logged as public",
+      "evidence": [
+        "app/Dictate Anywhere/OpenAICompatiblePostProcessingService.swift:274",
+        "app/Dictate Anywhere/OpenRouterPostProcessingService.swift:475",
+        "app/Dictate Anywhere/AppState.swift:1978",
+        "app/Dictate Anywhere/AppState.swift:1998"
+      ],
+      "impact": "If a server echoes transcript, prompts, or credentials in an error, it can be persisted in unredacted macOS logs. Ordinary success logs reviewed generally use counts/configuration rather than dictation contents.",
+      "upstream": "Inherited.",
+      "recommendation": "Log stable provider/status/error codes, not server messages or complete localized descriptions. Keep any necessary diagnostic details private and bounded."
+    },
+    {
+      "id": "PRIV-004",
+      "priority": "medium conditional",
+      "status": "confirmed dependency source; not observed leaking",
+      "title": "FluidAudio can send inherited Hugging Face token to configured registry or pagination host",
+      "evidence": [
+        "app/.build/SourcePackages/checkouts/FluidAudio/Sources/FluidAudio/ModelRegistry.swift:32",
+        "app/.build/SourcePackages/checkouts/FluidAudio/Sources/FluidAudio/Shared/Download/HFClient.swift:29",
+        "app/.build/SourcePackages/checkouts/FluidAudio/Sources/FluidAudio/Shared/Download/HFClient.swift:36",
+        "app/.build/SourcePackages/checkouts/FluidAudio/Sources/FluidAudio/Shared/Download/HFTreeLister.swift:100"
+      ],
+      "conditions": "Process has HF_TOKEN/HUGGING_FACE_HUB_TOKEN/HUGGINGFACEHUB_API_TOKEN, and registry override or server-provided pagination points to an unintended host.",
+      "impact": "Model requests add bearer auth without binding it to a trusted origin.",
+      "recommendation": "Constrain registry, pagination, and redirect origins; attach a token only to its intended trusted host. Avoid inheriting unused tokens into GUI app."
+    },
+    {
+      "id": "PRIV-005",
+      "priority": "low hardening",
+      "status": "confirmed missing policy; redirect exploitation unverified",
+      "title": "Configurable endpoints lack app-level transport and redirect boundaries",
+      "evidence": [
+        "app/Dictate Anywhere/OpenAICompatiblePostProcessingService.swift:286",
+        "app/Dictate Anywhere/OllamaPostProcessingService.swift:222",
+        "app/Dictate Anywhere/AppState.swift:1982"
+      ],
+      "impact": "Missing schemes normalize to HTTP. Context permission uses original URL locality and there is no explicit provider redirect delegate. No remote plaintext upload or redirect body/token forwarding was demonstrated.",
+      "mitigation": "Both built Debug/Release plists retain default ATS without exceptions; Apple documents that ATS requires HTTPS for URLSession public-host HTTP connections. Do not treat code accepting HTTP as proof of successful plaintext public-host transmission.",
+      "recommendation": "Validate schemes/hosts explicitly, require HTTPS beyond loopback, reject embedded credentials, and reject redirects that cross trust/locality boundaries.",
+      "sources": [
+        "https://developer.apple.com/documentation/BundleResources/Information-Property-List/NSAppTransportSecurity",
+        "https://developer.apple.com/documentation/bundleresources/information-property-list/nsapptransportsecurity/nsallowslocalnetworking"
+      ]
+    },
+    {
+      "id": "PRIV-006",
+      "priority": "privacy consideration",
+      "status": "confirmed source",
+      "title": "Clipboard and recovery files retain dictated material",
+      "evidence": [
+        "app/Dictate Anywhere/TextInserter.swift:1295",
+        "app/Dictate Anywhere/Settings.swift:1695",
+        "app/Dictate Anywhere/DictationRecovery.swift:214"
+      ],
+      "impact": "Insertion uses ordinary general clipboard without transient/concealed marking, restoration, or clearing. Clipboard managers may retain it. Cancelled-session recovery defaults on and saves unencrypted audio/metadata; files are mode0600, directory0700, excluded from backups, nominal 24-hour retention pruned by running app. Files can outlive that time while app is closed.",
+      "current_configuration": "Cancelled-session recovery disabled in saved development-app preferences at inspection time.",
+      "recommendation": "Make retention choices clear; add appropriate clipboard privacy behavior and an explicit recovery opt-in."
+    },
+    {
+      "id": "PRIV-007",
+      "priority": "supply-chain hardening",
+      "status": "confirmed source",
+      "title": "Most FluidAudio model revisions track mutable main branches",
+      "evidence": [
+        "app/.build/SourcePackages/checkouts/FluidAudio/Sources/FluidAudio/ModelNames.swift:276"
+      ],
+      "impact": "Pinned Swift package versions do not pin model bytes downloaded later. Main ASR and auxiliary CTC/tokenizer assets follow mutable upstream revisions.",
+      "recommendation": "Pin model revisions and expected file digests; verify all model assets before loading."
+    }
+  ],
+  "outbound_inventory": [
+    {
+      "destination": "dictation.assemblyai.com, dictation.us.assemblyai.com, dictation.eu.assemblyai.com",
+      "trigger": "AssemblyAI engine selected and dictation starts; connection warm-up when recording starts",
+      "data": "PCM audio, vocabulary, language, prompts, permitted surrounding context; warm request has no dictation content",
+      "evidence": "app/Dictate Anywhere/AssemblyAIEngine.swift:409"
+    },
+    {
+      "destination": "openrouter.ai/api/v1",
+      "trigger": "OpenRouter cleanup selected; model discovery may run at startup/preparation; cleanup after dictation",
+      "data": "Transcript, instructions, vocabulary, permitted context, bearer credential for completions; inherited upstream app attribution headers; catalog GET is metadata",
+      "evidence": "app/Dictate Anywhere/OpenRouterPostProcessingService.swift:415"
+    },
+    {
+      "destination": "User-configured Ollama/OpenAI-compatible endpoint",
+      "trigger": "Provider selected; discovery/prewarm can run automatically; cleanup after dictation",
+      "data": "Transcript, instructions, vocabulary, permitted context, configured bearer credential; prewarm/discovery has no transcript",
+      "evidence": "app/Dictate Anywhere/AppState.swift:828"
+    },
+    {
+      "destination": "huggingface.co and model-download redirects/CDNs; FluidAudio registry overrides if configured",
+      "trigger": "Explicit model download; optional vocabulary preparation can automatically download missing/recover damaged auxiliary head or tokenizer",
+      "data": "Model asset requests; device/IP/request metadata and optional inherited Hugging Face bearer token, no reviewed audio/transcript upload",
+      "evidence": "app/Dictate Anywhere/VocabularyHeadLoader.swift:24"
+    },
+    {
+      "destination": "Apple-managed speech asset services",
+      "trigger": "Apple Speech selected and speech assets absent",
+      "data": "OS-managed model installation requests",
+      "evidence": "app/Dictate Anywhere/AppleSpeechEngine.swift:518"
+    },
+    {
+      "destination": "External About/help links",
+      "trigger": "User activates a link",
+      "data": "Browser navigation to upstream GitHub, FluidAudio, Hugging Face, Ollama, pixelforty.com and related project sites"
+    },
+    {
+      "destination": "GitHub package/release servers and Apple notarization",
+      "trigger": "Dependency resolution, explicit release tooling/workflow",
+      "data": "Package/binary downloads; notarization uploads built release artifacts; GitHub workflow creates draft release",
+      "evidence": "app/scripts/release-macos.template.sh:181"
+    },
+    {
+      "destination": "raw.githubusercontent.com/hoomanaskari/mac-dictate-anywhere/main/appcast.xml",
+      "trigger": "Original upstream Release Sparkle updater, subject to Sparkle update permissions/settings",
+      "data": "Update feed/download requests; optional Sparkle system profile only if enabled",
+      "fork_status": "Disabled: no SPU controller instantiated, no update feed/public key in built plists, automatic check/update flags false",
+      "evidence": "research/upstream/mac-dictate-anywhere/Dictate Anywhere/SoftwareUpdater.swift:18"
+    }
+  ],
+  "current_configuration": {
+    "source": "Read-only allowlisted development-app preferences, not credentials",
+    "engineChoice": "parakeet",
+    "parakeetModelChoice": "englishOnly",
+    "transcriptPostProcessingMode": "openAICompatible",
+    "openAICompatibleEndpoint": "https://ollama.com/v1",
+    "prewarmEnginesAtStartup": true,
+    "dictationContextAwarenessEnabled": false,
+    "shareDictationContextWithRemoteProviders": false,
+    "preserveCancelledSessions": false,
+    "implication": "Speech recognition is local; selected cleanup sends dictated text to Ollama Cloud. Disabling surrounding context sharing does not disable transcript upload."
+  },
+  "positive_controls": [
+    "No analytics SDK, covert telemetry endpoint, crash-report upload, or unrelated exfiltration path found in reviewed source.",
+    "Fresh settings select local Parakeet and no cleanup; remote surrounding-context sharing defaults false.",
+    "API keys normally stored in macOS Keychain; cache finding is an independent duplicate.",
+    "Normal ASR and VAD loading uses cached paths; no reviewed FluidAudio inference upload.",
+    "No dynamic shell execution of dictated text found.",
+    "Fork auto-updater disabled in source and both built plists."
+  ],
+  "validation": {
+    "offline_test_command": "./validation/run-tests.sh --disable-sandbox",
+    "offline_test_result": "33 tests passed, zero failures. These check storage/data helpers and are not an egress test.",
+    "dependency_source_check": "All three source checkout revisions match lockfile and tracked changes are clean.",
+    "binary_checksum_recheck": "Could not repeat archive checks: original release ZIP archives no longer present locally. Verification script reported false because archives were absent (null hashes), not because of a demonstrated differing hash. Earlier 2026-10-19 baseline recorded matching ZIP hashes; not a current attestation of extracted binaries.",
+    "binary_review": "Static import/dependency/strings review of llama/Nemo macOS artifacts found no obvious direct networking or telemetry symbols/endpoints; no reproducible-build proof.",
+    "runtime_observation": "lsof identified the running workspace development app and an open UDP443 connection to 34.36.133.15. DNS unavailable in execution sandbox; endpoint not independently attributed from that socket. An open socket does not prove active payload transfer.",
+    "runtime_cache_observation": "Read-only existing OS cache metadata and in-memory structural checks confirmed request credentials/message bodies and response completion persisted; no sensitive values included in output.",
+    "redirect_probe": "Compiled synthetic Swift URLSession probe, but localhost mock-server bind was denied by execution sandbox. No request sent; redirect forwarding remains unverified.",
+    "limitations": [
+      "Static source review cannot prove absence of all runtime traffic or hidden behavior in prebuilt frameworks/OS services.",
+      "No sustained packet capture, network-denied whole-app run, or fresh real dictation/cloud upload performed.",
+      "No application source, user settings, Keychain, clipboard, history, or cache modified by audit. This report and local build/test products were written."
+    ]
+  },
+  "recommended_order": [
+    "Fix sensitive HTTP caching and remediate existing cache copies.",
+    "Add an enforceable offline/no-network mode with one controlled download action and explicit cloud-provider consent.",
+    "Add history retention/opt-out, safe error logging, and clipboard/recovery privacy controls.",
+    "Constrain provider and model-registry origins; pin model assets.",
+    "Validate with fake credentials and synthetic text under monitored/blocked egress before claiming fully offline operation."
+  ],
+  "recorded_at_utc": "2026-10-19T23:31:16.089837+00:00"
+}

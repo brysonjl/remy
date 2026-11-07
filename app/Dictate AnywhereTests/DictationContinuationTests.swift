@@ -1,0 +1,631 @@
+import XCTest
+import CoreAudio
+@testable import Dictate_Anywhere
+
+@MainActor
+final class DictationContinuationTests: XCTestCase {
+    private var directory: URL!
+    private var store: DictationRecoveryStore!
+    private var restoreSettings: (() -> Void)!
+    private var apps: [AppState] = []
+
+    override func setUp() async throws {
+        directory = FileManager.default.temporaryDirectory.appendingPathComponent("dictation-continue-\(UUID())")
+        store = DictationRecoveryStore(directory: directory)
+        let settings = Settings.shared
+        let sound = settings.soundEffectsEnabled
+        let boost = settings.boostMicrophoneVolumeEnabled
+        let mute = settings.muteSystemAudioDuringRecordingEnabled
+        let preserve = settings.preserveCancelledSessions
+        let microphone = settings.selectedMicrophoneUID
+        let processing = settings.transcriptPostProcessingMode
+        let history = settings.transcriptHistory
+        let engineChoice = settings.engineChoice
+        let model = settings.parakeetModelChoice
+        let language = settings.selectedLanguage
+        let prewarm = settings.prewarmEnginesAtStartup
+        let autoSwitch = settings.inputSourceAutoSwitchEnabled
+        let autoStop = settings.autoStopAfterSpeechEndsEnabled
+        let fillerEnabled = settings.isFillerWordRemovalEnabled
+        restoreSettings = {
+            settings.engineChoice = engineChoice
+            settings.parakeetModelChoice = model
+            settings.selectedLanguage = language
+            settings.prewarmEnginesAtStartup = prewarm
+            settings.inputSourceAutoSwitchEnabled = autoSwitch
+            settings.autoStopAfterSpeechEndsEnabled = autoStop
+            settings.isFillerWordRemovalEnabled = fillerEnabled
+            settings.soundEffectsEnabled = sound
+            settings.boostMicrophoneVolumeEnabled = boost
+            settings.muteSystemAudioDuringRecordingEnabled = mute
+            settings.preserveCancelledSessions = preserve
+            settings.selectedMicrophoneUID = microphone
+            settings.transcriptPostProcessingMode = processing
+            settings.transcriptHistory = history
+        }
+        settings.engineChoice = .parakeet
+        settings.parakeetModelChoice = .compactEnglish
+        settings.selectedLanguage = .english
+        settings.prewarmEnginesAtStartup = false
+        settings.inputSourceAutoSwitchEnabled = false
+        settings.autoStopAfterSpeechEndsEnabled = false
+        settings.isFillerWordRemovalEnabled = false
+        settings.soundEffectsEnabled = false
+        settings.boostMicrophoneVolumeEnabled = false
+        settings.muteSystemAudioDuringRecordingEnabled = false
+        settings.preserveCancelledSessions = true
+        settings.selectedMicrophoneUID = nil
+        settings.transcriptPostProcessingMode = .none
+        settings.transcriptHistory = []
+    }
+
+    override func tearDown() async throws {
+        for app in apps { await app.shutdown() }
+        apps = []
+        restoreSettings()
+        await Settings.shared.flushTranscriptHistory()
+        store = nil
+        if FileManager.default.fileExists(atPath: directory.path) { try FileManager.default.removeItem(at: directory) }
+    }
+
+    private func savedSession(completed: String? = nil, target: String? = nil) async throws -> CancelledDictation {
+        let capture = try store.beginCapture()
+        capture.append(Array(repeating: 0.25, count: 16_000))
+        let entry = try await store.preserve(capture, preview: "An incomplete preview",
+                                              completedTranscript: completed, targetBundleIdentifier: target)
+        return try XCTUnwrap(entry)
+    }
+
+    private func app(engine: ContinuationTestEngine,
+                     targetCapture: ((NSRunningApplication?) async -> RemyInsertionTarget)? = nil,
+                     delivery: ((String) async -> TextInsertionResult)? = nil) -> AppState {
+        let app = AppState(permissions: Permissions(statusProvider: { (true, false) }), recoveryStore: store, engine: engine,
+                           transcriptDelivery: delivery ?? { _ in .copiedOnly }, insertionTargetCapture: targetCapture)
+        app.permissions.micGranted = true
+        apps.append(app)
+        return app
+    }
+
+    func testContinueRestoresCompleteWordsThenStartsMicAndDeliversOnce() async throws {
+        let entry = try await savedSession()
+        let engine = ContinuationTestEngine()
+        var delivered: [String] = []
+        let app = app(engine: engine, delivery: { delivered.append($0); return .success })
+        await app.continueCancelledDictation(entry)
+        XCTAssertEqual(engine.events, ["restore", "start"])
+        XCTAssertEqual(app.status, .recording)
+        XCTAssertEqual(app.currentTranscript, "The original words.")
+        XCTAssertEqual(store.entries, [entry])
+        XCTAssertTrue(delivered.isEmpty)
+        XCTAssertTrue(app.canCancelDictation)
+        await app.stopDictation()
+        await app.stopDictation()
+        XCTAssertEqual(delivered, ["The original words. More words."])
+        XCTAssertEqual(Settings.shared.transcriptHistory.map(\.text), delivered)
+        XCTAssertNil(Settings.shared.transcriptHistory.first?.rawText,
+                     "A previously polished prefix must not be presented as a complete raw transcript")
+        XCTAssertTrue(store.entries.isEmpty)
+        XCTAssertTrue(try FileManager.default.contentsOfDirectory(atPath: directory.path).isEmpty)
+        XCTAssertNil(app.continuingEntryID)
+        XCTAssertEqual(app.status, .idle)
+    }
+
+    func testCompletedDictationKeepsRawTextBeforeCleanup() async throws {
+        let settings = Settings.shared
+        let oldFillerEnabled = settings.isFillerWordRemovalEnabled
+        let oldFillerWords = settings.fillerWordsToRemove
+        defer {
+            settings.isFillerWordRemovalEnabled = oldFillerEnabled
+            settings.fillerWordsToRemove = oldFillerWords
+        }
+        settings.isFillerWordRemovalEnabled = true
+        settings.fillerWordsToRemove = ["um"]
+        let engine = ContinuationTestEngine()
+        engine.stoppedText = "um Rotation snapping is reversed."
+        let app = app(engine: engine)
+        await app.startDictation()
+        XCTAssertEqual(app.status, .recording)
+        await app.stopDictation()
+        let entry = try XCTUnwrap(settings.transcriptHistory.last)
+        XCTAssertEqual(entry.text, "Rotation snapping is reversed.")
+        XCTAssertEqual(entry.rawText, engine.stoppedText)
+    }
+
+    func testCancelAgainPreservesPrefixAndOnlyNewAudioAcrossRelaunch() async throws {
+        let entry = try await savedSession(target: "example.unavailable-app")
+        let engine = ContinuationTestEngine()
+        let app = app(engine: engine)
+        await app.continueCancelledDictation(entry)
+        app.currentTranscript = "The original words. More"
+        await app.cancelDictation()
+        XCTAssertTrue(Settings.shared.transcriptHistory.isEmpty)
+        let relaunched = DictationRecoveryStore(directory: directory)
+        try relaunched.reload()
+        let saved = try XCTUnwrap(relaunched.entries.first)
+        XCTAssertEqual(relaunched.entries.count, 1)
+        XCTAssertNotEqual(saved.id, entry.id)
+        XCTAssertEqual(saved.transcriptPrefix, "The original words.")
+        XCTAssertEqual(saved.targetBundleIdentifier, "example.unavailable-app")
+        XCTAssertEqual(saved.duration, 2)
+        XCTAssertFalse(FileManager.default.fileExists(atPath: store.audioURL(id: entry.id).path))
+        let reader = try RecoveryAudioReader(url: store.audioURL(id: saved.id))
+        var samples: [Float] = []
+        while let chunk = try reader.nextSamples() { samples += chunk }
+        XCTAssertEqual(samples, Array(repeating: 0.5, count: 16_000))
+        engine.restoredText = "More words."
+        let secondApp = AppState(permissions: Permissions(statusProvider: { (true, false) }),
+                                recoveryStore: relaunched, engine: engine, transcriptDelivery: { _ in .copiedOnly })
+        secondApp.permissions.micGranted = true
+        await secondApp.continueCancelledDictation(saved)
+        XCTAssertEqual(secondApp.currentTranscript, "The original words. More words.")
+        engine.stoppedText = "Last words."
+        await secondApp.stopDictation()
+        XCTAssertEqual(Settings.shared.transcriptHistory.map(\.text), ["The original words. More words. Last words."])
+        XCTAssertTrue(relaunched.entries.isEmpty)
+    }
+
+    func testFinalDecoderTextWinsOverLongerProvisionalPreview() async throws {
+        let engine = ContinuationTestEngine()
+        engine.stoppedText = "The corrected words."
+        var delivered: [String] = []
+        let app = app(engine: engine, delivery: { delivered.append($0); return .success })
+        await app.startDictation()
+        XCTAssertEqual(app.status, .recording)
+        app.currentTranscript = "The provisional words with a repeated repeated ending."
+
+        await app.stopDictation()
+
+        XCTAssertEqual(delivered, [engine.stoppedText])
+        XCTAssertEqual(Settings.shared.transcriptHistory.first?.rawText, engine.stoppedText)
+        XCTAssertEqual(app.lastTranscript, engine.stoppedText)
+    }
+
+    func testEmptyFinalDecoderTextDoesNotResurrectProvisionalWords() async throws {
+        let engine = ContinuationTestEngine()
+        engine.stoppedText = ""
+        var delivered: [String] = []
+        let app = app(engine: engine, delivery: { delivered.append($0); return .success })
+        await app.startDictation()
+        XCTAssertEqual(app.status, .recording)
+        app.currentTranscript = "A preview rejected as silence."
+
+        await app.stopDictation()
+
+        XCTAssertTrue(delivered.isEmpty)
+        XCTAssertTrue(Settings.shared.transcriptHistory.isEmpty)
+        XCTAssertEqual(app.currentTranscript, "")
+        XCTAssertEqual(app.status, .idle)
+    }
+
+    func testContinuedFinalDecoderTextWinsOverLongerProvisionalPreview() async throws {
+        let entry = try await savedSession(completed: "The original words.")
+        let engine = ContinuationTestEngine()
+        engine.stoppedText = "A corrected ending."
+        var delivered: [String] = []
+        let app = app(engine: engine, delivery: { delivered.append($0); return .success })
+        await app.continueCancelledDictation(entry)
+        app.currentTranscript = "The original words. A longer provisional provisional ending."
+
+        await app.stopDictation()
+
+        XCTAssertEqual(delivered, ["The original words. A corrected ending."])
+        XCTAssertNil(Settings.shared.transcriptHistory.first?.rawText)
+    }
+
+    func testStopWithoutNewSpeechKeepsOriginalWords() async throws {
+        let entry = try await savedSession(completed: "The original words.")
+        let engine = ContinuationTestEngine()
+        engine.stoppedText = ""
+        let app = app(engine: engine)
+        await app.continueCancelledDictation(entry)
+        XCTAssertEqual(engine.events, ["start"])
+        await app.stopDictation()
+        XCTAssertEqual(Settings.shared.transcriptHistory.map(\.text), ["The original words."])
+    }
+
+    func testRestorationFailureKeepsSourceAndDoesNotStartMic() async throws {
+        let entry = try await savedSession()
+        let engine = ContinuationTestEngine()
+        engine.restoreFails = true
+        let app = app(engine: engine)
+        await app.continueCancelledDictation(entry)
+        XCTAssertEqual(engine.events, ["restore"])
+        XCTAssertEqual(app.status, .idle)
+        XCTAssertNil(app.continuingEntryID)
+        XCTAssertEqual(store.entries, [entry])
+        XCTAssertNotNil(store.errorMessage)
+        // The failed attempt must release the source for a subsequent retry.
+        engine.restoreFails = false
+        await app.continueCancelledDictation(entry)
+        XCTAssertEqual(app.status, .recording)
+        await app.cancelDictation()
+    }
+
+    func testMicrophoneStartupFailureKeepsOriginalAndDiscardsTemporaryCopy() async throws {
+        let entry = try await savedSession()
+        let engine = ContinuationTestEngine()
+        engine.startFails = true
+        let app = app(engine: engine)
+        await app.continueCancelledDictation(entry)
+        XCTAssertEqual(app.status, .idle)
+        XCTAssertNil(app.continuingEntryID)
+        XCTAssertEqual(store.entries, [entry])
+        XCTAssertEqual(try FileManager.default.contentsOfDirectory(atPath: directory.path).count, 2)
+        XCTAssertTrue(Settings.shared.transcriptHistory.isEmpty)
+        XCTAssertNotNil(store.errorMessage)
+    }
+
+    func testCancellationWhileFinishingPreservesCombinedResultWithoutDuplicatingPrefix() async throws {
+        let entry = try await savedSession()
+        let engine = ContinuationTestEngine()
+        let app = app(engine: engine)
+        await app.continueCancelledDictation(entry)
+        let began = expectation(description: "recognition began")
+        engine.onStop = { began.fulfill() }
+        let stopping = Task { await app.stopDictation() }
+        await fulfillment(of: [began], timeout: 1)
+        let cancelling = Task { await app.cancelDictation() }
+        for _ in 0..<100 where app.canCancelDictation { await Task.yield() }
+        XCTAssertFalse(app.canCancelDictation)
+        engine.finishPendingStop()
+        await stopping.value
+        await cancelling.value
+        XCTAssertTrue(Settings.shared.transcriptHistory.isEmpty)
+        let saved = try XCTUnwrap(store.entries.first)
+        XCTAssertEqual(store.entries.count, 1)
+        XCTAssertEqual(saved.completedTranscript, "The original words. More words.")
+        engine.events = []
+        await app.recoverCancelledDictation(saved)
+        XCTAssertTrue(engine.events.isEmpty)
+        XCTAssertEqual(Settings.shared.transcriptHistory.map(\.text), ["The original words. More words."])
+    }
+
+    func testFirstMicrophonePermissionGrantKeepsSessionWithoutStartingRecording() async throws {
+        let entry = try await savedSession()
+        let engine = ContinuationTestEngine()
+        let app = AppState(permissions: Permissions(statusProvider: { (false, false) }),
+                           microphonePermissionRequester: { true }, recoveryStore: store, engine: engine)
+        await app.continueCancelledDictation(entry)
+        XCTAssertTrue(engine.events.isEmpty)
+        XCTAssertEqual(store.entries, [entry])
+        XCTAssertEqual(app.status, .idle)
+        XCTAssertNil(app.continuingEntryID)
+    }
+
+    func testCancelledDecoderReturningEmptyDoesNotSkipNewestAudioOnRecovery() async throws {
+        let entry = try await savedSession()
+        let engine = ContinuationTestEngine()
+        let app = app(engine: engine)
+        await app.continueCancelledDictation(entry)
+        let began = expectation(description: "recognition began")
+        engine.onStop = { began.fulfill() }
+        engine.stoppedText = ""
+        let stopping = Task { await app.stopDictation() }
+        await fulfillment(of: [began], timeout: 1)
+        let cancelling = Task { await app.cancelDictation() }
+        for _ in 0..<100 where app.canCancelDictation { await Task.yield() }
+        engine.finishPendingStop()
+        await stopping.value
+        await cancelling.value
+        let saved = try XCTUnwrap(store.entries.first)
+        XCTAssertNil(saved.completedTranscript)
+        XCTAssertEqual(saved.transcriptPrefix, "The original words.")
+        engine.restoredText = "Words from the newest audio."
+        await app.recoverCancelledDictation(saved)
+        XCTAssertEqual(Settings.shared.transcriptHistory.map(\.text),
+                       ["The original words. Words from the newest audio."])
+    }
+
+    func testRetainedSourceSurvivesExpiryAndClearUntilContinuationFinishes() async throws {
+        let entry = try await savedSession()
+        let engine = ContinuationTestEngine()
+        let app = app(engine: engine)
+        await app.continueCancelledDictation(entry)
+        try store.reload(now: Date().addingTimeInterval(90_000))
+        try store.removeAll()
+        XCTAssertThrowsError(try store.remove(id: entry.id))
+        XCTAssertEqual(store.entries, [entry])
+        await app.cancelDictation()
+        XCTAssertEqual(store.entries.count, 1)
+        XCTAssertNotEqual(store.entries.first?.id, entry.id)
+    }
+
+    func testContinuationPreservesWordsEvenIfNewSessionPreservationWasDisabled() async throws {
+        let entry = try await savedSession()
+        Settings.shared.preserveCancelledSessions = false
+        let engine = ContinuationTestEngine()
+        let app = app(engine: engine)
+        await app.continueCancelledDictation(entry)
+        XCTAssertNotNil(engine.recoveryCapture)
+        await app.cancelDictation()
+        XCTAssertEqual(store.entries.first?.transcriptPrefix, "The original words.")
+    }
+
+    func testRecoverTextFromContinuedSessionIncludesPrefixWithoutStartingMic() async throws {
+        let entry = try await savedSession()
+        let engine = ContinuationTestEngine()
+        let app = app(engine: engine)
+        await app.continueCancelledDictation(entry)
+        await app.cancelDictation()
+        let saved = try XCTUnwrap(store.entries.first)
+        engine.events = []
+        engine.restoredText = "More words."
+        await app.recoverCancelledDictation(saved)
+        XCTAssertEqual(engine.events, ["restore"])
+        XCTAssertEqual(Settings.shared.transcriptHistory.map(\.text), ["The original words. More words."])
+        XCTAssertTrue(store.entries.isEmpty)
+    }
+
+    func testLegacySavedSessionDecodesWithoutContinuationMetadata() async throws {
+        let entry = try await savedSession()
+        var json = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(entry)) as? [String: Any])
+        json.removeValue(forKey: "transcriptPrefix")
+        json.removeValue(forKey: "targetBundleIdentifier")
+        let decoded = try JSONDecoder().decode(CancelledDictation.self, from: JSONSerialization.data(withJSONObject: json))
+        XCTAssertEqual(decoded, entry)
+        XCTAssertNil(decoded.transcriptPrefix)
+        XCTAssertNil(decoded.targetBundleIdentifier)
+    }
+
+    func testEmptyDecodeOfNewestAudioKeepsItAvailableInsteadOfReplacingItWithPrefix() async throws {
+        let entry = try await savedSession()
+        let engine = ContinuationTestEngine()
+        let app = app(engine: engine)
+        await app.continueCancelledDictation(entry)
+        await app.cancelDictation()
+        let saved = try XCTUnwrap(store.entries.first)
+        engine.restoredText = ""
+        engine.events = []
+        await app.continueCancelledDictation(saved)
+        XCTAssertEqual(engine.events, ["restore"])
+        XCTAssertEqual(app.status, .idle)
+        XCTAssertEqual(store.entries, [saved])
+        XCTAssertTrue(FileManager.default.fileExists(atPath: store.audioURL(id: saved.id).path))
+        XCTAssertNotNil(store.errorMessage)
+        await app.recoverCancelledDictation(saved)
+        XCTAssertTrue(Settings.shared.transcriptHistory.isEmpty)
+        XCTAssertEqual(store.entries, [saved])
+    }
+
+    func testDoubleContinueDoesNotStartAnotherRecording() async throws {
+        let entry = try await savedSession()
+        let engine = ContinuationTestEngine()
+        let app = app(engine: engine)
+        await app.continueCancelledDictation(entry)
+        await app.continueCancelledDictation(entry)
+        XCTAssertEqual(engine.events, ["restore", "start"])
+        await app.cancelDictation()
+    }
+
+    func testShutdownDoesNotDeliverPendingRecognition() async throws {
+        let entry = try await savedSession()
+        let engine = ContinuationTestEngine()
+        var delivered: [String] = []
+        let app = app(engine: engine, delivery: { delivered.append($0); return .success })
+        await app.continueCancelledDictation(entry)
+        let recognitionBegan = expectation(description: "recognition began")
+        engine.onStop = { recognitionBegan.fulfill() }
+
+        let stopping = Task { await app.stopDictation() }
+        await fulfillment(of: [recognitionBegan], timeout: 1)
+        let processingCancelled = expectation(description: "processing cancelled")
+        engine.onStopCancellation = { processingCancelled.fulfill() }
+        let shuttingDown = Task { await app.shutdown() }
+        await fulfillment(of: [processingCancelled], timeout: 1)
+        engine.finishPendingStop()
+        await stopping.value
+        await shuttingDown.value
+
+        XCTAssertTrue(delivered.isEmpty)
+        XCTAssertTrue(Settings.shared.transcriptHistory.isEmpty)
+    }
+
+    func testSleepAndWakeDuringTargetCaptureCannotResumeOldContinuation() async throws {
+        let entry = try await savedSession(completed: "Saved synthetic words")
+        let engine = ContinuationTestEngine()
+        let capturing = expectation(description: "continuation target suspended")
+        var pending: CheckedContinuation<RemyInsertionTarget, Never>?
+        let app = app(engine: engine, targetCapture: { _ in
+            await withCheckedContinuation {
+                pending = $0
+                capturing.fulfill()
+            }
+        })
+        let continuation = Task { await app.continueCancelledDictation(entry) }
+        await fulfillment(of: [capturing], timeout: 2)
+        await app.handleSystemWillSleep()
+        app.handleSystemDidWake()
+        pending?.resume(returning: .unavailable)
+        pending = nil
+        await continuation.value
+        XCTAssertFalse(engine.events.contains("start"))
+        XCTAssertEqual(app.status, .idle)
+        XCTAssertNil(app.continuingEntryID)
+        XCTAssertTrue(app.insertionTargetSnapshot === RemyInsertionTarget.unavailable)
+        XCTAssertTrue(store.entries.contains { $0.id == entry.id })
+    }
+
+    func testShutdownPreventsPendingContinuationFromStartingMicrophone() async throws {
+        let entry = try await savedSession()
+        let engine = ContinuationTestEngine()
+        engine.suspendRestore = true
+        let app = app(engine: engine)
+        let restorationBegan = expectation(description: "restoration began")
+        engine.onRestore = { restorationBegan.fulfill() }
+
+        let continuing = Task { await app.continueCancelledDictation(entry) }
+        await fulfillment(of: [restorationBegan], timeout: 1)
+        await app.shutdown()
+        engine.finishPendingRestore()
+        await continuing.value
+
+        XCTAssertEqual(engine.events, ["restore", "cancel"])
+        XCTAssertEqual(app.status, .idle)
+        XCTAssertNoThrow(try store.remove(id: entry.id))
+    }
+
+    func testShutdownDrainsPendingMicrophoneStartup() async throws {
+        let engineChoice = Settings.shared.engineChoice
+        defer { Settings.shared.engineChoice = engineChoice }
+        Settings.shared.engineChoice = .appleSpeech
+        let engine = ContinuationTestEngine()
+        engine.suspendStart = true
+        let app = app(engine: engine)
+        let startupBegan = expectation(description: "microphone startup began")
+        engine.onStart = { startupBegan.fulfill() }
+
+        let starting = Task { await app.startDictation() }
+        await fulfillment(of: [startupBegan], timeout: 1)
+        let engineCancelled = expectation(description: "engine cancelled")
+        engine.onCancel = { engineCancelled.fulfill() }
+        let shuttingDown = Task { await app.shutdown() }
+        await fulfillment(of: [engineCancelled], timeout: 1)
+        engine.finishPendingStart()
+        await starting.value
+        await shuttingDown.value
+
+        XCTAssertEqual(engine.events, ["start", "cancel"])
+        XCTAssertEqual(app.status, .idle)
+    }
+
+    func testShutdownPreventsQueuedMicrophoneStartup() async throws {
+        let engineChoice = Settings.shared.engineChoice
+        defer { Settings.shared.engineChoice = engineChoice }
+        Settings.shared.engineChoice = .appleSpeech
+        let engine = ContinuationTestEngine()
+        let engineCancelled = expectation(description: "engine cancelled")
+        engine.onCancel = { engineCancelled.fulfill() }
+        let app = app(engine: engine)
+        var shutdown: Task<Void, Never>?
+        engine.onSetSessionContextualVocabulary = { [weak app] in
+            engine.onSetSessionContextualVocabulary = nil
+            shutdown = Task {
+                guard let app else { return }
+                await app.shutdown()
+            }
+        }
+
+        await app.startDictation()
+        await fulfillment(of: [engineCancelled], timeout: 1)
+        // Engine cancellation occurs before shutdown joins the other services.
+        await shutdown?.value
+
+        XCTAssertEqual(engine.events, ["cancel"])
+        XCTAssertEqual(app.status, .idle)
+    }
+
+    func testHoldReleaseDuringMicrophoneStartupStopsAfterCapture() async throws {
+        let engineChoice = Settings.shared.engineChoice
+        defer { Settings.shared.engineChoice = engineChoice }
+        Settings.shared.engineChoice = .appleSpeech
+        let engine = ContinuationTestEngine()
+        engine.suspendStart = true
+        let app = app(engine: engine)
+        let startupBegan = expectation(description: "microphone startup began")
+        let stopBegan = expectation(description: "recording stopped after startup")
+        engine.onStart = { startupBegan.fulfill() }
+        engine.onStop = { stopBegan.fulfill() }
+        let binding = HotkeyBinding(
+            id: UUID(), keyCode: nil,
+            modifiersRawValue: HotkeyModifiers([.function]).rawValue,
+            displayName: "fn", mode: .holdToRecord
+        )
+
+        app.hotkeyService.onKeyDown?(binding)
+        await fulfillment(of: [startupBegan], timeout: 1)
+        app.hotkeyService.onKeyUp?(binding)
+        for _ in 0..<100 where app.isHoldToRecordKeyDown {
+            await Task.yield()
+        }
+        XCTAssertFalse(app.isHoldToRecordKeyDown)
+        engine.finishPendingStart()
+        await fulfillment(of: [stopBegan], timeout: 1)
+        engine.finishPendingStop()
+        for _ in 0..<100 where app.status != .idle {
+            try? await Task.sleep(for: .milliseconds(10))
+        }
+
+        XCTAssertEqual(engine.events, ["start", "stop"])
+        XCTAssertEqual(app.status, .idle)
+    }
+}
+
+@MainActor
+private final class ContinuationTestEngine: TranscriptionEngine {
+    var recoveryCapture: RecoveryAudioCapture?
+    var isReady = true
+    var currentTranscript = ""
+    var audioSamples: [Float] = []
+    var events: [String] = []
+    var restoredText = "The original words."
+    var stoppedText = "More words."
+    var restoreFails = false
+    var startFails = false
+    var onStop: (() -> Void)?
+    var onStopCancellation: (() -> Void)?
+    var onRestore: (() -> Void)?
+    var onStart: (() -> Void)?
+    var onCancel: (() -> Void)?
+    var onSetSessionContextualVocabulary: (() -> Void)?
+    var suspendRestore = false
+    var suspendStart = false
+    private var pendingStop: CheckedContinuation<String, Never>?
+    private var pendingRestore: CheckedContinuation<String, Never>?
+    private var pendingStart: CheckedContinuation<Void, Never>?
+    func levelSamples(count: Int) -> [Float] { [] }
+    func prepare() async throws { isReady = true }
+    func stopAudioCapture() async {}
+    func setSessionContextualVocabulary(_ vocabulary: [String]) {
+        onSetSessionContextualVocabulary?()
+    }
+    func startRecording(deviceID: AudioDeviceID?) async throws {
+        events.append("start")
+        if suspendStart {
+            await withCheckedContinuation { continuation in
+                pendingStart = continuation
+                onStart?()
+            }
+        }
+        if startFails { throw TranscriptionError.engineNotReady }
+        recoveryCapture?.append(Array(repeating: 0.5, count: 16_000))
+    }
+    func stopRecording() async -> String {
+        events.append("stop")
+        guard onStop != nil else { return stoppedText }
+        return await withTaskCancellationHandler {
+            await withCheckedContinuation { continuation in
+                pendingStop = continuation
+                onStop?()
+            }
+        } onCancel: {
+            Task { @MainActor [weak self] in self?.onStopCancellation?() }
+        }
+    }
+    func finishPendingStop() {
+        pendingStop?.resume(returning: stoppedText)
+        pendingStop = nil
+    }
+    func finishPendingStart() {
+        pendingStart?.resume()
+        pendingStart = nil
+    }
+    func finishPendingRestore() {
+        pendingRestore?.resume(returning: restoredText)
+        pendingRestore = nil
+    }
+    func cancel() async {
+        events.append("cancel")
+        onCancel?()
+    }
+    func transcribeRecording(at url: URL) async throws -> String {
+        events.append("restore")
+        if restoreFails { throw TranscriptionError.engineNotReady }
+        if suspendRestore {
+            return await withCheckedContinuation { continuation in
+                pendingRestore = continuation
+                onRestore?()
+            }
+        }
+        return restoredText
+    }
+}

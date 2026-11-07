@@ -1,0 +1,30 @@
+{
+  "phase": "A01",
+  "date": "2026-10-19",
+  "app": ".local/run/Alfred Dev.app",
+  "sourceOnlyWorkflow": true,
+  "observations": {
+    "serviceStatus": "Ready to dictate",
+    "accessibilityBannerAbsent": true,
+    "speechEngine": "FluidAudio",
+    "speechModel": "Parakeet v2",
+    "language": "English",
+    "availableEngineMenu": [
+      "FluidAudio",
+      "Apple Speech"
+    ],
+    "cleanupMethod": "Custom: OpenAI-compatible",
+    "cleanupURL": "https://ollama.com/v1",
+    "cleanupModel": "gemma4:31b",
+    "contextControlsAbsent": true,
+    "fillerRemoval": false,
+    "vocabulary": [
+      "Ixway",
+      "BEGL"
+    ],
+    "hotkey": "Right Option / Tap to Toggle",
+    "holdToCancel": false,
+    "preserveCancelledSessions": false
+  },
+  "scope": "CUA native accessibility inspection; no key read/export or new dictation attempt. Menu dismissal interrupted by user focus change; no selected engine change observed."
+}

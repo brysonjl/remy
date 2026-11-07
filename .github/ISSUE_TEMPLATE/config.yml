@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security reports
+    url: https://github.com/brysonjl/remy/blob/main/SECURITY.md
+    about: Read the private reporting instructions before sharing vulnerability details.

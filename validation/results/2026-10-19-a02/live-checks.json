@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-19",
+  "app": ".local/run/Alfred Dev.app",
+  "checks": [
+    {
+      "name": "cloud_textedit_toggle",
+      "method": "Custom: OpenAI-compatible",
+      "endpoint": "https://ollama.com/v1",
+      "model": "gemma4:31b",
+      "activation": "Right Option / Tap to Toggle",
+      "user_result": "Yes—all correct",
+      "user_confirmed": [
+        "overlay visible",
+        "single insertion",
+        "meaning preserved"
+      ],
+      "independently_observed_text": "Move the meeting from Thursday to Friday. Do not change the $15,000 budget",
+      "result": "pass",
+      "limits": "Insertion count and visible overlay user-confirmed; text independently read through native accessibility. No timing or paste-event instrumentation."
+    },
+    {
+      "name": "raw_textedit_toggle",
+      "method": "Off",
+      "activation": "Right Option / Tap to Toggle",
+      "user_result": "Yes—quiet cancel, only raw text appeared",
+      "independently_observed_text": "Raw session check seven eight nine",
+      "result": "pass"
+    },
+    {
+      "name": "immediate_escape_cancel",
+      "method": "Off",
+      "activation": "Right Option / Tap to Toggle; single Escape cancel",
+      "user_confirmed": [
+        "immediate quiet cancellation",
+        "document empty before subsequent raw check"
+      ],
+      "independently_observed": "Document contains only subsequent raw check, no cancelled phrase",
+      "result": "pass"
+    }
+  ],
+  "remaining": [],
+  "not_claimed": [
+    "physical sleep/wake",
+    "Fn and ordinary chord hardware matrix",
+    "provider deadline",
+    "durable SQLite history",
+    "same-field paste guard",
+    "daily-driver acceptance"
+  ],
+  "final_preferences": {
+    "cleanup": "Custom: OpenAI-compatible",
+    "endpoint": "https://ollama.com/v1",
+    "model": "gemma4:31b",
+    "service_status": "Ready to dictate",
+    "restoration": "independently verified through native accessibility"
+  }
+}

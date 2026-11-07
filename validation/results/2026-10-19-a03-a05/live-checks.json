@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-19",
+  "phase": "A03-A05 first integrated slice",
+  "app": ".local/run/Alfred Dev.app",
+  "signedDebug": "passed",
+  "release": "passed",
+  "existingV2Activation": "explicit UI Verify Existing Model completed; Ready to dictate",
+  "originalModelAssetsRetained": true,
+  "accessibilityWarningAbsent": true,
+  "historyControls": "visually inspected, no clipping; saving on, initial list empty",
+  "cleanup": {
+    "method": "Custom: OpenAI-compatible",
+    "url": "https://ollama.com/v1",
+    "model": "gemma4:31b",
+    "vocabulary": [
+      "Ixway",
+      "BEGL"
+    ],
+    "fillerRemoval": false,
+    "credentialsReadOrExported": false
+  },
+  "liveCloudAndRestart": {
+    "userConfirmedVisibleOverlayAndSingleInsertion": true,
+    "destination": "TextEdit Untitled 3",
+    "observedText": "Schedule Friday at 3. Do not change the $15,000 budget",
+    "historyFinalAndRawMatchObservedText": true,
+    "cleanQuitAndReopen": true,
+    "historyFinalAndRawSurvivedRestart": true,
+    "textEditUnchangedAfterRestart": true,
+    "scope": "one synthetic live dictation, UI-verified; does not establish crash recovery or full destination matrix",
+    "startupModelState": "Downloaded / Prepare Model (prewarm off), no Accessibility warning"
+  },
+  "legacyHistoryIncident": "interrupted shared-identity test emptied legacy list; no verified backup; not recovered; tests now isolated",
+  "namedProfiles": {
+    "migration": "explicit UI Save current setup as a profile succeeded after Keychain compatibility repair",
+    "method": "Saved Profile",
+    "selected": "Ollama Cloud",
+    "baseURL": "https://ollama.com/v1",
+    "model": "gemma4:31b",
+    "promptPreserved": true,
+    "credentialStatus": "configured; synthetic connection check passed",
+    "credentialsReadOrExportedByAgent": false,
+    "legacySettingsAndCredentialRetained": true,
+    "newKeyEntryRequired": false,
+    "firstAttempt": "generic migration failure with data-protection Keychain adapter; legacy method/settings retained; no OSStatus captured",
+    "repair": "explicit file-based macOS Keychain with creator-only ACL; no automatic implementation fallback or entitlement change",
+    "signatureObservation": "development app lacks application-identifier and keychain-access-groups entitlements",
+    "ui": "dark profile card inspected, no clipping; fields labeled in final polish",
+    "finalSignedBuild": "profiles-ui-final-prepare.log passed",
+    "release": "profiles-ui-final-release.log passed",
+    "liveDictation": "passed by user report: Book Friday 2 test",
+    "liveDictationConfirmation": {
+      "status": "passed by user report",
+      "userReport": "Also the Book Friday 2 test passed as expected",
+      "scope": "Earlier Friday booking / saved-profile live dictation smoke; exact output and counters were not independently re-inspected for this confirmation. Does not establish the separate Chrome focus-change check."
+    }
+  },
+  "sourceAhead": {
+    "changes": [
+      "A04 memory deletion and pending disk retry",
+      "A06 deadline/use-raw and worker drain",
+      "A06 remote input and single generation policy",
+      "A07 field/window/process identity and clipboard generation guards"
+    ],
+    "signedTestCompilation": "deadline-delivery-final-compile.log passed; tests not executed",
+    "releaseBuild": "deadline-delivery-release.log passed",
+    "offlineTests": 40,
+    "offlineFailures": 0,
+    "xcodeTests": "pending live profile check completion",
+    "stableAppReplaced": false,
+    "liveProfileClarification": "latest reply referenced earlier Untitled3 test; Untitled4 inspected empty; new profile check remains pending"
+  }
+}

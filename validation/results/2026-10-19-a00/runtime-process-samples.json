@@ -1,0 +1,78 @@
+{
+  "scope": "XCTest host process RSS sampled once per second; includes app/test harness. Ollama server memory excluded. Not sole-ASR peak instrumentation.",
+  "samples": [
+    {
+      "elapsedSeconds": 0.068,
+      "pid": 65070,
+      "rssKiB": 112608,
+      "cpuPercent": 2.0
+    },
+    {
+      "elapsedSeconds": 1.159,
+      "pid": 65070,
+      "rssKiB": 112576,
+      "cpuPercent": 0.1
+    },
+    {
+      "elapsedSeconds": 2.239,
+      "pid": 65070,
+      "rssKiB": 112608,
+      "cpuPercent": 0.1
+    },
+    {
+      "elapsedSeconds": 3.319,
+      "pid": 65070,
+      "rssKiB": 112608,
+      "cpuPercent": 0.1
+    },
+    {
+      "elapsedSeconds": 4.436,
+      "pid": 65070,
+      "rssKiB": 112688,
+      "cpuPercent": 2.7
+    },
+    {
+      "elapsedSeconds": 5.523,
+      "pid": 65070,
+      "rssKiB": 112416,
+      "cpuPercent": 0.1
+    },
+    {
+      "elapsedSeconds": 6.615,
+      "pid": 65070,
+      "rssKiB": 112432,
+      "cpuPercent": 0.1
+    },
+    {
+      "elapsedSeconds": 7.69,
+      "pid": 65070,
+      "rssKiB": 112464,
+      "cpuPercent": 0.4
+    },
+    {
+      "elapsedSeconds": 8.767,
+      "pid": 65070,
+      "rssKiB": 112416,
+      "cpuPercent": 0.9
+    },
+    {
+      "elapsedSeconds": 9.844,
+      "pid": 65070,
+      "rssKiB": 112416,
+      "cpuPercent": 1.5
+    },
+    {
+      "elapsedSeconds": 10.929,
+      "pid": 65070,
+      "rssKiB": 112416,
+      "cpuPercent": 0.1
+    },
+    {
+      "elapsedSeconds": 12.004,
+      "pid": 65070,
+      "rssKiB": 174320,
+      "cpuPercent": 41.6
+    }
+  ],
+  "peakRssKiB": 174320
+}

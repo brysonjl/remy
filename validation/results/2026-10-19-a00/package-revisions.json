@@ -1,0 +1,11 @@
+{
+  "FluidAudio": {
+    "revision": "0b1f46289fe27d95b5e66ad8be46e64f5ee02ae7"
+  },
+  "llama.swift": {
+    "revision": "716419d4d7aa542fce301e809cde7234c68ddbc6"
+  },
+  "Sparkle": {
+    "revision": "ac2def288cbff5cfc7df3ffef6abdf45b72bcb0a"
+  }
+}

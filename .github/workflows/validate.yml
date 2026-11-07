@@ -1,0 +1,69 @@
+name: Remy foundation validation
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: foundation-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-checks:
+    name: Source pins, hygiene and release gates (no Xcode)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - run: python3 validation/foundation-checks/check.py
+      - name: Verify retained third-party notice inventory
+        run: python3 validation/check-third-party-notices.py
+      - name: Publication hygiene and clean-clone regression tests
+        run: |
+          python3 -m unittest discover -s validation/publication-hygiene -p 'test_*.py'
+          python3 -m unittest discover -s validation/foundation-checks -p 'test_*.py'
+      - name: Scan locally available history and source without exposing matches
+        run: |
+          if ! python3 validation/publication-hygiene/check.py > "$RUNNER_TEMP/publication-hygiene.json"; then
+            echo 'Publication hygiene failed. Run the checker locally and review findings privately.'
+            exit 1
+          fi
+          python3 -c 'import json, os; r=json.load(open(os.path.join(os.environ["RUNNER_TEMP"], "publication-hygiene.json"))); print("Publication patterns passed; manual-review items:", len(r["manual_review"]), "; machine-path items:", len(r["machine_path_review"]))'
+      - name: Shell syntax and notarization failure paths
+        run: |
+          bash -n app/scripts/remy-build.sh app/scripts/remy-dev.sh app/scripts/remy-local.sh app/scripts/release-macos.template.sh app/scripts/release-gates.sh
+          bash app/scripts/release-gates_test.sh
+          python3 -m unittest discover -s app/scripts -p 'test_*.py'
+          git diff --check
+      - name: Ensure pinned lockfile stayed unchanged
+        if: always()
+        run: git diff --exit-code -- 'app/Dictate Anywhere.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved'
+
+  full-xcode:
+    name: Full Xcode validation (27.1 on preview arm64 image)
+    # Official image inventory lists exact 27A9275 + SDK 27.0; preflight still
+    # fails closed if preview contents change. No hosted pass is inferred.
+    runs-on: xcode-27
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_27.1.app/Contents/Developer
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Check exact toolchain and package pins
+        run: python3 validation/foundation-checks/check.py --toolchain
+      - name: Resolve, build Debug and Release, ordinary tests and offline checks
+        run: bash validation/foundation-checks/run.sh
+      - name: Ensure pinned lockfile stayed unchanged
+        if: always()
+        run: |
+          python3 validation/foundation-checks/check.py
+          git diff --exit-code -- 'app/Dictate Anywhere.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved'

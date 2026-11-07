@@ -1,0 +1,189 @@
+{
+  "reviewed_on": "2026-11-05",
+  "scope": "Source-policy review only; these review revisions do not pin the app downloader or attest cached/user model files.",
+  "repositories": [
+    {
+      "repository": "FluidInference/parakeet-tdt-0.6b-v3-coreml",
+      "review_revision": "7dd20fe6b1797d35f5e3307e8b1732d9a178edfe",
+      "declared_license": "cc-by-4.0",
+      "base_model": [
+        "nvidia/parakeet-tdt-0.6b-v3"
+      ],
+      "files": [
+        {
+          "path": "README.md",
+          "source": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v3-coreml/resolve/7dd20fe6b1797d35f5e3307e8b1732d9a178edfe/README.md",
+          "sha256": "4155baa7d7d6f0ada748e1db3c1b91d18c9f7eb7155efc1abfbbe9d4a6507712",
+          "retained_path": "docs/third-party/models/reviewed-options/FluidInference--parakeet-tdt-0.6b-v3-coreml/README.md"
+        }
+      ],
+      "scope": "Public metadata review snapshot; does not pin or attest runtime-downloaded files."
+    },
+    {
+      "repository": "FluidInference/parakeet-ultra-coreml",
+      "review_revision": "95eaa59a39d4394f047a4dc5cce480388a60d1b6",
+      "declared_license": "cc-by-4.0",
+      "base_model": "moondream/parakeet-ultra",
+      "files": [
+        {
+          "path": "README.md",
+          "source": "https://huggingface.co/FluidInference/parakeet-ultra-coreml/resolve/95eaa59a39d4394f047a4dc5cce480388a60d1b6/README.md",
+          "sha256": "9e9e26b6da628a0dc34b9c55f2029e486fc02304ccd7f83825333572ae11c158",
+          "retained_path": "docs/third-party/models/reviewed-options/FluidInference--parakeet-ultra-coreml/README.md"
+        }
+      ],
+      "scope": "Public metadata review snapshot; does not pin or attest runtime-downloaded files."
+    },
+    {
+      "repository": "FluidInference/parakeet-ctc-110m-coreml",
+      "review_revision": "accdafd8cf8a2ff1cabe3c11e54416b405d409aa",
+      "declared_license": "cc-by-4.0",
+      "base_model": [
+        "nvidia/parakeet-tdt_ctc-110m"
+      ],
+      "files": [
+        {
+          "path": "README.md",
+          "source": "https://huggingface.co/FluidInference/parakeet-ctc-110m-coreml/resolve/accdafd8cf8a2ff1cabe3c11e54416b405d409aa/README.md",
+          "sha256": "1aa99e33e37d4d36f01f15b7d81f878a43a85210c184aebebf1f27d5a4c3b189",
+          "retained_path": "docs/third-party/models/reviewed-options/FluidInference--parakeet-ctc-110m-coreml/README.md"
+        }
+      ],
+      "scope": "Public metadata review snapshot; does not pin or attest runtime-downloaded files."
+    },
+    {
+      "repository": "FluidInference/parakeet-tdt-ctc-110m-coreml",
+      "review_revision": "9bc92ead6e8f17eca92a869fd578ae76842b82ba",
+      "declared_license": "cc-by-4.0",
+      "base_model": [
+        "nvidia/parakeet-tdt_ctc-110m"
+      ],
+      "files": [
+        {
+          "path": "README.md",
+          "source": "https://huggingface.co/FluidInference/parakeet-tdt-ctc-110m-coreml/resolve/9bc92ead6e8f17eca92a869fd578ae76842b82ba/README.md",
+          "sha256": "9ff65c55dfc1eb9e385760c90c1bb8d38e74136db1adc6d74f8b741ba5de2d1c",
+          "retained_path": "docs/third-party/models/reviewed-options/FluidInference--parakeet-tdt-ctc-110m-coreml/README.md"
+        }
+      ],
+      "scope": "Public metadata review snapshot; does not pin or attest runtime-downloaded files."
+    },
+    {
+      "repository": "FluidInference/parakeet-realtime-eou-120m-coreml",
+      "review_revision": "40a23f4c0b333aa17ad8c0f2ea47ec2347f2f355",
+      "declared_license": "other",
+      "base_model": [
+        "nvidia/parakeet_realtime_eou_120m-v1"
+      ],
+      "files": [
+        {
+          "path": "README.md",
+          "source": "https://huggingface.co/FluidInference/parakeet-realtime-eou-120m-coreml/resolve/40a23f4c0b333aa17ad8c0f2ea47ec2347f2f355/README.md",
+          "sha256": "aa118bc396f4bf5a0e5801761c1b2eafa584683492605b4f945cf57427b1fb49",
+          "retained_path": "docs/third-party/models/reviewed-options/FluidInference--parakeet-realtime-eou-120m-coreml/README.md"
+        }
+      ],
+      "scope": "Public metadata review snapshot; does not pin or attest runtime-downloaded files."
+    },
+    {
+      "repository": "FluidInference/nemotron-speech-streaming-en-0.6b-coreml",
+      "review_revision": "e673531caa6d25ab7baf5a8c14c9b99ba1551838",
+      "declared_license": "other",
+      "base_model": "nvidia/nemotron-speech-streaming-en-0.6b",
+      "files": [
+        {
+          "path": "README.md",
+          "source": "https://huggingface.co/FluidInference/nemotron-speech-streaming-en-0.6b-coreml/resolve/e673531caa6d25ab7baf5a8c14c9b99ba1551838/README.md",
+          "sha256": "9d9d997e953780619073cdf31aef0d5c2e95ef609145127b6fc59950ad58286d",
+          "retained_path": "docs/third-party/models/reviewed-options/FluidInference--nemotron-speech-streaming-en-0.6b-coreml/README.md"
+        }
+      ],
+      "scope": "Public metadata review snapshot; does not pin or attest runtime-downloaded files."
+    },
+    {
+      "repository": "FluidInference/sensevoice-small-coreml",
+      "review_revision": "74bdbe74b2258f25b5400db72f6cbfbef7c74ded",
+      "declared_license": "other",
+      "base_model": "FunAudioLLM/SenseVoiceSmall",
+      "files": [
+        {
+          "path": "README.md",
+          "source": "https://huggingface.co/FluidInference/sensevoice-small-coreml/resolve/74bdbe74b2258f25b5400db72f6cbfbef7c74ded/README.md",
+          "sha256": "516a8f6638e3a97499ab56d4e628ef9c7bf6a350f9ae21ea58c88aa8ee650335",
+          "retained_path": "docs/third-party/models/reviewed-options/FluidInference--sensevoice-small-coreml/README.md"
+        }
+      ],
+      "scope": "Public metadata review snapshot; does not pin or attest runtime-downloaded files."
+    },
+    {
+      "repository": "FluidInference/Nemotron-3.5-ASR-Streaming-Multilingual-0.6b-CoreML",
+      "review_revision": "1a41b75758b0337ff67db7d5408280aaaf23074e",
+      "declared_license": "other",
+      "base_model": "nvidia/nemotron-3.5-asr-streaming-0.6b",
+      "files": [
+        {
+          "path": "README.md",
+          "source": "https://huggingface.co/FluidInference/Nemotron-3.5-ASR-Streaming-Multilingual-0.6b-CoreML/resolve/1a41b75758b0337ff67db7d5408280aaaf23074e/README.md",
+          "sha256": "cb98a61839f512528ca728e80e084d793f26c3cefb79fdbfff41f1929b317e78",
+          "retained_path": "docs/third-party/models/reviewed-options/FluidInference--Nemotron-3.5-ASR-Streaming-Multilingual-0.6b-CoreML/README.md"
+        }
+      ],
+      "scope": "Public metadata review snapshot; does not pin or attest runtime-downloaded files."
+    },
+    {
+      "repository": "FluidInference/silero-vad-coreml",
+      "review_revision": "b419383c55c110e2c9271fa6ee0ea83d03c70d96",
+      "declared_license": "mit",
+      "base_model": [
+        "onnx-community/silero-vad"
+      ],
+      "files": [
+        {
+          "path": "README.md",
+          "source": "https://huggingface.co/FluidInference/silero-vad-coreml/resolve/b419383c55c110e2c9271fa6ee0ea83d03c70d96/README.md",
+          "sha256": "c31dbec3e24a014a51fc06c645b3cb04897c97ecdbad9a90645466019c933ef4",
+          "retained_path": "docs/third-party/models/reviewed-options/FluidInference--silero-vad-coreml/README.md"
+        }
+      ],
+      "scope": "Public metadata review snapshot; does not pin or attest runtime-downloaded files."
+    },
+    {
+      "repository": "nvidia/parakeet-tdt-0.6b-v2",
+      "review_revision": "ae9ad07059c7c739ffaf932226a8fe64ae2620b0",
+      "declared_license": "cc-by-4.0",
+      "base_model": null,
+      "files": [
+        {
+          "path": "README.md",
+          "source": "https://huggingface.co/nvidia/parakeet-tdt-0.6b-v2/resolve/ae9ad07059c7c739ffaf932226a8fe64ae2620b0/README.md",
+          "sha256": "e2d10f955eb14a871092de134d2e82a59f494f001a181111fb95c74805763c65",
+          "retained_path": "docs/third-party/models/reviewed-options/nvidia--parakeet-tdt-0.6b-v2/README.md"
+        }
+      ],
+      "scope": "Public metadata review snapshot; does not pin or attest runtime-downloaded files."
+    },
+    {
+      "repository": "Qwen/Qwen3-0.6B",
+      "review_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+      "declared_license": "apache-2.0",
+      "base_model": [
+        "Qwen/Qwen3-0.6B-Base"
+      ],
+      "files": [
+        {
+          "path": "LICENSE",
+          "source": "https://huggingface.co/Qwen/Qwen3-0.6B/resolve/c1899de289a04d12100db370d81485cdf75e47ca/LICENSE",
+          "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+          "retained_path": "docs/third-party/models/reviewed-options/Qwen--Qwen3-0.6B/LICENSE"
+        },
+        {
+          "path": "README.md",
+          "source": "https://huggingface.co/Qwen/Qwen3-0.6B/resolve/c1899de289a04d12100db370d81485cdf75e47ca/README.md",
+          "sha256": "1ab64a26fcb3b461423b89a433a8c858f1bf8d4086f979cbb3ff878d47cf20e9",
+          "retained_path": "docs/third-party/models/reviewed-options/Qwen--Qwen3-0.6B/README.md"
+        }
+      ],
+      "scope": "Public metadata review snapshot; does not pin or attest runtime-downloaded files."
+    }
+  ]
+}

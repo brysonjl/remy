@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "purpose": "A00 baseline only; no automatic app model-manager integration",
+  "repo": "FluidInference/parakeet-tdt-0.6b-v2-coreml",
+  "revision": "ee09c569f73759e6d44c9bd16766f477b2b36d39",
+  "metadata_url": "https://huggingface.co/api/models/FluidInference/parakeet-tdt-0.6b-v2-coreml/revision/ee09c569f73759e6d44c9bd16766f477b2b36d39?blobs=true",
+  "license": "CC-BY-4.0",
+  "base_model": "nvidia/parakeet-tdt-0.6b-v2",
+  "fluid_audio_version": "0.17.5",
+  "fluid_audio_revision": "0b1f46289fe27d95b5e66ad8be46e64f5ee02ae7",
+  "app_relative_directory": "Models/parakeet-tdt-0.6b-v2-coreml",
+  "total_bytes": 464414912,
+  "files": [
+    {
+      "path": "Decoder.mlmodelc/analytics/coremldata.bin",
+      "size": 243,
+      "git_blob_sha1": "7e6fa4eb79131e62089f252a08b860e723f5114f",
+      "url": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v2-coreml/resolve/ee09c569f73759e6d44c9bd16766f477b2b36d39/Decoder.mlmodelc/analytics/coremldata.bin",
+      "sha256": "46de1a6fe2e49d19a2125bc91acf020df7f2aea84ba821532aade8427a440b05",
+      "checksum_source": "upstream Hugging Face LFS SHA256"
+    },
+    {
+      "path": "Decoder.mlmodelc/coremldata.bin",
+      "size": 554,
+      "git_blob_sha1": "79b160cb7e3eb3213fb22cde5fbf6ac7f324c91b",
+      "url": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v2-coreml/resolve/ee09c569f73759e6d44c9bd16766f477b2b36d39/Decoder.mlmodelc/coremldata.bin",
+      "sha256": "d200ca07694a347f6d02a3886a062ae839831e094e443222f2e48a14945966a8",
+      "checksum_source": "upstream Hugging Face LFS SHA256"
+    },
+    {
+      "path": "Decoder.mlmodelc/metadata.json",
+      "size": 3427,
+      "git_blob_sha1": "e3a08d21a5d1577db2bedd1749ea0ddae5d21b73",
+      "url": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v2-coreml/resolve/ee09c569f73759e6d44c9bd16766f477b2b36d39/Decoder.mlmodelc/metadata.json",
+      "sha256": "90a279b822496316458febc0ce761ab05954fadd9d66aa97bea077a35fc8f2b2",
+      "checksum_source": "computed from immutable Git blob, verified against upstream Git SHA1"
+    },
+    {
+      "path": "Decoder.mlmodelc/model.mil",
+      "size": 13106,
+      "git_blob_sha1": "167cc9db34dd7828e0e61eab40d6a09f8a234d30",
+      "url": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v2-coreml/resolve/ee09c569f73759e6d44c9bd16766f477b2b36d39/Decoder.mlmodelc/model.mil",
+      "sha256": "7b95a5a6b672c652000348a67b6d4d92bb8e176b978c6666fe73c28a4d7ec579",
+      "checksum_source": "computed from immutable Git blob, verified against upstream Git SHA1"
+    },
+    {
+      "path": "Decoder.mlmodelc/weights/weight.bin",
+      "size": 14429952,
+      "git_blob_sha1": "a895491b78de520abc21d90321ffd90c95483662",
+      "url": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v2-coreml/resolve/ee09c569f73759e6d44c9bd16766f477b2b36d39/Decoder.mlmodelc/weights/weight.bin",
+      "sha256": "27d26890221d82322c1092fd99d7b40578e435d5cf4b83c887c42603caf97aba",
+      "checksum_source": "upstream Hugging Face LFS SHA256"
+    },
+    {
+      "path": "Encoder.mlmodelc/analytics/coremldata.bin",
+      "size": 243,
+      "git_blob_sha1": "4738782a8e36389621ff4b3b90dd2a661b35146c",
+      "url": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v2-coreml/resolve/ee09c569f73759e6d44c9bd16766f477b2b36d39/Encoder.mlmodelc/analytics/coremldata.bin",
+      "sha256": "42e638870d73f26b332918a3496ce36793fbb413a81cbd3d16ba01328637a105",
+      "checksum_source": "upstream Hugging Face LFS SHA256"
+    },
+    {
+      "path": "Encoder.mlmodelc/coremldata.bin",
+      "size": 485,
+      "git_blob_sha1": "e016ed32c20e1563399f15adad451a442644b3d7",
+      "url": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v2-coreml/resolve/ee09c569f73759e6d44c9bd16766f477b2b36d39/Encoder.mlmodelc/coremldata.bin",
+      "sha256": "4def7aa848599ad0e17a8b9a982edcdbf33cf92e1f4b798de32e2ca0bc74b030",
+      "checksum_source": "upstream Hugging Face LFS SHA256"
+    },
+    {
+      "path": "Encoder.mlmodelc/metadata.json",
+      "size": 2926,
+      "git_blob_sha1": "c87f9eb24e76b8e518dc1fbead46c8c0029d3925",
+      "url": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v2-coreml/resolve/ee09c569f73759e6d44c9bd16766f477b2b36d39/Encoder.mlmodelc/metadata.json",
+      "sha256": "58222fbc48c13c49d9715567803cd50cb9c23e4360462e0f8ffcea59a2c73c63",
+      "checksum_source": "computed from immutable Git blob, verified against upstream Git SHA1"
+    },
+    {
+      "path": "Encoder.mlmodelc/model.mil",
+      "size": 959769,
+      "git_blob_sha1": "93d1301ccde7c2ca447af6c01ab05bfda5a5dd2c",
+      "url": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v2-coreml/resolve/ee09c569f73759e6d44c9bd16766f477b2b36d39/Encoder.mlmodelc/model.mil",
+      "sha256": "ed7b19156ca29fa7dfd6891deb9fda4b0e8893f68597c985d135736546a43808",
+      "checksum_source": "computed from immutable Git blob, verified against upstream Git SHA1"
+    },
+    {
+      "path": "Encoder.mlmodelc/weights/weight.bin",
+      "size": 445187200,
+      "git_blob_sha1": "e6313f81d9d94af46347f28087f51a60eb28164c",
+      "url": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v2-coreml/resolve/ee09c569f73759e6d44c9bd16766f477b2b36d39/Encoder.mlmodelc/weights/weight.bin",
+      "sha256": "4adc7ad44f9d05e1bffeb2b06d3bb02861a5c7602dff63a6b494aed3bf8a6c3e",
+      "checksum_source": "upstream Hugging Face LFS SHA256"
+    },
+    {
+      "path": "JointDecision.mlmodelc/analytics/coremldata.bin",
+      "size": 243,
+      "git_blob_sha1": "5007841fb604e70990e535a2a002ee18f93e83e4",
+      "url": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v2-coreml/resolve/ee09c569f73759e6d44c9bd16766f477b2b36d39/JointDecision.mlmodelc/analytics/coremldata.bin",
+      "sha256": "f1183ba213bb94a918c8d2cad19ab045320618f97f6ca662245b3936d7b090f7",
+      "checksum_source": "upstream Hugging Face LFS SHA256"
+    },
+    {
+      "path": "JointDecision.mlmodelc/coremldata.bin",
+      "size": 534,
+      "git_blob_sha1": "72290f46bfb535192ed1ed5ca1fec941874efbca",
+      "url": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v2-coreml/resolve/ee09c569f73759e6d44c9bd16766f477b2b36d39/JointDecision.mlmodelc/coremldata.bin",
+      "sha256": "e2c6752f1c8cf2d3f6f26ec93195c9bfa759ad59edf9f806696a138154f96f11",
+      "checksum_source": "upstream Hugging Face LFS SHA256"
+    },
+    {
+      "path": "JointDecision.mlmodelc/metadata.json",
+      "size": 2936,
+      "git_blob_sha1": "db3b2bc33cfda6f7cd1073d21182446180e53f94",
+      "url": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v2-coreml/resolve/ee09c569f73759e6d44c9bd16766f477b2b36d39/JointDecision.mlmodelc/metadata.json",
+      "sha256": "ba8d309417b9acd4a175fdb15687de6a941db2f5b06666a60e7cf3cc8e2d3c3c",
+      "checksum_source": "computed from immutable Git blob, verified against upstream Git SHA1"
+    },
+    {
+      "path": "JointDecision.mlmodelc/model.mil",
+      "size": 9722,
+      "git_blob_sha1": "339c35b303b074de7fe047bb099311a4cc08cf53",
+      "url": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v2-coreml/resolve/ee09c569f73759e6d44c9bd16766f477b2b36d39/JointDecision.mlmodelc/model.mil",
+      "sha256": "93bf82042235127cb81ab537dcae47a1c2e7e242ce4ffdaf772981b45eedc4f0",
+      "checksum_source": "computed from immutable Git blob, verified against upstream Git SHA1"
+    },
+    {
+      "path": "JointDecision.mlmodelc/weights/weight.bin",
+      "size": 3453388,
+      "git_blob_sha1": "8764a151a786b38079c36a409fe5144ddf8b95a9",
+      "url": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v2-coreml/resolve/ee09c569f73759e6d44c9bd16766f477b2b36d39/JointDecision.mlmodelc/weights/weight.bin",
+      "sha256": "ca22a65903a05e64137677da608077578a8606090a598abf4875fa6199aaa19d",
+      "checksum_source": "upstream Hugging Face LFS SHA256"
+    },
+    {
+      "path": "Preprocessor.mlmodelc/analytics/coremldata.bin",
+      "size": 243,
+      "git_blob_sha1": "84e7c818c15d2650b6c55b20e618fba3e6289763",
+      "url": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v2-coreml/resolve/ee09c569f73759e6d44c9bd16766f477b2b36d39/Preprocessor.mlmodelc/analytics/coremldata.bin",
+      "sha256": "03ab3c1327a054c54c07a40325db967ec574f2c91dcc8192bfa44aa561bcf2d8",
+      "checksum_source": "upstream Hugging Face LFS SHA256"
+    },
+    {
+      "path": "Preprocessor.mlmodelc/coremldata.bin",
+      "size": 494,
+      "git_blob_sha1": "b53fff2bc93fbe4b468811db15aa17767f3cb33c",
+      "url": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v2-coreml/resolve/ee09c569f73759e6d44c9bd16766f477b2b36d39/Preprocessor.mlmodelc/coremldata.bin",
+      "sha256": "d88ea1fc349459c9e100d6a96688c5b29a1f0d865f544be103001724b986b6d6",
+      "checksum_source": "upstream Hugging Face LFS SHA256"
+    },
+    {
+      "path": "Preprocessor.mlmodelc/metadata.json",
+      "size": 2974,
+      "git_blob_sha1": "887f7d4adc6d7f933686f7b984e23a47b45f57e3",
+      "url": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v2-coreml/resolve/ee09c569f73759e6d44c9bd16766f477b2b36d39/Preprocessor.mlmodelc/metadata.json",
+      "sha256": "fb16c581ff5e1b962e7cb2181ed892cd32f9f84c12b6e80ff3e089f28e35bcbb",
+      "checksum_source": "computed from immutable Git blob, verified against upstream Git SHA1"
+    },
+    {
+      "path": "Preprocessor.mlmodelc/model.mil",
+      "size": 27166,
+      "git_blob_sha1": "e94cce4bc7fbf55e55788449bf067ffe09a5ca91",
+      "url": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v2-coreml/resolve/ee09c569f73759e6d44c9bd16766f477b2b36d39/Preprocessor.mlmodelc/model.mil",
+      "sha256": "3e06d16fd061294c8a75be68c43a3b1ed1f593d4a9c35249e9cdbccadc59721e",
+      "checksum_source": "computed from immutable Git blob, verified against upstream Git SHA1"
+    },
+    {
+      "path": "Preprocessor.mlmodelc/weights/weight.bin",
+      "size": 298880,
+      "git_blob_sha1": "a9af1ac1e407ef336eebc2fd4da9de57e6d172ad",
+      "url": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v2-coreml/resolve/ee09c569f73759e6d44c9bd16766f477b2b36d39/Preprocessor.mlmodelc/weights/weight.bin",
+      "sha256": "a5f7df6c7f47147ae9486fe18cc7792f9a44d093ec3c6a11e91ef2dc363c48dc",
+      "checksum_source": "upstream Hugging Face LFS SHA256"
+    },
+    {
+      "path": "README.md",
+      "size": 1665,
+      "git_blob_sha1": "e5543d2fbe0a404c1d6cd1f27c4686796ed2d2af",
+      "url": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v2-coreml/resolve/ee09c569f73759e6d44c9bd16766f477b2b36d39/README.md",
+      "sha256": "491eac9a160dc7b0f7ce1210dea4fff6df0222124e93ea83ae2cd72827b4ce02",
+      "checksum_source": "computed from immutable Git blob, verified against upstream Git SHA1"
+    },
+    {
+      "path": "parakeet_vocab.json",
+      "size": 18762,
+      "git_blob_sha1": "a111d3bd29d44781c4588447c3eac1ea549cb1f1",
+      "url": "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v2-coreml/resolve/ee09c569f73759e6d44c9bd16766f477b2b36d39/parakeet_vocab.json",
+      "sha256": "57019fe3c745772ca83a1b048a4bb951cd51329504ea33d4d83316b96e279a97",
+      "checksum_source": "computed from immutable Git blob, verified against upstream Git SHA1"
+    }
+  ]
+}

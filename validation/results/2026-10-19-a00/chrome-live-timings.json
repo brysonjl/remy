@@ -1,0 +1,60 @@
+{
+  "scope": "Chrome raw hold test window 17:05:40\u201317:07:00 MDT; aggregate sessions, not individually mapped to fields",
+  "source": "live-performance.json",
+  "intervalDefinition": "finishDictation entry through awaited TextInserter result; success is the app-reported result, not independently timed visible text acknowledgement",
+  "sessions": [
+    {
+      "sessionID": "75A3D8E8-FF12-4AD2-B286-F95BDAABBABA",
+      "lastEventTime": "2026-10-19 17:05:48.184798-0600",
+      "dictation.requestToRecording": {
+        "milliseconds": 175,
+        "outcome": "completed"
+      },
+      "dictation.stopToInsertion": {
+        "milliseconds": 93,
+        "outcome": "success"
+      }
+    },
+    {
+      "sessionID": "4AEF98FE-75F6-4126-AF01-AD0FA0F3C7FA",
+      "lastEventTime": "2026-10-19 17:05:55.694107-0600",
+      "dictation.requestToRecording": {
+        "milliseconds": 98,
+        "outcome": "completed"
+      },
+      "dictation.stopToInsertion": {
+        "milliseconds": 81,
+        "outcome": "success"
+      }
+    },
+    {
+      "sessionID": "FDF3DED7-BD70-4DE0-9FF3-4F37027CA17B",
+      "lastEventTime": "2026-10-19 17:06:11.011468-0600",
+      "dictation.requestToRecording": {
+        "milliseconds": 152,
+        "outcome": "completed"
+      },
+      "dictation.stopToInsertion": {
+        "milliseconds": 87,
+        "outcome": "success"
+      }
+    },
+    {
+      "sessionID": "825A63FF-E9E3-4E8A-9FFF-DA31B844785F",
+      "lastEventTime": "2026-10-19 17:06:42.494167-0600",
+      "dictation.requestToRecording": {
+        "milliseconds": 147,
+        "outcome": "completed"
+      },
+      "dictation.stopToInsertion": {
+        "milliseconds": 18,
+        "outcome": "noText"
+      }
+    }
+  ],
+  "limits": [
+    "Three app-reported successful raw deliveries and one noText session in this window",
+    "No controlled distribution, cold benchmark, or latency acceptance claim",
+    "Capture trace is setup scope, not utterance duration; not used as speech duration"
+  ]
+}

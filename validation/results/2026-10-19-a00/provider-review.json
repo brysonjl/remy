@@ -1,0 +1,92 @@
+{
+  "reviewVersion": 1,
+  "source": ".local/provider-baseline/local-26447B6D-1343-491C-9D89-EC70A1A9B981.json",
+  "sourceSHA256": "9e834ff00131e431efbf450fbfd3de744c8ea122aa6029ba89399eaa61d60346",
+  "reviewMethod": "Agent manual comparison of all ten public seed input/output pairs; no human/blinded rating claimed.",
+  "provider": "Ollama Native loopback",
+  "model": "gemma3:4b",
+  "modelDigest": "a2af6cc3eb7fa8be8504abaf9b04e88f17a119ec3f04a3addf55f92841195f5a",
+  "quantization": "Q4_K_M",
+  "parameterSize": "4.3B",
+  "promptSHA256": "1375babce708fecd69131c2c76d7c29dfc7df5dbabc0a2f2ff83406528013a8d",
+  "counts": {
+    "attempts": 10,
+    "transportOrServiceFailures": 0,
+    "acceptableIncludingScopeQualified": 8,
+    "policyReviewRequired": 1,
+    "rejected": 1
+  },
+  "timingMethod": "Whole production cleanup calls, including any model load/detail lookup/adaptation; p50 midpoint median, p95/p99 nearest rank; n=10 is directional.",
+  "timingsAll": {
+    "n": 10,
+    "p50Ms": 1363.712,
+    "p95Ms": 9328.484,
+    "p99Ms": 9328.484,
+    "minMs": 1258.327,
+    "maxMs": 9328.484
+  },
+  "firstCallMs": 9328.484333,
+  "timingsSubsequentNine": {
+    "n": 9,
+    "p50Ms": 1360.069,
+    "p95Ms": 3030.239,
+    "p99Ms": 3030.239,
+    "minMs": 1258.327,
+    "maxMs": 3030.239
+  },
+  "timingCaveat": "First 9.328s exceeds proposed 8s short-cleanup default; this harness uses per-request 15s limits and does not exercise actual application fallback/deadline behavior. Subsequent nine calls are a sequence, not established cache-controlled warm benchmark.",
+  "fixtures": [
+    {
+      "id": "seed-01",
+      "rating": "acceptable",
+      "note": "Filler removed; Maya and tomorrow morning retained; terminal punctuation omitted but no meaning edit."
+    },
+    {
+      "id": "seed-02",
+      "rating": "acceptable",
+      "note": "Explicit correction resolves Thursday to Friday and retains three."
+    },
+    {
+      "id": "seed-03",
+      "rating": "acceptable",
+      "note": "Negation, uncertainty and yet retained; typographic apostrophe only."
+    },
+    {
+      "id": "seed-04",
+      "rating": "acceptable",
+      "note": "Both amounts and not retained; punctuation improves readability."
+    },
+    {
+      "id": "seed-05",
+      "rating": "acceptable",
+      "note": "Intentional very very emphasis retained."
+    },
+    {
+      "id": "seed-06",
+      "rating": "acceptableForThisScope",
+      "note": "Xway preserved. No deterministic Xway\u2192Ixway correction rule/vocabulary was supplied, so this does not establish that separate product requirement."
+    },
+    {
+      "id": "seed-07",
+      "rating": "acceptable",
+      "note": "Dictated instruction preserved rather than executed or answered."
+    },
+    {
+      "id": "seed-08",
+      "rating": "acceptable",
+      "note": "Question returned without answering."
+    },
+    {
+      "id": "seed-09",
+      "rating": "policyReviewRequired",
+      "note": "foo underscore bar becomes foo_bar. Plausible code-dictation interpretation, but an unconfigured transformation under the conservative near-verbatim policy. Do not accept automatically without explicit code-dictation policy."
+    },
+    {
+      "id": "seed-10",
+      "rating": "rejected",
+      "note": "Quoted wait deleted: The quote is oh wait end quote \u2192 The quote is, oh, end quote. Violates explicit preservation of quoted words; punctuation does not excuse lexical deletion."
+    }
+  ],
+  "scope": "gemma3:4b supplemental smoke only; qwen3.5:4b candidate and gemma4 cloud not evaluated. Ten known seeds cannot establish 95% held-out acceptance or zero critical failures. No externally blocked-network proof.",
+  "decision": "repair/reject seed10 and resolve code-dictation policy before model selection; completed XCTest is not semantic acceptance or A00 closure"
+}

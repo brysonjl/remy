@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-19",
+  "stableApp": ".local/run/Alfred Dev.app",
+  "previousBundle": ".local/run/.alfred-dev-backup.QSrIZk/Alfred Dev.app",
+  "soundImport": {
+    "fixture": ".local/long-dictation/sound-smoke.wav",
+    "synthetic": true,
+    "seconds": 0.2,
+    "nativeImportSuccess": true,
+    "previewWithoutFallbackWarning": true,
+    "persistedAcrossRestart": true,
+    "audibilityIndependentlyMeasured": false,
+    "darkLayoutInspected": true,
+    "restored": {
+      "masterEnabled": false,
+      "start": "Tink",
+      "completion": "Pop",
+      "volumePercent": 30
+    }
+  },
+  "selectedProfile": {
+    "name": "Ollama Cloud",
+    "endpoint": "https://ollama.com/v1",
+    "model": "gemma4:31b",
+    "syntheticConnection": "passed"
+  },
+  "speech": {
+    "model": "Parakeet v2",
+    "status": "Ready to dictate",
+    "accessibilityBannerPresent": false
+  },
+  "shortcuts": {
+    "dictation": "Right Option toggle",
+    "cancellation": "Escape immediate",
+    "preserveIntentionalCancellation": false
+  },
+  "liveChrome": {
+    "status": "pending",
+    "tab": "375977976",
+    "serverExecSession": 24109
+  },
+  "credentialsReadOrExported": false,
+  "published": false,
+  "earlierFridayProfileSmoke": {
+    "status": "passed by user report",
+    "userReport": "Also the Book Friday 2 test passed as expected",
+    "scope": "Earlier Friday booking / saved-profile live dictation smoke; exact output and counters were not independently re-inspected for this confirmation. Does not establish the separate Chrome focus-change check."
+  }
+}

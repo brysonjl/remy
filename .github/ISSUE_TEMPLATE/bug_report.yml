@@ -1,0 +1,33 @@
+name: Bug report
+description: Report reproducible behavior using synthetic examples.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For security concerns, follow SECURITY.md. Do not attach keys, signing files, personal recordings/transcripts, clipboard contents, or unreviewed logs.
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Commit/version, Mac chip, macOS, and Xcode if building from source.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: Use synthetic dictated text and name the destination app/version and cleanup route. Omit private titles, URLs, and credentials.
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and observed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Reviewed evidence and workaround
+      description: Optional minimal redacted diagnostics or screenshots. Describe any recovery or workaround.

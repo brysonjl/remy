@@ -1,0 +1,8 @@
+{
+  "runningPIDs": [
+    "61879"
+  ],
+  "observation": "First signed launch, before model preparation. No inference or destination validation claimed.",
+  "networkSocketObservation": "none listed",
+  "processSample": "61879 125520 01:04"
+}

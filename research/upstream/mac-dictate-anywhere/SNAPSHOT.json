@@ -1,0 +1,176 @@
+{
+  "repository": "hoomanaskari/mac-dictate-anywhere",
+  "commit": "e420448de6e2099d33e050a4b419722032fd7519",
+  "retrieved": "2026-10-19",
+  "scope": "Selected complete source files, not a clone or buildable checkout. Shell clone failed due to DNS restrictions; retrieved through the connected GitHub tool. No upstream scripts, binaries, or tests executed.",
+  "files": [
+    {
+      "path": "LICENSE",
+      "gitBlobSha": "36294d31a166b5a12d712a68908f9a7c1628c757",
+      "source": "https://github.com/hoomanaskari/mac-dictate-anywhere/blob/e420448de6e2099d33e050a4b419722032fd7519/LICENSE",
+      "sha256": "a9a3e92a7b9de693ff5b74be900a1bddec31c94fb0f67d4cd184807b05f68eae",
+      "bytes": 1070
+    },
+    {
+      "path": "Dictate Anywhere/HotkeyService.swift",
+      "gitBlobSha": "f3a6d7af2aab8e04d9b29ef0169bf069579b1419",
+      "source": "https://github.com/hoomanaskari/mac-dictate-anywhere/blob/e420448de6e2099d33e050a4b419722032fd7519/Dictate%20Anywhere/HotkeyService.swift",
+      "sha256": "62a95a7fc94175a0d0b91b6b65ba88369b30b83b363001509292f911becac149",
+      "bytes": 14211
+    },
+    {
+      "path": "Dictate Anywhere/TextInserter.swift",
+      "gitBlobSha": "35b4cf64c1037be14bed1bfda50efa4a371dfa14",
+      "source": "https://github.com/hoomanaskari/mac-dictate-anywhere/blob/e420448de6e2099d33e050a4b419722032fd7519/Dictate%20Anywhere/TextInserter.swift",
+      "sha256": "a4228ced579cacff762e168f4f878fbe95d8b1a00bd62d06edfeec4e9432b8d9",
+      "bytes": 65311
+    },
+    {
+      "path": "Dictate Anywhere/TranscriptionEngine.swift",
+      "gitBlobSha": "72f270f2a3e9e12b1453ed9c504cba0c7f4b75c8",
+      "source": "https://github.com/hoomanaskari/mac-dictate-anywhere/blob/e420448de6e2099d33e050a4b419722032fd7519/Dictate%20Anywhere/TranscriptionEngine.swift",
+      "sha256": "ae7d9ff3b4996b26f634e463490c559cf30abb8cb264468e4abc5e3b0bee9045",
+      "bytes": 109360
+    },
+    {
+      "path": "Dictate Anywhere/AppState.swift",
+      "gitBlobSha": "49bd3e329c9d2bef1f0f572a2987d25f2c6c7757",
+      "source": "https://github.com/hoomanaskari/mac-dictate-anywhere/blob/e420448de6e2099d33e050a4b419722032fd7519/Dictate%20Anywhere/AppState.swift",
+      "sha256": "cd6b8620b33e8185fe899911ef412fd085426dd51d89c97b442b24175a0dd0c2",
+      "bytes": 133256
+    },
+    {
+      "path": "Dictate Anywhere/TranscriptHistoryPersistence.swift",
+      "gitBlobSha": "eae989cfdf6dd5ea2806809e820fbe84326e4ae3",
+      "source": "https://github.com/hoomanaskari/mac-dictate-anywhere/blob/e420448de6e2099d33e050a4b419722032fd7519/Dictate%20Anywhere/TranscriptHistoryPersistence.swift",
+      "sha256": "e0c84e41ee6d2d597559185184a6291484dbbd2c7f2ff87eef3f407911b83e91",
+      "bytes": 1290
+    },
+    {
+      "path": "Dictate Anywhere/AIPostProcessingService.swift",
+      "gitBlobSha": "948aebb542857e7784e483b55d32053ef019413a",
+      "source": "https://github.com/hoomanaskari/mac-dictate-anywhere/blob/e420448de6e2099d33e050a4b419722032fd7519/Dictate%20Anywhere/AIPostProcessingService.swift",
+      "sha256": "3d6d9b581184f3ece8756acb521acb8c75e300741aeea969f6cdb9a86b92b06f",
+      "bytes": 11877
+    },
+    {
+      "path": "Dictate Anywhere/OpenAICompatiblePostProcessingService.swift",
+      "gitBlobSha": "ab1cceb27d789381bfc1aa1f04eb7e5954b57e25",
+      "source": "https://github.com/hoomanaskari/mac-dictate-anywhere/blob/e420448de6e2099d33e050a4b419722032fd7519/Dictate%20Anywhere/OpenAICompatiblePostProcessingService.swift",
+      "sha256": "7964b856196172add6afee6cdd7f9ccd4d85c0f48896875b52a69f9d849d45aa",
+      "bytes": 13547
+    },
+    {
+      "path": "Dictate Anywhere/OllamaPostProcessingService.swift",
+      "gitBlobSha": "9278dde1326bf4253998813d9a55ec7fd258914c",
+      "source": "https://github.com/hoomanaskari/mac-dictate-anywhere/blob/e420448de6e2099d33e050a4b419722032fd7519/Dictate%20Anywhere/OllamaPostProcessingService.swift",
+      "sha256": "a5547ad350fdaa9208c598233eb1a8238fb46b79a19c16da976c7398c2fbac8b",
+      "bytes": 23365
+    },
+    {
+      "path": "Dictate Anywhere/TranscriptCleanupIntegrity.swift",
+      "gitBlobSha": "dbe1490b4c139447ab3b615e8b3c319375653426",
+      "source": "https://github.com/hoomanaskari/mac-dictate-anywhere/blob/e420448de6e2099d33e050a4b419722032fd7519/Dictate%20Anywhere/TranscriptCleanupIntegrity.swift",
+      "sha256": "2b77fb119eb082c52fb9034b158d126c5eb23a6f3fad3352da540adb3f6aa134",
+      "bytes": 1490
+    },
+    {
+      "path": "Dictate Anywhere/AudioMonitor.swift",
+      "gitBlobSha": "f08be1ab022adefa075823d7eb71a99223f03f00",
+      "source": "https://github.com/hoomanaskari/mac-dictate-anywhere/blob/e420448de6e2099d33e050a4b419722032fd7519/Dictate%20Anywhere/AudioMonitor.swift",
+      "sha256": "2359ed5a22370c58832087ab316ff96b9e18729f8b88bb511828a60291d5294e",
+      "bytes": 2484
+    },
+    {
+      "path": "Dictate Anywhere/SoftwareUpdater.swift",
+      "gitBlobSha": "e0db9b03214bb4767b638b93e23f29483e9d2f2f",
+      "source": "https://github.com/hoomanaskari/mac-dictate-anywhere/blob/e420448de6e2099d33e050a4b419722032fd7519/Dictate%20Anywhere/SoftwareUpdater.swift",
+      "sha256": "910cb8cd7a48e3200fc00caf0339cd540a70a186087f278a89e2071cc137136a",
+      "bytes": 1731
+    },
+    {
+      "path": "Dictate AnywhereTests/TranscriptHistoryPersistenceTests.swift",
+      "gitBlobSha": "ce5565453105e352fb62cd698157b4148003aa8c",
+      "source": "https://github.com/hoomanaskari/mac-dictate-anywhere/blob/e420448de6e2099d33e050a4b419722032fd7519/Dictate%20AnywhereTests/TranscriptHistoryPersistenceTests.swift",
+      "sha256": "412584c2f90a73c7acd2853d9061fccd2fa471e666f90df77dab55e65c64255f",
+      "bytes": 1699
+    },
+    {
+      "path": "Dictate AnywhereTests/HotkeyTests.swift",
+      "gitBlobSha": "332184de77e458458a9231d6e6d2cc5b089c8672",
+      "source": "https://github.com/hoomanaskari/mac-dictate-anywhere/blob/e420448de6e2099d33e050a4b419722032fd7519/Dictate%20AnywhereTests/HotkeyTests.swift",
+      "sha256": "4c3b465e435e801b22f3c3b64dc1e2fee85345ab7f6a1994b0d71202a7b08feb",
+      "bytes": 6063
+    },
+    {
+      "path": "Dictate AnywhereTests/PrivacyRegressionTests.swift",
+      "gitBlobSha": "0f3047612bbb4e175d206c6649c46e0d72d53a46",
+      "source": "https://github.com/hoomanaskari/mac-dictate-anywhere/blob/e420448de6e2099d33e050a4b419722032fd7519/Dictate%20AnywhereTests/PrivacyRegressionTests.swift",
+      "sha256": "fd46060ddb6f103c01e7f0755b580eb5ec9fe84f7b1d997d2eadd49fd8741ede",
+      "bytes": 7533
+    },
+    {
+      "path": "Dictate AnywhereTests/TextInsertionFinalizationTests.swift",
+      "gitBlobSha": "de9b1e61433a7dc73284060988dc91de9205715d",
+      "source": "https://github.com/hoomanaskari/mac-dictate-anywhere/blob/e420448de6e2099d33e050a4b419722032fd7519/Dictate%20AnywhereTests/TextInsertionFinalizationTests.swift",
+      "sha256": "7aa658bafd30a3d214329cbfcda2a92adfec7cf6eea09ccc645a10597e068251",
+      "bytes": 4793
+    },
+    {
+      "path": "Dictate AnywhereTests/RemoteCleanupConcurrencyTests.swift",
+      "gitBlobSha": "85dd3c02c3375e29f940833748f8abb3b5e5697d",
+      "source": "https://github.com/hoomanaskari/mac-dictate-anywhere/blob/e420448de6e2099d33e050a4b419722032fd7519/Dictate%20AnywhereTests/RemoteCleanupConcurrencyTests.swift",
+      "sha256": "60dd905518611bccf02496dc3a95eacb0f46807b329313f71678db5a8490d26f",
+      "bytes": 4838
+    },
+    {
+      "path": "Dictate Anywhere.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved",
+      "gitBlobSha": "9b6aad73a5b15871d5b965ab5bd45a516114a1c5",
+      "source": "https://github.com/hoomanaskari/mac-dictate-anywhere/blob/e420448de6e2099d33e050a4b419722032fd7519/Dictate%20Anywhere.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved",
+      "sha256": "8f72a9d408f6be83aa17962e0671f0322160407f83eacf990e8b464664cf52e1",
+      "bytes": 933
+    },
+    {
+      "path": "Dictate Anywhere/Settings.swift",
+      "gitBlobSha": "dd83d36778af09705f30a45041247564eea61580",
+      "source": "https://github.com/hoomanaskari/mac-dictate-anywhere/blob/e420448de6e2099d33e050a4b419722032fd7519/Dictate%20Anywhere/Settings.swift",
+      "sha256": "06ac7633328e28a8d071aba87deacfe3cecfe73a98ef98d7bcbe121affa65a9f",
+      "bytes": 108474
+    },
+    {
+      "path": "Dictate Anywhere/TranscriptHistoryView.swift",
+      "gitBlobSha": "99d81f9ee5cd22a98015dc1cef02c6d0ed8211a8",
+      "source": "https://github.com/hoomanaskari/mac-dictate-anywhere/blob/e420448de6e2099d33e050a4b419722032fd7519/Dictate%20Anywhere/TranscriptHistoryView.swift",
+      "sha256": "aff096e1d71ad21a7950dabfcff733eb92bffe8d5f343e1160e9d5766d283f4e",
+      "bytes": 12678
+    },
+    {
+      "path": "Dictate AnywhereTests/CleanupProviderContractTests.swift",
+      "gitBlobSha": "faeebb0210a07600101f0389e043339341240737",
+      "source": "https://github.com/hoomanaskari/mac-dictate-anywhere/blob/e420448de6e2099d33e050a4b419722032fd7519/Dictate%20AnywhereTests/CleanupProviderContractTests.swift",
+      "sha256": "d44abf83e7fe795152ce1b48139e2cc394f3765b2bc8c94e1b3e1d1196fb6cb3",
+      "bytes": 37950
+    },
+    {
+      "path": "Dictate AnywhereTests/AudioCaptureStartupTests.swift",
+      "gitBlobSha": "f1dd8c12f54599c752626af953bc9a36aff6b1d1",
+      "source": "https://github.com/hoomanaskari/mac-dictate-anywhere/blob/e420448de6e2099d33e050a4b419722032fd7519/Dictate%20AnywhereTests/AudioCaptureStartupTests.swift",
+      "sha256": "7dbdf558e88930f9fa83dd1a9bdca7270b862bfff76fe5f9cbe7dacfc0fd8290",
+      "bytes": 11083
+    },
+    {
+      "path": "Dictate Anywhere/TranscriptCleanupPlan.swift",
+      "gitBlobSha": "840869ed41a0a16dc6bf2d4b1cc986a0c7d1f0cd",
+      "source": "https://github.com/hoomanaskari/mac-dictate-anywhere/blob/e420448de6e2099d33e050a4b419722032fd7519/Dictate%20Anywhere/TranscriptCleanupPlan.swift",
+      "sha256": "84a5e9ed3ff89b1d1933557daef4c810a54e7b50118fde38e324d86fbf1545ce",
+      "bytes": 7268
+    },
+    {
+      "path": ".github/workflows/release.yml",
+      "gitBlobSha": "849e119eb736d56d1b481c02a26b75461e6ddba2",
+      "source": "https://github.com/hoomanaskari/mac-dictate-anywhere/blob/e420448de6e2099d33e050a4b419722032fd7519/.github/workflows/release.yml",
+      "sha256": "04f9bda646e54db010bfbac26c40b92aaeb32017eae808c38f75889c632c67c3",
+      "bytes": 1018
+    }
+  ]
+}

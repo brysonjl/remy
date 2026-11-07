@@ -1,0 +1,4277 @@
+{
+  "excluded_paths": [
+    "HANDOFF.md"
+  ],
+  "files": [
+    {
+      "mode": "100644",
+      "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+      "sha256": "d160496aeb4da77bcd1697aa45b21a62b2a8d3dae0e8cae06a3b1d2bc1f85411",
+      "size": 1130
+    },
+    {
+      "mode": "100644",
+      "path": ".github/ISSUE_TEMPLATE/config.yml",
+      "sha256": "534556612cb31ed90b08498af8531ae5449073291f7137a2955bb8c85d2f6b63",
+      "size": 222
+    },
+    {
+      "mode": "100644",
+      "path": ".github/ISSUE_TEMPLATE/feature_request.yml",
+      "sha256": "c5a9d8c9f0729b929946e886e4e45775f7fbed335f4e15425d7e2ccf0153f877",
+      "size": 555
+    },
+    {
+      "mode": "100644",
+      "path": ".github/pull_request_template.md",
+      "sha256": "7340fd25ccf8606d9e9fd5832d3ad68922ffecbcfd13fb529a94d6d8244ca8bc",
+      "size": 485
+    },
+    {
+      "mode": "100644",
+      "path": ".github/workflows/validate.yml",
+      "sha256": "a56eeb4c793cd88c74565f2358c819607c4d241520cebd9584c4b8d4103d1896",
+      "size": 3173
+    },
+    {
+      "mode": "100644",
+      "path": ".gitignore",
+      "sha256": "ff82a327cffa8ae147d8e6bd7da5b19ef7d4749753b7d8c9ecdb387aab916c10",
+      "size": 481
+    },
+    {
+      "mode": "100644",
+      "path": "ATTRIBUTION.md",
+      "sha256": "5de9e2428af1500e27e63c8a532b014b93562e42e4b5655f85454032d654542d",
+      "size": 3056
+    },
+    {
+      "mode": "100644",
+      "path": "CHANGELOG.md",
+      "sha256": "c5412bbd545a241b4010e6d197f5f7c58dc505046e5e8cd1fc8643816a14ba59",
+      "size": 1336
+    },
+    {
+      "mode": "100644",
+      "path": "CODE_OF_CONDUCT.md",
+      "sha256": "61dfe05d9daae6251ac0f4b320216d75ac1b9c3ee387c1753a690163fe17b3bf",
+      "size": 1218
+    },
+    {
+      "mode": "100644",
+      "path": "CONTRIBUTING.md",
+      "sha256": "9149054c78099d2b717109086a11278d7de7d8e505377e0bdff080ec1ec8d243",
+      "size": 2996
+    },
+    {
+      "mode": "100644",
+      "path": "LICENSE",
+      "sha256": "0252e927b08516a5963caf6ea3e647a32263e4078c352b2201099bde4e6828e9",
+      "size": 1107
+    },
+    {
+      "mode": "100644",
+      "path": "README.md",
+      "sha256": "b733f9ce37fbc112d4cb09144ab0b0a09b5a73a057e0955028526c09cf51392d",
+      "size": 8056
+    },
+    {
+      "mode": "100644",
+      "path": "SECURITY.md",
+      "sha256": "57448df1e109cbeac3589232ae8b4e310723ab00968a16f15e06cc9263b40a61",
+      "size": 2036
+    },
+    {
+      "mode": "100644",
+      "path": "THIRD_PARTY_NOTICES.md",
+      "sha256": "3d851debe7aab48e3def17f8df981f0a7c7215fc0a787ecee6963d1356da8c94",
+      "size": 6598
+    },
+    {
+      "mode": "100644",
+      "path": "app/.github/workflows/release.yml",
+      "sha256": "a264edf3cf43c65237f15a1865499f46e8454ad0a56bb900366b8855d65b443d",
+      "size": 416
+    },
+    {
+      "mode": "100644",
+      "path": "app/.gitignore",
+      "sha256": "5a2deee62670f9ca849c819c7fff74413d64eea4fd296e7d4e29b007ec341cc7",
+      "size": 835
+    },
+    {
+      "mode": "100644",
+      "path": "app/AGENTS.md",
+      "sha256": "2351696462c866a322e6aa1bcdea0cb6302a846a47276c7e32e7e6daa38bb82e",
+      "size": 633
+    },
+    {
+      "mode": "100644",
+      "path": "app/Artwork/remy-app-icon.png",
+      "sha256": "212bede034c940f1cbf2544169fe66f68cb1a3782b19b0507fa6e4ce50bd664d",
+      "size": 1869560
+    },
+    {
+      "mode": "100644",
+      "path": "app/CLAUDE.md",
+      "sha256": "2351696462c866a322e6aa1bcdea0cb6302a846a47276c7e32e7e6daa38bb82e",
+      "size": 633
+    },
+    {
+      "mode": "100644",
+      "path": "app/Config/Signing.shared.xcconfig",
+      "sha256": "c0813050147246c70330ba89f765250c552b0ecc55f5a29b7a15625a15054734",
+      "size": 548
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere.xcodeproj/project.pbxproj",
+      "sha256": "8f6ef9c5a44c40eeaf4ef7de10a23fae0d9b979146b6388b18fcbf68a6b78620",
+      "size": 20640
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere.xcodeproj/project.xcworkspace/contents.xcworkspacedata",
+      "sha256": "7f3b00b5c3fdb45242d7b87e1e5c4e25d1fa8129a16c94295ecc4e8ea2235c5f",
+      "size": 135
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings",
+      "sha256": "97704a8960b4facceef54397a08fb5d0a456247c3627359215aa2a27df22656c",
+      "size": 181
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved",
+      "sha256": "8f72a9d408f6be83aa17962e0671f0322160407f83eacf990e8b464664cf52e1",
+      "size": 933
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere.xcodeproj/xcshareddata/xcschemes/Dictate Anywhere.xcscheme",
+      "sha256": "de1692cebb9bffad905135971d977d5c59a5ef41cc0170b1f8a7fb92bb244d8a",
+      "size": 4286
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/AIPostProcessingService.swift",
+      "sha256": "3d6d9b581184f3ece8756acb521acb8c75e300741aeea969f6cdb9a86b92b06f",
+      "size": 11877
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/AIPostProcessingView.swift",
+      "sha256": "37de2bd049754561072ea92e4aed1e48ee97d2ae9a8bb58f9e37ce73bc44f5e8",
+      "size": 83313
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/AboutView.swift",
+      "sha256": "41642d139dd87b6007d06483290245f926890e6566c1818f04cf8fe1a0af58ad",
+      "size": 6853
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/AccessibilityMessagingTimeout.swift",
+      "sha256": "e4dbb9277d8e7845352c4aca7b3a9c8c53991222a6c4032c1e651fe57415a4ef",
+      "size": 1163
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/App.swift",
+      "sha256": "29a347c26864ae42add96e6f6f4c83d9be525ec6e05ccac41a58eb37b1adc81f",
+      "size": 2484
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/AppDelegate.swift",
+      "sha256": "8f5b1796ae811080c762c53f3748bc27bbec0782821049cd6a888bc090df8c4c",
+      "size": 14172
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/AppState.swift",
+      "sha256": "d557e80d3a70010a39b8fe1b098e64d995315ba3795d029628cb8c1e44ffacd4",
+      "size": 173613
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/AppleIntelligenceCleanup.swift",
+      "sha256": "5ba2cafa2118ca3f3bf9a4e77a3fcd9ac32ad30e2c638c3a637e78bac4e3deee",
+      "size": 11298
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/AppleSpeechEngine.swift",
+      "sha256": "30d42407ab13913c2902d1593ed68527f48c2b2886eec8623cb1a756c7ac1145",
+      "size": 28895
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/AssemblyAIEngine.swift",
+      "sha256": "a618d137cce0c82f9194f29ea7eb01143304409d3e8b73089b43d51acfe24985",
+      "size": 37660
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/AssemblyAIInternalPrompt.swift",
+      "sha256": "02e6fa8fc950299e41fd6b7d466a775b8897b4b3998a2ba9b07320967cc7e0d4",
+      "size": 6917
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Assets.xcassets/AccentColor.colorset/Contents.json",
+      "sha256": "5f7c1cb903fa244efe7fe2d9d2b6f1e7c5e3cea5f0a2bcb0422df2cebfe6d230",
+      "size": 713
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Assets.xcassets/AppIcon.appiconset/1024.png",
+      "sha256": "96a15699546637e2b39fe71b7631408f209da68594dc376004249b54f52a291a",
+      "size": 1414044
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Assets.xcassets/AppIcon.appiconset/128.png",
+      "sha256": "29ef77b90a570155006a2781e0d02f9b03028898300c76221b5432841f6d3ebc",
+      "size": 33150
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Assets.xcassets/AppIcon.appiconset/16.png",
+      "sha256": "1cc8e5d771d6b66d5c7addd4e332fa3b18ba410a0117618be05b09f3722db801",
+      "size": 1022
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Assets.xcassets/AppIcon.appiconset/256 1.png",
+      "sha256": "5393e89aee0c5589eb88ac5d327b2ce80b3a1550d35d0908741af2e666cce88e",
+      "size": 112037
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Assets.xcassets/AppIcon.appiconset/256.png",
+      "sha256": "5393e89aee0c5589eb88ac5d327b2ce80b3a1550d35d0908741af2e666cce88e",
+      "size": 112037
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Assets.xcassets/AppIcon.appiconset/32 1.png",
+      "sha256": "299717a96fea756806c9a3b602e8569bd3e4204167db807f6874c842a40c2755",
+      "size": 3005
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Assets.xcassets/AppIcon.appiconset/32.png",
+      "sha256": "299717a96fea756806c9a3b602e8569bd3e4204167db807f6874c842a40c2755",
+      "size": 3005
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Assets.xcassets/AppIcon.appiconset/512 1.png",
+      "sha256": "a20a31c681d01ac2bddd45de293e17c1d6d1d13f5ea3369e8442029959d52820",
+      "size": 389886
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Assets.xcassets/AppIcon.appiconset/512.png",
+      "sha256": "a20a31c681d01ac2bddd45de293e17c1d6d1d13f5ea3369e8442029959d52820",
+      "size": 389886
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Assets.xcassets/AppIcon.appiconset/64.png",
+      "sha256": "b0424f6921d81ff64db2cb651b4ea86ff82ca2e993fd7aff8f9f32df2085d656",
+      "size": 9732
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Assets.xcassets/AppIcon.appiconset/Contents.json",
+      "sha256": "2d6eb3e9fee9f4f2f06969ad502aac9f714e3f5144957b3012fd418ec56b28c8",
+      "size": 1207
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Assets.xcassets/Contents.json",
+      "sha256": "0fd49ba3c3585c709678e0046a821c3c60685ec7063720d30d3a3448be3a208b",
+      "size": 63
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Assets.xcassets/MenuBarIcon.imageset/18x18.png",
+      "sha256": "9614b4b6b3faf9e0f8819224249b21e070b3a62752e9b88e5f27d0f5080875dc",
+      "size": 410
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Assets.xcassets/MenuBarIcon.imageset/36x36.png",
+      "sha256": "fb6da72ccbcc994c6b10315f82020de2a11587519287b5d82677ea9f3cd0dc69",
+      "size": 741
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Assets.xcassets/MenuBarIcon.imageset/54x54.png",
+      "sha256": "072910a0d519a07b4617c4c704807051e603cd3e8e87fa1e3017f53dbe9c5852",
+      "size": 1158
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Assets.xcassets/MenuBarIcon.imageset/Contents.json",
+      "sha256": "9374adbe838f7f37610dbe23c15d89a30770dc83a94d907d592a278e0933dc5d",
+      "size": 436
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Assets.xcassets/RemyWaiter.imageset/Contents.json",
+      "sha256": "66312592b40b224dc45c19a311af3f9bad3a70a4cacd7bdbc30f2ff70a3bb45b",
+      "size": 155
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Assets.xcassets/RemyWaiter.imageset/remy-waiter.png",
+      "sha256": "f674679d19b69d12541ac7aa59d1ae07f51a96e0fef8537ee683457ad73a19a3",
+      "size": 1307305
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/AttentionIssue.swift",
+      "sha256": "2a716e48f4109302c2671ffde43db780c5016bc45da654681f6e90d91aa452d9",
+      "size": 7780
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/AudioCaptureStartup.swift",
+      "sha256": "9c850f7b31ceb2f276c10c7f34a013da767c9ce59f9395c7fa2086993c5f6d14",
+      "size": 7207
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/AudioMonitor.swift",
+      "sha256": "2359ed5a22370c58832087ab316ff96b9e18729f8b88bb511828a60291d5294e",
+      "size": 2484
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/AudioSampleBuffer.swift",
+      "sha256": "9eb7f0aad9e4211de7968960dc2354fb4febdb4d18ad8d6c17efa44da99fe0f4",
+      "size": 996
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/AudioVolumeGate.swift",
+      "sha256": "27d030532f5361a57559afa2233b0a8fb04da817ebde7abc745c7bac25a0ce4a",
+      "size": 2254
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/BatchSpeechDetection.swift",
+      "sha256": "17af6b0a074642008f9895cc8a9b2c16eaff926ee7d96d7fcdaec84e7c62308c",
+      "size": 2231
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/BatchTranscriptionPolicy.swift",
+      "sha256": "e845e513ac60d42c2ac22183a8d8c84fd0d548e4ccace58af322aa854eae27ea",
+      "size": 8382
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/BatchTranscriptionSession.swift",
+      "sha256": "fd15ea43c0630a273d9845ca6b5e2fb79f91ae0e2f332e501c88253e002c0f47",
+      "size": 12585
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/CJKText.swift",
+      "sha256": "d6364005b3a801a78f31e611a408c33d776018c6e71945d91416d9a483573892",
+      "size": 4042
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/CancellationShortcut.swift",
+      "sha256": "1293ab5e05ebabf1e16347666a181039798731cc15ad063f4f471deda5ade7a7",
+      "size": 1575
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/CleanupMethodMenu.swift",
+      "sha256": "5a3c4cb938ae7c47314bff80015bf0d1d2ca6182d6035df0a0de89d0cad152c7",
+      "size": 1895
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/CleanupModelCapabilities.swift",
+      "sha256": "da1d6445835a65f9fc632730f3eaa2c9827072c02a87da37edbebf51f3873dcd",
+      "size": 14478
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/CleanupProfiles/CleanupAnswerParser.swift",
+      "sha256": "63b26c8d1ba59adfcb7ce585751df089999eb761faaa553095a6675da2ee8ce9",
+      "size": 12039
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/CleanupProfiles/CleanupBoundedHTTPTransport.swift",
+      "sha256": "a52fbe541d2a9e47bb2ade3efb0a7197588c4360f90fcc81ebc1d2f21c0df49b",
+      "size": 8092
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/CleanupProfiles/CleanupProfile.swift",
+      "sha256": "6e52621605bd443abb38313ec5add5eefacc20003ccb4b58647ab8dc2484b9f2",
+      "size": 11086
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/CleanupProfiles/CleanupProfileController.swift",
+      "sha256": "8eadf72911b3ad468bcf98cea6dde04b123a13b82c7d0ee8ae0244f4597f2dce",
+      "size": 8354
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/CleanupProfiles/CleanupProfileFileRepository.swift",
+      "sha256": "ecce98f655b5e3b8231a8faf6cb38815b1298af6d057e7d8df35365b02164721",
+      "size": 14397
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/CleanupProfiles/CleanupProfileKeychainStore.swift",
+      "sha256": "c7e219885055e9ea926883e5005e654424e44e5d43575e6ee20aee03c6f5ae9b",
+      "size": 9802
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/CleanupProfiles/CleanupProfilesView.swift",
+      "sha256": "c163baf565b3416c7b12f99620682cc96899d43f55012e2a8443936c3a7045c2",
+      "size": 11239
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/CleanupProfiles/CleanupTransportPolicy.swift",
+      "sha256": "c399a44db61d2e30027945904ac2413bb2b54272bc57f24d3d8bf7cb134ed532",
+      "size": 1685
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/CompactSpeechModelLoader.swift",
+      "sha256": "8819adcad865a366eec4640dc8073506d77fdb756e958ffdf4e32bcb59bb5611",
+      "size": 978
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/DesignSystem/Atoms/DSButtons.swift",
+      "sha256": "3c9ff1179b087b6d7137185017b55ef2fa5863dd4f51e9aff64a6f1bd5d3378e",
+      "size": 4181
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/DesignSystem/Atoms/DSChip.swift",
+      "sha256": "42355ece43236f32e00cb03232d6d5b8b5c103721629592f2335bcb5da3f321e",
+      "size": 3597
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/DesignSystem/Atoms/DSControlSurface.swift",
+      "sha256": "85d1ddf9f207bcaedea9c9ef4004fe621933a312e41235e8fc0707988b9d5032",
+      "size": 1430
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/DesignSystem/Atoms/DSControls.swift",
+      "sha256": "fc55176eb8d6d3447bb9c0263813b94a5d3be749bc7e37424b890bc3580910d8",
+      "size": 9880
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/DesignSystem/Atoms/DSText.swift",
+      "sha256": "f68b97a0f0a72fca8c68c60652aba4716044963048f34523e99892a21f9335a3",
+      "size": 3545
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/DesignSystem/Atoms/HotkeyKeycaps.swift",
+      "sha256": "95efbab3507cc256646d719a27c72636ce61543524b8f421456b8036338d7d9f",
+      "size": 2011
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/DesignSystem/Atoms/WindowDragArea.swift",
+      "sha256": "c5301b84beeae96525ed53d3c8f7c648d5c3ef8f2105f9b112355b58872503b7",
+      "size": 1356
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/DesignSystem/DesignTokens.swift",
+      "sha256": "b2bf053d555e7563a5c803f99521e0615e1391c069674825ba1470ec85c6e275",
+      "size": 6601
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/DesignSystem/Molecules/DSBrand.swift",
+      "sha256": "40f95a78f3ab354d28bad1ca7de5727ce7ca77af0c1fbd7d5d08f0cdb89c2946",
+      "size": 4452
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/DesignSystem/Molecules/DSCard.swift",
+      "sha256": "7f267d834f3429cbe41214e748909dd23dd37206f94a2a24a4ab7243895ad6e2",
+      "size": 3391
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/DesignSystem/Molecules/DSModelReadiness.swift",
+      "sha256": "218628248de8c83d8830fa7ffbb3bd6af2bf0b208290c7ac11ca27974202794b",
+      "size": 1843
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/DesignSystem/Molecules/DSRows.swift",
+      "sha256": "c62aac2703d8a1721d766c455b184d404c1ad2db21bb1c932cbf49ed19ad1f8f",
+      "size": 3050
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Dictate_Anywhere.entitlements",
+      "sha256": "7bae5f42ace5f639300900727ca821778be9023ebbb9473ab4179191657742ed",
+      "size": 443
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/DictationContext.swift",
+      "sha256": "85ce368e012006f3e88047152f9a1febd8c70a3e5c26091ef546a5ac8fbeb544",
+      "size": 58580
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/DictationFocusResolver.swift",
+      "sha256": "0096c0efba52640bfce7d7946ccf78f752e6a5c5c60152c4f89d1597b64e9b06",
+      "size": 2700
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/DictationListInsertion.swift",
+      "sha256": "0d52a849071b59754bb34d848c215b9947956046e8601c5be67ae874ae0730c8",
+      "size": 6605
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/DictationRecovery.swift",
+      "sha256": "abf5fc0323c5aab637aa93c18838edf032e929aea7a850b9fbeb386604e3fc93",
+      "size": 16727
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/DictationRichListCapture.swift",
+      "sha256": "20ff3701e03397a19412d7b648fe77baa9ae251dec78feaebdeb0bb421d1a8cd",
+      "size": 3823
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/DictationTextMarkerCapture.swift",
+      "sha256": "a0e00d27032ab4fc6c2204c7ec4c298fa0022fa1d592e51c7dd2095d85e070cc",
+      "size": 4911
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Fonts/Fraunces-VariableFont.ttf",
+      "sha256": "177ff6c0f14e5550a3c624247cd1189611d4eb65d000b14944c63d967958abbb",
+      "size": 360440
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Fonts/Inter-VariableFont.ttf",
+      "sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
+      "size": 876576
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Fonts/fraunces-OFL.txt",
+      "sha256": "bdf4c22802eaf804f998195871c6b8938aac2ac14b2d78a8bd66a6f1eced833b",
+      "size": 4391
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Fonts/inter-OFL.txt",
+      "sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57",
+      "size": 4377
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Hardware.swift",
+      "sha256": "ee16e54571cfb4d86727032b7e97d5e1081f62f5330b17bd49c0b758ba1b949b",
+      "size": 1965
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/History/RemyHistoryController.swift",
+      "sha256": "0900825bfaed5622eb83234dbd7e6980946b825851093bd3da944e4cd8c1860f",
+      "size": 22056
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/History/RemyHistoryRepository.swift",
+      "sha256": "f9983ce6ff29affc3081be533ff618c638ef14a85ff45a5c5d841cad2bb978a2",
+      "size": 26154
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/History/RemyHistoryTypes.swift",
+      "sha256": "bd409b286324f72bc5827b7a819b5a5c1a6730f410ceee683742e6b620140a2e",
+      "size": 4509
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/History/RemyLegacyHistorySnapshot.swift",
+      "sha256": "06cbf598ca434dc98e5f299ef44906821aa6b8a4d56913af6ad5fa2a1d05470c",
+      "size": 5875
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/HotkeyService.swift",
+      "sha256": "047637ea932471aeb5068ae9b1e229256362b2b3d1047dd90a23092b5b6d6fda",
+      "size": 17686
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Info.plist",
+      "sha256": "d83918504cfa2badeb8ca27e20245e99d5d7f5d8a369d7646d145b76b6fe0ff9",
+      "size": 505
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/InputSourceMonitor.swift",
+      "sha256": "b66cce8d3576011dd5fc4ed94f1bbfca454e57d3e97fc3f2bfbe6b8918e6455d",
+      "size": 4622
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/InputSourceProfileResolver.swift",
+      "sha256": "19fcfb76b2931bd28c1574156afdd014c652bf7bc14a4b543fb700865c35a5e4",
+      "size": 4050
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/InputSourceSettingsSection.swift",
+      "sha256": "5c58169197889daa5e1c5fdbaea622f8f34d1f26fea5c5b2f2837c898f875e9a",
+      "size": 11474
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/InternalPromptsView.swift",
+      "sha256": "aa79f0a0c7793f19437573e6ed4087e8735d409888ce7dc5333fb4af18975027",
+      "size": 8815
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/MainWindow.swift",
+      "sha256": "203052825fdf6eb966f2f834c4784b80f9661d29b8655930d5b5605a4ffd9def",
+      "size": 6449
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/MainWindowSizing.swift",
+      "sha256": "62c10dbe39c9446a3dee2574705b209d428b58f39515aa9981c0d0f4151f6ae7",
+      "size": 516
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/ModelInsertionPlan.swift",
+      "sha256": "dd0b87dee6e6ab5cb4a9c5ebd71862c43323986472a17457579c322938ebf50b",
+      "size": 2219
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/ModelManifests/parakeet-v2.json",
+      "sha256": "cda0167b02368f3f2c54e4be8e850c6e8f85f40da3a57403f088d2425976002d",
+      "size": 11175
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/ModelReadiness.swift",
+      "sha256": "d317095db39cf3e43a68ace2c7964e3204b4cc18c7c679cc760bd7534ca9fb5e",
+      "size": 2000
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/ModelsView.swift",
+      "sha256": "51ea74cac41525a663e2cdfdd0a9c21d7ff5f0e903723347e121266306a6fd91",
+      "size": 26523
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/OllamaPostProcessingService.swift",
+      "sha256": "c8ee93f714a33cf0d4af22380a0e3e5eb68899e7d5846ddbcfec4dc0f3f6e8b7",
+      "size": 24592
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/OpenAICompatiblePostProcessingService.swift",
+      "sha256": "61a47ecc9f9ff2d6729c0813dc4485e7ce3add14bc82353ddb27df41a797d7d4",
+      "size": 14715
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/OpenRouterCredentialPreferences.swift",
+      "sha256": "c765ceab0f27dc7e8dec1f230c9b94e8285078676ab5bb442ddad0da977fc438",
+      "size": 2211
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/OpenRouterPostProcessingService.swift",
+      "sha256": "d2bb6bf61fa7ad5e9cd723925b99005717deea2d860b7a58cd5558abc68d3d5d",
+      "size": 22726
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/OverlayContent.swift",
+      "sha256": "4bf1e25994158d5a77278851bcad1f19afe291dc05eca02fe6987bc9d7696ad0",
+      "size": 11111
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/OverlayPalette.swift",
+      "sha256": "fca0ee8bf5710bc403b1ab2752daf21eb24f1898759cfc92660e7daab5525eeb",
+      "size": 841
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/OverlayPill.swift",
+      "sha256": "c968d33f9af0cd343ac32b08bcb04eb590ffe49f4e8fd2f571cbef125cf2c8ac",
+      "size": 7906
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/OverlayScreenPicker.swift",
+      "sha256": "e141ff6bcd7f76f5185dc1b1becc8807f27ae360deaa9b43eb748da178ee3508",
+      "size": 2583
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/OverlayScreenResolver.swift",
+      "sha256": "208fcbd14e230eec22bcb40c1d0448b8211307159ea658767bbf9a0519a5add3",
+      "size": 6832
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/OverlayScreenSession.swift",
+      "sha256": "4b19f593f0284f46f1194e3938602abdc7c9922acf5046fc072ed842d2e44b68",
+      "size": 3242
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/OverlaySettingsPreview.swift",
+      "sha256": "1a277d1585f7d05521198e9b4ad52a011584a0fa9a3f40090fe3d035dfb38f9e",
+      "size": 3132
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/OverlaySize.swift",
+      "sha256": "f4f132669e8af82c2b90a60f0d8a8fe9d8f7cadeba22daad5986c3efeef2ea17",
+      "size": 3713
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/OverlaySizeControl.swift",
+      "sha256": "1c3e124a1c63fc52708de3bdc33a3cfa473d9a9db69f6faaaff9caaf4c335c3d",
+      "size": 1441
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/OverlaySystemAppearance.swift",
+      "sha256": "6f6d08896633a91c63b133bb9d3852f8cdfd18e71744f2a853b8fe4d5ff10237",
+      "size": 1012
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/OverlayTranscriptContent.swift",
+      "sha256": "6191bcdce17465f651fba0c91f9265717baa8bbc99eeeb6c4feb724173505dae",
+      "size": 2656
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/OverlayWindow.swift",
+      "sha256": "cdb656944a2604359d8bb6ddbd9f448be1570fe194b06a3c8bdceacd1e23c4c4",
+      "size": 11370
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/PCMStreamConverter.swift",
+      "sha256": "e67217bf9678cc804a7dc713842f0606a05b54d5c5c2135767b16007cb099b73",
+      "size": 4074
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/PerfTrace.swift",
+      "sha256": "5bd34e4de82d30430f812bc53b11565095b3bca1226d9f7771d1582807138456",
+      "size": 13895
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Permissions.swift",
+      "sha256": "d379afc57ade197b58ea60d07a304eed7f6ee5f09858897d5a6cadc8a279eacd",
+      "size": 8144
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/PlainTextListEdit.swift",
+      "sha256": "cf44ab01831c1263afc08d6f83e48009f7f00445782615aa09c308144a8eafd9",
+      "size": 4240
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/PreparedTDTVocabulary.swift",
+      "sha256": "be4da32094a350216789703f1a9e6e381897bccf410e17324e08e7b73c9448b8",
+      "size": 1449
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/QuickVocabularyPanel.swift",
+      "sha256": "62c55ad44daa6583bda0b15f2ba24892999b749e9f770304aadb433f0f8a8856",
+      "size": 4976
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/RecognitionSessionConfiguration.swift",
+      "sha256": "73fb373ef33128af6509c12b4597392e8e37c6f71c2a4cbf901b244da34d2ee7",
+      "size": 1214
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/RemyCleanupAttempt.swift",
+      "sha256": "ddfeda194bb4958054bc09cc705b02ddd991bf9d600d99b5c8523506bc1fbf19",
+      "size": 6376
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/RemyCleanupFailure.swift",
+      "sha256": "7f37829a8ec5e72f95e9d0a342c6fe44d75107e856d24696a5c0be47e20f558a",
+      "size": 3769
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/RemyCleanupFailureClassification.swift",
+      "sha256": "4403d39f7e78b17ee522d87519d211c17ad80ac1937e22daad1a9d298209f5a6",
+      "size": 5302
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/RemyConfigurationVersion.swift",
+      "sha256": "47ba7dd611dae3de92254e1765a462f4724e205c5a10dd9564fbb6967d3860a1",
+      "size": 2395
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/RemyDeliveryAuthorization.swift",
+      "sha256": "e3566f0c7e59b391630c93b1a711bf420cc749ec05e1e513243e38880430bd5a",
+      "size": 2899
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/RemyDiagnostics.swift",
+      "sha256": "04405161b93603484490476bb09bd3c3977a0a31e8048e80744c39a3470bdfda",
+      "size": 1112
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/RemyDictationConfiguration.swift",
+      "sha256": "db948ea32a821e9aa77565a71aa59e73e74d55610806953204b8252d954073ea",
+      "size": 25447
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/RemyDictationDestination.swift",
+      "sha256": "aabe168c80a42d5cf168202c0c0742f69e0edccead241ef22953043dc15c091b",
+      "size": 2749
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/RemyFeaturePolicy.swift",
+      "sha256": "bcbd14afae019efef7b03679679a48e521fc7908ca58c5802c2568599e2a275e",
+      "size": 847
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/RemyHistoryBootstrap.swift",
+      "sha256": "8dea93448c598100cd011861f41d8ee1f41f719fdbad1d7ac4e8531d05283afa",
+      "size": 1508
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/RemyInsertionTarget.swift",
+      "sha256": "36d57200cbdd1f2b88d3d526a822c8677d8f74d088ab7b7a846b080c4ccfa863",
+      "size": 22109
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/RemyLocalDataMigration.swift",
+      "sha256": "5cf30a283a81d023dc95ade26ebe24d8ea8669d9432fbf29ad24c798e02c25fa",
+      "size": 25935
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/RemyMigrationBootstrap.swift",
+      "sha256": "6a5b7714cc8bdfd8d5b1d9ff8c06ba097bda30d5b56929b6f46d50cb6d439db1",
+      "size": 10561
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/RemyMigrationPreferences.swift",
+      "sha256": "a18994a3b4f3d04f51de46f6ae40e01c3469dbf31d91d166bf5d5298eb067f86",
+      "size": 7538
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/RemyModelDownloadTransport.swift",
+      "sha256": "b90de4a0c194cc241b070e476df1145344f140b35e2c0727537d03386cb05bb8",
+      "size": 7045
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/RemyModelManifest.swift",
+      "sha256": "a56811058436e2295ef6af896e4b3e895c502056a5ffae445a2d7fcecd012448",
+      "size": 6628
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/RemyModelStore.swift",
+      "sha256": "1f0185401def23310d31f13e4d820f0e64a2e7638bcdfa7eb5923a8860fd8eff",
+      "size": 22129
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/RemyParakeetAssets.swift",
+      "sha256": "ca0d3ed2033cd1b6070855191ed07ed96b98f684637f0289a025cd70e4eb21ba",
+      "size": 2064
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/RemySessionCoordinator.swift",
+      "sha256": "da2e7eeee00ca50bdd4823566e72042cb946dd29b93d1fdfa557388920e97bb6",
+      "size": 7685
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/RemySoundEffects.swift",
+      "sha256": "efad7cc638cc38a48dbd4b2fda9855b1ebc9e19bfe693602dc80a8fb93a783dc",
+      "size": 13877
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/RemyStartup.swift",
+      "sha256": "044cc5ba9df5253e9d79a0ee2193c8b32374bb945d47c743c4bb805645d0855a",
+      "size": 898
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/RemyStoragePaths.swift",
+      "sha256": "118c1ca7c3fbc08af277c3c326ae3d3616ee2876908942d8ace913037d8533c3",
+      "size": 8244
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/RemyStoredHistoryDeletion.swift",
+      "sha256": "9c40dbbd6390d18ee46674f929c25965389b1374062c3eef00c9f085164d782e",
+      "size": 4995
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/S1MiniCPUConfiguration.swift",
+      "sha256": "6a847e07f052a6eebe6a06e2f47e2c149f9e791f1638c703a40190cdee85342d",
+      "size": 707
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/S1MiniInputDraft.swift",
+      "sha256": "30ff3bc046f1fbaaac7565c2e61d2f256199636d65fab6749201b810fa258e20",
+      "size": 3211
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/S1MiniModelManager.swift",
+      "sha256": "ee60adba8c52b2955cbbe06db9644f86f1b1f1a38173e9618c7063cf56a076a1",
+      "size": 17719
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/S1MiniOutputSafety.swift",
+      "sha256": "71c12b6b0746f2154c107299cde53e1939f105aabc9a4fda68c3f96d99eac4ce",
+      "size": 1747
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/S1MiniPostProcessingService.swift",
+      "sha256": "bf7bb09df694c88a6c18675da59a50a6875a8d964c5d954c17a119dabe810ef3",
+      "size": 31791
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/Settings.swift",
+      "sha256": "5501d10a5a43920526c45a9e569eb2a24f2aad16284a0d80632c15fcfa133d21",
+      "size": 109556
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/SettingsMultilineTextArea.swift",
+      "sha256": "9d53b46ebadb93d2bd4629df715253221bbf6ad9670738d0fd93e3e23696137b",
+      "size": 11671
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/SettingsView.swift",
+      "sha256": "3c2251727cbd539c70e20a801c7b4ba181274243c6a6a913de6c7f79b4a0f265",
+      "size": 9700
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/SharedCTCVocabularySession.swift",
+      "sha256": "7690f623a5396ef025b1a99f45665ddfc6bf4faae9b840d52162cf36683e3671",
+      "size": 9594
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/ShortcutRecorderView.swift",
+      "sha256": "c1cdd76e1d152ad16f1e840154ac9a24cb2458115931b971941dddf341e3fdae",
+      "size": 11255
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/ShortcutsView.swift",
+      "sha256": "b84bbd0010e86939fdc209c480de033653335e14758eef1599d5ec602e3cfe54",
+      "size": 13348
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/SidebarView.swift",
+      "sha256": "df5582c1c65bb3cbf29eeb08a873f565afedbca896b99be7835516cdd232bae2",
+      "size": 3150
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/SoftwareUpdater.swift",
+      "sha256": "ce5aeb0a43de5828b52198400fcef8d8a5fccfb6f86d192c8b9fb6f69fbd73ef",
+      "size": 421
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/SoundEffectsSettingsView.swift",
+      "sha256": "c3a41641daf5765bf92efff31d07df788711975593e9023e20361c452794353d",
+      "size": 4401
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/SpeechModelMenu.swift",
+      "sha256": "2d07299b2222f692c63ba1bc1759a9f901cdb62f81773a7483fb2e5f3863f3ec",
+      "size": 2236
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/SupportedLanguage.swift",
+      "sha256": "e6a18d67c5efd35075627d74efe1f2c340c349058aa353f28dab3c5c35134701",
+      "size": 5996
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/TextInserter.swift",
+      "sha256": "f789b922bfde9581f79610af191058ec9056b004c2d2546b0ad72f88bf359575",
+      "size": 73247
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/TextOverlayView.swift",
+      "sha256": "0d9e9a5b5a5fe4cacda3226aa70f4a65575f4baced9491b83b3ea81ca03cee50",
+      "size": 3813
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/ThemeMode+Overlay.swift",
+      "sha256": "023ce6ca2fee8e5cce11a64eaae79c06528fa903ae129c2198fcc415886856ed",
+      "size": 239
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/TimedRequestCache.swift",
+      "sha256": "ea45c84ffb03f492e222e12f5c4e09a03be910414f40d48b4602413ba5bd4529",
+      "size": 3758
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/TranscriptCleanupIntegrity.swift",
+      "sha256": "2b77fb119eb082c52fb9034b158d126c5eb23a6f3fad3352da540adb3f6aa134",
+      "size": 1490
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/TranscriptCleanupPlan.swift",
+      "sha256": "84a5e9ed3ff89b1d1933557daef4c810a54e7b50118fde38e324d86fbf1545ce",
+      "size": 7268
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/TranscriptHistoryPersistence.swift",
+      "sha256": "e0c84e41ee6d2d597559185184a6291484dbbd2c7f2ff87eef3f407911b83e91",
+      "size": 1290
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/TranscriptHistoryView.swift",
+      "sha256": "f6824c923047bbcd68680f95da04e167ca2f4b889d79759a6b83604ec5d1c88c",
+      "size": 27837
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/TranscriptionEngine.swift",
+      "sha256": "e55de6818b6b18306ee6fffc8f3af2d8dfc1b235c01d83459d134e18fcb8185d",
+      "size": 121225
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/VocabularyHeadLoader.swift",
+      "sha256": "29a07e388ca37f9a69a2c5579acdea251bd67c95b84469a96a542036c1925a8f",
+      "size": 3040
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/VocabularyInput.swift",
+      "sha256": "1102b49a899bb9577c3e101c80dce261efc37637aee6b8ed4f1a77e61fd39fa0",
+      "size": 3000
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/VocabularyRescoringPolicy.swift",
+      "sha256": "c93b63d20ad8c40deb4038ec6e7991c33110f25abd1255feda91f8ccc3f595ac",
+      "size": 643
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/VolumeController.swift",
+      "sha256": "579899e2bfd64c3bde9a6b99d98317b283cb72e090449fa93174cddb2cbcadd6",
+      "size": 17694
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/WaveformDrawing.swift",
+      "sha256": "05728ed3691c2334d0ea0b5cd2c32715715683605740b841afa6cea462c79c54",
+      "size": 903
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/WaveformGeometry.swift",
+      "sha256": "e01160c2114c3f7b58471a2ea5697092017b11189f844ee803b165ad71635c39",
+      "size": 1020
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate Anywhere/WaveformView.swift",
+      "sha256": "397830e75d3803447cc298196c8ca2e5e4a48fbe3d3c5af0db99d101bce192be",
+      "size": 1430
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/AccessibilityMessagingTimeoutTests.swift",
+      "sha256": "97e059480d574de905ce29c211e32167223ed73f1576ed5c730f6429401e0d07",
+      "size": 2343
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/AppDelegateTests.swift",
+      "sha256": "807bfd4c3dead4db0a7b98685c42e400bdca253d9dde7490d4b8cf9f5fa1b2f9",
+      "size": 4740
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/AppearanceTests.swift",
+      "sha256": "3802b3f36e9cb12fb4c549485bb8514f804c5795637cb21709f2cbdb34375db1",
+      "size": 2460
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/AppleCleanupInstructionsTests.swift",
+      "sha256": "1287f757400d42dc339b05615e97b7fc99f4a5d259d577a088745e8795589302",
+      "size": 1093
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/AppleSpeechExplicitInstallationTests.swift",
+      "sha256": "a681fb9961c742092588ee82b76ea18753510c83241616b14b9d1f4303528f35",
+      "size": 4066
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/AppleSpeechPreparationLifecycleTests.swift",
+      "sha256": "734b889a711b782d1fdef73652e9df11c662ba83f55cfd1ddfc38bb120527576",
+      "size": 5378
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/AssemblyAIEngineTests.swift",
+      "sha256": "4ef741185ecf31a5287e26501ea6de9378c3208287056ee4c0d892f4f1b5dbfe",
+      "size": 21212
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/AssemblyAILiveInsertionTests.swift",
+      "sha256": "dee79b68dc025a46e0d7121249f4c8104c5d257d209f4f0f03c6ba00f56ab0d1",
+      "size": 6192
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/AttentionIssueTests.swift",
+      "sha256": "f6647350639164ac3a80fd306f9fddb7e88cf910f15a1553be842f7f6befb4a0",
+      "size": 7594
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/AudioCaptureStartupTests.swift",
+      "sha256": "7dbdf558e88930f9fa83dd1a9bdca7270b862bfff76fe5f9cbe7dacfc0fd8290",
+      "size": 11083
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/AudioCaptureTeardownTests.swift",
+      "sha256": "0b11715dc133d68c65f6d73cf0c033182253cbd3c5950da92343b4c3ecff1221",
+      "size": 4945
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/AudioMonitorTests.swift",
+      "sha256": "01857997b84e221d02cf6b65f91b4767b5749e3a384447bc061b1a87f23419be",
+      "size": 2958
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/AudioPipelineBufferTests.swift",
+      "sha256": "f9a438dd6b651ad952f0dd171f65cee4544eb97354f0fb5d2c576d6700a9ce6e",
+      "size": 2932
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/AudioSampleBufferTests.swift",
+      "sha256": "7b25db9d6e408dec0265bdeebfcf768826dd627cba1b43346e6b68c75048b3c5",
+      "size": 816
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/AudioVolumeGateTests.swift",
+      "sha256": "b95424fc4c2d4eb124480003071574e0d65aa4ea9dc9eb4df88e3e7eb9ef5ac2",
+      "size": 3123
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/BatchTranscriptionPolicyTests.swift",
+      "sha256": "36c11942ed0f1866a3e4fc1e2832c59b86c3828ee4aeaa9d935c88718f882c83",
+      "size": 10124
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/BenchmarkStatistics.swift",
+      "sha256": "5d10cf01503e67e31fc94767ac09b1e498f29a79a4e67bcc4281fa5381a33e6d",
+      "size": 2291
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/BenchmarkStatisticsTests.swift",
+      "sha256": "504f6e6cd138c84f8a86ff45b06cee21927c384692fa3a55aea3ae10aed7f378",
+      "size": 803
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/CJKTextTests.swift",
+      "sha256": "220afba50ecfda00d30e7cff327582bef6c51e611a79c1eb4e63e699f9356a0f",
+      "size": 3657
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/CancellationScreenTests.swift",
+      "sha256": "59da14ce4bc661a3dd00f89559acd46d376da6b1aff4094aaa423b4f1bb89486",
+      "size": 3125
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/CancellationTests.swift",
+      "sha256": "56a68cc42344fe69e19f981b60f895bb5acc49f95d26391c9b27f47588dd22df",
+      "size": 12471
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/ChromiumContextCaptureTests.swift",
+      "sha256": "5686e6439ec31f6ce99339ab931bad24b166ac1751580ed5fe570005e4aefd51",
+      "size": 14161
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/CleanupAnswerParserTests.swift",
+      "sha256": "45b25dedd321ea142ba2372c70a741686e9cb39679f9416103cf2f752062d92b",
+      "size": 10120
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/CleanupBoundedHTTPTransportTests.swift",
+      "sha256": "14c202bcb25654c1ecba66b7f5bebc8d586016967d698c7805404980262968bd",
+      "size": 11577
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/CleanupProfileControllerTests.swift",
+      "sha256": "7386f77b132e74ad7ee13e41450fd1961357a4d94f430f2d6df6529a75d6b769",
+      "size": 13008
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/CleanupProfileFileRepositoryTests.swift",
+      "sha256": "5db4387f6aed4f27e768f0d853d78b0693dccaa2ece158cd0f3869095d4a6f72",
+      "size": 16408
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/CleanupProfileKeychainStoreTests.swift",
+      "sha256": "54516f60d65c3ca15f621d51035df3037cad95a584eabd6e57b97d40dad5be84",
+      "size": 14410
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/CleanupProfileRuntimeTests.swift",
+      "sha256": "01e9ac7234fdfc1aad5d7a662d2e2425b6f7ec3c6808bc5f58355642deb9c4c3",
+      "size": 14600
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/CleanupProfileTests.swift",
+      "sha256": "46d4aa86a7af1780aeb796c75ccc3fe93547e1dc4ed3c7ac2074702b7ecea1d2",
+      "size": 8316
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/CleanupPromptSettingsTests.swift",
+      "sha256": "6d0525fd9cb3e6cd02019f91bc82ae44542bcc4e4e1ff3d144566d2664102418",
+      "size": 4124
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/CleanupProviderContractTests.swift",
+      "sha256": "d44abf83e7fe795152ce1b48139e2cc394f3765b2bc8c94e1b3e1d1196fb6cb3",
+      "size": 37950
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/CleanupTransportPolicyTests.swift",
+      "sha256": "e36d4b86c194cdb915449fa839fe1ccab80846ec7851e568f104a0cd1e7e4430",
+      "size": 1464
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/ComponentRenderTests.swift",
+      "sha256": "169d6ea9b4c91908c0b20e0c7fc9d7354981391eed50557c665a38a9c0f4f265",
+      "size": 6638
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/DesignSystemTests.swift",
+      "sha256": "103928bff2636b35d973397bb1921179fa0cf2225e064b15d0bfee2c3fae66f0",
+      "size": 10986
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/DictationContextTests.swift",
+      "sha256": "9f3c4a59b7de73c1368c15912b7cf0a16e3c20375dad4dd077826fd941734326",
+      "size": 46906
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/DictationContinuationTests.swift",
+      "sha256": "cc926ba0a931e5e70e29178d7a7e81d246f83282c4ed1a4109473e2aa02d5921",
+      "size": 28937
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/DictationFocusResolverTests.swift",
+      "sha256": "224a17230df420fe8da6ed747aab21c84ae36f0e77d8df974b677b45293ef765",
+      "size": 3537
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/DictationRecoveryTests.swift",
+      "sha256": "6820c2cc201764c77e563414e53ff10a011e67f5cdb7a65597adb74df5920c8c",
+      "size": 19774
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/DictationStartupContextTests.swift",
+      "sha256": "d4300fcbc8874a20cf37dbd8dd13dfbd1a55c89626d063bfc021042ba6dcc95a",
+      "size": 65791
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/ExternalSpeechFixtureTests.swift",
+      "sha256": "88c15439c84cd0d9a5e26b5d21f915a400d08619703b8a117fdf7024c8232a2b",
+      "size": 2587
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/ExternalSpeechFixtures.swift",
+      "sha256": "05420e3ff380091e74e1572935406c3fe4c6c9cc12d577e65e75fe31ad06c8e4",
+      "size": 2302
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/FillerWordCJKTests.swift",
+      "sha256": "4832599608591c613c0046e3d52dfb713ad907d4a0b2c6901978e4a2a6d3ec9d",
+      "size": 3495
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/Fixtures/.gitignore",
+      "sha256": "8232f201af923fde855acf5f6b108c5efeb6f5db538e50db5c18b4bfc043d594",
+      "size": 176
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/Fixtures/README.md",
+      "sha256": "f4875ec28c35369c1d4295f542a12cfcdbd30b1f1b65116a3bb7c7e8e31cfa92",
+      "size": 643
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/HotkeyTests.swift",
+      "sha256": "4c3b465e435e801b22f3c3b64dc1e2fee85345ab7f6a1994b0d71202a7b08feb",
+      "size": 6063
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/InputSourceMappingAvailabilityTests.swift",
+      "sha256": "0ea645fee92af23af4c73de2ef8b4098e16aa9fd5fc083bb59ef18e5e1c7777c",
+      "size": 3196
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/InputSourceMappingTests.swift",
+      "sha256": "eb4c79cc15caf10743faf2a853373e1238a1128aade99bf618f2676e27b07063",
+      "size": 13981
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/InputSourceMonitorTests.swift",
+      "sha256": "8569343c3940550c61f3f6a40162eeb3816aad11dcfab2dd4a4bf637ee4908a9",
+      "size": 1582
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/InputSourceProfileResolverTests.swift",
+      "sha256": "7d046b5fd66a2cc1231b35289cb726ee85c00ccc5db8a3aca381a10fdfe298ba",
+      "size": 5594
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/MandarinFixtureTests.swift",
+      "sha256": "101047ec71ccfbb5683329157420ebf0941053e2aac60a957203af5437fe773b",
+      "size": 8274
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/MergeTranscriptsTests.swift",
+      "sha256": "27fd5377d8e63fa984013e475eea5c08a8d3fa467b2097d3002882ef5f55d088",
+      "size": 6438
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/ModelAndModeTests.swift",
+      "sha256": "cd7c29363902f20b887f8065e83e834a90eec049c86220a51607fe3e115b2d91",
+      "size": 24516
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/ModelReadinessTests.swift",
+      "sha256": "670e45cee94d53c5fae08d166163d0ee45e0c17990c6c532304c9ccb852f92d2",
+      "size": 856
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/ModelSwitchBenchmarkTests.swift",
+      "sha256": "81adcdcf90657fd190417549dad8ce2c27d2887e61ef0123fbb3667ebf009640",
+      "size": 2432
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/NemotronMultilingualSmokeTests.swift",
+      "sha256": "14c8e77b0966dac7847283adda346014843bbe4f2b50fde26285694a1a0f8cf7",
+      "size": 2853
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/OfflineBatchPreparationTests.swift",
+      "sha256": "04963052847d488856344a0a4e2f069baddce3fded07e0953bb1ecea4bc72e04",
+      "size": 4505
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/OverlayContentTests.swift",
+      "sha256": "be36d92e605aaec88771347e923a0e8abd235a39162a58aa425fc9fdb5c012e9",
+      "size": 15193
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/OverlayPerformanceBenchmarkTests.swift",
+      "sha256": "f11b8d57a62e1e839cd246d34467bf208aac44bfd6d1264aca37d87ff1e91119",
+      "size": 3376
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/OverlayScreenPickerTests.swift",
+      "sha256": "0efb16c1db0bd079de97901d0090e281f7812bd3ac9c15ecf0aa033d4810fb2b",
+      "size": 5556
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/OverlayScreenSessionTests.swift",
+      "sha256": "d17e60d2fa8d5452055d9079e426e0eafaaa4122dec7f9edd49482c342e6a18c",
+      "size": 9341
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/OverlayWindowScreenSessionTests.swift",
+      "sha256": "0fae56975ce5471f6a1146b1b2f94e9ed212138a9be55e58e70540e08cff93c2",
+      "size": 8329
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/PCMStreamConverterTests.swift",
+      "sha256": "99be8eac15b2f01f3ee427f2dbdcd8726351def770ec6975b0e61c4b11d492d1",
+      "size": 6497
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/PerfTraceTests.swift",
+      "sha256": "a4777da29daea9a6577641cc28e23b00c636763915a52223e61c95a6abb37048",
+      "size": 6046
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/PermissionLifecycleTests.swift",
+      "sha256": "ef9136eabbc9ddc7450bb005ac5fdd2830341bc25bd05fbe830e3af10b17138e",
+      "size": 10638
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/PermissionsTests.swift",
+      "sha256": "f72d4632fd161ad70d59bf07c463f013e106f764ec39234594ca6082450ab41b",
+      "size": 3247
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/PipelinePerformanceBenchmarkTests.swift",
+      "sha256": "809baa4dbe5b9aa1f70ac91104db0f8166c5748a516b3fc7e63320e5806b48a9",
+      "size": 6944
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/PipelineWorkloadBenchmarkTests.swift",
+      "sha256": "65494091489e504160f8c78c5d8f5e5514e7945ed3ed40198702e900259d80a1",
+      "size": 9581
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/PostProcessingNormalizationTests.swift",
+      "sha256": "24f4a4901fd4c6de1bea65d8b022e85b09e4bd3e9c98239e0e274793d74d0416",
+      "size": 4886
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/PrivacyRegressionTests.swift",
+      "sha256": "fd46060ddb6f103c01e7f0755b580eb5ec9fe84f7b1d997d2eadd49fd8741ede",
+      "size": 7533
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RecognitionSessionConfigurationTests.swift",
+      "sha256": "e3be1916fc8d53e98b398bd5a2b7510a625d4ab3504050122c0d7ab5790dbcd2",
+      "size": 1831
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RecoveryASRSmokeTests.swift",
+      "sha256": "a9c12c8466c03194b840c5f2925b1fc8487dfd8677ef58b49cafbabd165d205b",
+      "size": 17006
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/ReleaseReadinessTests.swift",
+      "sha256": "b6d92313805eec1fca0dd47e97c87493ea9cefac29043bd7c185f649c52fa8ee",
+      "size": 9122
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemoteCleanupConcurrencyTests.swift",
+      "sha256": "882e78355ead45d1a5413e5e17baf3e5fa5d8eff00c3ed369a2efefcdf60bba4",
+      "size": 5725
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemoteCleanupInputPolicyTests.swift",
+      "sha256": "f3cbfbab46e5032fd48397b68dc4ef92cd4782a9637119cfd81afec599e772d9",
+      "size": 13172
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemoteCleanupRetryPolicyTests.swift",
+      "sha256": "880435917fee3bd44661e777e47976032e40724e240ebe1503b62ba5e63ce49f",
+      "size": 4967
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyBaselineProviderTests.swift",
+      "sha256": "7038a31ef7c7098cc98beab87ab012403ec9013c9656e874ab13454d9d5aeb60",
+      "size": 9862
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyBaselineRuntimeTests.swift",
+      "sha256": "245a02e6b1d6255201765e401aed8b60346f3d9eabe56238b3b81d6761bfc264",
+      "size": 7143
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyCleanupAttemptTests.swift",
+      "sha256": "6a3759e39444c4d914728c577c232d4d6a3dbc2d4c1faa4e9b1973f2189560a1",
+      "size": 10281
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyCleanupFailureClassificationTests.swift",
+      "sha256": "2b332a7f83c0708836ca73df15b5623c718cd1e5f42c68384e8c7aaaf076610f",
+      "size": 4526
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyCleanupProfileIntegrationTests.swift",
+      "sha256": "e6ebe116bd42ae966dd86189eceb17237965c8e3dc5c7d91db9ed6e805453406",
+      "size": 13419
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyConfigurationVersionTests.swift",
+      "sha256": "8ee2067b0d248ea74a401dbef4f4eaa794019358ddcefd400ec2687dd837a539",
+      "size": 4558
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyDeliveryAuthorizationTests.swift",
+      "sha256": "72b8df5546cf58d9d10d20db9305cdf08e920d9a4ac421a144a5f8994a9a233c",
+      "size": 7667
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyDiagnosticsTests.swift",
+      "sha256": "256431ed02e3e0ffaa600e3b3d2d3c0a203f2906ffe5fc1455e918ba7c414ac1",
+      "size": 2104
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyDictationConfigurationTests.swift",
+      "sha256": "e90eb830f10851a9717f65b122f2ddbcb2292a97dbf7bdec698ee16a7d53beb7",
+      "size": 17274
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyDictationDestinationTests.swift",
+      "sha256": "f48416588367e2765dba42f3a705760f0a57d3b41f53d21632e7b7ba9a3d7471",
+      "size": 7674
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyDisabledCloudRouteTests.swift",
+      "sha256": "7c8cb313eb39ac6648a7ee477899f409ddbf0bb361da1d896989547fb5a1cef2",
+      "size": 2178
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyFeaturePolicyTests.swift",
+      "sha256": "44c7e8d923327326eff5be3d41f1618271d436811715cabf87bc4ebe8dec8c97",
+      "size": 1314
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyHistoryBootstrapTests.swift",
+      "sha256": "29e893025f3688020e3accf0744db3abed95295f2496308cb7c89fd3e7f3e8bc",
+      "size": 6126
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyHistoryControllerTests.swift",
+      "sha256": "4889ab072934415fb4bee54fa5bd7a6cd713ec1bcf6e1159521041c2eaf131d3",
+      "size": 27008
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyHistoryIntegrationTests.swift",
+      "sha256": "0e69372538003769aa8fd1b50541cde99db878e8c1510b65915de606ff8669f6",
+      "size": 30605
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyHistoryRepositoryTests.swift",
+      "sha256": "285cedd0bd66495256d97c9acc5149a6b7c9bdf142f91575c2dc6ba763317a09",
+      "size": 17703
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyHotkeySleepTests.swift",
+      "sha256": "80546c4d0d85dc037444f6b0255e2f946960b4fbd5e9e45ac0ea9c9e978b40c7",
+      "size": 5901
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyInsertionTargetTests.swift",
+      "sha256": "4833ef9033acccd10190504f89a82978ebfb56b450f1ed826c086b25c26ef8c4",
+      "size": 16577
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyLegacyHistorySnapshotTests.swift",
+      "sha256": "ac95e43aa3720aa55f1e5291718a1ca9d3d88d37973d1de2191f92bf88759cbc",
+      "size": 8287
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyLocalDataMigrationTests.swift",
+      "sha256": "b01964fcc93e342b390fea49ac559b866ddab892bf88fcafe03c6940e57e2f47",
+      "size": 17275
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyLongCaptureFailureTests.swift",
+      "sha256": "66d266fa6b4e6a87acab9cd9f111967f08e794ad515ba7b6f9fa26e6f4fe52d8",
+      "size": 6397
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyLongDictationTests.swift",
+      "sha256": "10f15269b4b4e4dfff40db9c0a795c9e619ada68f335235adc12b01681c15440",
+      "size": 15323
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyMigrationBootstrapTests.swift",
+      "sha256": "e91673516cb475cd3707bd6aa42f50645164453edb275e1b581f688c5b487bfe",
+      "size": 4526
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyMigrationPreferencesTests.swift",
+      "sha256": "3112444743c7be9ad97fd1916089df3302093d092103c996b8c02411643fcdca",
+      "size": 8493
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyModelManifestTests.swift",
+      "sha256": "bd5fc30a656e0284d39cf3d6fe3ef6d3f4983b623d04e63e33e280841e697460",
+      "size": 3537
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyModelStoreTests.swift",
+      "sha256": "da13cc958cad2a8aec13f0c59b1d16e1705803ca84af875439530080cafbe863",
+      "size": 13792
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyParakeetAssetsTests.swift",
+      "sha256": "77ce125c2a4d3f845a33f06a27535fb266578ae828ebcad0417c6f1cd5a77c94",
+      "size": 6640
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemySessionCoordinatorTests.swift",
+      "sha256": "ed506a296eea908a1038f5027fc7385539d649a55cd0fb3e182f39b985fe1431",
+      "size": 10291
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemySessionIntegrationTests.swift",
+      "sha256": "58698db8566564844691c0d4c08c25331d7d0da7ba7cebb5af6b97137e6f5c38",
+      "size": 33717
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemySoundEffectsTests.swift",
+      "sha256": "aec80aa22aedaa78c4c4d6fda6fc7f4d3df44fe774906dd65772f9ce96e8b5b7",
+      "size": 9682
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyStartupTests.swift",
+      "sha256": "7ff871307ddfc17b623f3871f1abb60f3e04f8e93c7943bc6bbd122d246b0db6",
+      "size": 1526
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyStoragePathsTests.swift",
+      "sha256": "251e008f80e7ba6d9043b36083a5ddedf86028106669a0b7eb3d8e6cbdfdc746",
+      "size": 7343
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyStoredHistoryDeletionTests.swift",
+      "sha256": "7314132264ba7fb7709eca0d4e145bf20ae7f54c0651ac97556fdb1d0f51e717",
+      "size": 5180
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/RemyTestIsolationTests.swift",
+      "sha256": "582ae44e61ae3ad7fb329356eef4040d466d578032560f3e2c3c172f27cac347",
+      "size": 498
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/S1MiniPostProcessingTests.swift",
+      "sha256": "a02e99826abd70f0cfcd2fe692e9287fef0bb465fbb4adfd0017dea13dd9b9c1",
+      "size": 30420
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/S1RuntimePolicyTests.swift",
+      "sha256": "ea0cb6460548dd0f65457b689668af3c43977ea155bf4a7d93e563515d5c822c",
+      "size": 3161
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/ScreenSnapshotTests.swift",
+      "sha256": "e7c66d29a58b059352e6b351ce820a0d03691176bccf532379d36d3c5b3771ca",
+      "size": 2424
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/SettingsInteractionTests.swift",
+      "sha256": "722bf1a7ec544562208954118d20d94235adb87756f41fd364d89ba517e44aed",
+      "size": 7024
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/SettingsLogicTests.swift",
+      "sha256": "5dbeac50244db5dfb1694ce0a87bb3f6172d3e6a141c83630b59c15de23dafee",
+      "size": 24734
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/TextInserterCJKTests.swift",
+      "sha256": "061da4a3d9bc4302ec195ff8dc108c112f892c3b83810c43f6cac19639d8f523",
+      "size": 1216
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/TextInsertionFinalizationTests.swift",
+      "sha256": "a9aaaccef145f14db8d8d843642484e71ae3e74b697d6bdadaf41583a73dad2f",
+      "size": 6933
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/TimedRequestCacheTests.swift",
+      "sha256": "ed1285a77aa68b3ba8230aadb756557e753d6169657a192d9308d5e455970d1a",
+      "size": 4513
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/TranscriptCleanupIntegrityTests.swift",
+      "sha256": "ab41513b9d3beb39a52d3898f994220e672714b55a6eeb9f1c49068eecc2397a",
+      "size": 1138
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/TranscriptCleanupPlanTests.swift",
+      "sha256": "2768191bbe8ec7e4908fc5e39d2f700c6acb0d4848406647f12c1373c820a349",
+      "size": 5539
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/TranscriptHistoryPersistenceTests.swift",
+      "sha256": "412584c2f90a73c7acd2853d9061fccd2fa471e666f90df77dab55e65c64255f",
+      "size": 1699
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/VocabularyHeadLoaderTests.swift",
+      "sha256": "91e3119981d5f0e9ab38647253e44d936d15a1ea2b381aaf5a21da9892b0a3ce",
+      "size": 2530
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/VocabularyParserTests.swift",
+      "sha256": "2712e6345367da6bbabd2f21a359209387ed6f45aaa8a2a5793ddb7e6f2e63ce",
+      "size": 1895
+    },
+    {
+      "mode": "100644",
+      "path": "app/Dictate AnywhereTests/VolumeControllerTests.swift",
+      "sha256": "916a45f0ab7a1adc140cd95dc9929ec5a9a3686d44629a2ac9b8bc6206375076",
+      "size": 3889
+    },
+    {
+      "mode": "100644",
+      "path": "app/LICENSE",
+      "sha256": "a9a3e92a7b9de693ff5b74be900a1bddec31c94fb0f67d4cd184807b05f68eae",
+      "size": 1070
+    },
+    {
+      "mode": "100644",
+      "path": "app/README.md",
+      "sha256": "9a240f5eae1c3a6fb4920a69ac10440ab5fca4a139c789159203d6e6cf7ae792",
+      "size": 3651
+    },
+    {
+      "mode": "100644",
+      "path": "app/RELEASE.md",
+      "sha256": "69515625bb94992caa1f2a06097c55668d65243943f4078daf4e7c8e0f0ac094",
+      "size": 6047
+    },
+    {
+      "mode": "100644",
+      "path": "app/docs/engineering/baseline.md",
+      "sha256": "cb69ca8460decf6388b7b1cd62f097db5d69e2d5bcf4b3b57ff2989c92ffa100",
+      "size": 47534
+    },
+    {
+      "mode": "100644",
+      "path": "app/docs/engineering/design-direction.md",
+      "sha256": "2c1f9dafafc8cdff24ba75f8373f0389eb092df0667c67f19ca2898695e3aa17",
+      "size": 10153
+    },
+    {
+      "mode": "100644",
+      "path": "app/docs/engineering/local-development.md",
+      "sha256": "363c9a50b228ac33d02300cc1ec387f08e134a40e8d25ae3bf36ccf84f03bb9a",
+      "size": 5110
+    },
+    {
+      "mode": "100644",
+      "path": "app/docs/performance-benchmarking.md",
+      "sha256": "1ca19735b72c74116138a4bec854bd51596aecdad0e36b4b07f1d42bbcee7305",
+      "size": 8661
+    },
+    {
+      "mode": "100644",
+      "path": "app/docs/performance-tracing.md",
+      "sha256": "97dbce64477364372df9a468f939d08cce850c09af57e2abefa67500c5d7f5f9",
+      "size": 8126
+    },
+    {
+      "mode": "100755",
+      "path": "app/scripts/dev.sh",
+      "sha256": "c3572f236e20369c38f5d734b551e5735232f80b9bb6afceaae2e51b0ffeb748",
+      "size": 19283
+    },
+    {
+      "mode": "100755",
+      "path": "app/scripts/dev_test.sh",
+      "sha256": "44ed9cb5422f0e0e94d4adb267ea8f1e44caa864f16bcbded991f8062a58e20d",
+      "size": 7028
+    },
+    {
+      "mode": "100644",
+      "path": "app/scripts/generate-app-icon.swift",
+      "sha256": "f60eefae9ab0bbf2af608fcb22f9638c29dbe9eb65dbe4915120c4c36bf0a665",
+      "size": 6487
+    },
+    {
+      "mode": "100755",
+      "path": "app/scripts/generate-mandarin-fixtures.sh",
+      "sha256": "e9910a8204478cb068072a0858c99cd23e3611b5584cd413df4a25716c788bbf",
+      "size": 2135
+    },
+    {
+      "mode": "100755",
+      "path": "app/scripts/release-gates.sh",
+      "sha256": "df92f14d11a53db33356bbe21de712132737651903c56308cf3e6d68290ecc3a",
+      "size": 840
+    },
+    {
+      "mode": "100755",
+      "path": "app/scripts/release-gates_test.sh",
+      "sha256": "a9703589b1e6cb315cf7ece1f7ec2ccaa422de4493434ccb44d01558357ee0b0",
+      "size": 1877
+    },
+    {
+      "mode": "100755",
+      "path": "app/scripts/release-macos.template.sh",
+      "sha256": "95e3642efd55ac7d77912bf6f70df09e64d8615c2e16094696bc2779201bfe81",
+      "size": 7804
+    },
+    {
+      "mode": "100755",
+      "path": "app/scripts/remy-build.sh",
+      "sha256": "a32c41e0f9457a4cab6f88724bb48eff4c919297f2ca2ac53cd3cfc5465fe21b",
+      "size": 3709
+    },
+    {
+      "mode": "100755",
+      "path": "app/scripts/remy-dev.sh",
+      "sha256": "a172598202b3f20f7d6be80ed8c096040b0f722278dad75369c0dc24fa08aa2d",
+      "size": 4120
+    },
+    {
+      "mode": "100755",
+      "path": "app/scripts/remy-local.sh",
+      "sha256": "eed2c121e9a89f092a4b85c7a2d3664563e4a773c4ca5fe343b25a46a0438785",
+      "size": 7866
+    },
+    {
+      "mode": "100644",
+      "path": "app/scripts/test_verify_release_app.py",
+      "sha256": "c1fc25d4baebb482a7ed56b311689232f5eec39735fc9e6b3a43634cb33197a8",
+      "size": 5923
+    },
+    {
+      "mode": "100755",
+      "path": "app/scripts/verify-release-app.py",
+      "sha256": "ee1eafbe27f24f9ea1484c1c637375a1f16ba28e478ec83e41c553b03e83f0ca",
+      "size": 3076
+    },
+    {
+      "mode": "100755",
+      "path": "app/scripts/verify-universal-app.sh",
+      "sha256": "31fc33b5e78461c3368071a1d58883849cdd8efb4bcb448d8193ccfcd4d84f98",
+      "size": 1477
+    },
+    {
+      "mode": "100755",
+      "path": "app/scripts/verify-universal-app_test.sh",
+      "sha256": "cb8178286785da4f0195e85cf4eee98a95ec8661db5224b910ce65c5f71fef94",
+      "size": 2468
+    },
+    {
+      "mode": "100644",
+      "path": "docs/architecture.md",
+      "sha256": "e64b8792ffb38a92545a8015b53a278934c470047218baa63f9243c1e7f577bc",
+      "size": 18343
+    },
+    {
+      "mode": "100644",
+      "path": "docs/cleanup-policy.md",
+      "sha256": "0e3cc01f59e6d99d6ab58205d7533a3c8668a6a19993dbd676905ec78b312cfe",
+      "size": 13968
+    },
+    {
+      "mode": "100644",
+      "path": "docs/engineering/asset-provenance.md",
+      "sha256": "00e68c15f660324ba71b9c1a15dbd0f5934d4bc150b84167af1fec057cb8f393",
+      "size": 6492
+    },
+    {
+      "mode": "100644",
+      "path": "docs/engineering/diagnostics.md",
+      "sha256": "87932a2f9bbe78c1d9991c2f129fad5e0e96f46a538f961acb27007f1c6f574a",
+      "size": 3173
+    },
+    {
+      "mode": "100644",
+      "path": "docs/engineering/local-installation.md",
+      "sha256": "c59172fa138bef61fbd9a5b6565e63c1c2f18176cbbfe1c58e6bb1b4c0c66079",
+      "size": 5898
+    },
+    {
+      "mode": "100644",
+      "path": "docs/engineering/long-dictation-recovery-audit.md",
+      "sha256": "c989ac809ae8ea1196ac7a8415d9efd4070eec7032b06fd2347b045a7468226b",
+      "size": 8072
+    },
+    {
+      "mode": "100644",
+      "path": "docs/engineering/model-release-policy.md",
+      "sha256": "eb0cd904b382f55dcd016bd773b01624dd5b7e3aa0f973f76fec80c31c6b921a",
+      "size": 5107
+    },
+    {
+      "mode": "100644",
+      "path": "docs/engineering/publication.md",
+      "sha256": "d664e32f607bf930b34452de7eca5d3971f7e10f6399ce089556e9dba2e832aa",
+      "size": 3745
+    },
+    {
+      "mode": "100644",
+      "path": "docs/engineering/session-contracts.md",
+      "sha256": "9397cd174e280379ce5316eed0b7ff3858d708d61d440afe0661d4e44d3c136c",
+      "size": 11214
+    },
+    {
+      "mode": "100644",
+      "path": "docs/evaluation/acceptance.md",
+      "sha256": "6eb5dbe36a932a520b3686095a3a708d44a8bdcde613f182901580ca48e9b1bc",
+      "size": 10144
+    },
+    {
+      "mode": "100644",
+      "path": "docs/implementation-plan.md",
+      "sha256": "17c2319c45202c09a699ca79091d33cb86169975f71922ff696e58dd313f884e",
+      "size": 31080
+    },
+    {
+      "mode": "100644",
+      "path": "docs/privacy.md",
+      "sha256": "3b4831c57b3ee9e03bcb1328c911261c831d22f0dff7235e6c5819d41aaf8d47",
+      "size": 4749
+    },
+    {
+      "mode": "100644",
+      "path": "docs/proposal.md",
+      "sha256": "a1a80402c87b3eb093e918d5f61752a087af14687bf9e7f59c2a1d5f6474ea03",
+      "size": 9877
+    },
+    {
+      "mode": "100644",
+      "path": "docs/release-readiness.md",
+      "sha256": "b8d51639f926cef84bd3d0a5d18bce271d45625d4676c1f1bdae04d0118afef2",
+      "size": 7458
+    },
+    {
+      "mode": "100644",
+      "path": "docs/research/build-prerequisites.md",
+      "sha256": "cfe3e9729a664091849ead41b79207af53032d3f17f6253ec9861860672ed75e",
+      "size": 7446
+    },
+    {
+      "mode": "100644",
+      "path": "docs/research/existing-apps.md",
+      "sha256": "35f28f4934b8381ebd8db268d81230e803509fd2e53b94528e25e34364539797",
+      "size": 17161
+    },
+    {
+      "mode": "100644",
+      "path": "docs/research/platform-and-providers.md",
+      "sha256": "1901ca7981f94e8ad7bca6e9a5142d2c9d8d60b1fe98900978f78043bfd2e297",
+      "size": 29849
+    },
+    {
+      "mode": "100644",
+      "path": "docs/research/speech-runtime.md",
+      "sha256": "8949f0ea335c5fa35e1befa8e89d35bdae9452a25b75541866e9c7ab207fec37",
+      "size": 18046
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/FluidAudio/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "size": 11357
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/FluidAudio/ThirdPartyLicenses/JapaneseG2P-LICENSE.md",
+      "sha256": "cb82031f608b056ffb378073d15fd840e070a1dd3063f8975556f9536d447103",
+      "size": 16008
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/FluidAudio/ThirdPartyLicenses/KokoroAneSpanishFrenchG2P-LICENSE.md",
+      "sha256": "82b80894661fb61209fc39f91bb50b2ed5d0c8628f9d1460ccc853b8bcf12043",
+      "size": 2932
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/FluidAudio/ThirdPartyLicenses/NemoTextProcessing-LICENSE.md",
+      "sha256": "300a31d86c7c5d809f0adc00ef7d35259226acc7e412b9767cd3029a3395c50e",
+      "size": 1770
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/FluidAudio/ThirdPartyLicenses/fastcluster-LICENSE.md",
+      "sha256": "67594dbe4a7477719c8160373e7767c2c319ef966a6042f76846a18af02cde0a",
+      "size": 1431
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/FluidAudio/ThirdPartyLicenses/vbx-LICENSE.md",
+      "sha256": "08e57fdb5187c816e937916f1e176aadb400ca76f4b3b493d69730ec8f10dd80",
+      "size": 10541
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/LICENSE",
+      "sha256": "ac84752611bfcb8e2f472b17f9cb18f5321c9a75c2a5445b766725b1de67790b",
+      "size": 11344
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/NOTICE",
+      "sha256": "886143044515319a91f4447f9b447bb89089b4c9af847300f4b8de830c805852",
+      "size": 1013
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/THIRD-PARTY-LICENSES.md",
+      "sha256": "14d21dbb0deb74aa7775f5803c36609aa6ef0c38c94fb03dbc95efb3645f7678",
+      "size": 2025
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates.json",
+      "sha256": "a612f98728f3ff21b09eb80447da243714625de5cb01a4ce3a0d61a3ea115495",
+      "size": 59064
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/adler2-2.0.1/LICENSE-0BSD",
+      "sha256": "861399f8c21c042b110517e76dc6b63a2b334276c8cf17412fc3c8908ca8dc17",
+      "size": 665
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/adler2-2.0.1/LICENSE-APACHE",
+      "sha256": "8ada45cd9f843acf64e4722ae262c622a2b3b3007c7310ef36ac1061a30f6adb",
+      "size": 10860
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/adler2-2.0.1/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "size": 1023
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/anyhow-1.0.103/LICENSE-APACHE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "size": 9723
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/anyhow-1.0.103/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "size": 1023
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/autocfg-1.5.1/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/autocfg-1.5.1/LICENSE-MIT",
+      "sha256": "27995d58ad5c1145c1a8cd86244ce844886958a35eb2b78c6b772748669999ac",
+      "size": 1054
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/bimap-0.6.3/LICENSE_APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/bimap-0.6.3/LICENSE_MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "size": 1023
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/bit-set-0.8.0/LICENSE-APACHE",
+      "sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90",
+      "size": 10850
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/bit-set-0.8.0/LICENSE-MIT",
+      "sha256": "f51ac2c59a222f7476ce507ca879960e2b64ea64bb2786eefdbeb7b0b538d1b7",
+      "size": 1071
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/bit-vec-0.8.0/LICENSE-APACHE",
+      "sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90",
+      "size": 10850
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/bit-vec-0.8.0/LICENSE-MIT",
+      "sha256": "f51ac2c59a222f7476ce507ca879960e2b64ea64bb2786eefdbeb7b0b538d1b7",
+      "size": 1071
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/bitflags-2.13.0/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/bitflags-2.13.0/LICENSE-MIT",
+      "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+      "size": 1071
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/bumpalo-3.20.3/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/bumpalo-3.20.3/LICENSE-MIT",
+      "sha256": "65f94e99ddaf4f5d1782a6dae23f35d4293a9a01444a13135a6887017d353cee",
+      "size": 1059
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/cfg-if-1.0.4/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/cfg-if-1.0.4/LICENSE-MIT",
+      "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+      "size": 1057
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/console_error_panic_hook-0.1.7/LICENSE-APACHE",
+      "sha256": "353b508bbc50274d47a23729f568bab2618e3d0eaa10208616f5fd475255b896",
+      "size": 10848
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/console_error_panic_hook-0.1.7/LICENSE-MIT",
+      "sha256": "77674336af8ded214dc3ae07da631c7dd35cc8205f39298474ba98a889e57272",
+      "size": 1059
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/crc32fast-1.5.0/LICENSE-APACHE",
+      "sha256": "c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08",
+      "size": 11358
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/crc32fast-1.5.0/LICENSE-MIT",
+      "sha256": "61d383b05b87d78f94d2937e2580cce47226d17823c0430fbcad09596537efcf",
+      "size": 1097
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/either-1.16.0/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/either-1.16.0/LICENSE-MIT",
+      "sha256": "7576269ea71f767b99297934c0b2367532690f8c4badc695edf8e04ab6a1e545",
+      "size": 1043
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/errno-0.3.14/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/errno-0.3.14/LICENSE-MIT",
+      "sha256": "8764a597675778ddfd4e25f81b08a05dbcf089ac05662df7613fe67f150e3aa2",
+      "size": 1054
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/fastrand-2.4.1/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/fastrand-2.4.1/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "size": 1023
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/flate2-1.1.9/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/flate2-1.1.9/LICENSE-MIT",
+      "sha256": "025436edff4cfcdde17a5811fdea78892d8482efd1abdec5a17872d07a4f2112",
+      "size": 1062
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/fnv-1.0.7/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/fnv-1.0.7/LICENSE-MIT",
+      "sha256": "65fdb6c76cd61612070c066eec9ecdb30ee74fb27859d0d9af58b9f499fd0c3e",
+      "size": 1056
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/generic-array-1.4.3/LICENSE",
+      "sha256": "c09aae9d3c77b531f56351a9947bc7446511d6b025b3255312d3e3442a9a7583",
+      "size": 1107
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/getrandom-0.3.4/LICENSE-APACHE",
+      "sha256": "aaff376532ea30a0cd5330b9502ad4a4c8bf769c539c87ffe78819d188a18ebf",
+      "size": 10849
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/getrandom-0.3.4/LICENSE-MIT",
+      "sha256": "29e9fe5074bd27e0e5d5d110394fbbcd841baee2651a3c4b4560a632702cede4",
+      "size": 1130
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/getrandom-0.4.3/LICENSE-APACHE",
+      "sha256": "aaff376532ea30a0cd5330b9502ad4a4c8bf769c539c87ffe78819d188a18ebf",
+      "size": 10849
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/getrandom-0.4.3/LICENSE-MIT",
+      "sha256": "523a42c25d245dde9c015f882cec7f4555aad883382a6cf19b4b7d9b2cd5419b",
+      "size": 1130
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/itertools-0.14.0/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/itertools-0.14.0/LICENSE-MIT",
+      "sha256": "7576269ea71f767b99297934c0b2367532690f8c4badc695edf8e04ab6a1e545",
+      "size": 1043
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/lazy_static-1.5.0/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/lazy_static-1.5.0/LICENSE-MIT",
+      "sha256": "0621878e61f0d0fda054bcbe02df75192c28bde1ecc8289cbd86aeba2dd72720",
+      "size": 1071
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/libc-0.2.186/LICENSE-APACHE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "size": 9723
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/libc-0.2.186/LICENSE-MIT",
+      "sha256": "123a331b5dbf04c30097fa43b8f858bc85df671fe776de498d01f3d6b7c1f69e",
+      "size": 1066
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/linux-raw-sys-0.12.1/COPYRIGHT",
+      "sha256": "3290ae0fbc9ddb77d2239121d710f0bb9d31b3b4744e6d97fe01e652b4c1870b",
+      "size": 881
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/linux-raw-sys-0.12.1/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/linux-raw-sys-0.12.1/LICENSE-Apache-2.0_WITH_LLVM-exception",
+      "sha256": "268872b9816f90fd8e85db5a28d33f8150ebb8dd016653fb39ef1f94f2686bc5",
+      "size": 12243
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/linux-raw-sys-0.12.1/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "size": 1023
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/memchr-2.8.3/COPYING",
+      "sha256": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f",
+      "size": 126
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/memchr-2.8.3/LICENSE-MIT",
+      "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
+      "size": 1081
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/minimal-lexical-0.2.1/LICENSE-APACHE",
+      "sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90",
+      "size": 10850
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/minimal-lexical-0.2.1/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "size": 1023
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/minimal-lexical-0.2.1/LICENSE.md",
+      "sha256": "dbe1fff0fb1314b6af94f161511406275cf01c5a32441fbf24528a57a051d599",
+      "size": 2003
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/miniz_oxide-0.8.9/LICENSE",
+      "sha256": "4108245a1f2df9d4e94df8abed5b4ba0759bb2f9b40a6b939f1be141077ae50b",
+      "size": 1213
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/miniz_oxide-0.8.9/LICENSE-APACHE.md",
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "size": 10174
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/miniz_oxide-0.8.9/LICENSE-MIT.md",
+      "sha256": "799e9ca9d179295ef372f25d3769cdda7d25bb2668add6a6a1e22d1e4c678b8d",
+      "size": 1212
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/miniz_oxide-0.8.9/LICENSE-ZLIB.md",
+      "sha256": "0a54e647fe54104658b5e563c04c6f9edf251710e47bce692e0bd990a4ddaa39",
+      "size": 984
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/nom-7.1.3/LICENSE",
+      "sha256": "4dbda04344456f09a7a588140455413a9ac59b6b26a1ef7cdf9c800c012d87f0",
+      "size": 1065
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/num-traits-0.2.19/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/num-traits-0.2.19/LICENSE-MIT",
+      "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+      "size": 1071
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/once_cell-1.21.4/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/once_cell-1.21.4/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "size": 1023
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/ordered-float-5.3.0/LICENSE-MIT",
+      "sha256": "f7715d38a3fa1b4ac97c5729740752505a39cb92ee83ab5b102aeb5eaa7cdea4",
+      "size": 1057
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/ppv-lite86-0.2.21/LICENSE-APACHE",
+      "sha256": "0218327e7a480793ffdd4eb792379a9709e5c135c7ba267f709d6f6d4d70af0a",
+      "size": 10854
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/ppv-lite86-0.2.21/LICENSE-MIT",
+      "sha256": "4cada0bd02ea3692eee6f16400d86c6508bbd3bafb2b65fed0419f36d4f83e8f",
+      "size": 1076
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/proc-macro2-1.0.106/LICENSE-APACHE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "size": 9723
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/proc-macro2-1.0.106/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "size": 1023
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/proptest-1.11.0/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/proptest-1.11.0/LICENSE-MIT",
+      "sha256": "d8e0806926ce9f0a5030c382ecc0ffdf6de6fbea5c69a458435fd443fa7a5b92",
+      "size": 1060
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/quick-error-1.2.3/LICENSE-APACHE",
+      "sha256": "c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08",
+      "size": 11358
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/quick-error-1.2.3/LICENSE-MIT",
+      "sha256": "058f01fe181608d027fcde7e528fc03ea3cf90f30903c407644b0a9bbc54f500",
+      "size": 1070
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/quote-1.0.46/LICENSE-APACHE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "size": 9723
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/quote-1.0.46/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "size": 1023
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/r-efi-5.3.0/AUTHORS",
+      "sha256": "ff92bed461f50338dd703a9ba9aee496a425957873df1d91192776e4bdf5dda7",
+      "size": 3693
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/r-efi-6.0.0/AUTHORS",
+      "sha256": "d027e91dbc9cdbb2f1190068e498bd6b61cff022b6a032b191021ba658d96111",
+      "size": 3733
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/rand-0.9.4/COPYRIGHT",
+      "sha256": "90eb64f0279b0d9432accfa6023ff803bc4965212383697eee27a0f426d5f8d5",
+      "size": 569
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/rand-0.9.4/LICENSE-APACHE",
+      "sha256": "35242e7a83f69875e6edeff02291e688c97caafe2f8902e4e19b49d3e78b4cab",
+      "size": 9724
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/rand-0.9.4/LICENSE-MIT",
+      "sha256": "209fbbe0ad52d9235e37badf9cadfe4dbdc87203179c0899e738b39ade42177b",
+      "size": 1117
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/rand_chacha-0.9.0/COPYRIGHT",
+      "sha256": "90eb64f0279b0d9432accfa6023ff803bc4965212383697eee27a0f426d5f8d5",
+      "size": 569
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/rand_chacha-0.9.0/LICENSE-APACHE",
+      "sha256": "35242e7a83f69875e6edeff02291e688c97caafe2f8902e4e19b49d3e78b4cab",
+      "size": 9724
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/rand_chacha-0.9.0/LICENSE-MIT",
+      "sha256": "209fbbe0ad52d9235e37badf9cadfe4dbdc87203179c0899e738b39ade42177b",
+      "size": 1117
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/rand_core-0.9.5/COPYRIGHT",
+      "sha256": "90eb64f0279b0d9432accfa6023ff803bc4965212383697eee27a0f426d5f8d5",
+      "size": 569
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/rand_core-0.9.5/LICENSE-APACHE",
+      "sha256": "6df43f6f4b5d4587f3d8d71e45532c688fd168afa5fe89d571cb32fa09c4ef51",
+      "size": 10282
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/rand_core-0.9.5/LICENSE-MIT",
+      "sha256": "209fbbe0ad52d9235e37badf9cadfe4dbdc87203179c0899e738b39ade42177b",
+      "size": 1117
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/rand_xorshift-0.4.0/COPYRIGHT",
+      "sha256": "90eb64f0279b0d9432accfa6023ff803bc4965212383697eee27a0f426d5f8d5",
+      "size": 569
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/rand_xorshift-0.4.0/LICENSE-APACHE",
+      "sha256": "35242e7a83f69875e6edeff02291e688c97caafe2f8902e4e19b49d3e78b4cab",
+      "size": 9724
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/rand_xorshift-0.4.0/LICENSE-MIT",
+      "sha256": "209fbbe0ad52d9235e37badf9cadfe4dbdc87203179c0899e738b39ade42177b",
+      "size": 1117
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/regex-syntax-0.8.11/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/regex-syntax-0.8.11/LICENSE-MIT",
+      "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+      "size": 1071
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/regex-syntax-0.8.11/src/unicode_tables/LICENSE-UNICODE",
+      "sha256": "74db5baf44a41b1000312c673544b3374e4198af5605c7f9080a402cec42cfa3",
+      "size": 2847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/rustfst-1.3.1/LICENSE-APACHE",
+      "sha256": "769f80b5bcb42ed0af4e4d2fd74e1ac9bf843cb80c5a29219d1ef3544428a6bb",
+      "size": 10846
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/rustfst-1.3.1/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "size": 1023
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/rustix-1.1.4/COPYRIGHT",
+      "sha256": "377c2e7c53250cc5905c0b0532d35973392af16ffb9596a41d99d202cf3617c9",
+      "size": 853
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/rustix-1.1.4/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/rustix-1.1.4/LICENSE-Apache-2.0_WITH_LLVM-exception",
+      "sha256": "268872b9816f90fd8e85db5a28d33f8150ebb8dd016653fb39ef1f94f2686bc5",
+      "size": 12243
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/rustix-1.1.4/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "size": 1023
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/rustversion-1.0.23/LICENSE-APACHE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "size": 9723
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/rustversion-1.0.23/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "size": 1023
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/rusty-fork-0.3.1/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/rusty-fork-0.3.1/LICENSE-MIT",
+      "sha256": "d8e0806926ce9f0a5030c382ecc0ffdf6de6fbea5c69a458435fd443fa7a5b92",
+      "size": 1060
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/serde-1.0.228/LICENSE-APACHE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "size": 9723
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/serde-1.0.228/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "size": 1023
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/serde_core-1.0.228/LICENSE-APACHE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "size": 9723
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/serde_core-1.0.228/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "size": 1023
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/serde_derive-1.0.228/LICENSE-APACHE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "size": 9723
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/serde_derive-1.0.228/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "size": 1023
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/simd-adler32-0.3.9/LICENSE.md",
+      "sha256": "42a35170233e83e18856792e748de4c1ce4a63b2afce9a370c89ef3fe23f9f2d",
+      "size": 1078
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/superslice-1.0.0/LICENCE",
+      "sha256": "5ad8c213095c573921d7388edf93f6a9f54490b8ebf3b165ae8ef1947cf70846",
+      "size": 11556
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/syn-2.0.118/LICENSE-APACHE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "size": 9723
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/syn-2.0.118/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "size": 1023
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/tempfile-3.27.0/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/tempfile-3.27.0/LICENSE-MIT",
+      "sha256": "8b427f5bc501764575e52ba4f9d95673cf8f6d80a86d0d06599852e1a9a20a36",
+      "size": 1056
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/typenum-1.20.1/LICENSE",
+      "sha256": "db11fec9946737df39ca3898d9cd8c10ec6f6c3a884a6802b0ad0b81b4e8f23a",
+      "size": 17
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/typenum-1.20.1/LICENSE-APACHE",
+      "sha256": "516b24e051bf5630880ebbd55c40a25ce9552ebaf8970a53e8976eb70e522406",
+      "size": 10835
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/typenum-1.20.1/LICENSE-MIT",
+      "sha256": "a825bd853ab71619a4923d7b4311221427848070ff44d990da39b0b274c1683f",
+      "size": 1083
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/unarray-0.1.4/LICENSE-APACHE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "size": 11357
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/unarray-0.1.4/LICENSE-MIT",
+      "sha256": "002c2696d92b5c8cf956c11072baa58eaf9f6ade995c031ea635c6a1ee342ad1",
+      "size": 1069
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/unicode-ident-1.0.24/LICENSE-APACHE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "size": 9723
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/unicode-ident-1.0.24/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "size": 1023
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/unicode-ident-1.0.24/LICENSE-UNICODE",
+      "sha256": "f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1",
+      "size": 1995
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/wait-timeout-0.2.1/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/wait-timeout-0.2.1/LICENSE-MIT",
+      "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+      "size": 1057
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/wasip2-1.0.4+wasi-0.2.12/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/wasip2-1.0.4+wasi-0.2.12/LICENSE-Apache-2.0_WITH_LLVM-exception",
+      "sha256": "268872b9816f90fd8e85db5a28d33f8150ebb8dd016653fb39ef1f94f2686bc5",
+      "size": 12243
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/wasip2-1.0.4+wasi-0.2.12/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "size": 1023
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/wasm-bindgen-0.2.126/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/wasm-bindgen-0.2.126/LICENSE-MIT",
+      "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+      "size": 1057
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/wasm-bindgen-macro-0.2.126/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/wasm-bindgen-macro-0.2.126/LICENSE-MIT",
+      "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+      "size": 1057
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/wasm-bindgen-macro-support-0.2.126/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/wasm-bindgen-macro-support-0.2.126/LICENSE-MIT",
+      "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+      "size": 1057
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/wasm-bindgen-shared-0.2.126/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/wasm-bindgen-shared-0.2.126/LICENSE-MIT",
+      "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+      "size": 1057
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/windows-link-0.2.1/license-apache-2.0",
+      "sha256": "c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b",
+      "size": 11351
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/windows-link-0.2.1/license-mit",
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "size": 1141
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/windows-sys-0.61.2/license-apache-2.0",
+      "sha256": "c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b",
+      "size": 11351
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/windows-sys-0.61.2/license-mit",
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "size": 1141
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/wit-bindgen-0.57.1/LICENSE-APACHE",
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+      "size": 10847
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/wit-bindgen-0.57.1/LICENSE-Apache-2.0_WITH_LLVM-exception",
+      "sha256": "268872b9816f90fd8e85db5a28d33f8150ebb8dd016653fb39ef1f94f2686bc5",
+      "size": 12243
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/wit-bindgen-0.57.1/LICENSE-MIT",
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+      "size": 1023
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/zerocopy-0.8.53/LICENSE-APACHE",
+      "sha256": "9d185ac6703c4b0453974c0d85e9eee43e6941009296bb1f5eb0b54e2329e9f3",
+      "size": 11350
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/zerocopy-0.8.53/LICENSE-BSD",
+      "sha256": "83c1763356e822adde0a2cae748d938a73fdc263849ccff6b27776dff213bd32",
+      "size": 1275
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/zerocopy-0.8.53/LICENSE-MIT",
+      "sha256": "1a2f5c12ddc934d58956aa5dbdd3255fe55fd957633ab7d0d39e4f0daa73f7df",
+      "size": 1060
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/zerocopy-derive-0.8.53/LICENSE-APACHE",
+      "sha256": "9d185ac6703c4b0453974c0d85e9eee43e6941009296bb1f5eb0b54e2329e9f3",
+      "size": 11350
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/zerocopy-derive-0.8.53/LICENSE-BSD",
+      "sha256": "83c1763356e822adde0a2cae748d938a73fdc263849ccff6b27776dff213bd32",
+      "size": 1275
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/crates/zerocopy-derive-0.8.53/LICENSE-MIT",
+      "sha256": "1a2f5c12ddc934d58956aa5dbdd3255fe55fd957633ab7d0d39e4f0daa73f7df",
+      "size": 1060
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/rust-runtime/COPYRIGHT",
+      "sha256": "172020dbfd5b53a226dfde77616190a48dcff519b0bc0e6deb91a8450782c4af",
+      "size": 1571
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/rust-runtime/COPYRIGHT-library.html",
+      "sha256": "68129500b616d5838629e68f55ff3aed5e096dacf60ce9eb41bbe599a563afa6",
+      "size": 1512520
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/rust-runtime/LICENSE-APACHE",
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+      "size": 9723
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/rust-runtime/LICENSE-MIT",
+      "sha256": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1",
+      "size": 1068
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/rust-runtime/library/compiler-builtins/LICENSE.txt",
+      "sha256": "ab6eec6caf0fa5775e411c7a8bc6a45c4ef2956b0980b157ab74fc5cd62a928b",
+      "size": 15078
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/source-review/.github/workflows/xcframework.yml",
+      "sha256": "5f8aed4eb515d38b18a8d633648a3855ad41e80ed5f499d7f009368b9056c515",
+      "size": 2210
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/source-review/Cargo.lock",
+      "sha256": "b4eb31d0f16867f174dddfd7aa4883fbd94906273545d527e81a721a4b4396f1",
+      "size": 15410
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/source-review/Cargo.toml",
+      "sha256": "f4e5ff5b07d05ba431d69c320b4c750f157bc70edfa6737e2cae0457d92e6ac8",
+      "size": 1367
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/NemoTextProcessing/source-review/build-xcframework.sh",
+      "sha256": "520bc0004cc7320a62555e0c6841a4ec91058994837f557a7ca30ecf19892c63",
+      "size": 3669
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/Sparkle/LICENSE",
+      "sha256": "389a4e4e9a32f059775b13a06e25a591445ba229d2838d26dd3e7c0c45127cfe",
+      "size": 6154
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/fonts/fraunces-OFL.txt",
+      "sha256": "bdf4c22802eaf804f998195871c6b8938aac2ac14b2d78a8bd66a6f1eced833b",
+      "size": 4391
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/fonts/inter-OFL.txt",
+      "sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57",
+      "size": 4377
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/inventory.json",
+      "sha256": "ffedb359e57a83904dfd182aea4abf6cf9aebacce28e2971e140807ac96b9f3c",
+      "size": 90726
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/llama.cpp/LICENSE",
+      "sha256": "94f29bbed6a22c35b992c5c6ebf0e7c92f13b836b90f36f461c9cf2f0f1d010d",
+      "size": 1078
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/llama.cpp/source-review/build-xcframework.sh",
+      "sha256": "46f2e454739e76536fcbacee41f9b25a9c931ee8278fda1ada7241126f21cee1",
+      "size": 24300
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/llama.cpp/source-review/ggml/CMakeLists.txt",
+      "sha256": "bc8a927d393735deb076c44ac114f4c7e98da7d6f0fda71ec72eaab6393f4624",
+      "size": 21680
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/llama.cpp/source-review/tools/mtmd/CMakeLists.txt",
+      "sha256": "f158d9b0a5ff0003ea62d015dad0978b4895c181171601d29013a832fc6cbe45",
+      "size": 5537
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/llama.cpp/source-review/vendor/CMakeLists.txt",
+      "sha256": "97242b05cf7d56231b05afa991036260025b9d6fe4f003dbc997dd7f5d2be06b",
+      "size": 265
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/llama.cpp/vendor-notices/licenses/LICENSE-jsonhpp",
+      "sha256": "c0d068392ea65358b798b8c165103560f06e9e3b38c4ab4e2d8810a7b931af86",
+      "size": 1075
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/llama.cpp/vendor-notices/miniaudio.h-LICENSE.txt",
+      "sha256": "3a0fd41237bf8341d1e4cdd89a52ff4a96228c4fad26e272840ed0ee03efcaf7",
+      "size": 2604
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/llama.cpp/vendor-notices/sha1.c-LICENSE.txt",
+      "sha256": "46fc0c6d8b1e82892861b8093beb214f1531d5367d6d6ebbee0b16a9ecc37daa",
+      "size": 339
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/llama.cpp/vendor-notices/stb_image.h-LICENSE.txt",
+      "sha256": "7587efcca32db8f95bf5860dea6dfa4be410ee723e1964db3689c8ddf2a2e4a9",
+      "size": 2674
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/llama.cpp/vendor-notices/subprocess.h-LICENSE.txt",
+      "sha256": "1c7b71e03e1be684d51dfeb56d6358cc728097d844cfd72484f28835ff4c091b",
+      "size": 1276
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/llama.cpp/vendor-notices/vendor/cpp-httplib/LICENSE",
+      "sha256": "4b45cbe16d7b71b89ae6127e26e0d90a029198ca5e958ad8e3d0b8bbed364d8b",
+      "size": 1075
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/llama.cpp/vendor-notices/vendor/hash/rotate-bits/LICENSE.md",
+      "sha256": "ca0b44aec101afb6b46f4c39b23369fa06a64fb9c0add37c2689d702156fee55",
+      "size": 1088
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/llama.cpp/vendor-notices/vendor/hash/sha256/LICENSE",
+      "sha256": "b81d0022ca6367918c67b57e9647d3513ee58809fd4b0ef0b3492f1356bced25",
+      "size": 41
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/llama.cpp/vendor-notices/vendor/hash/xxhash/LICENSE",
+      "sha256": "6ffedbc0f7878612d2b23589f1ff2ab15633e1df7963a5d9fc750ec5500c7e7a",
+      "size": 1389
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/llama.swift/LICENSE.md",
+      "sha256": "2f9b695627d569a3ce452b2c03fdd34310df78c8ea94edfafd9ce38381e5b502",
+      "size": 1062
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/models/Parakeet-v2-MODEL_CARD.md",
+      "sha256": "491eac9a160dc7b0f7ce1210dea4fff6df0222124e93ea83ae2cd72827b4ce02",
+      "size": 1665
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/models/S1-mini-LICENSE",
+      "sha256": "d956d2d305a0639211c9cbde71501accb0e1474cc9ddf79a47820a522aff6f98",
+      "size": 11878
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/models/reviewed-options.json",
+      "sha256": "326985d23dfb5296228826a3fb787f1564927ced143f13fa09bf65751d63164e",
+      "size": 9075
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/models/reviewed-options/FluidInference--Nemotron-3.5-ASR-Streaming-Multilingual-0.6b-CoreML/README.md",
+      "sha256": "cb98a61839f512528ca728e80e084d793f26c3cefb79fdbfff41f1929b317e78",
+      "size": 9068
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/models/reviewed-options/FluidInference--nemotron-speech-streaming-en-0.6b-coreml/README.md",
+      "sha256": "9d9d997e953780619073cdf31aef0d5c2e95ef609145127b6fc59950ad58286d",
+      "size": 5908
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/models/reviewed-options/FluidInference--parakeet-ctc-110m-coreml/README.md",
+      "sha256": "1aa99e33e37d4d36f01f15b7d81f878a43a85210c184aebebf1f27d5a4c3b189",
+      "size": 7419
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/models/reviewed-options/FluidInference--parakeet-realtime-eou-120m-coreml/README.md",
+      "sha256": "aa118bc396f4bf5a0e5801761c1b2eafa584683492605b4f945cf57427b1fb49",
+      "size": 4410
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/models/reviewed-options/FluidInference--parakeet-tdt-0.6b-v3-coreml/README.md",
+      "sha256": "4155baa7d7d6f0ada748e1db3c1b91d18c9f7eb7155efc1abfbbe9d4a6507712",
+      "size": 4285
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/models/reviewed-options/FluidInference--parakeet-tdt-ctc-110m-coreml/README.md",
+      "sha256": "9ff65c55dfc1eb9e385760c90c1bb8d38e74136db1adc6d74f8b741ba5de2d1c",
+      "size": 2643
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/models/reviewed-options/FluidInference--parakeet-ultra-coreml/README.md",
+      "sha256": "9e9e26b6da628a0dc34b9c55f2029e486fc02304ccd7f83825333572ae11c158",
+      "size": 2235
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/models/reviewed-options/FluidInference--sensevoice-small-coreml/README.md",
+      "sha256": "516a8f6638e3a97499ab56d4e628ef9c7bf6a350f9ae21ea58c88aa8ee650335",
+      "size": 5610
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/models/reviewed-options/FluidInference--silero-vad-coreml/README.md",
+      "sha256": "c31dbec3e24a014a51fc06c645b3cb04897c97ecdbad9a90645466019c933ef4",
+      "size": 2472
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/models/reviewed-options/Qwen--Qwen3-0.6B/LICENSE",
+      "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+      "size": 11343
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/models/reviewed-options/Qwen--Qwen3-0.6B/README.md",
+      "sha256": "1ab64a26fcb3b461423b89a433a8c858f1bf8d4086f979cbb3ff878d47cf20e9",
+      "size": 13965
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/models/reviewed-options/nvidia--parakeet-tdt-0.6b-v2/README.md",
+      "sha256": "e2d10f955eb14a871092de134d2e82a59f494f001a181111fb95c74805763c65",
+      "size": 23599
+    },
+    {
+      "mode": "100644",
+      "path": "docs/third-party/native-review.md",
+      "sha256": "606a9934a0ddf5e4fc3f58283af5f47fb07071feb696e72470f4e0f72e704b83",
+      "size": 5494
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/dependency-artifacts.json",
+      "sha256": "00d178123e30eaef6f5700a80e444d3d90789a15313f07d2089a601dc759894e",
+      "size": 3414
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/fluid-audio/Documentation/ASR/ManualModelLoading.md",
+      "sha256": "c855bcc910edcc8af3c20fef0fdae1ff7ecbc201ec79702bcc81e03d9af9ef3b",
+      "size": 4490
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/fluid-audio/Documentation/ASR/Nemotron.md",
+      "sha256": "48efc6a454111322d5cd8553f07a168c4b409d419051d922dd3a05209dcd24e4",
+      "size": 5879
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/fluid-audio/LICENSE",
+      "sha256": "c95bae1d1ce0235ecccd3560b772ec1efb97f348a79f0fbe0a634f0c2ccefe2c",
+      "size": 11358
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/fluid-audio/Package.swift",
+      "sha256": "3be7af4826b7a9647b92d8a0a643e21100a34e7cafdcdefd6250805ea089f40f",
+      "size": 2972
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/fluid-audio/Package@swift-6.2.swift",
+      "sha256": "1d8273bcda4e6f980e1c67f53796d0e053c9bd178ac0db3432de1c43bc1b3089",
+      "size": 3896
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/fluid-audio/SNAPSHOT.json",
+      "sha256": "195648bf2f6da12630462e323c6e91b608996ca0c983c8cbe384884f6d121347",
+      "size": 3402
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/fluid-audio/Sources/FluidAudio/ASR/Parakeet/SlidingWindow/SlidingWindowAsrSession.swift",
+      "sha256": "d9d09d849216fa01f9306b57627ce545cbaca1af8e4348327c67e4038e71e37d",
+      "size": 6835
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/fluid-audio/Sources/FluidAudio/ASR/Parakeet/Streaming/Nemotron/NemotronChunkSize.swift",
+      "sha256": "ad4176dd1b1a9befca5a5abe6f637a4dc6b752979b5f5c9a318a7b6290ba9f79",
+      "size": 883
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/fluid-audio/Sources/FluidAudio/ASR/Parakeet/Streaming/Nemotron/StreamingNemotronAsrManager.swift",
+      "sha256": "d5ea36f6efc48816a2f6d9156572addae1217b61e6f25e87e72c608a4801c0ad",
+      "size": 16489
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/fluid-audio/Sources/FluidAudio/ASR/Parakeet/Streaming/StreamingAsrManager.swift",
+      "sha256": "5432bafd58bd4da2f4eddd0737f3bd2110c6b7b7a8d5e4a8289fac38506e89ca",
+      "size": 3319
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/.github/workflows/release.yml",
+      "sha256": "04f9bda646e54db010bfbac26c40b92aaeb32017eae808c38f75889c632c67c3",
+      "size": 1018
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/Dictate Anywhere.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved",
+      "sha256": "8f72a9d408f6be83aa17962e0671f0322160407f83eacf990e8b464664cf52e1",
+      "size": 933
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/Dictate Anywhere/AIPostProcessingService.swift",
+      "sha256": "3d6d9b581184f3ece8756acb521acb8c75e300741aeea969f6cdb9a86b92b06f",
+      "size": 11877
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/Dictate Anywhere/AppState.swift",
+      "sha256": "cd6b8620b33e8185fe899911ef412fd085426dd51d89c97b442b24175a0dd0c2",
+      "size": 133256
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/Dictate Anywhere/AudioMonitor.swift",
+      "sha256": "2359ed5a22370c58832087ab316ff96b9e18729f8b88bb511828a60291d5294e",
+      "size": 2484
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/Dictate Anywhere/HotkeyService.swift",
+      "sha256": "62a95a7fc94175a0d0b91b6b65ba88369b30b83b363001509292f911becac149",
+      "size": 14211
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/Dictate Anywhere/OllamaPostProcessingService.swift",
+      "sha256": "a5547ad350fdaa9208c598233eb1a8238fb46b79a19c16da976c7398c2fbac8b",
+      "size": 23365
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/Dictate Anywhere/OpenAICompatiblePostProcessingService.swift",
+      "sha256": "7964b856196172add6afee6cdd7f9ccd4d85c0f48896875b52a69f9d849d45aa",
+      "size": 13547
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/Dictate Anywhere/Settings.swift",
+      "sha256": "06ac7633328e28a8d071aba87deacfe3cecfe73a98ef98d7bcbe121affa65a9f",
+      "size": 108474
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/Dictate Anywhere/SoftwareUpdater.swift",
+      "sha256": "910cb8cd7a48e3200fc00caf0339cd540a70a186087f278a89e2071cc137136a",
+      "size": 1731
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/Dictate Anywhere/TextInserter.swift",
+      "sha256": "a4228ced579cacff762e168f4f878fbe95d8b1a00bd62d06edfeec4e9432b8d9",
+      "size": 65311
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/Dictate Anywhere/TranscriptCleanupIntegrity.swift",
+      "sha256": "2b77fb119eb082c52fb9034b158d126c5eb23a6f3fad3352da540adb3f6aa134",
+      "size": 1490
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/Dictate Anywhere/TranscriptCleanupPlan.swift",
+      "sha256": "84a5e9ed3ff89b1d1933557daef4c810a54e7b50118fde38e324d86fbf1545ce",
+      "size": 7268
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/Dictate Anywhere/TranscriptHistoryPersistence.swift",
+      "sha256": "e0c84e41ee6d2d597559185184a6291484dbbd2c7f2ff87eef3f407911b83e91",
+      "size": 1290
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/Dictate Anywhere/TranscriptHistoryView.swift",
+      "sha256": "aff096e1d71ad21a7950dabfcff733eb92bffe8d5f343e1160e9d5766d283f4e",
+      "size": 12678
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/Dictate Anywhere/TranscriptionEngine.swift",
+      "sha256": "ae7d9ff3b4996b26f634e463490c559cf30abb8cb264468e4abc5e3b0bee9045",
+      "size": 109360
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/Dictate AnywhereTests/AudioCaptureStartupTests.swift",
+      "sha256": "7dbdf558e88930f9fa83dd1a9bdca7270b862bfff76fe5f9cbe7dacfc0fd8290",
+      "size": 11083
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/Dictate AnywhereTests/CleanupProviderContractTests.swift",
+      "sha256": "d44abf83e7fe795152ce1b48139e2cc394f3765b2bc8c94e1b3e1d1196fb6cb3",
+      "size": 37950
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/Dictate AnywhereTests/HotkeyTests.swift",
+      "sha256": "4c3b465e435e801b22f3c3b64dc1e2fee85345ab7f6a1994b0d71202a7b08feb",
+      "size": 6063
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/Dictate AnywhereTests/PrivacyRegressionTests.swift",
+      "sha256": "fd46060ddb6f103c01e7f0755b580eb5ec9fe84f7b1d997d2eadd49fd8741ede",
+      "size": 7533
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/Dictate AnywhereTests/RemoteCleanupConcurrencyTests.swift",
+      "sha256": "60dd905518611bccf02496dc3a95eacb0f46807b329313f71678db5a8490d26f",
+      "size": 4838
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/Dictate AnywhereTests/TextInsertionFinalizationTests.swift",
+      "sha256": "7aa658bafd30a3d214329cbfcda2a92adfec7cf6eea09ccc645a10597e068251",
+      "size": 4793
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/Dictate AnywhereTests/TranscriptHistoryPersistenceTests.swift",
+      "sha256": "412584c2f90a73c7acd2853d9061fccd2fa471e666f90df77dab55e65c64255f",
+      "size": 1699
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/IMPORT.json",
+      "sha256": "d5119c7ae025137a2ca20a82d27ef8ec700aacfd4d5d895a92afd9a76d0895c5",
+      "size": 123872
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/LICENSE",
+      "sha256": "a9a3e92a7b9de693ff5b74be900a1bddec31c94fb0f67d4cd184807b05f68eae",
+      "size": 1070
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/SNAPSHOT.json",
+      "sha256": "73aeded04f380c66013f59981e8072ef4fed0c763a3c5fe0b636ef078eb80ea2",
+      "size": 10237
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/mac-dictate-anywhere/TREE.json",
+      "sha256": "1f34f949e9512d1f38e5cea6220da33994b2de1d87f087d63a3a1dd550309592",
+      "size": 99170
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/openwhispr/LICENSE",
+      "sha256": "ecf1a12d3dc51085d2f3a720dc177c7da3cd075ea3fadcc6a1b719fb44ed30e0",
+      "size": 1071
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/openwhispr/SNAPSHOT.json",
+      "sha256": "a9bb813a84d39135603cca3d189a9c7df2f5db5c6f71331970e88f2424555c3b",
+      "size": 8104
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/openwhispr/package.json",
+      "sha256": "619c02914ef606ccc2d5ef02e128419ca7918ecbc13840e103fea9d26d57510d",
+      "size": 13296
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/openwhispr/resources/macos-fast-paste.swift",
+      "sha256": "36fbc16f177fe2425afde5b8dd6f5999ef0c6966866c341bfc94cec9f5c2293a",
+      "size": 3263
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/openwhispr/src/helpers/analytics.js",
+      "sha256": "8f6a95419ef436abba5d37f85b2e68a56458ab182728732b29f76c000b825cd7",
+      "size": 6142
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/openwhispr/src/helpers/audioManager.js",
+      "sha256": "47aa9a554d127441dbcf76173aeb56fe0e7b4ae3f3c1da9bc85fd27a93248d29",
+      "size": 247461
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/openwhispr/src/helpers/clipboard.js",
+      "sha256": "f2bbbc5ecfefd087be4bdcc91c98e396f1bac8e8be320d30043cf8d3ea90930e",
+      "size": 89282
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/openwhispr/src/helpers/database.js",
+      "sha256": "ed745e0bf505b2a8359926a751ccc1851b614e186ab904ed3b5c31d4300734b4",
+      "size": 316095
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/openwhispr/src/helpers/hotkeyManager.js",
+      "sha256": "8d940f22a11e9c0e0bbf448938530b0ca0199be544af6f297d31d337c11512a6",
+      "size": 63363
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/openwhispr/src/helpers/parakeet.js",
+      "sha256": "aa0cae10df9f7d3e5bcffde9d557f4e15d92501750f79cae0284ef989ce4bdf8",
+      "size": 24695
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/openwhispr/src/helpers/parakeetModelInfo.js",
+      "sha256": "c11f0ac627ee95cb5f86254b1f4b30da19a40f2db8289cf9cec20664fc771098",
+      "size": 2216
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/openwhispr/src/helpers/parakeetServer.js",
+      "sha256": "383aebe5b204527a50072a8473ac69b50869199dff7ce1cc887cf4a262395c59",
+      "size": 9750
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/openwhispr/src/helpers/parakeetWsServer.js",
+      "sha256": "cc613892759a7668a392f05e7b322f825be81ec06dce5469ece5ca4f9686b1e0",
+      "size": 20856
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/openwhispr/src/helpers/reasoningRouting.js",
+      "sha256": "95c36eb2c1be8153b22acc45c7e05af2082bc22524dd2f74146af2066503a6da",
+      "size": 2973
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/openwhispr/src/helpers/recordingSpool.js",
+      "sha256": "84f19d9cae6e86b1671c1fbe4a1fd4858403ce6ec419c1338e4e845b5027edb6",
+      "size": 4534
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/openwhispr/src/services/ReasoningService.ts",
+      "sha256": "590403182d42b53c3892ef556cebf5b532b313fccd976aa82a886f0a6cd24f4b",
+      "size": 52826
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/openwhispr/src/services/ai/inferenceProviders/openai.ts",
+      "sha256": "463ed5848a4f7f704d9c45012a454fe7f8b68bf5eccbf397870e6b403b864892",
+      "size": 16593
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/openwhispr/src/services/ai/transcriptHistory.ts",
+      "sha256": "c532347281b9cf32fc76b64daf5013ababeee4a06f7c2105ba2c205bb2e9888d",
+      "size": 2848
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/openwhispr/test/helpers/audioManagerCleanupFallback.test.js",
+      "sha256": "6c37483b371af9ce58af5bf8c3bf33a7e2c2886582dac44ef634f12ae4840923",
+      "size": 12223
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/openwhispr/test/helpers/audioManagerPasteRecovery.test.js",
+      "sha256": "fecc7031d9991114760e4e47ff5584edbe6165770e7b241b18d161e0035fa7ee",
+      "size": 2394
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/openwhispr/test/helpers/audioManagerStreamingFinalization.test.js",
+      "sha256": "bcdfe59dca7b5905193a496a8baa234973ca85a0e7e9053ed7e01fbe9bdc2258",
+      "size": 94815
+    },
+    {
+      "mode": "100644",
+      "path": "research/upstream/openwhispr/test/helpers/clipboardRestore.test.js",
+      "sha256": "67065ce97f0b030d7ede652e4ef920a0f0b321cd3db02bf4a5d6d293e6209968",
+      "size": 58459
+    },
+    {
+      "mode": "100644",
+      "path": "validation/Package.swift",
+      "sha256": "cb391b24d343f153b9a86a55df32d9b91f50fbe5a25cbf2f9e386f0a0bc900dc",
+      "size": 700
+    },
+    {
+      "mode": "100644",
+      "path": "validation/README.md",
+      "sha256": "beafe88f6a612b364d71cef9e49aad31a86eb99ffb7d0d668c26fb2d6344a2c2",
+      "size": 10602
+    },
+    {
+      "mode": "120000",
+      "path": "validation/Sources/Dictate_Anywhere/AudioSampleBuffer.swift",
+      "sha256": "b5fe93057c715dcb04a35d8d520f506b954f0cdcb6208b9958d99b1df6acf365",
+      "size": 53,
+      "symlink_target": "../../../app/Dictate Anywhere/AudioSampleBuffer.swift"
+    },
+    {
+      "mode": "120000",
+      "path": "validation/Sources/Dictate_Anywhere/AudioVolumeGate.swift",
+      "sha256": "6dba11b4b9e1e6d676e1711b8c0d6b60328bbf9d1171e9e0f7ebcf745fd32be9",
+      "size": 51,
+      "symlink_target": "../../../app/Dictate Anywhere/AudioVolumeGate.swift"
+    },
+    {
+      "mode": "120000",
+      "path": "validation/Sources/Dictate_Anywhere/CJKText.swift",
+      "sha256": "db06ce1376ef255fafa861668b130492f635b5e645e2ffaeb6a78329f413301a",
+      "size": 43,
+      "symlink_target": "../../../app/Dictate Anywhere/CJKText.swift"
+    },
+    {
+      "mode": "120000",
+      "path": "validation/Sources/Dictate_Anywhere/RemyCleanupAttempt.swift",
+      "sha256": "67d9b1cad423896e1451d04daeed8cc205f203cb85f030d00fb323633529e58f",
+      "size": 54,
+      "symlink_target": "../../../app/Dictate Anywhere/RemyCleanupAttempt.swift"
+    },
+    {
+      "mode": "120000",
+      "path": "validation/Sources/Dictate_Anywhere/RemyCleanupFailure.swift",
+      "sha256": "45f421d72acad4df5340cbf30194f4eaf6497e0adf2b45ec0b3a17cd0b3e2b64",
+      "size": 54,
+      "symlink_target": "../../../app/Dictate Anywhere/RemyCleanupFailure.swift"
+    },
+    {
+      "mode": "120000",
+      "path": "validation/Sources/Dictate_Anywhere/RemyStoragePaths.swift",
+      "sha256": "8acdf1e90c30d2232d87b090cbb12ff17fe4938633b28e053d5662c3cefe018c",
+      "size": 52,
+      "symlink_target": "../../../app/Dictate Anywhere/RemyStoragePaths.swift"
+    },
+    {
+      "mode": "120000",
+      "path": "validation/Sources/Dictate_Anywhere/RemyStoredHistoryDeletion.swift",
+      "sha256": "0ae85f959cb13bafbb5740eef37c961f89c1e8d0f88c0bc6a2b0dcb80f5d7c35",
+      "size": 61,
+      "symlink_target": "../../../app/Dictate Anywhere/RemyStoredHistoryDeletion.swift"
+    },
+    {
+      "mode": "120000",
+      "path": "validation/Sources/Dictate_Anywhere/TimedRequestCache.swift",
+      "sha256": "7f5f1aa0d01ec65c666cd9ff4d5ba00dc60d03589d41bf4166a1075c0e058890",
+      "size": 53,
+      "symlink_target": "../../../app/Dictate Anywhere/TimedRequestCache.swift"
+    },
+    {
+      "mode": "120000",
+      "path": "validation/Sources/Dictate_Anywhere/TranscriptCleanupIntegrity.swift",
+      "sha256": "9c64b4a2e4a003b75c8d0bc6e66f3e9e8a07f2b8fa45b8ad13e50cfc094443e5",
+      "size": 62,
+      "symlink_target": "../../../app/Dictate Anywhere/TranscriptCleanupIntegrity.swift"
+    },
+    {
+      "mode": "120000",
+      "path": "validation/Sources/Dictate_Anywhere/TranscriptCleanupPlan.swift",
+      "sha256": "0270142089f6ae7729f08a7cb0c80a55c4c0c6e114db73059a3c25e40e398291",
+      "size": 57,
+      "symlink_target": "../../../app/Dictate Anywhere/TranscriptCleanupPlan.swift"
+    },
+    {
+      "mode": "120000",
+      "path": "validation/Tests/OfflineValidationTests/AudioSampleBufferTests.swift",
+      "sha256": "d61a83f7963105b4ea9e2e9103eca0ddebe5ee439f8dd1adaf587d9d50517c01",
+      "size": 63,
+      "symlink_target": "../../../app/Dictate AnywhereTests/AudioSampleBufferTests.swift"
+    },
+    {
+      "mode": "120000",
+      "path": "validation/Tests/OfflineValidationTests/AudioVolumeGateTests.swift",
+      "sha256": "10fe8ab1124434f1d1675d7786124e6316589cb8f55848f89f1ce704b5a2bf40",
+      "size": 61,
+      "symlink_target": "../../../app/Dictate AnywhereTests/AudioVolumeGateTests.swift"
+    },
+    {
+      "mode": "120000",
+      "path": "validation/Tests/OfflineValidationTests/CJKTextTests.swift",
+      "sha256": "b49abd2e54027c4dd24646f7d8a35b227214a5115525540de1e679c54de7e6aa",
+      "size": 53,
+      "symlink_target": "../../../app/Dictate AnywhereTests/CJKTextTests.swift"
+    },
+    {
+      "mode": "120000",
+      "path": "validation/Tests/OfflineValidationTests/RemyCleanupAttemptTests.swift",
+      "sha256": "da898552d417c767eaf025b222379907b539555a14bbaab45fbbc9cf6fd64276",
+      "size": 64,
+      "symlink_target": "../../../app/Dictate AnywhereTests/RemyCleanupAttemptTests.swift"
+    },
+    {
+      "mode": "120000",
+      "path": "validation/Tests/OfflineValidationTests/RemyStoragePathsTests.swift",
+      "sha256": "01ce93a12e9f08ff8b437f480dbcea9f0f91e94d77924a2c771dfc7c9ba1348c",
+      "size": 62,
+      "symlink_target": "../../../app/Dictate AnywhereTests/RemyStoragePathsTests.swift"
+    },
+    {
+      "mode": "120000",
+      "path": "validation/Tests/OfflineValidationTests/RemyStoredHistoryDeletionTests.swift",
+      "sha256": "84f6621f6ab508f43e784ab2c12edfcaa0d3e907d39f8ca0fa6e7ab26274494b",
+      "size": 71,
+      "symlink_target": "../../../app/Dictate AnywhereTests/RemyStoredHistoryDeletionTests.swift"
+    },
+    {
+      "mode": "120000",
+      "path": "validation/Tests/OfflineValidationTests/TimedRequestCacheTests.swift",
+      "sha256": "a99091fb44831988acfa2991dc23cb8f8f40fecc89b608aec5f00e36c3b582c7",
+      "size": 63,
+      "symlink_target": "../../../app/Dictate AnywhereTests/TimedRequestCacheTests.swift"
+    },
+    {
+      "mode": "120000",
+      "path": "validation/Tests/OfflineValidationTests/TranscriptCleanupIntegrityTests.swift",
+      "sha256": "fa86b090e033a5849a300876bbd8abb6dc91b20226745ba9cf1047f975869f22",
+      "size": 72,
+      "symlink_target": "../../../app/Dictate AnywhereTests/TranscriptCleanupIntegrityTests.swift"
+    },
+    {
+      "mode": "120000",
+      "path": "validation/Tests/OfflineValidationTests/TranscriptCleanupPlanTests.swift",
+      "sha256": "aa25e076cd87be645de8aed5caef3e39a727d62cf11332728ae230bc49e835b0",
+      "size": 67,
+      "symlink_target": "../../../app/Dictate AnywhereTests/TranscriptCleanupPlanTests.swift"
+    },
+    {
+      "mode": "100644",
+      "path": "validation/check-third-party-notices.py",
+      "sha256": "43a483d904ab043b373dafce124ac1192d60b0cff4c20f5fa98892e5b15ab4e2",
+      "size": 4653
+    },
+    {
+      "mode": "100644",
+      "path": "validation/dependency-baseline/verification.json",
+      "sha256": "5e25c5fecc635f9919d1bfe8ced367c08a6f000dfc7b93329e7a7b687c93a73d",
+      "size": 3243
+    },
+    {
+      "mode": "100644",
+      "path": "validation/dependency-baseline/verify.py",
+      "sha256": "206c69e61ce5cdc18b1980014895b9bdc5bd38a3171f16265612f83a42d08ab2",
+      "size": 4319
+    },
+    {
+      "mode": "100644",
+      "path": "validation/destination-baseline/README.md",
+      "sha256": "b722610685392e44233543c018a84e3f9d1d7f544e02034933c98539517b93b0",
+      "size": 3046
+    },
+    {
+      "mode": "100644",
+      "path": "validation/destination-baseline/index.html",
+      "sha256": "0c72164ac48abbb5e7f350f0068cb7e64d3445a20a0f58da5ca1a86c5551619b",
+      "size": 3066
+    },
+    {
+      "mode": "100644",
+      "path": "validation/foundation-checks/README.md",
+      "sha256": "b989f308894deb07ad457e579530ad8e76eb02a9f18cf62cd5e35b4966972074",
+      "size": 7279
+    },
+    {
+      "mode": "100644",
+      "path": "validation/foundation-checks/check.py",
+      "sha256": "0bd532c37894ee87b6afedb3a94cc178e329eec264699984f60f3f58541b50f4",
+      "size": 6393
+    },
+    {
+      "mode": "100644",
+      "path": "validation/foundation-checks/fresh-clone.py",
+      "sha256": "55f006061965c46ad78d8269516bf65551a805459a043089d8caee915b98ed87",
+      "size": 4347
+    },
+    {
+      "mode": "100644",
+      "path": "validation/foundation-checks/run.sh",
+      "sha256": "52a0815e6b2283cf7fd233512b072c512a8fedda7a0676378992326d51012359",
+      "size": 1556
+    },
+    {
+      "mode": "100644",
+      "path": "validation/foundation-checks/test_fresh_clone.py",
+      "sha256": "9524dae20ac4b4d7d1b1709b12371b5c744236d5c6c7d7875fa00465c3e2765a",
+      "size": 2489
+    },
+    {
+      "mode": "100644",
+      "path": "validation/long-dictation/.gitignore",
+      "sha256": "32dae3052f331ee34d628ef535709b301259a45df7c7522c4d35dcf49873f00b",
+      "size": 13
+    },
+    {
+      "mode": "100644",
+      "path": "validation/long-dictation/README.md",
+      "sha256": "da045244268a067509d069f0aeb75b67d9ae673ba1794729f6468c836cc32ea6",
+      "size": 7591
+    },
+    {
+      "mode": "100644",
+      "path": "validation/long-dictation/fixtures/passages.json",
+      "sha256": "b475ff36230b081f3b3e6a7f0f0974ed64562e7c4aed1d6f56155f10fedad294",
+      "size": 1478
+    },
+    {
+      "mode": "100644",
+      "path": "validation/long-dictation/generate.py",
+      "sha256": "9dc665c1bb1876f23894a659ddb9f7810f7a0aa3860da3d46ca7482b7fef05fa",
+      "size": 5411
+    },
+    {
+      "mode": "100644",
+      "path": "validation/model-baseline/.gitignore",
+      "sha256": "0527f3cbb39e33ccfdc05f1fd92fe6a5842859707e28f97068c27d43b5793618",
+      "size": 39
+    },
+    {
+      "mode": "100644",
+      "path": "validation/model-baseline/README.md",
+      "sha256": "ee3ff92fc21a248e82bc5af4518f33f16e37d5dc4e080079b41c390a44da9178",
+      "size": 5694
+    },
+    {
+      "mode": "100644",
+      "path": "validation/model-baseline/manifest.json",
+      "sha256": "cda0167b02368f3f2c54e4be8e850c6e8f85f40da3a57403f088d2425976002d",
+      "size": 11175
+    },
+    {
+      "mode": "100644",
+      "path": "validation/model-baseline/model_baseline.py",
+      "sha256": "7535c34472cc5ea99e6bd05252b4f2ff6594bf3a853a1861520538b0a534d9cb",
+      "size": 4338
+    },
+    {
+      "mode": "100644",
+      "path": "validation/provider-baseline/README.md",
+      "sha256": "5057e1786a5f4347b8c666c1c1b66567df41565d5a959e98bcf7c3aba40fa5c8",
+      "size": 5688
+    },
+    {
+      "mode": "100644",
+      "path": "validation/provider-baseline/fixtures.json",
+      "sha256": "77c852ad0616c623a6c03f7ccc167ff380445de43eb8fd6e6be729bf63b28cef",
+      "size": 816
+    },
+    {
+      "mode": "100644",
+      "path": "validation/provider-baseline/policy.txt",
+      "sha256": "1375babce708fecd69131c2c76d7c29dfc7df5dbabc0a2f2ff83406528013a8d",
+      "size": 1177
+    },
+    {
+      "mode": "100644",
+      "path": "validation/provider-baseline/qwen-install-plan.json",
+      "sha256": "5d0a71fe6e47d62955ecefbaedb6fb4cd2e927bc31575acca54b66128ebb14fd",
+      "size": 6831
+    },
+    {
+      "mode": "100644",
+      "path": "validation/provider-baseline/qwen-install.py",
+      "sha256": "b94afebb592ff63dce01c972614b6733aced803e619d1334a9aa866b3fb20984",
+      "size": 6717
+    },
+    {
+      "mode": "100644",
+      "path": "validation/publication-hygiene/README.md",
+      "sha256": "c4bca082e224cfa932c43688b6242a3722c05503c3ccf5d602729cc802ce5952",
+      "size": 4506
+    },
+    {
+      "mode": "100644",
+      "path": "validation/publication-hygiene/binary-allowlist.json",
+      "sha256": "6b9289de8d40a06055e9cd1ce0e00a6fc5ec370d15373dd8b941b6cd9a88abef",
+      "size": 2297
+    },
+    {
+      "mode": "100644",
+      "path": "validation/publication-hygiene/check.py",
+      "sha256": "72da66768225aab8a2046e71d7cabc206001ccb14897320da42d9aee700abe61",
+      "size": 7450
+    },
+    {
+      "mode": "100644",
+      "path": "validation/publication-hygiene/export-source.py",
+      "sha256": "bc9af83fbec77c2a8647c0f0755f7e2cf7d89bf2fe275a587fd5f090caa9b0e5",
+      "size": 9135
+    },
+    {
+      "mode": "100644",
+      "path": "validation/publication-hygiene/test_check.py",
+      "sha256": "ab25fa00d90dc11098bb3e10fa42b7f89296de1c8e2982b496350d530128e107",
+      "size": 3617
+    },
+    {
+      "mode": "100644",
+      "path": "validation/publication-hygiene/test_export_source.py",
+      "sha256": "71b04a736a8f64c74fb508ef4d8983326def321706de2d7e5ab719cca98feb28",
+      "size": 6667
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-a00/chrome-live-timings.json",
+      "sha256": "59c9a6e448339b5841559559383c9d85692aa5833eb8c8170680ad448ac7b344",
+      "size": 1997
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-a00/cloud-review.json",
+      "sha256": "9e90b0e312c481bc45d75199509445b0047e313828e58a2b4018f5d2f2ec68ca",
+      "size": 4229
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-a00/destinations.json",
+      "sha256": "eab1fb63239308168dc015cc48c6c28c213d22e302dd9f2ddd4beba21ecaedb3",
+      "size": 1946
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-a00/dev-bundle.json",
+      "sha256": "4fc993f5a0e46570334f3b83193ab7d9fab8b52583e667b616cde5ff6a91d6bd",
+      "size": 316
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-a00/first-launch.json",
+      "sha256": "5ba50935ca0940791b6a9e8ae14778f4efe97662e1effd0bb185c6065f9fd7e8",
+      "size": 240
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-a00/generated-cache-cleanup.json",
+      "sha256": "363409e3b8efcf8d130ea4277940d0d0bd51758a8117374508384f8dce543eb0",
+      "size": 237
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-a00/live-checks.json",
+      "sha256": "60905b3e4569651027e7f3ba0b14082da5c36cb4f5173ea1365a8b65da712e65",
+      "size": 13437
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-a00/live-performance.json",
+      "sha256": "6f26455d969bac2b915aaffcc7cd351323219146b054e6b24832259743e17dea",
+      "size": 31265
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-a00/package-revisions.json",
+      "sha256": "0e39686d0050842896f8761b60425c3a478b63857e2b66bd0154512a88d86095",
+      "size": 247
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-a00/provider-review.json",
+      "sha256": "f361e8412e22f8a1c25532a61efb3bc328e0c9bfdcf037ba89a1179354bc249e",
+      "size": 3804
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-a00/qwen-install-show.json",
+      "sha256": "96d1040f6e3b5c5ae5a80b2ca621944db1524cb7934806b9544a9e66fa36e61e",
+      "size": 28140
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-a00/qwen-install.json",
+      "sha256": "5d0a3020c6800e84a31d9124da8630bf96d49576eee94b4ff84034706b462e91",
+      "size": 17457
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-a00/qwen-review.json",
+      "sha256": "781c13b468369f4f6587d69b2253074d9d0dd7fbb6520bf48dba9d0cf558e33f",
+      "size": 4083
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-a00/replay-r2-resources.json",
+      "sha256": "0020d708cd8cd4affd735d1dcdcf322cd9ae2ebeb055917cd2abf5b69fe57a16",
+      "size": 33984
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-a00/runtime-process-samples.json",
+      "sha256": "385ffedef9f797baad5c8d54464f9b21a522489ba7132914b44bcb514a136d53",
+      "size": 1548
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-a00/signed-providers-replay-resources.json",
+      "sha256": "c3cf1ff250a8652f63f8eab9be9afc091638f27f985dd788e2c61cf556417641",
+      "size": 18296
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-a00/synthetic-review.json",
+      "sha256": "f47a895fc368650d6eacb32bfc75b83ba550b32d62e2533a2f77a9d4e35fa538",
+      "size": 8050
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-a00/synthetic-signed-review.json",
+      "sha256": "b9c53897d49e5b7379ed98d16abe1e40b95742690cf136376c89f9e94b2fa634",
+      "size": 9242
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-a01/ui-checks.json",
+      "sha256": "b06e37f8f19bad674b79c2bf7db4e3e44b1aa7c6737416723dad549a5560ce4e",
+      "size": 928
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-a02/README.md",
+      "sha256": "13ac28f39f926bfab06aa327e9d0bb602b084d37d4d88acf57e331ec7ce5fac8",
+      "size": 2857
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-a02/live-checks.json",
+      "sha256": "e4baebf987ab127e8eea7adea81b8332116e0cf646ad5308f815a70baf79afdc",
+      "size": 1948
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-a03-a05/README.md",
+      "sha256": "b0c6ce7dacd6b229d41f54081487b2b89495c8340ebb97e95c8c3eed94787bba",
+      "size": 13172
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-a03-a05/live-checks.json",
+      "sha256": "849442dc8d62ea03cfafe500309a3f79b9b11dac55dfdd816986ae9dcd57ecfd",
+      "size": 3647
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-destination-setting/README.md",
+      "sha256": "48d524b6b66550c66d8d6b8261f4ec940ac18542c2a1699678f9081ecd442c4d",
+      "size": 4307
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-destination-setting/live-checks.json",
+      "sha256": "309f1f99d345d46a7fa8b8cfaa505a9416d78968c94d26695b033930731b47bf",
+      "size": 2079
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-local-migration/README.md",
+      "sha256": "2d7801a046e0430026811c6a6006339409beda2eaaabac8d45be638876e3785c",
+      "size": 3955
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-long-audio-sounds/README.md",
+      "sha256": "b4522897533ed1a1d54cb3bf9efb6a79dbd9aa49360a9130f4a772c293550327",
+      "size": 7204
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-long-audio-sounds/ui-checks.json",
+      "sha256": "04556da0a017e4254b8630212bb526d88d018243dfdaaca3057b27bc1d9a5498",
+      "size": 1546
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-paste-guard/README.md",
+      "sha256": "ea1413832784e8c19c8cc22cbaaf89f309b87f5c2e5d0e81e22e8274a8997573",
+      "size": 5084
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-paste-guard/live-checks.json",
+      "sha256": "736a21de8bc2e9f6de0010d50f1579eea13e6d386cb5844d4189c9e411f365d4",
+      "size": 1536
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-19-privacy-audit.json",
+      "sha256": "f24a2d28db3ce375e67709a70d543bb7b7ef58c20b0a76130a8ccd19dfd44469",
+      "size": 29567
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-20-arc-paste-guard/README.md",
+      "sha256": "b6c2a50aa179636137d79560235ff454149db1dde5799b8a7807f84c0b8ca3af",
+      "size": 3729
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-20-context-awareness/README.md",
+      "sha256": "e68d12fa003ec6a78da73f94c8481250c29b9dee0bb31e43b6d512947f317ac4",
+      "size": 3670
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-23-open-source-preparation/README.md",
+      "sha256": "1edca30eb2ddfa43ddd8484b4f6fd5055240efbd730f2b7d4642d8568ddaa658",
+      "size": 4584
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-10-24-cleanup-input-budget/README.md",
+      "sha256": "b957b7598a54ddc47b4c9779af90bfd27b3a23183b57fa2d3fb723804140a0d3",
+      "size": 3079
+    },
+    {
+      "mode": "100644",
+      "path": "validation/results/2026-11-05-source-release/README.md",
+      "sha256": "3c2e513d20c924bdc7f0fb3dcb1668c37476cc39e578d9a790e1621fc9f3e35d",
+      "size": 5732
+    },
+    {
+      "mode": "100755",
+      "path": "validation/run-tests.sh",
+      "sha256": "a91df0a53cfcf0a9c9865a1d9c6e194a93f0a0f26b382a095bdfb9249f517edc",
+      "size": 625
+    },
+    {
+      "mode": "100644",
+      "path": "validation/runtime-baseline/README.md",
+      "sha256": "497bd33ff88a10077dd8185bed450964f4833628f5969be212f617831f5ab7dc",
+      "size": 3343
+    },
+    {
+      "mode": "100644",
+      "path": "validation/runtime-baseline/fixtures.json",
+      "sha256": "c2d577731f7f01ae214822053fe9405bca1ae83ab62005e3ce89545ce1959ed7",
+      "size": 9744
+    },
+    {
+      "mode": "100644",
+      "path": "validation/runtime-baseline/generate.py",
+      "sha256": "d3caaaa0bffd427039c7cf8db06663d9ea0b375cd66d6fa2a394493782a43460",
+      "size": 1576
+    },
+    {
+      "mode": "100644",
+      "path": "validation/runtime-baseline/monitor.py",
+      "sha256": "8f66c282f18b979916b004a2fa3c796bf71c2bdcad00bcb6117b0a3adabf3e39",
+      "size": 1482
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Committed source only; no Git history or author metadata. File hashes cover payload bytes; symlink hashes cover target text. This generated manifest does not hash itself.",
+  "source_commit": "ed9a350eccfed7bfd76e56c80fec6802bb8f10a9"
+}

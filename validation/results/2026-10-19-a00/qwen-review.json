@@ -1,0 +1,94 @@
+{
+  "reviewVersion": 1,
+  "source": ".local/provider-baseline/local-FB9162CC-A9EA-4619-ABF2-2C0D94A7444D.json",
+  "sourceSHA256": "12e18a2521f3185a521f2d4b30bb313043182298d7e6bd2ad7416ae5d7df0d5c",
+  "reviewMethod": "Agent manual comparison of all ten public input/output pairs; agent judgment, not user/human acceptance, blinded review or exact-string equivalence.",
+  "provider": "Ollama Native loopback",
+  "model": "qwen3.5:4b",
+  "modelDigest": "d8b0f5e9760cd1682034f292d7ef72ec46f432149be0df7574bf2d6e92e38c04",
+  "quantization": "Q4_K_M",
+  "parameterSize": "4.2B",
+  "promptSHA256": "1375babce708fecd69131c2c76d7c29dfc7df5dbabc0a2f2ff83406528013a8d",
+  "counts": {
+    "attempts": 10,
+    "transportOrServiceFailures": 0,
+    "acceptableIncludingScopeQualified": 8,
+    "policyReviewRequired": 1,
+    "rejected": 1
+  },
+  "timingMethod": "Whole production cleanup calls, including any model load/detail lookup/adaptation; p50 midpoint median, p95/p99 nearest rank; n=10 is directional.",
+  "timingsAll": {
+    "n": 10,
+    "p50Ms": 1604.316,
+    "p95Ms": 5605.342,
+    "p99Ms": 5605.342,
+    "minMs": 1475.158,
+    "maxMs": 5605.342
+  },
+  "firstCallMs": 5605.342417,
+  "timingsSubsequentNine": {
+    "n": 9,
+    "p50Ms": 1577.233,
+    "p95Ms": 1739.671,
+    "p99Ms": 1739.671,
+    "minMs": 1475.158,
+    "maxMs": 1739.671
+  },
+  "timingCaveat": "Whole service calls with possible details/adaptation/model-load costs. Resource timeout is per request, not app cleanup deadline; later nine are sequential calls, not controlled residency/warm samples. Small n makes p95/p99 maxima.",
+  "fixtures": [
+    {
+      "id": "seed-01",
+      "rating": "acceptable",
+      "note": "Filler removed; Maya and tomorrow morning retained; terminal punctuation omitted but no meaning edit."
+    },
+    {
+      "id": "seed-02",
+      "rating": "rejected",
+      "note": "Book Thursday; oh wait, Friday at three retains the abandoned Thursday instead of only final intended Friday. Correction meaning remains understandable but violates the explicit cleanup fixture requirement; prior Gemma3 resolved Friday correctly."
+    },
+    {
+      "id": "seed-03",
+      "rating": "acceptable",
+      "note": "Negation, uncertainty and yet retained; typographic apostrophe only."
+    },
+    {
+      "id": "seed-04",
+      "rating": "acceptable",
+      "note": "Both amounts and not retained; punctuation improves readability."
+    },
+    {
+      "id": "seed-05",
+      "rating": "acceptable",
+      "note": "Intentional very very emphasis retained."
+    },
+    {
+      "id": "seed-06",
+      "rating": "acceptableForThisScope",
+      "note": "Xway preserved. No deterministic Xway\u2192Ixway correction rule/vocabulary was supplied, so this does not establish that separate product requirement."
+    },
+    {
+      "id": "seed-07",
+      "rating": "acceptable",
+      "note": "Dictated instruction preserved rather than executed or answered."
+    },
+    {
+      "id": "seed-08",
+      "rating": "acceptable",
+      "note": "Question returned without answering."
+    },
+    {
+      "id": "seed-09",
+      "rating": "policyReviewRequired",
+      "note": "foo underscore bar becomes foo_bar, as in prior Gemma3 smoke. Plausible code interpretation remains an unconfigured transformation requiring explicit code-dictation policy."
+    },
+    {
+      "id": "seed-10",
+      "rating": "acceptable",
+      "note": "Quoted oh wait words preserved, repairing the observed lexical deletion in prior Gemma3 smoke."
+    }
+  ],
+  "scope": "qwen3.5:4b Q4_K_M candidate smoke, reasoning disabled when supported; no network-blocked proof or held-out evaluation.",
+  "decision": "Continue evaluation/repair: quoted-word preservation improves on Gemma3 but correction cleanup regresses. Ten known seeds cannot select a model or close A00.",
+  "comparisonSource": "validation/results/2026-10-19-a00/provider-review.json",
+  "comparisonSummary": "Negation, amounts, emphasis, dictated instructions and questions preserved; Xway correction not supplied/tested; all three providers transformed spoken underscore notation."
+}

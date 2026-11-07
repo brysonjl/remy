@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "verified_at": "2026-10-19T21:21:59.034745+00:00",
+  "lockfile_sha256": "8f72a9d408f6be83aa17962e0671f0322160407f83eacf990e8b464664cf52e1",
+  "artifact_manifest_sha256": "00d178123e30eaef6f5700a80e444d3d90789a15313f07d2089a601dc759894e",
+  "scope": "Independent hashes of release ZIP bytes; does not attest extracted build-cache contents or constitute an app/runtime test.",
+  "packages": [
+    {
+      "identity": "fluidaudio",
+      "version": "0.17.5",
+      "expected_revision": "0b1f46289fe27d95b5e66ad8be46e64f5ee02ae7",
+      "checkout_revision": "0b1f46289fe27d95b5e66ad8be46e64f5ee02ae7",
+      "checkout_tracked_changes": "",
+      "revision_matches": true,
+      "version_matches_manifest": true,
+      "artifacts": [
+        {
+          "target": "NemoTextProcessing",
+          "url": "https://github.com/FluidInference/text-processing-rs/releases/download/v0.3.1/NemoTextProcessing.xcframework.zip",
+          "expected_sha256": "5fa8c10d4ec26c1bb2413125f351a7222a4c68a23b74476680fbada7e26fc6aa",
+          "actual_sha256": "5fa8c10d4ec26c1bb2413125f351a7222a4c68a23b74476680fbada7e26fc6aa",
+          "archive_path": ".local/dependency-archives/fluidaudio/NemoTextProcessing.xcframework.zip",
+          "size_bytes": 87267919,
+          "downloaded_by_verifier": false,
+          "sha256_matches": true
+        }
+      ]
+    },
+    {
+      "identity": "llama.swift",
+      "version": "2.10549.0",
+      "expected_revision": "716419d4d7aa542fce301e809cde7234c68ddbc6",
+      "checkout_revision": "716419d4d7aa542fce301e809cde7234c68ddbc6",
+      "checkout_tracked_changes": "",
+      "revision_matches": true,
+      "version_matches_manifest": true,
+      "artifacts": [
+        {
+          "target": "llama-cpp",
+          "url": "https://github.com/ggml-org/llama.cpp/releases/download/b10549/llama-b10549-xcframework.zip",
+          "expected_sha256": "636709d4a7b49ac7f2ed6dc8a4de3f278c257cac7248fe40d6a513f671e4bff4",
+          "actual_sha256": "636709d4a7b49ac7f2ed6dc8a4de3f278c257cac7248fe40d6a513f671e4bff4",
+          "archive_path": ".local/dependency-archives/llama.swift/llama-b10549-xcframework.zip",
+          "size_bytes": 79011953,
+          "downloaded_by_verifier": false,
+          "sha256_matches": true
+        }
+      ]
+    },
+    {
+      "identity": "sparkle",
+      "version": "2.9.6",
+      "expected_revision": "ac2def288cbff5cfc7df3ffef6abdf45b72bcb0a",
+      "checkout_revision": "ac2def288cbff5cfc7df3ffef6abdf45b72bcb0a",
+      "checkout_tracked_changes": "",
+      "revision_matches": true,
+      "version_matches_manifest": true,
+      "artifacts": [
+        {
+          "target": "Sparkle",
+          "url": "https://github.com/sparkle-project/Sparkle/releases/download/2.9.6/Sparkle-for-Swift-Package-Manager.zip",
+          "expected_sha256": "8d5fb41d960b43f4a68aa14126bf62b098544ec8d191cdcc73eb14e63a8e7606",
+          "actual_sha256": "8d5fb41d960b43f4a68aa14126bf62b098544ec8d191cdcc73eb14e63a8e7606",
+          "archive_path": ".local/dependency-archives/sparkle/Sparkle-for-Swift-Package-Manager.zip",
+          "size_bytes": 11577555,
+          "downloaded_by_verifier": false,
+          "sha256_matches": true
+        }
+      ]
+    }
+  ],
+  "passed": true
+}

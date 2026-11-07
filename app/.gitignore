@@ -1,0 +1,71 @@
+# Xcode
+build/
+DerivedData/
+# Keep shared workspace metadata and its pinned Package.resolved in source.
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# Generated files
+*.dSYM
+*.dSYM.zip
+*.profraw
+
+# Archives
+*.xcarchive
+
+# Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# App packaging
+*.ipa
+*.app
+*.dmg
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Thumbnails
+Thumbs.db
+
+# IDE
+*.swp
+*.swo
+*~
+
+# Distribution
+dist/
+sparkle-releases/*
+!sparkle-releases/*.md
+scripts/release-macos.sh
+
+# Secrets / signing keys / certificates (defense-in-depth)
+*.pem
+*.p12
+*.p8
+*.key
+*.cer
+*.pfx
+*.keystore
+*.mobileprovision
+*.provisionprofile
+.env
+.env.*
+
+# User-specific xcconfig files
+Config/*.local.xcconfig
+.superset/config.json
+design.pen
