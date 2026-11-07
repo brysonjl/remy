@@ -5,13 +5,13 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PROJECT_PATH="$ROOT_DIR/Dictate Anywhere.xcodeproj"
 SCHEME="Dictate Anywhere"
 CONFIGURATION="Debug"
-APP_NAME="Dictate Anywhere Dev.app"
-DEFAULT_DERIVED_DATA_PATH="$HOME/Library/Developer/Xcode/DerivedData/DictateAnywhereDev"
+APP_NAME="Remy Dev.app"
+DEFAULT_DERIVED_DATA_PATH="$HOME/Library/Developer/Xcode/DerivedData/RemyDev"
 DERIVED_DATA_PATH="${DERIVED_DATA_PATH:-$DEFAULT_DERIVED_DATA_PATH}"
 SIGNING_CONFIG_PATH="${SIGNING_CONFIG_PATH:-$ROOT_DIR/Config/Signing.local.xcconfig}"
 ALLOW_PROVISIONING_UPDATES=0
-RESULT_BUNDLE_PATH="$DERIVED_DATA_PATH/Logs/Test/DictateAnywhere.xcresult"
-DEV_EXECUTABLE_NAME="Dictate Anywhere Dev"
+RESULT_BUNDLE_PATH="$DERIVED_DATA_PATH/Logs/Test/Remy.xcresult"
+DEV_EXECUTABLE_NAME="Remy Dev"
 BENCHMARK_GROUPS=(all)
 BENCHMARK_FILTER_SET=0
 BENCHMARK_LIST=0
@@ -186,7 +186,7 @@ validate_derived_data_path() {
 validate_clean_path() {
   [[ "$DERIVED_DATA_PATH" == "$DEFAULT_DERIVED_DATA_PATH" ]] || \
     fail "clean only supports the script-owned default DerivedData path: $DEFAULT_DERIVED_DATA_PATH"
-  [[ "$DEFAULT_DERIVED_DATA_PATH" == "$HOME/Library/Developer/Xcode/DerivedData/DictateAnywhereDev" ]] || \
+  [[ "$DEFAULT_DERIVED_DATA_PATH" == "$HOME/Library/Developer/Xcode/DerivedData/RemyDev" ]] || \
     fail "The default DerivedData path is not in its expected location"
   [[ "$DEFAULT_DERIVED_DATA_PATH" != "/" && "$DEFAULT_DERIVED_DATA_PATH" != "$HOME" ]] || \
     fail "Refusing to recursively remove a broad path"
@@ -410,8 +410,8 @@ stop() {
 }
 
 validate_lifecycle_contract() {
-  [[ "$APP_NAME" == "Dictate Anywhere Dev.app" ]] || fail "Unexpected development app bundle name"
-  [[ "$DEV_EXECUTABLE_NAME" == "Dictate Anywhere Dev" ]] || fail "Unexpected development executable name"
+  [[ "$APP_NAME" == "Remy Dev.app" ]] || fail "Unexpected development app bundle name"
+  [[ "$DEV_EXECUTABLE_NAME" == "Remy Dev" ]] || fail "Unexpected development executable name"
   command -v pgrep >/dev/null || fail "Missing required command: pgrep"
   command -v lsof >/dev/null || fail "Missing required command: lsof"
   printf 'Development lifecycle contract is valid.\n'
@@ -513,7 +513,7 @@ case "$command" in
   test) require_command xcodebuild; run_tests ;;
   benchmark) require_command xcodebuild; run_benchmark ;;
   check) require_command xcodebuild; check; validate_lifecycle_contract ;;
-  clean) validate_clean_path; stop; rm -rf -- "$HOME/Library/Developer/Xcode/DerivedData/DictateAnywhereDev"; printf 'Removed DerivedData: %s\n' "$DEFAULT_DERIVED_DATA_PATH" ;;
+  clean) validate_clean_path; stop; rm -rf -- "$HOME/Library/Developer/Xcode/DerivedData/RemyDev"; printf 'Removed DerivedData: %s\n' "$DEFAULT_DERIVED_DATA_PATH" ;;
   stop) stop ;;
   *) usage >&2; fail "Unknown command: $command" ;;
 esac

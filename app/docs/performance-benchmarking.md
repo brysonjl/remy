@@ -115,7 +115,7 @@ suffix helper with the historical full-count algorithm on identical short/long
 English and long CJK text. It compiles **both** the Debug app and test target
 with `SWIFT_OPTIMIZATION_LEVEL=-O`. It alternates measurement order, consumes results, checks matching
 output, and reports median microseconds per call over five rounds. Timings have
-no pass/fail threshold. The separate `DictateAnywhere-Benchmark.xcresult` bundle
+no pass/fail threshold. The separate `Remy-Benchmark.xcresult` bundle
 preserves the normal test result bundle. These optimized Debug helper timings
 do not measure whole-app CPU, UI frames, or energy use.
 
