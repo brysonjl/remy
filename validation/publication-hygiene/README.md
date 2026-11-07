@@ -1,6 +1,6 @@
 # Publication hygiene
 
-Run from the repository root before making the source or its history public:
+Run from the repository root before publishing changes:
 
 ```sh
 python3 validation/publication-hygiene/check.py
@@ -35,14 +35,13 @@ counts. CI cannot replace the owner's media, privacy and provenance review.
 
 ## Export a reviewed committed source snapshot
 
-The private repository history and `HANDOFF.md` can stay private while preparing a
-new public repository from a reviewed source snapshot. The exporter reads only
-committed Git blobs at the supplied full lowercase commit SHA (symbolic names such
-as `HEAD` are refused), never working-tree bytes,
-commit messages, author identities, ignored configuration, or `.git` internals.
-It omits root `HANDOFF.md`; no source history is rewritten.
-
-After committing the reviewed source, run locally:
+This exporter produced the initial public snapshot from the private development
+repository (see [how this repository was published](../../docs/engineering/publication.md)).
+It reads only committed Git blobs at the supplied full lowercase commit SHA
+(symbolic names such as `HEAD` are refused), never working-tree bytes, commit
+messages, author identities, ignored configuration, or `.git` internals. It
+omits a root `HANDOFF.md` internal-notes file if one exists; no source history
+is rewritten.
 
 ```sh
 python3 validation/publication-hygiene/export-source.py \
@@ -51,12 +50,13 @@ python3 validation/publication-hygiene/export-source.py \
 
 `--output` must be new; existing files, including links, are never replaced.
 The tar is deterministic for that committed source and includes `SOURCE_MANIFEST.json`
-with the resolved private source SHA and payload SHA256/modes/link targets. File
+with the resolved source SHA and payload SHA256/modes/link targets. File
 owner/group names and timestamps are neutral. No public repository is created,
 no Git identity is assigned, and nothing is uploaded. Extract into a new empty
 review directory, inspect the manifest, run clean-source validation, and only then
 initialize a new repository using the owner's chosen public author identity.
-Keep the original private repository and its history intact.
+The root `SOURCE_MANIFEST.json` in this repository is the manifest of the
+initial export and is not updated afterwards.
 
 The exporter fails on recognized credentials/private filenames, audio/media,
 actual machine paths in text, unsupported binary content, submodules, unsafe paths,
@@ -73,5 +73,5 @@ The same narrow credential patterns as `check.py` apply. Pattern checks cannot
 prove arbitrary secrets absent. The exported tree still needs human source,
 asset/privacy, licensing, and functional review. Original locally reachable
 history remains covered by `check.py`; an export succeeds only for its selected
-source tree, not the private repository's whole history. The helper itself does
+source tree, not the source repository's whole history. The helper itself does
 not certify a release or notarize an application.

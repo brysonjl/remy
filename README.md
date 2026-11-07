@@ -165,7 +165,7 @@ details, see the [source guide](app/README.md) and
 - [Changelog](CHANGELOG.md)
 - [Contributing](CONTRIBUTING.md) and [security reporting](SECURITY.md)
 - [Privacy and data lifecycle](docs/privacy.md)
-- [Source snapshot publication workflow](docs/engineering/publication.md)
+- [How this repository was published](docs/engineering/publication.md)
 - [Third-party notices](THIRD_PARTY_NOTICES.md)
 - [Local installation, migration and rollback](docs/engineering/local-installation.md)
 - [Architecture and session contracts](docs/architecture.md)
