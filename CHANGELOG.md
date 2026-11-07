@@ -1,10 +1,11 @@
 # Changelog
 
-Remy has no independent public binary release yet. Its Xcode project retains
-the imported upstream version until a public candidate version is selected.
-Historical Dictate Anywhere release notes describe the upstream application.
+Remy's version numbers start at 0.1.0. Historical Dictate Anywhere release notes
+describe the upstream application.
 
-## Unreleased
+## 0.1.0 — 2026-11-07 (early beta prerelease)
+
+First downloadable build: a notarized Apple silicon DMG with manual updates.
 
 - Local Parakeet v2 speech recognition with revision-pinned, verified downloads.
 - Optional local or remote cleanup, named profiles, vocabulary corrections and
@@ -19,7 +20,8 @@ Historical Dictate Anywhere release notes describe the upstream application.
   documentation and repeatable publication-hygiene checks.
 - Apple silicon manual-update DMG preparation with fail-closed notarization,
   stapling, validation, bundle-policy and dependency-pin checks.
+- Recording starts with the Purr sound and completes with Pop by default.
 
-See [release readiness](docs/release-readiness.md) for open publication gates,
-supported scope and validation requirements. Unreleased features do not imply
-a notarized downloadable artifact or completed compatibility testing.
+See the [0.1.0 release record](validation/results/2026-11-07-release-0.1.0/README.md)
+for what was verified, and [release readiness](docs/release-readiness.md) for the
+remaining beta gates.

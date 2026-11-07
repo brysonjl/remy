@@ -1,7 +1,8 @@
 # Remy release preparation
 
 The initial binary release target is **Apple silicon (arm64), manual updates,
-DMG installation**. There is no public binary release yet. Intel support and
+DMG installation**. The first prerelease, 0.1.0, was published on 2026-11-07
+([release record](../validation/results/2026-11-07-release-0.1.0/README.md)). Intel support and
 Sparkle update feeds are outside this first release scope. Existing development
 versions (`2.12.16`, build `58`) are inherited metadata, not Remy's release history.
 
@@ -79,9 +80,23 @@ owned trust, update/migration testing, and review of foundation policy.
 
 ## Verification and publication
 
-The packaging implementation has stubbed failure tests; it has **not** been
-rehearsed with real distribution credentials. Passing source CI or stub tests does
-not establish valid signing, notarization, installation or user compatibility.
+The packaging implementation has stubbed failure tests and completed its first
+real run for 0.1.0. Passing source CI or stub tests does not establish valid
+signing, notarization, installation or user compatibility.
+
+### First-run prompts on a new machine
+
+- **Keychain:** the first signing step asks whether `codesign` may use the
+  Developer ID key. Choose **Always Allow** promptly. Signing waits on the dialog,
+  and a long wait fails the archive with "timestamps differ"; rerun after allowing.
+- **Finder automation:** `create-dmg` scripts Finder to lay out the DMG window.
+  Allow the terminal app to control Finder (System Settings → Privacy & Security →
+  Automation), or the step times out with AppleEvent error -1712.
+- **First notarization:** a new developer team's first submission can take 30
+  minutes or more; later submissions usually finish in a few minutes.
+
+A failed run deletes its partial candidate, so rerun the whole script. Reuse the
+same version with a new build number when replacing an unpublished candidate.
 
 Before publication, test the exact candidate as a fresh browser download on a clean
 account/Mac: Gatekeeper/offline ticket behavior, first-launch permissions, model
@@ -94,6 +109,8 @@ the inventory's unresolved transitive items are not legal clearance.
 Publish only after these checks and owner release decisions are complete. Link the
 exact source commit/tag and prerelease notes, attach the verified DMG and checksum,
 and verify downloaded bytes match `SHA256SUMS`. Never expose an upstream appcast.
+GitHub's `releases/latest` link skips prereleases, so link to the releases page
+while only prereleases exist.
 The script does not commit, tag, upload or publish.
 
 Per [AGENTS.md](AGENTS.md), a DMG must be notarized, stapled and validated before

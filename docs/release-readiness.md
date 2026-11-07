@@ -1,6 +1,6 @@
 # Open source release readiness
 
-Remy's source is public as a preview; a downloadable macOS beta comes later.
+Remy's source is public, and 0.1.0 is available as an early beta prerelease DMG.
 The public name is Remy, with bundle identifier `io.github.brysonjl.remy`
 (Dev: `.dev`). The first binary scope is Apple silicon with manual updates;
 Intel support and an automatic update feed require separate validation.
@@ -40,6 +40,12 @@ optional ASR checks require an explicit external fixture directory. The
 scope separately from source publication.
 
 ## Binary beta gates
+
+The owner published 0.1.0 as an early beta with a narrower claim than these
+gates: the release script's signing, notarization and Gatekeeper gates passed,
+and one browser download was installed and used on the maintainer's Mac. The
+remaining gates below are open; see the
+[0.1.0 release record](../validation/results/2026-11-07-release-0.1.0/README.md).
 
 | Gate | Required result |
 | --- | --- |
