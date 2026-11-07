@@ -17,7 +17,7 @@
 </p>
 
 <p align="center">
-  <img src="docs/images/remy-dictating.png" alt="Remy's floating recorder showing a live transcript while dictating into a text field" width="720">
+  <img src="docs/images/remy-dictating.png" alt="Remy's floating recorder listening, with the live transcript &quot;Let's get ready to publish this repo.&quot;" width="380">
 </p>
 
 Remy is a free alternative to subscription dictation apps like Wispr Flow. Hold a
@@ -48,7 +48,7 @@ doesn't rewrite: names, numbers, code and your meaning are preserved, and if
 cleanup ever fails you still get your original words.
 
 <p align="center">
-  <img src="docs/images/remy-cleanup.png" alt="Transcript cleanup settings with local and provider options" width="720">
+  <img src="docs/images/remy-cleanup.png" alt="Transcript Cleanup settings with a provider, model, cleanup instructions and custom vocabulary" width="600">
 </p>
 
 ### 🎯 Knows where you're typing
@@ -63,7 +63,7 @@ agents and AI chat apps. Sharing nearby text with a cloud provider is a separate
 opt-in that's off by default.
 
 <p align="center">
-  <img src="docs/images/remy-context.png" alt="Context Awareness settings with a writing style chosen for each kind of app" width="720">
+  <img src="docs/images/remy-context.png" alt="Context Awareness settings with a writing style chosen for each kind of app" width="600">
 </p>
 
 ### 📚 Learns your words
@@ -82,12 +82,14 @@ paste it yourself.
 
 ### 🗂️ Never lose a thought
 
-Every dictation is saved in a searchable local history (or turn history off).
+Every dictation is saved in a searchable local history (or turn history off),
+with the raw transcript kept next to the cleaned text so you can see exactly what
+changed and copy either one.
 If a session is cancelled or interrupted, Remy keeps a recovery copy so you can
 pick it up again. Long dictations are supported.
 
 <p align="center">
-  <img src="docs/images/remy-history.png" alt="Transcript history with search and recovery" width="720">
+  <img src="docs/images/remy-history.png" alt="A history entry showing the cleaned text above the raw transcript, with processing details" width="600">
 </p>
 
 ### 🎛️ Feels good to use
