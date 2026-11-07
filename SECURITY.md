@@ -21,14 +21,13 @@ people's data, accounts, or running apps without their permission.
 
 ## Supported versions and disclosure
 
-There is no notarized public Remy release or published security support window
-yet. Reports against the current development branch are welcome; old local builds
-should be reproduced against current source where practical. Maintainers will
-triage reports and coordinate a fix and public advisory when appropriate. There
-is no promised response deadline, bounty program, or guarantee of a fix.
+Fixes target the main branch and the next release; the current release is the
+0.1.0 early beta prerelease. There is no published security support window for
+older builds, which should be reproduced against current source where practical.
+Maintainers will triage reports and coordinate a fix and public advisory when
+appropriate. There is no promised response deadline, bounty program, or guarantee
+of a fix.
 
-Repository administrators must enable private vulnerability reporting and verify
-that the form above works before public launch. This file does not enable the
-GitHub setting; see [GitHub's configuration guidance](https://docs.github.com/en/code-security/how-tos/report-and-fix-vulnerabilities/configure-vulnerability-reporting/configure-for-a-repository).
-Changes to signing, model downloads, provider credential scope, context sharing,
-and updater trust require explicit security review.
+Private vulnerability reporting is enabled for this repository. See
+[GitHub's configuration guidance](https://docs.github.com/en/code-security/how-tos/report-and-fix-vulnerabilities/configure-vulnerability-reporting/configure-for-a-repository)
+for how it is set up.
