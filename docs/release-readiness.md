@@ -1,45 +1,40 @@
 # Open source release readiness
 
-Remy is being prepared for a public source preview followed by a downloadable
-macOS beta. The public name is Remy, with bundle identifier
-`io.github.brysonjl.remy` (Dev: `.dev`). The first binary scope is Apple silicon
-with manual updates; Intel support and an automatic update feed require separate
-validation.
+Remy's source is public as a preview; a downloadable macOS beta comes later.
+The public name is Remy, with bundle identifier `io.github.brysonjl.remy`
+(Dev: `.dev`). The first binary scope is Apple silicon with manual updates;
+Intel support and an automatic update feed require separate validation.
 
 This checklist tracks the current working tree. A completed checklist is not
-authorization to publish the repository or a release.
+authorization to publish a release.
 
-The owner selected a new public repository from a reviewed source snapshot.
-The existing development repository and its history stay private. Use the
-[publication workflow](engineering/publication.md), which exports a committed
-tree without old audio, internal handoff notes or Git author metadata.
+This repository started from a reviewed source snapshot; the development
+history stays private. See [how this repository was published](engineering/publication.md).
 
 ## Source preview gates
 
 | Gate | Current state | Completion evidence |
 | --- | --- | --- |
-| Public name | Owner decision pending; preference is a person's name | Chosen name, repository URLs, app branding and migration plan agree |
-| Publication review | Source export verified; current evidence paths normalized; media reviewed; raw diagnostics/internal notes/history omitted | Keep development history private; regenerate the reviewed snapshot after the public rename |
+| Public name | Done: Remy, bundle identifier `io.github.brysonjl.remy` | App branding, repository URLs and bundle identifier agree |
+| Publication review | Done: source export verified; evidence paths normalized; media reviewed; raw diagnostics, internal notes and history omitted | Initial public commit `f04a7a2` matches the reviewed export manifest |
 | License and provenance | Imported audio omitted; exact font provenance, 67 locked crate notice sets, native notices and model-card reviews retained and checked | Final signed binary/resource scope remains separate; use only explicitly supplied local speech fixtures for optional ASR checks |
-| Contributor entry points | Contribution, security, conduct, issue and PR guidance added | Update repository URLs and enable private reporting on the new public repository at launch |
-| Clean clone | Passed from an independent clone of the one-commit public snapshot: Debug, Release, app/offline tests; no signing overrides or development caches copied | Source commit, unchanged lock and clean worktree recorded in the November 5 report |
-| CI | Hosted portable and full Xcode 27.1 jobs passed on preparation commit `03c82b1` | Re-run on the renamed public repository; final launch/reporting setup remains pending |
-| Current evidence | Preparation committed and privately pushed; current local and hosted results recorded | Name and public repository destination remain owner decisions; binary runtime/distribution gates stay separate |
+| Contributor entry points | Done: contribution, security, conduct, issue and PR guidance; private vulnerability reporting enabled | Repository URLs point at this repository |
+| Clean clone | Passed from an independent clone of the one-commit public snapshot: Debug, Release, app/offline tests; no signing overrides or development caches copied | Recorded in the November 5 report |
+| CI | Done: hosted portable and full Xcode 27.1 jobs passed on `f04a7a2` (1,128 tests, 61 skips, 0 failures; 45 offline tests) | Hosted checks run on every pull request |
 
 Run [publication hygiene](../validation/publication-hygiene/README.md) locally
-before publication. The checker covers locally reachable refs and publishable
+before merging changes. The checker covers locally reachable refs and publishable
 working files, reports categories without matching contents, and flags media,
 large files and symlinks for review. It does not inspect remote-only refs,
 unreachable objects, media metadata, author emails, arbitrary secret formats or
 runtime traffic. An exit status of zero does not clear those review gates.
 
-Removing a sensitive file from the working tree does not remove historical
-copies. Review any proposed history rewrite separately; preserve upstream
-copyright notices and provenance. No rewrite is part of this preparation pass.
+Removing a sensitive file from the working tree does not remove it from Git
+history. Review any proposed history rewrite separately; preserve upstream
+copyright notices and provenance.
 
 The [asset provenance record](engineering/asset-provenance.md) documents omission
-of the six imported WAV fixtures. They remain only in private historical commits
-and ignored local storage. The public snapshot contains no speech recordings;
+of the six imported WAV fixtures. This repository contains no speech recordings;
 optional ASR checks require an explicit external fixture directory. The
 [notice inventory](../THIRD_PARTY_NOTICES.md) records model and native artifact
 scope separately from source publication.

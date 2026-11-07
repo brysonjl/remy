@@ -243,10 +243,9 @@ do not close the remaining A03–A11 acceptance gates. See the
   failure recovery and rerun while preserving raw text/audio; distinguish file
   replay from real-time microphone capture and the later soak gate.
 - **Near the end, after implementation/local validation:** set up Git in this
-  existing workspace and connect `origin` to `https://github.com/brysonjl/remy.git`.
+  existing workspace and connect it to a private development repository.
   Inspect existing local/remote history first and preserve source/attribution;
   never clone over `app/`. Keep signing overrides, credentials, generated models,
-  caches and personal recordings out of version control. The user subsequently explicitly authorized committing and pushing the current
-  source to this private repository. This does not authorize an app release or
-  changing repository visibility. Local initialization/remote connection are
-  complete; preserve source and license provenance in the initial commit.
+  caches and personal recordings out of version control. Complete: development
+  history stays private, and this public repository started separately from a
+  reviewed source snapshot ([publication record](engineering/publication.md)).
