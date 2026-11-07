@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/brysonjl/remy/releases/latest"><strong>Download for Mac</strong></a> ·
+  <a href="https://github.com/brysonjl/remy/releases"><strong>Download for Mac</strong></a> ·
   <a href="#quick-start">Quick start</a> ·
   <a href="#under-the-hood">Under the hood</a> ·
   <a href="#build-from-source">Build from source</a>
@@ -102,7 +102,7 @@ pick it up again. Long dictations are supported.
 ## Quick start
 
 1. **Download** the latest `Remy-<version>-arm64.dmg` from
-   [Releases](https://github.com/brysonjl/remy/releases/latest), open it and drag
+   [Releases](https://github.com/brysonjl/remy/releases), open it and drag
    **Remy** to **Applications**.
 2. **Open Remy** and allow **Microphone** and **Accessibility** access when asked.
    Accessibility is what lets Remy type into other apps.
