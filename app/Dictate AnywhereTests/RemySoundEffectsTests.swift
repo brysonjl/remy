@@ -23,6 +23,12 @@ nonisolated final class RemySoundEffectsTests: XCTestCase {
         XCTAssertTrue(RemySoundEffects.isValidIdentifier("none"))
         for name in RemySoundEffects.builtIns { XCTAssertTrue(RemySoundEffects.isValidIdentifier("builtin:" + name)) }
     }
+    func testDefaultSoundsArePurrThenPop() {
+        XCTAssertEqual(RemySoundEffects.defaultStartIdentifier, "builtin:Purr")
+        XCTAssertEqual(RemySoundEffects.defaultCompletionIdentifier, "builtin:Pop")
+        XCTAssertTrue(RemySoundEffects.isValidIdentifier(RemySoundEffects.defaultStartIdentifier))
+        XCTAssertTrue(RemySoundEffects.isValidIdentifier(RemySoundEffects.defaultCompletionIdentifier))
+    }
     func testImportIsPrivateCopiedAndRestartSafeWithoutOriginal() throws {
         let input = try source()
         let original = try Data(contentsOf: input)
