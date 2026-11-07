@@ -6,7 +6,7 @@ import Darwin
 nonisolated enum RemySoundEffects {
     enum Event: Equatable, Sendable { case start, completion }
     enum SoundError: Error { case invalidIdentifier, invalidAudio, tooLarge, tooLong, unsafePath, unavailable }
-    static let defaultStartIdentifier = "builtin:Tink"
+    static let defaultStartIdentifier = "builtin:Purr"
     static let defaultCompletionIdentifier = "builtin:Pop"
     static let builtIns = ["Tink", "Pop", "Purr", "Ping", "Glass", "Hero", "Submarine", "Funk", "Basso", "Bottle", "Blow", "Frog", "Morse", "Sosumi"]
     static let extensions = ["wav", "aiff", "aif", "caf", "mp3", "m4a"]
@@ -221,7 +221,7 @@ nonisolated enum RemySoundEffects {
             sound = custom
         } else {
             requestedAvailable = false
-            sound = NSSound(named: event == .start ? "Tink" : "Pop")
+            sound = NSSound(named: event == .start ? "Purr" : "Pop")
         }
         guard let sound else { return false }
         sound.volume = volume.isFinite ? min(1, max(0, volume)) : 0.3
