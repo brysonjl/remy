@@ -48,7 +48,7 @@ PATH="$MOCK_BIN:$PATH"
 export HOME="$TEST_HOME" PATH RM_LOG XCODEBUILD_ARGS_LOG="$TEST_ROOT/xcodebuild-args.log"
 
 unset DERIVED_DATA_PATH
-default_path="$HOME/Library/Developer/Xcode/DerivedData/DictateAnywhereDev"
+default_path="$HOME/Library/Developer/Xcode/DerivedData/RemyDev"
 
 if ! "$SCRIPT" clean >/dev/null; then
   printf 'FAIL: the default project directory was rejected\n' >&2
@@ -60,7 +60,7 @@ if [[ "$(<"$RM_LOG")" != "-rf -- $default_path" ]]; then
 fi
 
 /bin/rm -rf -- "$HOME/Library/Developer/Xcode/DerivedData"
-redirected_target="$TEST_ROOT/redirect-target/DictateAnywhereDev"
+redirected_target="$TEST_ROOT/redirect-target/RemyDev"
 mkdir -p "$redirected_target"
 printf 'must survive\n' > "$redirected_target/marker"
 mkdir -p "$HOME/Library/Developer/Xcode"
@@ -95,7 +95,7 @@ if [[ "$(wc -l < "$RM_LOG" | tr -d ' ')" != "1" ]]; then
   exit 1
 fi
 
-executable="$default_path/Build/Products/Debug/Dictate Anywhere Dev.app/Contents/MacOS/Dictate Anywhere Dev"
+executable="$default_path/Build/Products/Debug/Remy Dev.app/Contents/MacOS/Remy Dev"
 mkdir -p "$(dirname "$executable")"
 touch "$executable"
 chmod +x "$executable"
@@ -147,7 +147,7 @@ assert_benchmark_selector_count 2
 assert_benchmark_arg '-only-testing:Dictate AnywhereTests/OverlayContentTests'
 assert_benchmark_arg '-only-testing:Dictate AnywhereTests/OverlayPerformanceBenchmarkTests'
 assert_benchmark_arg 'SWIFT_OPTIMIZATION_LEVEL=-O'
-assert_benchmark_arg "$default_path/Logs/Test/DictateAnywhere-Benchmark.xcresult"
+assert_benchmark_arg "$default_path/Logs/Test/Remy-Benchmark.xcresult"
 
 "$SCRIPT" benchmark --only audio,overlay --only audio --only cleanup >/dev/null
 assert_benchmark_selector_count 7
