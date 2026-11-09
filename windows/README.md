@@ -4,8 +4,15 @@ A Windows port of Remy with the Mac app's main features: hold a shortcut, speak,
 let go, and the text lands in the field you were typing in. Speech recognition
 and the optional S1-mini cleanup run on your PC.
 
-It is a preview. There is no installer or download yet, and it has been tested
-on one Windows 11 machine. Please [report what you find](https://github.com/brysonjl/remy/issues).
+It is a preview, tested on one Windows 11 machine.
+
+## Download
+
+[Remy for Windows 0.1.0 (preview)](https://github.com/brysonjl/remy/releases/tag/windows-v0.1.0): download
+`Remy-Windows-0.1.0-x64.zip`, unzip it anywhere and run `Remy.exe`. There is no
+installer; keep the folder together. Remy isn't code-signed yet, so Windows may
+show "Windows protected your PC": click **More info**, then **Run anyway**.
+Licenses are in the `Notices` folder. Please [report what you find](https://github.com/brysonjl/remy/issues).
 
 ## Use it
 
@@ -21,6 +28,12 @@ Not ported from the Mac: Apple Speech, AssemblyAI, Apple Intelligence cleanup,
 custom acoustic vocabulary and input-source switching.
 
 ## Build
+
+To make the release zip (runs the tests first):
+`powershell -ExecutionPolicy Bypass -File windows/scripts/package-release.ps1`.
+It writes `windows/out/release/Remy-Windows-<version>-x64.zip` and a `.sha256` file.
+
+To build and run by hand:
 
 You need Windows 11 on x64 (Windows 10 is untested) and the [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
 (`global.json` pins 10.0.403 or newer). From the repository root:
