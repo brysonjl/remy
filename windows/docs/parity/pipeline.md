@@ -477,7 +477,7 @@ History outcome mapping after the call (`AppState.swift:2455-2464`): `success` -
 
 User-facing result feedback (`AppState.swift:2475-2507`), after restoring mic volume/system mute:
 - `success`: play completion sound; overlay `success` (checkmark; accessibility label "Dictation inserted").
-- `copiedOnly`: play completion sound; overlay `copiedOnly` showing a clipboard icon and the text "Press ⌘V" (**Windows: "Press Ctrl+V"**); if the cause was missing Accessibility permission (`!permissions.accessibilityGranted`) also present the blocking Accessibility issue. 
+- `copiedOnly`: play completion sound; overlay `copiedOnly` showing a clipboard icon and the text "Press ⌘V" (**Windows: "Press Ctrl+V"**); if the cause was missing Accessibility permission (`!permissions.accessibilityGranted`) also present the blocking Accessibility issue.
 - `failed` (clipboard copy itself failed): overlay `copiedOnly` is shown as well (no completion sound). Quirk: the message "Press ⌘V" is misleading in that case; Windows should show a distinct "Could not copy" message.
 - If cleanup fell back to raw text, the overlay is replaced by the cleanup-fallback pill: warning icon, title = overlay title for the category (5.1), detail by delivery: inserted -> "Raw transcript used"; copied -> "Raw transcript · Press ⌘V"; failed -> "Raw text in Remy"; accessibility hint: failed -> "Delivery failed. Open Remy to copy the transcript.", else "See History for processing details."
 - Overlay hide delays: **1.0 s** after delivery (success/copy-only); **5.0 s** when a cleanup fallback is shown; 0.5 s for "no text"; 0 s on cancel/failure; 2.0 s after a failed microphone start.
