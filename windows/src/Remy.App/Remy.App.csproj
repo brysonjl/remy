@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>Remy</AssemblyName>
+    <RootNamespace>Remy.App</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- remy.ico is generated from Assets\AppIcon\*.png so the repo only holds reviewed PNGs. -->
+    <RemyIconPath>$(MSBuildProjectDirectory)\$(BaseIntermediateOutputPath)remy.ico</RemyIconPath>
+    <ApplicationIcon>$(RemyIconPath)</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageReference Include="H.NotifyIcon.Wpf" Version="2.4.1" />
+    <ProjectReference Include="..\Remy.Core\Remy.Core.csproj" />
+    <ProjectReference Include="..\Remy.Speech\Remy.Speech.csproj" />
+    <ProjectReference Include="..\Remy.Cleanup.Local\Remy.Cleanup.Local.csproj" />
+    <ProjectReference Include="..\Remy.Platform\Remy.Platform.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\*.png" />
+    <Resource Include="$(RemyIconPath)" Link="Assets\remy.ico" />
+    <RemyIconPng Include="Assets\AppIcon\remy-16.png;Assets\AppIcon\remy-32.png;Assets\AppIcon\remy-64.png;Assets\AppIcon\remy-128.png;Assets\AppIcon\remy-256.png" />
+  </ItemGroup>
+
+  <UsingTask TaskName="RemyBuildIco" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+    <ParameterGroup>
+      <Pngs ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+      <Output ParameterType="System.String" Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Code Type="Fragment" Language="cs"><![CDATA[
+        // ICO with embedded PNG images: 6-byte header, 16-byte entry per image, then the PNG bytes.
+        var images = new System.Collections.Generic.List<byte[]>();
+        foreach (var item in Pngs) images.Add(System.IO.File.ReadAllBytes(item.ItemSpec));
+        System.IO.Directory.CreateDirectory(System.IO.Path.GetDirectoryName(Output));
+        using (var w = new System.IO.BinaryWriter(System.IO.File.Create(Output)))
+        {
+            w.Write((ushort)0); w.Write((ushort)1); w.Write((ushort)images.Count);
+            int offset = 6 + 16 * images.Count;
+            foreach (var png in images)
+            {
+                // PNG IHDR: width and height are big-endian at bytes 16 and 20.
+                int width = (png[16] << 24) | (png[17] << 16) | (png[18] << 8) | png[19];
+                int height = (png[20] << 24) | (png[21] << 16) | (png[22] << 8) | png[23];
+                w.Write((byte)(width >= 256 ? 0 : width)); w.Write((byte)(height >= 256 ? 0 : height));
+                w.Write((byte)0); w.Write((byte)0); w.Write((ushort)1); w.Write((ushort)32);
+                w.Write(png.Length); w.Write(offset);
+                offset += png.Length;
+            }
+            foreach (var png in images) w.Write(png);
+        }
+      ]]></Code>
+    </Task>
+  </UsingTask>
+
+  <Target Name="RemyGenerateIcon" BeforeTargets="PrepareForBuild;CoreCompile" Inputs="@(RemyIconPng)" Outputs="$(RemyIconPath)">
+    <RemyBuildIco Pngs="@(RemyIconPng)" Output="$(RemyIconPath)" />
+  </Target>
+</Project>

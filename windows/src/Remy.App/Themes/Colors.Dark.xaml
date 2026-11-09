@@ -1,0 +1,60 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!-- Remy color tokens (Dark). Generated from parity/ui.md section 1.2. Use via DynamicResource Brush.* -->
+  <Color x:Key="Color.Accent">#FF61DCCF</Color>
+  <SolidColorBrush x:Key="Brush.Accent" Color="#FF61DCCF"/>
+  <Color x:Key="Color.AccentDeep">#FF61DCCF</Color>
+  <SolidColorBrush x:Key="Brush.AccentDeep" Color="#FF61DCCF"/>
+  <Color x:Key="Color.OnAccent">#FF102A35</Color>
+  <SolidColorBrush x:Key="Brush.OnAccent" Color="#FF102A35"/>
+  <Color x:Key="Color.AccentSoft">#FF153F46</Color>
+  <SolidColorBrush x:Key="Brush.AccentSoft" Color="#FF153F46"/>
+  <Color x:Key="Color.BgCard">#FF1A2D3B</Color>
+  <SolidColorBrush x:Key="Brush.BgCard" Color="#FF1A2D3B"/>
+  <Color x:Key="Color.BgInset">#FF142532</Color>
+  <SolidColorBrush x:Key="Brush.BgInset" Color="#FF142532"/>
+  <Color x:Key="Color.BgSidebar">#FF0B1722</Color>
+  <SolidColorBrush x:Key="Brush.BgSidebar" Color="#FF0B1722"/>
+  <Color x:Key="Color.BgWindow">#FF101E2A</Color>
+  <SolidColorBrush x:Key="Brush.BgWindow" Color="#FF101E2A"/>
+  <Color x:Key="Color.Border">#FF35505F</Color>
+  <SolidColorBrush x:Key="Brush.Border" Color="#FF35505F"/>
+  <Color x:Key="Color.BorderSoft">#FF263F4D</Color>
+  <SolidColorBrush x:Key="Brush.BorderSoft" Color="#FF263F4D"/>
+  <Color x:Key="Color.Ink">#FFF5F2E9</Color>
+  <SolidColorBrush x:Key="Brush.Ink" Color="#FFF5F2E9"/>
+  <Color x:Key="Color.TextSecondary">#FFAFBFC8</Color>
+  <SolidColorBrush x:Key="Brush.TextSecondary" Color="#FFAFBFC8"/>
+  <Color x:Key="Color.Success">#FF71DAB4</Color>
+  <SolidColorBrush x:Key="Brush.Success" Color="#FF71DAB4"/>
+  <Color x:Key="Color.SuccessSoft">#FF193E36</Color>
+  <SolidColorBrush x:Key="Brush.SuccessSoft" Color="#FF193E36"/>
+  <Color x:Key="Color.SuccessText">#FF90E3BE</Color>
+  <SolidColorBrush x:Key="Brush.SuccessText" Color="#FF90E3BE"/>
+  <Color x:Key="Color.PanelText">#FFA0E7DE</Color>
+  <SolidColorBrush x:Key="Brush.PanelText" Color="#FFA0E7DE"/>
+  <Color x:Key="Color.Destructive">#FFFF9E8E</Color>
+  <SolidColorBrush x:Key="Brush.Destructive" Color="#FFFF9E8E"/>
+  <Color x:Key="Color.ToggleOff">#FF4A626D</Color>
+  <SolidColorBrush x:Key="Brush.ToggleOff" Color="#FF4A626D"/>
+  <Color x:Key="Color.SliderTrackRest">#FF324D5B</Color>
+  <SolidColorBrush x:Key="Brush.SliderTrackRest" Color="#FF324D5B"/>
+  <Color x:Key="Color.AddButtonFill">#FF1C3943</Color>
+  <SolidColorBrush x:Key="Brush.AddButtonFill" Color="#FF1C3943"/>
+  <Color x:Key="Color.OverlayPreviewFill">#FF18303C</Color>
+  <SolidColorBrush x:Key="Brush.OverlayPreviewFill" Color="#FF18303C"/>
+  <Color x:Key="Color.KeycapShadow">#FF000000</Color>
+  <SolidColorBrush x:Key="Brush.KeycapShadow" Color="#FF000000"/>
+  <Color x:Key="Color.SignalWarm">#FFF1B184</Color>
+  <SolidColorBrush x:Key="Brush.SignalWarm" Color="#FFF1B184"/>
+  <Color x:Key="Color.ServiceInk">#FF102838</Color>
+  <SolidColorBrush x:Key="Brush.ServiceInk" Color="#FF102838"/>
+  <Color x:Key="Color.ServiceCream">#FFF5F2E9</Color>
+  <SolidColorBrush x:Key="Brush.ServiceCream" Color="#FFF5F2E9"/>
+  <Color x:Key="Color.ServiceLight">#FF75E5D3</Color>
+  <SolidColorBrush x:Key="Brush.ServiceLight" Color="#FF75E5D3"/>
+  <Color x:Key="Color.ServiceMuted">#FFB1C7CF</Color>
+  <SolidColorBrush x:Key="Brush.ServiceMuted" Color="#FFB1C7CF"/>
+  <SolidColorBrush x:Key="Brush.White" Color="#FFFFFFFF"/>
+  <SolidColorBrush x:Key="Brush.HoverOverlay" Color="#0DF5F2E9"/>
+  <SolidColorBrush x:Key="Brush.PressedOverlay" Color="#1AF5F2E9"/>
+</ResourceDictionary>

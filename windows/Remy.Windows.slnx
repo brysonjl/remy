@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Remy.App/Remy.App.csproj" />
+    <Project Path="src/Remy.Cleanup.Local/Remy.Cleanup.Local.csproj" />
+    <Project Path="src/Remy.Core/Remy.Core.csproj" />
+    <Project Path="src/Remy.Platform/Remy.Platform.csproj" />
+    <Project Path="src/Remy.Speech/Remy.Speech.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Remy.Cleanup.Local.Tests/Remy.Cleanup.Local.Tests.csproj" />
+    <Project Path="tests/Remy.Core.Tests/Remy.Core.Tests.csproj" />
+    <Project Path="tests/Remy.Platform.Tests/Remy.Platform.Tests.csproj" />
+    <Project Path="tests/Remy.Speech.Tests/Remy.Speech.Tests.csproj" />
+  </Folder>
+</Solution>

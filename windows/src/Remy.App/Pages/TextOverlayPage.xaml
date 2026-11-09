@@ -1,0 +1,109 @@
+<UserControl x:Class="Remy.App.Pages.TextOverlayPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="clr-namespace:Remy.App.Controls"
+             xmlns:o="clr-namespace:Remy.App.Overlay"
+             xmlns:p="clr-namespace:Remy.App.Pages">
+  <UserControl.Resources>
+    <Style x:Key="SizeLabel" TargetType="TextBlock" BasedOn="{StaticResource Text.Caption}">
+      <Setter Property="FontSize" Value="11.5"/>
+      <Setter Property="TextWrapping" Value="NoWrap"/>
+    </Style>
+    <Style x:Key="SizeLabelSel" TargetType="TextBlock" BasedOn="{StaticResource SizeLabel}">
+      <Setter Property="FontWeight" Value="SemiBold"/>
+      <Setter Property="Foreground" Value="{DynamicResource Brush.Ink}"/>
+    </Style>
+  </UserControl.Resources>
+
+  <c:PageScaffold Title="Text &amp; Overlay" Subtitle="The floating overlay follows you while you dictate.">
+    <StackPanel>
+      <c:Section Overline="Overlay">
+        <StackPanel>
+          <Border Style="{StaticResource Remy.Card}">
+            <StackPanel>
+              <!-- Live preview -->
+              <Border Background="{DynamicResource Brush.OverlayPreviewFill}" CornerRadius="15,15,0,0" Padding="24"
+                      AutomationProperties.Name="Example dictation preview">
+                <StackPanel>
+                  <Grid Height="{Binding PreviewHeight}">
+                    <o:OverlayPill x:Name="Pill" HorizontalAlignment="Center" VerticalAlignment="Center" Width="520"/>
+                  </Grid>
+                  <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,16,0,0">
+                    <TextBlock Text="Sample preview" Style="{StaticResource Text.Caption}" FontSize="12" VerticalAlignment="Center"/>
+                    <Button Style="{StaticResource Remy.InsetButton}" Margin="16,0,0,0" Command="{Binding ReplayCommand}" IsEnabled="{Binding CanReplay}"
+                            ToolTip="Replay a short example of dictation, processing, and completion">
+                      <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="&#xE768;" Style="{StaticResource Text.Icon}" FontSize="11" Foreground="{DynamicResource Brush.Ink}" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding ReplayLabel}" Style="{StaticResource Text.Base}" FontSize="12" FontWeight="Medium" Margin="5,0,0,0" VerticalAlignment="Center" TextWrapping="NoWrap"/>
+                      </StackPanel>
+                    </Button>
+                  </StackPanel>
+                </StackPanel>
+              </Border>
+
+              <!-- Preview size -->
+              <Border Style="{StaticResource Remy.DetailRow}">
+                <Grid>
+                  <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                  <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="Preview size" Style="{StaticResource Text.RowLabel}"/>
+                    <TextBlock Style="{StaticResource Text.Caption}" Margin="0,4,24,0" Text="More room and larger text for easier reading."/>
+                  </StackPanel>
+                  <StackPanel Grid.Column="1" Width="220" VerticalAlignment="Center">
+                    <Slider Minimum="0" Maximum="2" TickFrequency="1" IsSnapToTickEnabled="True" SmallChange="1" LargeChange="1"
+                            Value="{Binding SizeIndex, Mode=TwoWay}" ToolTip="Compact, Comfortable, or Large"
+                            AutomationProperties.Name="Preview size" AutomationProperties.HelpText="{Binding SizeName}"/>
+                    <Grid Margin="0,4,0,0">
+                      <TextBlock Text="Compact" HorizontalAlignment="Left">
+                        <TextBlock.Style><Style TargetType="TextBlock" BasedOn="{StaticResource SizeLabel}">
+                          <Style.Triggers><DataTrigger Binding="{Binding IsCompact}" Value="True"><Setter Property="FontWeight" Value="SemiBold"/><Setter Property="Foreground" Value="{DynamicResource Brush.Ink}"/></DataTrigger></Style.Triggers>
+                        </Style></TextBlock.Style>
+                      </TextBlock>
+                      <TextBlock Text="Comfortable" HorizontalAlignment="Center">
+                        <TextBlock.Style><Style TargetType="TextBlock" BasedOn="{StaticResource SizeLabel}">
+                          <Style.Triggers><DataTrigger Binding="{Binding IsComfortable}" Value="True"><Setter Property="FontWeight" Value="SemiBold"/><Setter Property="Foreground" Value="{DynamicResource Brush.Ink}"/></DataTrigger></Style.Triggers>
+                        </Style></TextBlock.Style>
+                      </TextBlock>
+                      <TextBlock Text="Large" HorizontalAlignment="Right">
+                        <TextBlock.Style><Style TargetType="TextBlock" BasedOn="{StaticResource SizeLabel}">
+                          <Style.Triggers><DataTrigger Binding="{Binding IsLarge}" Value="True"><Setter Property="FontWeight" Value="SemiBold"/><Setter Property="Foreground" Value="{DynamicResource Brush.Ink}"/></DataTrigger></Style.Triggers>
+                        </Style></TextBlock.Style>
+                      </TextBlock>
+                    </Grid>
+                  </StackPanel>
+                </Grid>
+              </Border>
+
+              <Border Style="{StaticResource Remy.Divider}"/>
+              <Border Style="{StaticResource Remy.DetailRow}">
+                <StackPanel>
+                  <Grid>
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                    <TextBlock Text="Preview theme" Style="{StaticResource Text.RowLabel}" VerticalAlignment="Center"/>
+                    <ComboBox Grid.Column="1" ItemsSource="{x:Static p:TextOverlayPageViewModel.ThemeOptions}" SelectedValuePath="Value" DisplayMemberPath="Label"
+                              SelectedValue="{Binding OverlayTheme, Mode=TwoWay}" AutomationProperties.Name="Preview theme"/>
+                  </Grid>
+                  <TextBlock Style="{StaticResource Text.Caption}" Margin="0,4,0,0" Text="System follows your Windows setting, independently of the app theme."/>
+                </StackPanel>
+              </Border>
+
+              <Border Style="{StaticResource Remy.Divider}"/>
+              <Border Style="{StaticResource Remy.DetailRow}">
+                <StackPanel>
+                  <Grid>
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                    <TextBlock Text="Show text preview in overlay" Style="{StaticResource Text.RowLabel}" VerticalAlignment="Center"/>
+                    <ToggleButton Grid.Column="1" Style="{StaticResource Remy.Switch}" IsChecked="{Binding ShowTextPreview, Mode=TwoWay}" Margin="24,0,0,0"
+                                  AutomationProperties.Name="Show text preview in overlay"/>
+                  </Grid>
+                  <TextBlock Style="{StaticResource Text.Caption}" Margin="0,4,70,0" Text="When enabled, live transcription text appears above the waveform."/>
+                </StackPanel>
+              </Border>
+            </StackPanel>
+          </Border>
+          <p:Hint Margin="0,12,0,0" Text="Keep text preview off for a calmer, distraction-free overlay."/>
+        </StackPanel>
+      </c:Section>
+    </StackPanel>
+  </c:PageScaffold>
+</UserControl>

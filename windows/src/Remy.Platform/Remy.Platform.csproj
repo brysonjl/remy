@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Windows adapters: keyboard hook, microphone, clipboard/SendInput delivery, focus/UIA, credentials, sounds, autostart. -->
+  <PropertyGroup>
+    <UseWindowsForms>false</UseWindowsForms>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="Remy.Platform.Tests" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NAudio" Version="2.2.1" />
+    <PackageReference Include="FlaUI.UIA3" Version="5.0.0" />
+    <ProjectReference Include="..\Remy.Core\Remy.Core.csproj" />
+  </ItemGroup>
+</Project>

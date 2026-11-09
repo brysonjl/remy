@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Platform-neutral logic: settings, session state, cleanup, prompts, context rules, history, model store. No Win32 or UI code. -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.14" />
+  </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="Remy.Core.Tests" />
+  </ItemGroup>
+</Project>

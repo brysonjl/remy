@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Manual probe for Remy.Platform. Not part of Remy.Windows.slnx. Run with dotnet run on this folder -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Remy.Platform\Remy.Platform.csproj" />
+  </ItemGroup>
+</Project>

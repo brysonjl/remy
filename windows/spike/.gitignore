@@ -1,0 +1,5 @@
+# Downloads, models, audio fixtures, build output and raw run logs stay local.
+.cache/
+bin/
+obj/
+out/

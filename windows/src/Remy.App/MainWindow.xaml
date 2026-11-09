@@ -1,0 +1,153 @@
+<Window x:Class="Remy.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:c="clr-namespace:Remy.App.Controls"
+        xmlns:vm="clr-namespace:Remy.App.ViewModels"
+        Title="Remy" Width="1120" Height="780" MinWidth="940" MinHeight="640" MaxWidth="2240" MaxHeight="1560"
+        WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="CanResize"
+        Background="{DynamicResource Brush.BgWindow}" UseLayoutRounding="True" TextOptions.TextFormattingMode="Ideal"
+        Icon="pack://application:,,,/Assets/remy.ico" AutomationProperties.Name="Remy">
+  <WindowChrome.WindowChrome>
+    <WindowChrome CaptionHeight="0" ResizeBorderThickness="6" GlassFrameThickness="0" CornerRadius="0" UseAeroCaptionButtons="False"/>
+  </WindowChrome.WindowChrome>
+  <Window.Resources>
+    <BooleanToVisibilityConverter x:Key="B2V"/>
+
+    <!-- Caption buttons -->
+    <Style x:Key="CaptionButton" TargetType="Button">
+      <Setter Property="Width" Value="46"/><Setter Property="Height" Value="32"/>
+      <Setter Property="Foreground" Value="{DynamicResource Brush.TextSecondary}"/>
+      <Setter Property="FontFamily" Value="{StaticResource Font.Icons}"/><Setter Property="FontSize" Value="10"/>
+      <Setter Property="Focusable" Value="False"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button">
+        <Border x:Name="Bd" Background="Transparent"><TextBlock Text="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+        <ControlTemplate.Triggers>
+          <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Bd" Property="Background" Value="{DynamicResource Brush.BorderSoft}"/></Trigger>
+        </ControlTemplate.Triggers>
+      </ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style x:Key="CloseCaptionButton" TargetType="Button" BasedOn="{StaticResource CaptionButton}">
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button">
+        <Border x:Name="Bd" Background="Transparent"><TextBlock x:Name="Tx" Text="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+        <ControlTemplate.Triggers>
+          <Trigger Property="IsMouseOver" Value="True">
+            <Setter TargetName="Bd" Property="Background" Value="#C42B1C"/>
+            <Setter TargetName="Tx" Property="Foreground" Value="White"/>
+          </Trigger>
+        </ControlTemplate.Triggers>
+      </ControlTemplate></Setter.Value></Setter>
+    </Style>
+
+    <!-- DSNavItem -->
+    <Style x:Key="NavButton" TargetType="Button">
+      <Setter Property="Cursor" Value="Hand"/><Setter Property="Focusable" Value="True"/><Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button">
+        <Border x:Name="Bd" CornerRadius="11" Padding="10,9" Background="Transparent" Margin="0,2,0,2">
+          <Grid>
+            <Border x:Name="Bar" Width="3" Height="18" CornerRadius="2" Background="{DynamicResource Brush.AccentDeep}" HorizontalAlignment="Left" Margin="-8,0,0,0" Visibility="Collapsed"/>
+            <StackPanel Orientation="Horizontal">
+              <TextBlock x:Name="Ic" Text="{Binding Glyph}" Style="{StaticResource Text.Icon}" Width="17" VerticalAlignment="Center"/>
+              <TextBlock x:Name="Tx" Text="{Binding Title}" Margin="10,0,0,0" FontFamily="{StaticResource Font.Ui}" FontSize="13.5" FontWeight="Medium"
+                         Foreground="{DynamicResource Brush.Ink}" VerticalAlignment="Center"/>
+            </StackPanel>
+          </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+          <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Bd" Property="Background" Value="{DynamicResource Brush.BorderSoft}"/></Trigger>
+          <DataTrigger Binding="{Binding IsSelected}" Value="True">
+            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource Brush.AccentSoft}"/>
+            <Setter TargetName="Bar" Property="Visibility" Value="Visible"/>
+            <Setter TargetName="Ic" Property="Foreground" Value="{DynamicResource Brush.Accent}"/>
+            <Setter TargetName="Tx" Property="FontWeight" Value="SemiBold"/>
+            <Setter TargetName="Bd" Property="Effect"><Setter.Value><DropShadowEffect Color="Black" Opacity="0.08" BlurRadius="3" ShadowDepth="1" Direction="270"/></Setter.Value></Setter>
+          </DataTrigger>
+        </ControlTemplate.Triggers>
+      </ControlTemplate></Setter.Value></Setter>
+    </Style>
+  </Window.Resources>
+
+  <Grid x:Name="RootGrid">
+    <Grid.ColumnDefinitions><ColumnDefinition Width="264"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+
+    <!-- ===== Sidebar (drag area) ===== -->
+    <Border x:Name="Sidebar" Background="{DynamicResource Brush.BgSidebar}" BorderBrush="{DynamicResource Brush.Border}" BorderThickness="0,0,1,0"
+            Padding="14,16" MouseLeftButtonDown="Sidebar_MouseLeftButtonDown">
+      <Grid>
+        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+        <!-- DSBrand -->
+        <StackPanel Orientation="Horizontal" Margin="6,6,6,16">
+          <Image Source="pack://application:,,,/Assets/remy-waiter.png" Width="66" Height="66" RenderOptions.BitmapScalingMode="HighQuality"/>
+          <StackPanel VerticalAlignment="Center" Margin="10,0,0,0">
+            <TextBlock Text="Remy" FontFamily="{StaticResource Font.Display}" FontSize="23" FontWeight="Bold" Foreground="{DynamicResource Brush.Ink}"/>
+            <TextBlock Text="At your word." FontFamily="{StaticResource Font.Ui}" FontSize="11.5" FontWeight="Medium" Foreground="{DynamicResource Brush.TextSecondary}" Margin="0,3,0,0"/>
+          </StackPanel>
+        </StackPanel>
+        <c:TrackedText Grid.Row="1" Text="Service console" FontSize="9" Tracking="1.3" Foreground="{DynamicResource Brush.TextSecondary}" Margin="10,0,0,7"/>
+        <ItemsControl Grid.Row="2" ItemsSource="{Binding NavItems}" Focusable="False">
+          <ItemsControl.ItemTemplate><DataTemplate>
+            <Button Style="{StaticResource NavButton}" Command="{Binding Command}" AutomationProperties.Name="{Binding Title}"/>
+          </DataTemplate></ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <!-- DSFooterCard: always dark -->
+        <Border Grid.Row="4" Background="{DynamicResource Brush.ServiceInk}" BorderBrush="#3875E5D3" BorderThickness="1" CornerRadius="15" Padding="14">
+          <StackPanel>
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="&#xE8D6;" Style="{StaticResource Text.Icon}" FontSize="10" Foreground="{DynamicResource Brush.ServiceMuted}" VerticalAlignment="Center" Margin="0,0,5,0"/>
+              <c:TrackedText Text="Service status" FontSize="9" Tracking="1.1" Foreground="{DynamicResource Brush.ServiceMuted}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+              <Ellipse x:Name="StatusDot" Width="8" Height="8" Stroke="#59FFFFFF" StrokeThickness="1" Margin="0,0,8,0">
+                <Ellipse.Style><Style TargetType="Ellipse"><Setter Property="Fill" Value="{DynamicResource Brush.TextSecondary}"/>
+                  <Style.Triggers>
+                    <DataTrigger Binding="{Binding StatusDot}" Value="AccentDeep"><Setter Property="Fill" Value="{DynamicResource Brush.AccentDeep}"/></DataTrigger>
+                    <DataTrigger Binding="{Binding StatusDot}" Value="Success"><Setter Property="Fill" Value="{DynamicResource Brush.Success}"/></DataTrigger>
+                    <DataTrigger Binding="{Binding StatusDot}" Value="Accent"><Setter Property="Fill" Value="{DynamicResource Brush.Accent}"/></DataTrigger>
+                    <DataTrigger Binding="{Binding StatusDot}" Value="Destructive"><Setter Property="Fill" Value="{DynamicResource Brush.Destructive}"/></DataTrigger>
+                  </Style.Triggers></Style></Ellipse.Style>
+              </Ellipse>
+              <TextBlock Text="{Binding StatusText}" FontFamily="{StaticResource Font.Ui}" FontSize="12" FontWeight="SemiBold" Foreground="{DynamicResource Brush.ServiceCream}"/>
+            </StackPanel>
+            <TextBlock Text="{Binding VersionText}" Style="{StaticResource Text.Mono}" Foreground="{DynamicResource Brush.ServiceMuted}" Margin="0,10,0,0"/>
+          </StackPanel>
+        </Border>
+      </Grid>
+    </Border>
+
+    <!-- ===== Detail pane ===== -->
+    <Grid Grid.Column="1">
+      <DockPanel>
+        <!-- AttentionBanner -->
+        <Border DockPanel.Dock="Top" Visibility="{Binding IsBannerVisible, Converter={StaticResource B2V}}" MinHeight="50"
+                Background="{DynamicResource Brush.AccentSoft}" BorderBrush="{DynamicResource Brush.Border}" BorderThickness="0,0,0,1" Padding="16,8,150,8">
+          <Grid DataContext="{Binding CurrentIssue}">
+            <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+            <TextBlock Text="{Binding Glyph}" Style="{StaticResource Text.Icon}" FontSize="13" Foreground="{DynamicResource Brush.AccentDeep}" VerticalAlignment="Center" Margin="0,0,12,0"/>
+            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+              <TextBlock Text="{Binding Title}" FontFamily="{StaticResource Font.Ui}" FontSize="12.5" FontWeight="SemiBold" Foreground="{DynamicResource Brush.PanelText}" TextWrapping="Wrap"/>
+              <TextBlock Text="{Binding Message}" FontFamily="{StaticResource Font.Ui}" FontSize="12" Foreground="{DynamicResource Brush.PanelText}" TextWrapping="Wrap"/>
+            </StackPanel>
+            <Button Grid.Column="2" Content="{Binding ActionTitle}" Margin="12,0,0,0" VerticalAlignment="Center"
+                    Command="{Binding DataContext.IssueActionCommand, RelativeSource={RelativeSource AncestorType=Window}}"/>
+            <StackPanel Grid.Column="3" Orientation="Horizontal" Margin="12,0,0,0" VerticalAlignment="Center"
+                        Visibility="{Binding DataContext.HasMultipleIssues, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource B2V}}">
+              <Button Style="{StaticResource Remy.IconButton}" Content="&#xE76B;" ToolTip="Previous issue" AutomationProperties.Name="Previous issue"
+                      Command="{Binding DataContext.PreviousIssueCommand, RelativeSource={RelativeSource AncestorType=Window}}"/>
+              <TextBlock Text="{Binding DataContext.IssueCounterText, RelativeSource={RelativeSource AncestorType=Window}}" FontSize="11"
+                         FontFamily="{StaticResource Font.Mono}" Foreground="{DynamicResource Brush.PanelText}" VerticalAlignment="Center" Margin="6,0"/>
+              <Button Style="{StaticResource Remy.IconButton}" Content="&#xE76C;" ToolTip="Next issue" AutomationProperties.Name="Next issue"
+                      Command="{Binding DataContext.NextIssueCommand, RelativeSource={RelativeSource AncestorType=Window}}"/>
+            </StackPanel>
+          </Grid>
+        </Border>
+        <ContentControl x:Name="PageHost" IsTabStop="False"/>
+      </DockPanel>
+
+      <!-- Caption buttons float over the top-right of the pane -->
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+        <Button Style="{StaticResource CaptionButton}" Content="&#xE921;" Click="Minimize_Click" ToolTip="Minimize" AutomationProperties.Name="Minimize"/>
+        <Button x:Name="MaxButton" Style="{StaticResource CaptionButton}" Content="&#xE922;" Click="Maximize_Click" ToolTip="Maximize" AutomationProperties.Name="Maximize"/>
+        <Button Style="{StaticResource CloseCaptionButton}" Content="&#xE8BB;" Click="Close_Click" ToolTip="Close" AutomationProperties.Name="Close"/>
+      </StackPanel>
+    </Grid>
+  </Grid>
+</Window>
