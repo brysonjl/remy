@@ -1,0 +1,67 @@
+<UserControl x:Class="Remy.App.Pages.AboutPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="clr-namespace:Remy.App.Controls"
+             xmlns:p="clr-namespace:Remy.App.Pages">
+  <!-- No section header on About (ui.md 3.7): own scroll pane with the DSPage metrics. -->
+  <ScrollViewer VerticalScrollBarVisibility="Auto" Background="{DynamicResource Brush.BgWindow}" Focusable="False">
+    <StackPanel MaxWidth="820" Margin="44,34,44,36">
+      <StackPanel HorizontalAlignment="Center" Margin="24,28,24,28">
+        <Image Source="pack://application:,,,/Assets/remy-waiter.png" Width="76" Height="76" Stretch="Uniform" HorizontalAlignment="Center"
+               RenderOptions.BitmapScalingMode="Fant" AutomationProperties.Name="Remy"/>
+        <TextBlock Text="Remy" Style="{StaticResource Text.PageTitle}" FontSize="30" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,14,0,0"/>
+        <TextBlock x:Name="VersionText" Style="{StaticResource Text.RowValue}" FontSize="13" HorizontalAlignment="Center" Margin="0,14,0,0"/>
+        <TextBlock Style="{StaticResource Text.RowValue}" FontSize="13" HorizontalAlignment="Center" TextAlignment="Center" Margin="0,14,0,0">
+          <Run Text="Based on Dictate Anywhere by "/><Hyperlink Command="{x:Static p:AboutPage.OpenLink}" CommandParameter="https://pixelforty.com"
+                     TextDecorations="None" Foreground="{DynamicResource Brush.AccentDeep}" FontWeight="SemiBold">Pixel Forty Inc.</Hyperlink>
+        </TextBlock>
+        <TextBlock Style="{StaticResource Text.Caption}" HorizontalAlignment="Center" TextAlignment="Center" Margin="0,14,0,0"
+                   Text="In-app update checks are disabled. Install development builds manually."/>
+        <TextBlock FontSize="13" HorizontalAlignment="Center" Margin="0,14,0,0" Style="{StaticResource Text.Base}">
+          <Hyperlink Command="{x:Static p:AboutPage.OpenLink}" CommandParameter="https://github.com/brysonjl/remy/blob/main/windows/THIRD_PARTY_NOTICES.md"
+                     TextDecorations="None" Foreground="{DynamicResource Brush.AccentDeep}">View complete third-party notices</Hyperlink>
+        </TextBlock>
+      </StackPanel>
+
+      <c:Section Overline="Open Source Acknowledgements">
+        <StackPanel>
+        <Border Style="{StaticResource Remy.Card}">
+          <ItemsControl x:Name="Libraries" Focusable="False">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate DataType="{x:Type p:LibraryInfo}">
+                <StackPanel>
+                  <Border x:Name="Sep" Style="{StaticResource Remy.Divider}"/>
+                  <Grid Margin="16,14">
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                    <StackPanel>
+                      <TextBlock Text="{Binding Name}" Style="{StaticResource Text.RowLabel}" FontWeight="SemiBold"/>
+                      <TextBlock Text="{Binding Description}" Style="{StaticResource Text.Caption}" Margin="0,4,0,0"/>
+                      <TextBlock Margin="0,4,0,0" Style="{StaticResource Text.Base}" FontSize="12.5" FontWeight="Medium" TextWrapping="NoWrap">
+                        <Hyperlink Command="{x:Static p:AboutPage.OpenLink}" CommandParameter="{Binding Url}" TextDecorations="None"
+                                   Foreground="{DynamicResource Brush.AccentDeep}" AutomationProperties.Name="{Binding LinkName}">
+                          <Run Text="&#xE8A7;" FontFamily="{StaticResource Font.Icons}" FontSize="10.5"/><Run Text=" "/><Run Text="{Binding UrlText, Mode=OneWay}"/>
+                        </Hyperlink>
+                      </TextBlock>
+                    </StackPanel>
+                    <Border Grid.Column="1" Style="{StaticResource Remy.Chip}" VerticalAlignment="Top" Margin="16,0,0,0">
+                      <TextBlock Text="{Binding License}" Style="{StaticResource Text.Base}" FontSize="12" FontWeight="Medium" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"/>
+                    </Border>
+                  </Grid>
+                </StackPanel>
+                <DataTemplate.Triggers>
+                  <DataTrigger Binding="{Binding IsFirst}" Value="True"><Setter TargetName="Sep" Property="Visibility" Value="Collapsed"/></DataTrigger>
+                </DataTemplate.Triggers>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </Border>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,18,0,0">
+          <TextBlock Text="&#xEB51;" Style="{StaticResource Text.Icon}" FontSize="12" Foreground="{DynamicResource Brush.AccentDeep}" VerticalAlignment="Center"/>
+          <TextBlock Style="{StaticResource Text.Caption}" Margin="8,0,0,0" VerticalAlignment="Center"
+                     Text="Built with the help of the open-source community. Thank you to all contributors."/>
+        </StackPanel>
+        </StackPanel>
+      </c:Section>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

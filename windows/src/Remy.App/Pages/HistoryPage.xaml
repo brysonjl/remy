@@ -1,0 +1,8 @@
+<UserControl x:Class="Remy.App.Pages.HistoryPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="clr-namespace:Remy.App.Controls">
+  <c:PageScaffold Title="History" Subtitle="Your recent dictations, kept on this PC.">
+    <StackPanel x:Name="Root"/>
+  </c:PageScaffold>
+</UserControl>

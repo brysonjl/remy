@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Parakeet TDT 0.6B v2 (int8 ONNX) through sherpa-onnx, CPU. -->
+  <ItemGroup>
+    <PackageReference Include="org.k2fsa.sherpa.onnx" Version="2.0.1" />
+    <PackageReference Include="System.Management" Version="10.0.0" />
+    <ProjectReference Include="..\Remy.Core\Remy.Core.csproj" />
+  </ItemGroup>
+</Project>

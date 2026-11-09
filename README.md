@@ -13,7 +13,8 @@
   <a href="https://github.com/brysonjl/remy/releases"><strong>Download for Mac</strong></a> ·
   <a href="#quick-start">Quick start</a> ·
   <a href="#under-the-hood">Under the hood</a> ·
-  <a href="#build-from-source">Build from source</a>
+  <a href="#build-from-source">Build from source</a> ·
+  <a href="#windows-preview">Windows preview</a>
 </p>
 
 <p align="center">
@@ -215,6 +216,18 @@ Remy Dev keeps its own data and permissions, separate from Remy. See the
 [local development guide](app/docs/engineering/local-development.md).
 
 </details>
+
+## Windows preview
+
+A Windows (x64) version lives in [`windows/`](windows/). It has the Mac
+app's main features: hold-to-talk dictation, the floating recorder, local
+Parakeet v2 speech recognition, S1-mini and remote cleanup, history and recovery.
+It is a preview.
+
+**[Download Remy for Windows 0.1.0 (preview)](https://github.com/brysonjl/remy/releases/tag/windows-v0.1.0)**: unzip it and run
+`Remy.exe`. The app isn't code-signed yet, so Windows may show "Windows protected
+your PC"; click **More info**, then **Run anyway**. See the
+[Windows README](windows/README.md) to build it yourself.
 
 ## Contributing
 

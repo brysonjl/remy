@@ -1,0 +1,143 @@
+<UserControl x:Class="Remy.App.Pages.ShortcutsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="clr-namespace:Remy.App.Controls"
+             xmlns:p="clr-namespace:Remy.App.Pages">
+  <UserControl.Resources>
+    <BooleanToVisibilityConverter x:Key="BoolVis"/>
+
+    <!-- ShortcutRecorderView: Not set / keycaps / recording prompt -->
+    <DataTemplate x:Key="Recorder" DataType="{x:Type p:RecorderViewModel}">
+      <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal" Visibility="{Binding IsRecording, Converter={StaticResource BoolVis}}">
+          <TextBlock Text="Press any key combo…" Style="{StaticResource Text.Base}" FontSize="13" FontWeight="Medium" Foreground="{DynamicResource Brush.AccentDeep}"
+                     VerticalAlignment="Center" TextWrapping="NoWrap"/>
+          <Button Content="Cancel" Margin="14,0,0,0" Command="{Binding StopCommand}" AutomationProperties.Name="{Binding CancelName}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Visibility="{Binding ShowNotSet, Converter={StaticResource BoolVis}}">
+          <TextBlock Text="Not set" Style="{StaticResource Text.Base}" FontSize="13" FontWeight="Medium" Foreground="{DynamicResource Brush.TextSecondary}"
+                     VerticalAlignment="Center" TextWrapping="NoWrap"/>
+          <Button Content="Record Shortcut" Style="{StaticResource Remy.PrimaryButton}" Margin="14,0,0,0" Command="{Binding BeginCommand}"
+                  IsEnabled="{Binding Idle}" AutomationProperties.Name="{Binding RecordName}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Visibility="{Binding ShowSet, Converter={StaticResource BoolVis}}">
+          <ItemsControl ItemsSource="{Binding Keycaps}" VerticalAlignment="Center" Margin="0,0,0,2">
+            <ItemsControl.ItemsPanel><ItemsPanelTemplate><StackPanel Orientation="Horizontal"/></ItemsPanelTemplate></ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate><DataTemplate>
+              <ContentControl Content="{Binding}" Style="{StaticResource Remy.Keycap}" Margin="0,0,5,0"/>
+            </DataTemplate></ItemsControl.ItemTemplate>
+          </ItemsControl>
+          <Button Content="Change" Style="{StaticResource Remy.PrimaryButton}" Margin="9,0,0,0" Command="{Binding BeginCommand}"
+                  IsEnabled="{Binding Idle}" AutomationProperties.Name="{Binding ChangeName}"/>
+          <Button Content="Clear" Margin="14,0,0,0" Command="{Binding ClearCommand}"
+                  IsEnabled="{Binding Idle}" AutomationProperties.Name="{Binding ClearName}"/>
+        </StackPanel>
+      </StackPanel>
+    </DataTemplate>
+  </UserControl.Resources>
+
+  <c:PageScaffold Title="Shortcuts" Subtitle="Start and stop dictation from anywhere with a quick key press.">
+    <StackPanel>
+      <c:Section Overline="Keyboard Shortcuts">
+        <StackPanel>
+          <Border Style="{StaticResource Remy.Card}">
+            <ItemsControl ItemsSource="{Binding Rows}" Focusable="False">
+              <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type p:BindingRowViewModel}">
+                  <StackPanel>
+                    <Border x:Name="Sep" Style="{StaticResource Remy.Divider}"/>
+                    <Grid Margin="16">
+                      <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                      <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Title}" Style="{StaticResource Text.RowLabel}"/>
+                        <TextBlock Text="{Binding Caption}" Style="{StaticResource Text.Caption}" Margin="0,3,0,0"/>
+                      </StackPanel>
+                      <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="14,0,0,0">
+                        <ContentControl Content="{Binding Recorder}" ContentTemplate="{StaticResource Recorder}" VerticalAlignment="Center"/>
+                        <Button Style="{StaticResource Remy.IconButton}" Margin="14,0,0,0" Command="{Binding RemoveCommand}" IsEnabled="{Binding CanRemove}"
+                                ToolTip="{Binding RemoveName}" AutomationProperties.Name="{Binding RemoveName}"
+                                Visibility="{Binding CanRemoveVisible, Converter={StaticResource BoolVis}, FallbackValue=Collapsed}">
+                          <TextBlock Text="&#xE74D;" Style="{StaticResource Text.Icon}" FontSize="11.5"/>
+                        </Button>
+                      </StackPanel>
+                    </Grid>
+                    <p:FieldMessage Text="{Binding ErrorText}" Tone="Error" Margin="16,0,16,10"/>
+                    <p:FieldMessage Text="{Binding WarningText}" Tone="Warning" Margin="16,0,16,10"/>
+                    <Border Style="{StaticResource Remy.Divider}"/>
+                    <Border Style="{StaticResource Remy.Row}">
+                      <Grid>
+                        <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                        <TextBlock Text="Activation mode" Style="{StaticResource Text.RowLabel}" VerticalAlignment="Center"/>
+                        <ComboBox Grid.Column="1" ItemsSource="{x:Static p:ShortcutsPageViewModel.ModeOptions}" SelectedValuePath="Value" DisplayMemberPath="Label"
+                                  SelectedValue="{Binding Mode, Mode=TwoWay}" IsEnabled="{Binding Idle}" AutomationProperties.Name="{Binding ModeName}"/>
+                      </Grid>
+                    </Border>
+                  </StackPanel>
+                  <DataTemplate.Triggers>
+                    <DataTrigger Binding="{Binding Index}" Value="1"><Setter TargetName="Sep" Property="Visibility" Value="Collapsed"/></DataTrigger>
+                  </DataTemplate.Triggers>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </Border>
+          <Button Margin="0,12,0,0" Style="{StaticResource Remy.AddButton}" Command="{Binding AddShortcutCommand}" IsEnabled="{Binding CanAdd}"
+                  Visibility="{Binding ShowAdd, Converter={StaticResource BoolVis}}">
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="&#xE710;" Style="{StaticResource Text.Icon}" FontSize="12.5" Foreground="{DynamicResource Brush.AccentDeep}" VerticalAlignment="Center"/>
+              <TextBlock Text="Add another shortcut" Style="{StaticResource Text.Base}" FontSize="13" FontWeight="SemiBold" Foreground="{DynamicResource Brush.AccentDeep}" Margin="8,0,0,0" VerticalAlignment="Center"/>
+            </StackPanel>
+          </Button>
+        </StackPanel>
+      </c:Section>
+
+      <c:Section Overline="Cancellation">
+        <StackPanel>
+        <Border Style="{StaticResource Remy.Card}">
+          <StackPanel>
+            <Border Style="{StaticResource Remy.DetailRow}">
+              <StackPanel>
+                <Grid>
+                  <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                  <TextBlock Text="Cancel shortcut" Style="{StaticResource Text.RowLabel}" VerticalAlignment="Center"/>
+                  <ContentControl Grid.Column="1" Content="{Binding CancelRecorder}" ContentTemplate="{StaticResource Recorder}" VerticalAlignment="Center" Margin="24,0,0,0"/>
+                </Grid>
+                <TextBlock Style="{StaticResource Text.Caption}" Margin="0,4,0,0"
+                           Text="Choose a shortcut you won't use in other apps. Clear it to cancel only from the tray menu."/>
+                <p:FieldMessage Text="{Binding CancelErrorText}" Tone="Error" Margin="0,8,0,0"/>
+              </StackPanel>
+            </Border>
+            <Border Style="{StaticResource Remy.Divider}"/>
+            <Border Style="{StaticResource Remy.DetailRow}">
+              <StackPanel>
+                <Grid>
+                  <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                  <TextBlock Text="Hold to cancel" Style="{StaticResource Text.RowLabel}" VerticalAlignment="Center"/>
+                  <ToggleButton Grid.Column="1" Style="{StaticResource Remy.Switch}" IsChecked="{Binding HoldToCancel, Mode=TwoWay}" IsEnabled="{Binding Idle}"
+                                Margin="24,0,0,0" AutomationProperties.Name="Hold to cancel"/>
+                </Grid>
+                <TextBlock Style="{StaticResource Text.Caption}" Margin="0,4,70,0"
+                           Text="Hold the full cancel shortcut for one second. Releasing early keeps dictation running."/>
+              </StackPanel>
+            </Border>
+            <Border Style="{StaticResource Remy.Divider}"/>
+            <Border Style="{StaticResource Remy.DetailRow}">
+              <StackPanel>
+                <Grid>
+                  <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                  <TextBlock Text="Preserve cancelled sessions" Style="{StaticResource Text.RowLabel}" VerticalAlignment="Center"/>
+                  <ToggleButton Grid.Column="1" Style="{StaticResource Remy.Switch}" IsChecked="{Binding PreserveCancelledSessions, Mode=TwoWay}"
+                                Margin="24,0,0,0" AutomationProperties.Name="Preserve cancelled sessions"/>
+                </Grid>
+                <TextBlock Style="{StaticResource Text.Caption}" Margin="0,4,70,0"
+                           Text="Keep cancelled sessions locally for 24 hours. Continue, recover text, or delete them in History. Changes apply to new dictations."/>
+              </StackPanel>
+            </Border>
+          </StackPanel>
+        </Border>
+        <p:Hint Glyph="&#xE765;" Margin="0,12,0,0"
+                Text="Press any key combo, or press only modifiers (like Ctrl+Win) and release. Left and right modifiers are supported — for example, R Ctrl uses only the right Ctrl key."/>
+        </StackPanel>
+      </c:Section>
+    </StackPanel>
+  </c:PageScaffold>
+</UserControl>

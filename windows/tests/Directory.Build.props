@@ -1,0 +1,7 @@
+<Project>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+  <ItemGroup>
+    <!-- Keeps every test run's logs and data out of the real %APPDATA%\Remy and %LOCALAPPDATA%\Remy. -->
+    <Compile Include="$(MSBuildThisFileDirectory)TestDataRoot.cs" Link="TestDataRoot.cs" />
+  </ItemGroup>
+</Project>

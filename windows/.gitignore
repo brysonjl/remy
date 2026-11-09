@@ -1,0 +1,7 @@
+bin/
+obj/
+out/
+*.user
+.vs/
+# Visual QA captures from --snap stay local.
+docs/screenshots/
