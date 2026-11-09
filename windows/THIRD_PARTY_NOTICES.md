@@ -3,10 +3,11 @@
 This list covers the Windows build in `windows/` only. The macOS app's reviewed
 inventory is the root [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md).
 
-The licenses below are the ones each NuGet package declares. They have not yet
-had the full review the macOS release received (retained license files,
-transitive native binaries, hashes). Complete that review before publishing a
-Windows binary.
+The licenses below are the ones each NuGet package declares. Their license
+texts are kept in [`licenses/`](licenses/) (copied from the NuGet package, or
+from the upstream repository at the matching tag when the package has none) and
+ship in the release zip's `Notices` folder with the .NET runtime's license and
+notices. This has not had the hash-pinned review the macOS release received.
 
 ## NuGet packages
 

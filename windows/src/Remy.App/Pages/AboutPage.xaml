@@ -18,7 +18,7 @@
         <TextBlock Style="{StaticResource Text.Caption}" HorizontalAlignment="Center" TextAlignment="Center" Margin="0,14,0,0"
                    Text="In-app update checks are disabled. Install development builds manually."/>
         <TextBlock FontSize="13" HorizontalAlignment="Center" Margin="0,14,0,0" Style="{StaticResource Text.Base}">
-          <Hyperlink Command="{x:Static p:AboutPage.OpenLink}" CommandParameter="https://github.com/brysonjl/remy/blob/main/THIRD_PARTY_NOTICES.md"
+          <Hyperlink Command="{x:Static p:AboutPage.OpenLink}" CommandParameter="https://github.com/brysonjl/remy/blob/main/windows/THIRD_PARTY_NOTICES.md"
                      TextDecorations="None" Foreground="{DynamicResource Brush.AccentDeep}">View complete third-party notices</Hyperlink>
         </TextBlock>
       </StackPanel>
