@@ -168,6 +168,13 @@ tens of seconds.
 
 ## Reproduce
 
+The measurement code (`Speech/`, `Paste/`, `Dictate/` and `tools/`) was removed once the port
+replaced it. To rerun it, restore it from history:
+
+```sh
+git checkout "$(git log -1 --format=%H --diff-filter=D -- windows/spike/Speech/Program.cs)^" -- windows/spike
+```
+
 Everything downloaded or generated (SDK installer, models, CUDA DLLs, LibriSpeech, fixtures, logs, screenshots)
 is in `windows/spike/.cache/` (git-ignored, about 9 GB). .NET 10 SDK was installed user-locally to `%LOCALAPPDATA%\dotnet-sdk`.
 
