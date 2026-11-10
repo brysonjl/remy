@@ -62,7 +62,10 @@ public sealed class CleanupRouter : ICleanupEngine, IDisposable
             var provider = CreateProvider(rt);
             providerName = provider.Name;
             var context = DictationContextSnapshotBuilder.ToPostProcessingContext(request.Context, rt);
-            output = await ProcessRemoteAsync(provider, input, rt.Prompt, request.Vocabulary, context, deadlineCts.Token).ConfigureAwait(false);
+            // Screen names are lower-trust and only travel where captured text may (v0.2-features.md 7.7).
+            var allowNames = ContextSharing.IncludesCapturedText(rt) && request.Context is { IsSecureField: false, IsExcluded: false };
+            output = await ProcessRemoteAsync(provider, input, rt.Prompt, request.Vocabulary, context, deadlineCts.Token,
+                allowNames ? request.ScreenNames : null).ConfigureAwait(false);
 
             output = CleanupAnswer.Normalize(output);
             if (string.IsNullOrWhiteSpace(output))
@@ -132,12 +135,13 @@ public sealed class CleanupRouter : ICleanupEngine, IDisposable
 
     /// <summary>Budget check, chunking, per-chunk requests (bounded concurrency) and fail-open safety checks (§1.1).</summary>
     internal static async Task<string> ProcessRemoteAsync(RemoteProvider provider, string text, string prompt,
-        IReadOnlyList<string> vocabulary, DictationPostProcessingContext? context, CancellationToken ct)
+        IReadOnlyList<string> vocabulary, DictationPostProcessingContext? context, CancellationToken ct,
+        IReadOnlyList<string>? screenNames = null)
     {
         var limits = await provider.PrepareAsync(ct).ConfigureAwait(false);
         var system = CleanupPromptBuilder.RemoteSystemInstructions(prompt, vocabulary, context);
 
-        bool Fits(string t) => CleanupChunker.FitsSingleRequest(t, system, CleanupPromptBuilder.RemoteUserMessage(t, vocabulary, context),
+        bool Fits(string t) => CleanupChunker.FitsSingleRequest(t, system, CleanupPromptBuilder.RemoteUserMessage(t, vocabulary, context, screenNames),
             limits.Budget, limits.MaxCompletionTokens);
 
         // Pre-flight with an empty transcript: fixed instructions alone may exceed the budget.
@@ -151,7 +155,7 @@ public sealed class CleanupRouter : ICleanupEngine, IDisposable
         {
             var c = chunks[i];
             if (c.PassesThrough) { outputs[i] = c.Prefix + c.Suffix; return; }
-            var user = CleanupPromptBuilder.RemoteUserMessage(c.Text, vocabulary, context);
+            var user = CleanupPromptBuilder.RemoteUserMessage(c.Text, vocabulary, context, screenNames);
             var answer = await provider.CompleteAsync(system, user, c.Text, token).ConfigureAwait(false);
             outputs[i] = c.Prefix + CleanupAnswer.CleanedResponse(answer, c.Text) + c.Suffix;
         }

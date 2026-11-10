@@ -135,6 +135,7 @@ public partial class TranscriptCleanupPage : UserControl, IServicePage
         Root.Children.Add(_contextHost = new StackPanel());
         BuildContext();
         Root.Children.Add(FillerSection());
+        AddTextRuleSections();
         _built = true;
         if (_subscribed) RefreshS1Card();
         StartInitialRefresh(mode);

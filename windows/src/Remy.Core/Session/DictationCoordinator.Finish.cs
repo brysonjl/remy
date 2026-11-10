@@ -80,7 +80,8 @@ public sealed partial class DictationCoordinator
         }
 
         var transcript = Join(s.Prefix, newText);
-        var corrected = cfg.FillerEnabled ? FillerWordRemover.Remove(transcript, cfg.FillerWords).Trim() : transcript.Trim();
+        var filled = cfg.FillerEnabled ? FillerWordRemover.Remove(transcript, cfg.FillerWords) : transcript;
+        var corrected = cfg.TextRules.ApplyCorrections(filled).Trim();   // corrections run once, here (v0.2-features.md 5.2)
         RemyLog.Info("Session", $"recognized chars={corrected.Length}");
         if (corrected.Length == 0) { await NoTextAsync(s).ConfigureAwait(false); return; }
 
@@ -95,15 +96,25 @@ public sealed partial class DictationCoordinator
         s.CompletedRaw = corrected;
 
         // ---- cleanup
+        // Whatever the screen-name walk has produced now; the walk is then cancelled and never awaited (v0.2-features.md 7.6).
+        var screenNames = s.TakeScreenNames();
         string finalText = corrected;
         RemyCleanupFailure? fallback = null;
+
+        // Snippets expand after cleanup (or its fallback) and only if something remains to deliver (v0.2-features.md 2.3).
+        string Expand(string processed)
+        {
+            var expanded = cfg.TextRules.ExpandSnippets(processed);
+            return string.IsNullOrWhiteSpace(expanded) ? processed : expanded;
+        }
         var mode = cfg.Cleanup.Mode;
         bool usesCleanup = cfg.CleanupBuildFailure != null || mode is TranscriptPostProcessingMode.S1Mini or TranscriptPostProcessingMode.Ollama
             or TranscriptPostProcessingMode.OpenRouter or TranscriptPostProcessingMode.OpenAICompatible or TranscriptPostProcessingMode.Profile;
         HistoryAck selectAck;
         if (!usesCleanup)
         {
-            selectAck = await s.History.SelectOutputAsync(s.Id, SelectionKind.Raw, corrected, null, ct).ConfigureAwait(false);
+            finalText = Expand(corrected);
+            selectAck = await s.History.SelectOutputAsync(s.Id, SelectionKind.Raw, finalText, null, ct).ConfigureAwait(false);
         }
         else
         {
@@ -129,7 +140,7 @@ public sealed partial class DictationCoordinator
                     if (s.ContextTask != null) { try { captured = await s.ContextTask.ConfigureAwait(false); } catch { } }
                     snapshot = DictationContextSnapshotBuilder.Build(s.Origin, captured, cfg.Cleanup);
                 }
-                var request = new CleanupRequest(s.Id, attemptId, corrected, cfg.Cleanup, snapshot, cfg.Vocabulary, DateTimeOffset.UtcNow + _opt.CleanupDeadline);
+                var request = new CleanupRequest(s.Id, attemptId, corrected, cfg.Cleanup, snapshot, cfg.Vocabulary, DateTimeOffset.UtcNow + _opt.CleanupDeadline, screenNames);
                 try
                 {
                     using var _ = PerfTrace.Begin("cleanup.run");
@@ -162,16 +173,20 @@ public sealed partial class DictationCoordinator
                 case CleanupOutcome.Cleaned:
                 case CleanupOutcome.Unchanged:
                 {
-                    var attempt = MakeAttempt(s, attemptId, started, corrected, result.Output, result.ProviderName, result.ModelName, null, AttemptStatus.Succeeded, result.Elapsed);
+                    // Restore spoken words where cleanup inserted a known term nothing supports, then expand snippets (5.2 steps 7a, 8).
+                    var (guarded, reverted) = TranscriptCleanupIntegrity.RevertUnsupportedTerms(corrected, result.Output, cfg.Vocabulary.Concat(screenNames));
+                    if (reverted > 0) RemyLog.Info("Cleanup", $"unsupportedTermReverted regions={reverted}");
+                    finalText = Expand(guarded);
+                    var attempt = MakeAttempt(s, attemptId, started, corrected, finalText, result.ProviderName, result.ModelName, null, AttemptStatus.Succeeded, result.Elapsed);
                     var a = await s.History.AppendCleanupAttemptAsync(attempt, ct).ConfigureAwait(false);
                     if (!Current(s)) return;
                     if (!a.IsDeliveryPermitted) { await HistoryFailureAsync(s).ConfigureAwait(false); return; }
-                    selectAck = await s.History.SelectOutputAsync(s.Id, SelectionKind.Attempt, result.Output, attemptId, ct).ConfigureAwait(false);
-                    finalText = result.Output;
+                    selectAck = await s.History.SelectOutputAsync(s.Id, SelectionKind.Attempt, finalText, attemptId, ct).ConfigureAwait(false);
                     break;
                 }
                 case CleanupOutcome.Skipped:
-                    selectAck = await s.History.SelectOutputAsync(s.Id, SelectionKind.Raw, corrected, null, ct).ConfigureAwait(false);
+                    finalText = Expand(corrected);
+                    selectAck = await s.History.SelectOutputAsync(s.Id, SelectionKind.Raw, finalText, null, ct).ConfigureAwait(false);
                     break;
                 default:
                 {
@@ -181,7 +196,8 @@ public sealed partial class DictationCoordinator
                     var a = await s.History.AppendCleanupAttemptAsync(attempt, ct).ConfigureAwait(false);
                     if (!Current(s)) return;
                     if (!a.IsDeliveryPermitted) { await HistoryFailureAsync(s).ConfigureAwait(false); return; }
-                    selectAck = await s.History.SelectOutputAsync(s.Id, SelectionKind.Fallback, corrected, null, ct).ConfigureAwait(false);
+                    finalText = Expand(corrected);
+                    selectAck = await s.History.SelectOutputAsync(s.Id, SelectionKind.Fallback, finalText, null, ct).ConfigureAwait(false);
                     break;
                 }
             }
@@ -189,6 +205,8 @@ public sealed partial class DictationCoordinator
         if (!Current(s)) return;
         if (!selectAck.IsDeliveryPermitted) { await HistoryFailureAsync(s).ConfigureAwait(false); return; }
         s.OutputSelected = true;
+        _lastTranscript = finalText;   // Copy Last Transcript returns what was delivered
+        RaiseStateChanged();
 
         // ---- delivery intent: acknowledged before any clipboard effect
         var deliveryId = Guid.NewGuid();
@@ -390,6 +408,7 @@ public sealed partial class DictationCoordinator
     {
         s.Cancelling = true;
         try { s.Cts.Cancel(); } catch (ObjectDisposedException) { }
+        s.CancelWalk();
         await StopLoopsAsync(s).ConfigureAwait(false);
         await StopCaptureAsync(s).ConfigureAwait(false);
         if (!fromPipeline)

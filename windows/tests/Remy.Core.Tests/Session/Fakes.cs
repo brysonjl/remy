@@ -94,7 +94,15 @@ sealed class FakeDestinations : IDestinationService
     public DestinationTarget? CaptureForeground() { Captures++; OnCapture?.Invoke(); return Target; }
     public bool IsStillFocused(DestinationTarget target) => StillFocused;
     public Task<bool> RestoreFocusAsync(DestinationTarget target, CancellationToken ct) { Restores++; return Task.FromResult(RestoreResult); }
-    public Task<CapturedContext?> CaptureContextAsync(DestinationTarget target, ContextCaptureLimits limits, CancellationToken ct) => Task.FromResult<CapturedContext?>(null);
+    public Func<CapturedContext?>? ContextFactory;
+    public Func<CancellationToken, Task<ScreenTextWalkResult?>>? ScreenWalk;
+    public int Walks;
+    public Task<CapturedContext?> CaptureContextAsync(DestinationTarget target, ContextCaptureLimits limits, CancellationToken ct) => Task.FromResult(ContextFactory?.Invoke());
+    public Task<ScreenTextWalkResult?> CaptureScreenTextAsync(DestinationTarget target, CancellationToken ct)
+    {
+        Interlocked.Increment(ref Walks);
+        return ScreenWalk is null ? Task.FromResult<ScreenTextWalkResult?>(null) : ScreenWalk(ct);
+    }
 }
 
 sealed class FakeClipboard : IClipboardDelivery

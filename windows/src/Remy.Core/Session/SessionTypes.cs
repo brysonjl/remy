@@ -1,6 +1,7 @@
 using Remy.Core.Cleanup;
 using Remy.Core.Contracts;
 using Remy.Core.Settings;
+using Remy.Core.Text;
 
 namespace Remy.Core.Session;
 
@@ -78,7 +79,9 @@ public sealed record SessionConfig(
     bool SoundsEnabled,
     float SoundVolume,
     CleanupRuntime Cleanup,
-    RemyCleanupFailure? CleanupBuildFailure);
+    RemyCleanupFailure? CleanupBuildFailure,
+    DictationTextRules TextRules,
+    bool SpellNamesFromActiveWindow);
 
 /// <summary>Recovery "Continue": previously recovered words become the transcript prefix of a fresh toggle session.</summary>
 public sealed record SessionContinuation(string Prefix, Guid SourceRecoveryId, double PreviousDurationSeconds, string? TargetExecutable);
