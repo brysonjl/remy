@@ -57,7 +57,8 @@ cleanup ever fails you still get your original words.
 With Context Awareness on, Remy notices what kind of app you're dictating into and
 adjusts. Polished sentences for email, relaxed and period-free for a quick chat
 message, precise and literal for a terminal or coding agent. Pick a style for each
-kind of app: Formal, Neutral, Casual, Very Casual, Excited or your original tone.
+kind of app: Formal, Neutral, Casual, Very Casual, Excited or your original tone,
+or edit those styles and write your own.
 
 Remy recognizes email, work and personal messaging, browsers, terminals, coding
 agents and AI chat apps. Sharing nearby text with a cloud provider is a separate
@@ -70,8 +71,19 @@ opt-in that's off by default.
 ### 📚 Learns your words
 
 Add names, product terms and jargon to your custom vocabulary so they come out
-right the first time, or add one on the fly from the quick vocabulary panel. Save
-cleanup setups as named profiles and switch between them.
+right the first time, or add one on the fly from the quick vocabulary panel. If
+recognition keeps hearing a word wrong, tell Remy what it hears (say, "cooper
+netties" for Kubernetes) and it fixes it every time, even with cleanup off. Import
+a whole list from a CSV file. Remy can also spell names the way they appear in the
+window you're replying in (an opt-in that reads on-screen text and never saves
+it). Save cleanup setups as named profiles and switch between them.
+
+### ⚡ Snippets and Transforms
+
+Say a trigger phrase like "my calendar link" and Remy types the saved text
+instead: links, addresses, sign-offs. To rework text you've already written,
+select it in any app and press a Transform shortcut. Polish tidies it up, Prompt
+Engineer turns a rough request into a clear prompt, and you can write your own.
 
 ### 📍 Lands in the right place
 

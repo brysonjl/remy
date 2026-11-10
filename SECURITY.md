@@ -22,7 +22,7 @@ people's data, accounts, or running apps without their permission.
 ## Supported versions and disclosure
 
 Fixes target the main branch and the next release; the current release is the
-0.1.0 early beta prerelease. There is no published security support window for
+0.2.0 early beta prerelease. There is no published security support window for
 older builds, which should be reproduced against current source where practical.
 Maintainers will triage reports and coordinate a fix and public advisory when
 appropriate. There is no promised response deadline, bounty program, or guarantee
