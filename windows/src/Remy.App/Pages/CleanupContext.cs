@@ -78,6 +78,11 @@ public partial class TranscriptCleanupPage
         };
         if (S.DictationContextAwarenessEnabled)
         {
+            // WINDOWS DECISION: hidden in S1-mini mode (no consumer; the Mac shows it only for Apple Speech).
+            if (mode != TranscriptPostProcessingMode.S1Mini)
+                items.Add(Row("Spell names from the active window",
+                    Switch(S.SpellNamesFromActiveWindowEnabled, v => S.SpellNamesFromActiveWindowEnabled = v, "Spell names from the active window"),
+                    "Off by default. When you start dictating in email, chat, coding-agent or AI chat apps, Remy reads the visible text of the front window to pick out names and identifiers, uses them for that dictation only, and never saves them. Remote providers receive them only when surrounding-text sharing is on."));
             if (support == CtxSupport.RemoteOptional)
                 items.Add(Row($"Share surrounding text with {name}",
                     Switch(S.ShareDictationContextWithRemoteProviders, v => S.ShareDictationContextWithRemoteProviders = v, $"Share surrounding text with {name}"),
@@ -101,13 +106,49 @@ public partial class TranscriptCleanupPage
         foreach (var c in Categories)
         {
             var cat = c;
-            var combo = Combo(cat.StyleOptions(), st => RemyEnumNames.WritingStyle.ToDisplay(st), S.GetWritingStyle(cat),
-                st => S.SetWritingStyle(cat, st), $"Writing style for {RemyEnumNames.ContextCategory.ToDisplay(cat)}", 170);
-            rows.Add(Row(RemyEnumNames.ContextCategory.ToDisplay(cat), combo, CategoryCaption(cat)));
+            rows.Add(Row(RemyEnumNames.ContextCategory.ToDisplay(cat), StyleCombo(cat), CategoryCaption(cat)));
         }
+        rows.Add(Row("Styles",
+            Btn("Manage Styles…", () =>
+            {
+                WritingStylesWindow.ShowFor(Window.GetWindow(this), S);
+                BuildContext();
+            }, automationName: "Manage Styles"),
+            "Edit built-in style instructions or add your own. Custom styles are available for every destination."));
         rows.Add(Pad(Text($"{modeName} receives the app name, destination category and selected style. Terminal and AI destinations preserve technical terms and prompt wording.")));
         return Sec("Writing Style", Card(rows.ToArray()));
     }
+
+    /// <summary>The category's built-in options, then (when any exist) a separator and every custom style.</summary>
+    ComboBox StyleCombo(DictationContextCategory cat)
+    {
+        var library = S.WritingStyleLibrary;
+        var options = new List<DictationWritingStyleSelection>(cat.StyleOptions().Select(DictationWritingStyleSelection.FromBuiltIn));
+        var firstCustom = options.Count;
+        options.AddRange(library.CustomStyles.Select(c => DictationWritingStyleSelection.FromCustom(c.Id)));
+
+        var combo = new ComboBox { MinWidth = 170 };
+        for (var i = 0; i < options.Count; i++)
+        {
+            if (i == firstCustom && i < options.Count) combo.Items.Add(new Separator());
+            combo.Items.Add(library.DisplayName(options[i]));
+        }
+        var selected = S.GetWritingStyleSelection(cat);
+        var index = options.IndexOf(selected);
+        combo.SelectedIndex = ItemIndex(Math.Max(0, index), firstCustom);
+        System.Windows.Automation.AutomationProperties.SetName(combo, $"Writing style for {RemyEnumNames.ContextCategory.ToDisplay(cat)}");
+        combo.SelectionChanged += (_, _) =>
+        {
+            if (combo.SelectedItem is not string) { combo.SelectedIndex = ItemIndex(Math.Max(0, options.IndexOf(S.GetWritingStyleSelection(cat))), firstCustom); return; }
+            var i = combo.SelectedIndex;
+            var option = options[firstCustom < options.Count && i > firstCustom ? i - 1 : i];
+            S.SetWritingStyleSelection(option, cat);
+        };
+        return combo;
+    }
+
+    /// <summary>Combo item index of option <paramref name="optionIndex"/> (a separator sits before the first custom style).</summary>
+    static int ItemIndex(int optionIndex, int firstCustom) => optionIndex >= firstCustom ? optionIndex + 1 : optionIndex;
 
     // ---- S1-mini per-category styling
 

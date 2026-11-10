@@ -66,6 +66,9 @@ public sealed partial class RemySettings
         void Str(string key, Func<string?> get, Action<string> set, bool omitWhenNull = false) => b.Str(key, get, set, omitWhenNull);
         void Float(string key, Func<float> get, Action<float> set) => b.Float(key, get, set);
         void Enum<T>(string key, EnumNameMap<T> map, Func<T> get, Action<T> set) where T : struct, System.Enum => b.Enum(key, map, get, set);
+        void StyleSelection(string key, Func<DictationWritingStyleSelection> get, Action<DictationWritingStyleSelection> set) => b.Raw(key,
+            n => { if (n is JsonValue v && v.TryGetValue<string>(out var s) && DictationWritingStyleSelection.Parse(s) is { } sel) set(sel); },
+            () => get().Id);
         void StrList(string key, Func<IReadOnlyList<string>> get, Action<IReadOnlyList<string>> set) => b.StrList(key, get, set);
 
         // General
@@ -118,18 +121,18 @@ public sealed partial class RemySettings
         Bool("dictationContextAwarenessEnabled", () => DictationContextAwarenessEnabled, v => DictationContextAwarenessEnabled = v);
         Bool("spellNamesFromActiveWindowEnabled", () => SpellNamesFromActiveWindowEnabled, v => SpellNamesFromActiveWindowEnabled = v);
         Bool("shareDictationContextWithRemoteProviders", () => ShareDictationContextWithRemoteProviders, v => ShareDictationContextWithRemoteProviders = v);
-        Enum("emailDictationWritingStyle", RemyEnumNames.WritingStyle, () => EmailDictationWritingStyle, v => EmailDictationWritingStyle = v);
-        Enum("workMessagingDictationWritingStyle", RemyEnumNames.WritingStyle, () => WorkMessagingDictationWritingStyle, v => WorkMessagingDictationWritingStyle = v);
-        Enum("personalMessagingDictationWritingStyle", RemyEnumNames.WritingStyle, () => PersonalMessagingDictationWritingStyle, v => PersonalMessagingDictationWritingStyle = v);
-        Enum("otherDictationWritingStyle", RemyEnumNames.WritingStyle, () => OtherDictationWritingStyle, v => OtherDictationWritingStyle = v);
+        StyleSelection("emailDictationWritingStyle", () => EmailDictationWritingStyle, v => EmailDictationWritingStyle = v);
+        StyleSelection("workMessagingDictationWritingStyle", () => WorkMessagingDictationWritingStyle, v => WorkMessagingDictationWritingStyle = v);
+        StyleSelection("personalMessagingDictationWritingStyle", () => PersonalMessagingDictationWritingStyle, v => PersonalMessagingDictationWritingStyle = v);
+        StyleSelection("otherDictationWritingStyle", () => OtherDictationWritingStyle, v => OtherDictationWritingStyle = v);
         l.Add(new("extendedDictationWritingStyles",
             n =>
             {
-                if (n is not JsonObject o) return;
-                var d = new Dictionary<DictationContextCategory, DictationWritingStyle>();
+                if (n is not JsonObject o) { ExtendedDictationWritingStyles = new Dictionary<DictationContextCategory, DictationWritingStyleSelection>(); return; }
+                var d = new Dictionary<DictationContextCategory, DictationWritingStyleSelection>();
                 foreach (var (k, v) in o)
                     if (RemyEnumNames.ContextCategory.TryParse(k, out var cat) && IsExtendedCategory(cat)
-                        && v is JsonValue jv && jv.TryGetValue<string>(out var s) && RemyEnumNames.WritingStyle.TryParse(s, out var st))
+                        && v is JsonValue jv && jv.TryGetValue<string>(out var s) && DictationWritingStyleSelection.Parse(s) is { } st)
                         d[cat] = st;
                 ExtendedDictationWritingStyles = d;
             },
@@ -137,9 +140,12 @@ public sealed partial class RemySettings
             {
                 var o = new JsonObject();
                 foreach (var (cat, st) in ExtendedDictationWritingStyles.OrderBy(kv => kv.Key))
-                    o[RemyEnumNames.ContextCategory.ToRaw(cat)] = RemyEnumNames.WritingStyle.ToRaw(st);
+                    o[RemyEnumNames.ContextCategory.ToRaw(cat)] = st.Id;
                 return o;
             }));
+        l.Add(new("dictationWritingStyleLibrary",
+            n => WritingStyleLibrary = LibraryFromJson(n),
+            () => LibraryToJson(WritingStyleLibrary)));
         l.Add(new("dictationAppRules",
             n =>
             {
@@ -184,6 +190,46 @@ public sealed partial class RemySettings
         AddScreenNameEntries(b);
         AddTransformEntries(b);
         return l;
+    }
+
+    private static DictationWritingStyleLibrary LibraryFromJson(JsonNode? n)
+    {
+        var lib = new DictationWritingStyleLibrary();
+        if (n is not JsonObject o) return lib;
+        if (o["instructionOverrides"] is JsonObject ov)
+            foreach (var (k, v) in ov)
+                if (DictationText.TryParseStyle(k, out var style) && v is JsonValue jv && jv.TryGetValue<string>(out var text))
+                    try { lib.SetInstruction(text, style); } catch (DictationWritingStyleValidationException) { }
+        if (o["customStyles"] is JsonArray arr)
+        {
+            var ids = new HashSet<Guid>();
+            foreach (var item in arr)
+            {
+                if (item is not JsonObject c) continue;
+                if (!(c["id"] is JsonValue iv && iv.TryGetValue<string>(out var idText) && Guid.TryParse(idText, out var id))) continue;
+                if (!(c["name"] is JsonValue nv && nv.TryGetValue<string>(out var name))) continue;
+                if (!(c["instruction"] is JsonValue tv && tv.TryGetValue<string>(out var instruction))) continue;
+                if (!ids.Add(id)) continue;
+                try { lib.AddCustomStyle(id, name, instruction); } catch (DictationWritingStyleValidationException) { ids.Remove(id); }
+            }
+        }
+        return lib;
+    }
+
+    private static JsonNode LibraryToJson(DictationWritingStyleLibrary lib)
+    {
+        var overrides = new JsonObject();
+        foreach (var style in DictationWritingStyleLibrary.BuiltInStyles)
+            if (lib.InstructionOverrides.TryGetValue(style.ToRaw(), out var text)) overrides[style.ToRaw()] = text;
+        var customs = new JsonArray();
+        foreach (var c in lib.CustomStyles)
+            customs.Add(new JsonObject
+            {
+                ["id"] = c.Id.ToString("D").ToUpperInvariant(),
+                ["name"] = c.Name,
+                ["instruction"] = c.Instruction,
+            });
+        return new JsonObject { ["customStyles"] = customs, ["instructionOverrides"] = overrides };
     }
 
     private static S1MiniAppStyling? S1AppStylingFromJson(JsonNode? n)

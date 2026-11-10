@@ -18,9 +18,15 @@ public sealed record S1MiniAppStyling(
 public sealed record ContextPolicy(
     bool IsEnabled,
     bool ShareCapturedTextRemotely,
-    IReadOnlyDictionary<DictationContextCategory, DictationWritingStyle> WritingStyles,
+    IReadOnlyDictionary<DictationContextCategory, Context.DictationResolvedWritingStyle> WritingStyles,
     S1MiniAppStyling S1Styles,
-    IReadOnlyList<Context.DictationAppRule> AppRules);
+    IReadOnlyList<Context.DictationAppRule> AppRules)
+{
+    /// <summary>The frozen resolved style for a category (Original when none was stored), sanitized for the category.</summary>
+    public Context.DictationResolvedWritingStyle WritingStyle(DictationContextCategory category) =>
+        (WritingStyles.TryGetValue(category, out var s) ? s : Context.DictationResolvedWritingStyle.BuiltIn(DictationWritingStyle.Original))
+            .Sanitized(category);
+}
 
 /// <summary>Frozen cleanup configuration for one dictation. Built once at recording start and never re-read.
 /// Holds the credential value captured at that moment; never log or persist this record.</summary>

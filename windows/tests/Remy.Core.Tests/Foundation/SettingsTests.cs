@@ -44,8 +44,8 @@ public class SettingsTests
         Assert.Equal(new[] { "um", "uh", "erm", "er", "hmm", "嗯", "呃" }, s.FillerWordsToRemove);
         Assert.True(s.DictationContextAwarenessEnabled);
         Assert.False(s.ShareDictationContextWithRemoteProviders);
-        Assert.Equal(DictationWritingStyle.Formal, s.EmailDictationWritingStyle);
-        Assert.Equal(DictationWritingStyle.Casual, s.PersonalMessagingDictationWritingStyle);
+        Assert.Equal(Remy.Core.Context.DictationWritingStyleSelection.FromBuiltIn(DictationWritingStyle.Formal), s.EmailDictationWritingStyle);
+        Assert.Equal(Remy.Core.Context.DictationWritingStyleSelection.FromBuiltIn(DictationWritingStyle.Casual), s.PersonalMessagingDictationWritingStyle);
         Assert.Equal(S1MiniStyling.SemiFormal, s.S1MiniStyling);
         Assert.Equal(S1MiniStructure.Prose, s.S1MiniStructure);
         Assert.Equal(S1MiniContextSetting.Automatic, s.S1MiniContextSetting);
@@ -232,7 +232,7 @@ public class SettingsTests
         Assert.Equal(CleanupPrompts.RecommendedTranscriptCleanupPrompt, s.OllamaPostProcessingPrompt);
         Assert.Equal("Ctrl+Win", Assert.Single(s.HotkeyBindings).DisplayName);
         Assert.Equal("Esc", s.CancelShortcut.DisplayName);
-        Assert.Equal(DictationWritingStyle.Excited, s.EmailDictationWritingStyle);
+        Assert.Equal(Remy.Core.Context.DictationWritingStyleSelection.FromBuiltIn(DictationWritingStyle.Excited), s.EmailDictationWritingStyle);
         // blank prompt and coerced mode are written back; unknown keys survive.
         var o = JsonNode.Parse(File.ReadAllText(path))!.AsObject();
         Assert.Equal(CleanupPrompts.RecommendedTranscriptCleanupPrompt, o["ollamaPostProcessingPrompt"]!.GetValue<string>());

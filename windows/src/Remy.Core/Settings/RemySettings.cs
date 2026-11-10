@@ -206,52 +206,71 @@ public sealed partial class RemySettings : INotifyPropertyChanged
     private bool _shareDictationContextWithRemoteProviders;
     public bool ShareDictationContextWithRemoteProviders { get => _shareDictationContextWithRemoteProviders; set => Set(ref _shareDictationContextWithRemoteProviders, value); }
 
-    // ---- writing styles
+    // ---- writing styles (v0.2-features.md §6.3)
+    // The stored selections are not sanitized against the library at load (it may load after them); the accessors do.
 
-    private DictationWritingStyle _emailDictationWritingStyle = DictationWritingStyle.Formal;
-    public DictationWritingStyle EmailDictationWritingStyle
+    private static DictationWritingStyleSelection Default(DictationContextCategory c) =>
+        DictationWritingStyleSelection.FromBuiltIn(DefaultStyle(c));
+
+    private DictationWritingStyleSelection _emailDictationWritingStyle = Default(DictationContextCategory.Email);
+    public DictationWritingStyleSelection EmailDictationWritingStyle
     {
         get => _emailDictationWritingStyle;
-        set => Set(ref _emailDictationWritingStyle, SanitizeStyle(DictationContextCategory.Email, value));
+        set => Set(ref _emailDictationWritingStyle, value.BuiltInSanitized(DictationContextCategory.Email));
     }
 
-    private DictationWritingStyle _workMessagingDictationWritingStyle = DictationWritingStyle.Formal;
-    public DictationWritingStyle WorkMessagingDictationWritingStyle
+    private DictationWritingStyleSelection _workMessagingDictationWritingStyle = Default(DictationContextCategory.WorkMessaging);
+    public DictationWritingStyleSelection WorkMessagingDictationWritingStyle
     {
         get => _workMessagingDictationWritingStyle;
-        set => Set(ref _workMessagingDictationWritingStyle, SanitizeStyle(DictationContextCategory.WorkMessaging, value));
+        set => Set(ref _workMessagingDictationWritingStyle, value.BuiltInSanitized(DictationContextCategory.WorkMessaging));
     }
 
-    private DictationWritingStyle _personalMessagingDictationWritingStyle = DictationWritingStyle.Casual;
-    public DictationWritingStyle PersonalMessagingDictationWritingStyle
+    private DictationWritingStyleSelection _personalMessagingDictationWritingStyle = Default(DictationContextCategory.PersonalMessaging);
+    public DictationWritingStyleSelection PersonalMessagingDictationWritingStyle
     {
         get => _personalMessagingDictationWritingStyle;
-        set => Set(ref _personalMessagingDictationWritingStyle, SanitizeStyle(DictationContextCategory.PersonalMessaging, value));
+        set => Set(ref _personalMessagingDictationWritingStyle, value.BuiltInSanitized(DictationContextCategory.PersonalMessaging));
     }
 
-    private DictationWritingStyle _otherDictationWritingStyle = DictationWritingStyle.Formal;
-    public DictationWritingStyle OtherDictationWritingStyle
+    private DictationWritingStyleSelection _otherDictationWritingStyle = Default(DictationContextCategory.Other);
+    public DictationWritingStyleSelection OtherDictationWritingStyle
     {
         get => _otherDictationWritingStyle;
-        set => Set(ref _otherDictationWritingStyle, SanitizeStyle(DictationContextCategory.Other, value));
+        set => Set(ref _otherDictationWritingStyle, value.BuiltInSanitized(DictationContextCategory.Other));
     }
 
-    private IReadOnlyDictionary<DictationContextCategory, DictationWritingStyle> _extendedDictationWritingStyles =
-        new Dictionary<DictationContextCategory, DictationWritingStyle>();
+    private IReadOnlyDictionary<DictationContextCategory, DictationWritingStyleSelection> _extendedDictationWritingStyles =
+        new Dictionary<DictationContextCategory, DictationWritingStyleSelection>();
 
     /// <summary>Explicitly stored styles for terminal, terminalAgent, browser, codingAgent, aiChat. Missing entries use
-    /// <see cref="DefaultStyle"/>. Prefer <see cref="GetWritingStyle"/>/<see cref="SetWritingStyle"/>.</summary>
-    public IReadOnlyDictionary<DictationContextCategory, DictationWritingStyle> ExtendedDictationWritingStyles
+    /// <see cref="DefaultStyle"/>. Prefer <see cref="GetWritingStyleSelection"/>/<see cref="SetWritingStyleSelection"/>.</summary>
+    public IReadOnlyDictionary<DictationContextCategory, DictationWritingStyleSelection> ExtendedDictationWritingStyles
     {
         get => _extendedDictationWritingStyles;
         set
         {
-            var d = new Dictionary<DictationContextCategory, DictationWritingStyle>();
-            foreach (var (cat, style) in value ?? new Dictionary<DictationContextCategory, DictationWritingStyle>())
-                if (IsExtendedCategory(cat)) d[cat] = SanitizeStyle(cat, style);
+            var d = new Dictionary<DictationContextCategory, DictationWritingStyleSelection>();
+            foreach (var (cat, style) in value ?? new Dictionary<DictationContextCategory, DictationWritingStyleSelection>())
+                if (IsExtendedCategory(cat)) d[cat] = style.BuiltInSanitized(cat);
             if (_extendedDictationWritingStyles.Count == d.Count && d.All(kv => _extendedDictationWritingStyles.TryGetValue(kv.Key, out var s) && s == kv.Value)) return;
             _extendedDictationWritingStyles = d;
             Raise(nameof(ExtendedDictationWritingStyles));
+        }
+    }
+
+    private DictationWritingStyleLibrary _writingStyleLibrary = new();
+
+    /// <summary>Edited built-in instructions and custom styles. The getter returns a copy; assign to change.</summary>
+    public DictationWritingStyleLibrary WritingStyleLibrary
+    {
+        get => _writingStyleLibrary.Copy();
+        set
+        {
+            var v = (value ?? new DictationWritingStyleLibrary()).Copy();
+            if (_writingStyleLibrary.Equals(v)) return;
+            _writingStyleLibrary = v;
+            Raise(nameof(WritingStyleLibrary));
         }
     }
 
@@ -275,33 +294,63 @@ public sealed partial class RemySettings : INotifyPropertyChanged
     public static DictationWritingStyle SanitizeStyle(DictationContextCategory c, DictationWritingStyle s) =>
         c.StyleOptions().Contains(s) ? s : DictationWritingStyle.Casual;
 
-    public DictationWritingStyle GetWritingStyle(DictationContextCategory category) => category switch
+    private DictationWritingStyleSelection StoredSelection(DictationContextCategory category) => category switch
     {
         DictationContextCategory.Email => EmailDictationWritingStyle,
         DictationContextCategory.WorkMessaging => WorkMessagingDictationWritingStyle,
         DictationContextCategory.PersonalMessaging => PersonalMessagingDictationWritingStyle,
         DictationContextCategory.Other => OtherDictationWritingStyle,
-        _ => _extendedDictationWritingStyles.TryGetValue(category, out var s) ? SanitizeStyle(category, s) : DefaultStyle(category),
+        _ => _extendedDictationWritingStyles.TryGetValue(category, out var s) ? s : Default(category),
     };
 
-    public void SetWritingStyle(DictationContextCategory category, DictationWritingStyle style)
+    /// <summary>The effective choice: a deleted custom style reports the category default.</summary>
+    public DictationWritingStyleSelection GetWritingStyleSelection(DictationContextCategory category) =>
+        _writingStyleLibrary.Sanitized(StoredSelection(category), category);
+
+    public void SetWritingStyleSelection(DictationWritingStyleSelection selection, DictationContextCategory category)
     {
+        selection = _writingStyleLibrary.Sanitized(selection, category);
         switch (category)
         {
-            case DictationContextCategory.Email: EmailDictationWritingStyle = style; break;
-            case DictationContextCategory.WorkMessaging: WorkMessagingDictationWritingStyle = style; break;
-            case DictationContextCategory.PersonalMessaging: PersonalMessagingDictationWritingStyle = style; break;
-            case DictationContextCategory.Other: OtherDictationWritingStyle = style; break;
+            case DictationContextCategory.Email: EmailDictationWritingStyle = selection; break;
+            case DictationContextCategory.WorkMessaging: WorkMessagingDictationWritingStyle = selection; break;
+            case DictationContextCategory.PersonalMessaging: PersonalMessagingDictationWritingStyle = selection; break;
+            case DictationContextCategory.Other: OtherDictationWritingStyle = selection; break;
             default:
-                var d = new Dictionary<DictationContextCategory, DictationWritingStyle>(_extendedDictationWritingStyles) { [category] = style };
-                ExtendedDictationWritingStyles = d;
+                ExtendedDictationWritingStyles = new Dictionary<DictationContextCategory, DictationWritingStyleSelection>(_extendedDictationWritingStyles) { [category] = selection };
                 break;
         }
     }
 
-    /// <summary>Effective style for every category (for the frozen context policy).</summary>
-    public IReadOnlyDictionary<DictationContextCategory, DictationWritingStyle> WritingStylesSnapshot() =>
-        Enum.GetValues<DictationContextCategory>().ToDictionary(c => c, GetWritingStyle);
+    public DictationResolvedWritingStyle ResolvedWritingStyle(DictationContextCategory category) =>
+        _writingStyleLibrary.Resolved(GetWritingStyleSelection(category), category);
+
+    /// <summary>Built-in style only (a custom choice reports Original). Prompts use <see cref="ResolvedWritingStyle"/>.</summary>
+    public DictationWritingStyle GetWritingStyle(DictationContextCategory category) =>
+        GetWritingStyleSelection(category).BuiltInStyle ?? DictationWritingStyle.Original;
+
+    public void SetWritingStyle(DictationContextCategory category, DictationWritingStyle style) =>
+        SetWritingStyleSelection(DictationWritingStyleSelection.FromBuiltIn(style), category);
+
+    /// <summary>Categories (enum order) currently choosing the custom style.</summary>
+    public IReadOnlyList<DictationContextCategory> CategoriesUsingCustomStyle(Guid id) =>
+        Enum.GetValues<DictationContextCategory>()
+            .Where(c => GetWritingStyleSelection(c) == DictationWritingStyleSelection.FromCustom(id)).ToList();
+
+    /// <summary>Removes the style; every category that used it returns to its default (persisted).</summary>
+    public void DeleteCustomWritingStyle(Guid id)
+    {
+        var affected = CategoriesUsingCustomStyle(id);
+        var lib = _writingStyleLibrary.Copy();
+        lib.RemoveCustomStyle(id);
+        WritingStyleLibrary = lib;
+        foreach (var c in affected)
+            SetWritingStyleSelection(DictationWritingStyleSelection.FromBuiltIn(DefaultStyle(c)), c);
+    }
+
+    /// <summary>Resolved (name + instruction) style for every category, for the frozen context policy.</summary>
+    public IReadOnlyDictionary<DictationContextCategory, DictationResolvedWritingStyle> WritingStylesSnapshot() =>
+        Enum.GetValues<DictationContextCategory>().ToDictionary(c => c, ResolvedWritingStyle);
 
     private IReadOnlyList<DictationAppRule> _dictationAppRules = Array.Empty<DictationAppRule>();
     public IReadOnlyList<DictationAppRule> DictationAppRules

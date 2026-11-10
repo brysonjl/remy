@@ -83,7 +83,7 @@ Be brief.
     private static DictationPostProcessingContext Ctx(DictationContextCategory c, DictationWritingStyle s,
         DictationCursorPlacement p = DictationCursorPlacement.EmptyField, bool cont = false,
         DictationFieldPurpose purpose = DictationFieldPurpose.Unknown, string? app = "Slack", string? before = null) =>
-        new(c, s, p, cont, app, null, null, null, purpose, before, null, null);
+        new(c, DictationResolvedWritingStyle.BuiltIn(s), p, cont, app, null, null, null, purpose, before, null, null);
 
     [Fact]
     public void ContextInstructionsEmailMidSentence()
@@ -125,7 +125,7 @@ Be brief.
     [Fact]
     public void RequestSectionEscapesAndOmitsEmpty()
     {
-        var ctx = new DictationPostProcessingContext(DictationContextCategory.AiChat, DictationWritingStyle.Original,
+        var ctx = new DictationPostProcessingContext(DictationContextCategory.AiChat, DictationResolvedWritingStyle.BuiltIn(DictationWritingStyle.Original),
             DictationCursorPlacement.EndOfText, false, "Chat & <Co>", null, "T", null, DictationFieldPurpose.Unknown, "a<b", null, "");
         var expected = string.Join("\n",
             "<writing_context>",

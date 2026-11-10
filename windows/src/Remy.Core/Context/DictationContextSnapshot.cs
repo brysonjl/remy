@@ -12,7 +12,7 @@ public sealed record DictationAppRule(string ProcessName, DictationContextCatego
 /// <see cref="DictationContextSnapshotBuilder"/>; they carry no captured text).</summary>
 public sealed record DictationContextSnapshot(
     DictationContextCategory Category,
-    DictationWritingStyle Style,
+    DictationResolvedWritingStyle Style,
     string? AppName,
     string? ProcessName,
     string? BrowserHost,

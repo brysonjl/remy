@@ -29,10 +29,10 @@ public class RealModelTests
     private static CleanupRequest Req(string input, DictationContextCategory? cat, S1MiniStructure structure = S1MiniStructure.Prose,
         TimeSpan? budget = null)
     {
-        var policy = new ContextPolicy(true, false, new Dictionary<DictationContextCategory, DictationWritingStyle>(),
+        var policy = new ContextPolicy(true, false, new Dictionary<DictationContextCategory, DictationResolvedWritingStyle>(),
             S1MiniAppStyling.Recommended, Array.Empty<DictationAppRule>());
         var rt = CleanupRuntime.Off(policy) with { Mode = TranscriptPostProcessingMode.S1Mini, S1Structure = structure };
-        var ctx = cat == null ? null : new DictationContextSnapshot(cat.Value, DictationWritingStyle.Neutral, null, null, null, null, Array.Empty<string>());
+        var ctx = cat == null ? null : new DictationContextSnapshot(cat.Value, DictationResolvedWritingStyle.BuiltIn(DictationWritingStyle.Neutral), null, null, null, null, Array.Empty<string>());
         return new CleanupRequest(Guid.NewGuid(), Guid.NewGuid(), input, rt, ctx, Array.Empty<string>(),
             DateTimeOffset.UtcNow + (budget ?? TimeSpan.FromSeconds(30)));
     }

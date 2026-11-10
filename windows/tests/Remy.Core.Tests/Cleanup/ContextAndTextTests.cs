@@ -124,7 +124,7 @@ public class ClassifierTests
 public class SnapshotBuilderTests
 {
     private static ContextPolicy Policy(bool share = false, params DictationAppRule[] rules) => new(true, share,
-        new Dictionary<DictationContextCategory, DictationWritingStyle> { [DictationContextCategory.Email] = DictationWritingStyle.Excited },
+        new Dictionary<DictationContextCategory, DictationResolvedWritingStyle> { [DictationContextCategory.Email] = DictationResolvedWritingStyle.BuiltIn(DictationWritingStyle.Excited) },
         S1MiniAppStyling.Recommended, rules);
 
     private static CleanupRuntime Rt(TranscriptPostProcessingMode mode, ContextPolicy p, string? url = "https://example.com/v1", string model = "m") =>
@@ -150,7 +150,7 @@ public class SnapshotBuilderTests
     {
         var s = DictationContextSnapshotBuilder.Build(Target("outlook.exe"), Cap(), Rt(TranscriptPostProcessingMode.S1Mini, Policy(share: true)))!;
         Assert.Equal(DictationContextCategory.Email, s.Category);
-        Assert.Equal(DictationWritingStyle.Excited, s.Style);
+        Assert.Equal(DictationResolvedWritingStyle.BuiltIn(DictationWritingStyle.Excited), s.Style);
         Assert.Null(s.Captured);
     }
 

@@ -222,7 +222,7 @@ public class ProfileRepositoryTests
         var c = new CleanupProfileController(new CleanupProfileFileRepository(dir.Path), store);
         c.Load();
         var saved = c.Save(NewProfile() with { Capabilities = new(CleanupTransport.CompleteJSON, true, true, false) }, "k");
-        var policy = new ContextPolicy(true, false, new Dictionary<DictationContextCategory, DictationWritingStyle>(), S1MiniAppStyling.Recommended, []);
+        var policy = new ContextPolicy(true, false, new Dictionary<DictationContextCategory, Remy.Core.Context.DictationResolvedWritingStyle>(), S1MiniAppStyling.Recommended, []);
         var rt = c.BuildRuntime(saved, policy);
         Assert.Equal(TranscriptPostProcessingMode.Profile, rt.Mode);
         Assert.Equal("k", rt.ApiKey);

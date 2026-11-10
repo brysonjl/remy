@@ -31,7 +31,7 @@ public sealed class FakeHandler(Func<SeenRequest, HttpResponseMessage> respond) 
 public class ProviderTests
 {
     private static ContextPolicy Policy(bool share = false) => new(true, share,
-        new Dictionary<DictationContextCategory, DictationWritingStyle>(), S1MiniAppStyling.Recommended, []);
+        new Dictionary<DictationContextCategory, DictationResolvedWritingStyle>(), S1MiniAppStyling.Recommended, []);
 
     private static CleanupRuntime Rt(TranscriptPostProcessingMode mode, string? baseUrl, string model = "m", string? key = null,
         bool reasoning = true, bool structured = true, bool discovery = true, bool thinking = true,
@@ -322,7 +322,7 @@ public class ProviderTests
         var h = new FakeHandler(_ => FakeHandler.Json(ChatAnswer("Hi.")));
         using var router = new CleanupRouter(handler: h);
         var captured = new CapturedContext("slack.exe", "Secret title", "https://app.slack.com/x", "app.slack.com", "label", null, "before text", "after text", null);
-        var snap = new DictationContextSnapshot(DictationContextCategory.WorkMessaging, DictationWritingStyle.Formal, "Slack", "slack.exe",
+        var snap = new DictationContextSnapshot(DictationContextCategory.WorkMessaging, DictationResolvedWritingStyle.BuiltIn(DictationWritingStyle.Formal), "Slack", "slack.exe",
             "app.slack.com", captured, [], DictationCursorPlacement.MidSentence, true);
         await router.CleanAsync(Req(Rt(TranscriptPostProcessingMode.OpenAICompatible, "https://example.com/v1"), "hi", snap), default);
         var body = h.Requests[0].Body;

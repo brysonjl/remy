@@ -73,7 +73,7 @@ public static partial class DictationContextSnapshotBuilder
         var secure = target?.IsSecure ?? false;
         var excluded = !contextEnabled || DictationContextClassifier.IsSensitiveApplication(process) || (target?.IsRemy ?? false);
 
-        var style = (policy.WritingStyles.TryGetValue(category, out var s) ? s : DictationText.DefaultStyle(category)).Sanitized(category);
+        var style = policy.WritingStyle(category);
 
         if (secure || excluded)
             return new DictationContextSnapshot(category, style, null, null, null, null, [],
