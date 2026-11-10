@@ -81,6 +81,26 @@ sealed class DictationSession(Guid id, DictationMode mode, long generation)
     public string? RecordingSafetyFailure;
     public Task<CapturedContext?>? ContextTask;
 
+    // screen names (v0.2-features.md 7): in memory only, never stored or logged
+    public volatile IReadOnlyList<string>? ScreenNames;
+    public CancellationTokenSource? WalkCts;
+    public Task? WalkTask;
+
+    /// <summary>Reads whatever the walk has produced so far, then invalidates it. Never waits.</summary>
+    public IReadOnlyList<string> TakeScreenNames()
+    {
+        var names = ScreenNames ?? [];
+        CancelWalk();
+        return names;
+    }
+
+    public void CancelWalk()
+    {
+        var cts = WalkCts;
+        if (cts != null) { try { cts.Cancel(); } catch (ObjectDisposedException) { } }
+        ScreenNames = null;
+    }
+
     // audio
     public SampleBuffer Samples { get; } = new();
     public volatile bool Closed;

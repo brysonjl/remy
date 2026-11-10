@@ -66,6 +66,12 @@ public sealed partial class DictationCoordinator
             var r = await ResolveRecoveryTextAsync(entry, RecoveryMessages.NoSpeechRecovered).ConfigureAwait(false);
             if (r.Text == null) return r.Error;
 
+            // Recover Text never runs cleanup but applies both local passes with the current settings (v0.2-features.md 5.3).
+            var rules = new DictationTextRules(_settings.VocabularyCorrections, _settings.DictationSnippets);
+            var recovered = rules.ExpandSnippets(rules.ApplyCorrections(r.Text)).Trim();
+            if (recovered.Length == 0) return RecoveryMessages.NoSpeechRecovered;
+            r = r with { Text = recovered };
+
             var meta = new HistorySessionMetadata(Guid.NewGuid(), DateTimeOffset.UtcNow, "parakeet", _d.Models.SpeechDisplayName, _settings.SelectedLanguage, 1, 1);
             var ack = await _d.History().RecordRecoveredAsync(meta, r.Text, r.Raw, CancellationToken.None).ConfigureAwait(false);
             if (!ack.IsDeliveryPermitted) return RecoveryMessages.RecoveredNotSaved;

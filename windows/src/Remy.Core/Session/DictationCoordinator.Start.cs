@@ -5,6 +5,7 @@ using Remy.Core.History;
 using Remy.Core.Recovery;
 using Remy.Core.Settings;
 using Remy.Core.Speech;
+using Remy.Core.Text;
 
 namespace Remy.Core.Session;
 
@@ -132,7 +133,9 @@ public sealed partial class DictationCoordinator
             _settings.RemyDictationCompletionSound,
             _settings.SoundEffectsEnabled,
             _settings.SoundEffectsVolume,
-            runtime, failure);
+            runtime, failure,
+            new DictationTextRules(_settings.VocabularyCorrections, _settings.DictationSnippets),
+            _settings.SpellNamesFromActiveWindowEnabled);
     }
 
     List<string?> Candidates(string? selectedId)
@@ -174,6 +177,11 @@ public sealed partial class DictationCoordinator
         {
             var origin = s.Origin;
             s.ContextTask = SafeContextAsync(origin, s.Cts.Token);
+            if (ScreenNamePolicy.ShouldCapture(cfg.SpellNamesFromActiveWindow, cfg.Cleanup))
+            {
+                s.WalkCts = CancellationTokenSource.CreateLinkedTokenSource(s.Cts.Token);
+                s.WalkTask = Guard(() => ScreenNamesAsync(s, origin, s.ContextTask, s.WalkCts.Token), "screen-names");
+            }
         }
 
         if (cfg.HistoryEnabled)
@@ -258,6 +266,23 @@ public sealed partial class DictationCoordinator
     {
         try { return await _d.Destinations.CaptureContextAsync(target, new ContextCaptureLimits(), ct).ConfigureAwait(false); }
         catch { return null; }
+    }
+
+    /// <summary>Runs after the context task (v0.2-features.md 7.5). Applies its result only while the session and walk are still current.
+    /// Terms live in memory only; only counts are logged.</summary>
+    async Task ScreenNamesAsync(DictationSession s, DestinationTarget origin, Task<CapturedContext?>? contextTask, CancellationToken ct)
+    {
+        var captured = contextTask == null ? null : await contextTask.ConfigureAwait(false);
+        if (ct.IsCancellationRequested || s.Config is not { } cfg) return;
+        var snapshot = DictationContextSnapshotBuilder.Build(origin, captured, cfg.Cleanup);
+        if (snapshot == null || !ScreenNamePolicy.AllowsWalk(snapshot)) return;
+
+        var walk = await _d.Destinations.CaptureScreenTextAsync(origin, ct).ConfigureAwait(false);
+        if (walk == null) return;
+        var terms = ScreenNameTerms.Extract(walk.Texts);
+        RemyLog.Info("ScreenNames", $"nodes={walk.Nodes} terms={terms.Count} budget_hit={(walk.BudgetHit ? 1 : 0)} walk_ms={(int)walk.Elapsed.TotalMilliseconds} outcome={walk.Outcome}");
+        if (terms.Count == 0 || ct.IsCancellationRequested || !Current(s)) return;
+        s.ScreenNames = terms;
     }
 
     void SafePlay(string id, float volume)
