@@ -14,6 +14,46 @@ new installations; remote surrounding-text sharing defaults off. Settings are
 frozen at recording start, so changing consent does not broaden a session already
 in flight. Off and vocabulary-only cleanup do not collect cleanup context.
 
+**Spell names from the active window** is off by default and requires Context
+Awareness. When it is on, and the session can use the result (Apple Speech, or a
+cleanup method allowed to receive captured text), Remy reads the accessibility
+text of the front window when you start dictating: labels, titles, values and
+descriptions, up to 400 nodes, 400 characters per value and 75 ms. It never takes
+screenshots, runs OCR, reads secure fields or their contents, or turns on
+Chromium/Electron accessibility for this purpose. It runs only for email, work or
+personal messaging, coding-agent and AI chat destinations; terminals, generic
+browser pages, other apps, password managers and apps whose context is disabled
+by an app rule are never read. Up to 25 names and identifiers are picked out on the
+Mac. They go to Apple Speech as contextual strings, and to cleanup as a separate,
+lower-trust request section: Apple Intelligence and loopback endpoints receive
+them automatically; OpenRouter, remote Ollama/OpenAI-compatible endpoints and
+remote saved profiles receive them only with the remote surrounding-text opt-in.
+They never ride along with custom vocabulary. The read text and terms stay in
+memory for that dictation only. They are not written to history (including attempt
+prompts and profile snapshots), recovery files, settings or logs; the log records
+only walk time, node count, term count and whether the time budget was hit.
+
+Spelling corrections and snippets run on the Mac. Corrections are applied before
+cleanup, so a provider receives the corrected transcript but not the heard-as
+spellings. Snippets expand after cleanup: a provider may receive a spoken trigger
+phrase, but never the expansion text. Vocabulary, heard-as spellings and snippets
+are ordinary preferences. Saved history records the delivered text, including
+expanded snippets.
+
+**Transforms** read text only when you press a transform shortcut. Remy reads the
+current selection of the focused field in the frontmost app (up to 3,000 words)
+and sends it with that transform's instructions to your Transcript Cleanup
+provider: Apple Intelligence on this Mac, or the configured Ollama,
+OpenRouter, OpenAI-compatible or saved-profile endpoint. Sending the selection is
+the purpose of the action you triggered, so it does not depend on the remote
+context-sharing opt-in; no app name, surrounding text, document title/URL or
+vocabulary is added. Remote endpoints must use HTTPS (a saved profile's explicit
+insecure-HTTP choice is honored); loopback HTTP is allowed. S1-mini, Off and
+vocabulary-only cleanup cannot run transforms. Secure fields, password managers
+and apps whose context is disabled by an app rule are never read. The result
+replaces the selection through the clipboard and stays on the clipboard, like a
+dictation. Transforms are not saved to History and write no files.
+
 Remy's application data is scoped to its bundle identity under
 `~/Library/Application Support/<bundle identifier>/`. Release uses
 `io.github.brysonjl.remy`; Dev uses `io.github.brysonjl.remy.dev`. Deleting data in one

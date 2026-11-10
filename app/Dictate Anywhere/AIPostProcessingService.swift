@@ -300,5 +300,9 @@ func remotePostProcessingRequestPrompt(
         sections.append(context.requestSection)
     }
     sections.append("<transcript>\(text)</transcript>")
+    // After the transcript, so a prewarmed prefix stays valid when names arrive.
+    if let screenNames = context?.screenNamesSection(excluding: vocabulary) {
+        sections.append(screenNames)
+    }
     return sections.joined(separator: "\n")
 }

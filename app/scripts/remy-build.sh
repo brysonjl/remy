@@ -56,7 +56,15 @@ if [[ ! -f "$lockfile" ]]; then
   exit 66
 fi
 
-mkdir -p "$build_root/DerivedData" "$build_root/SourcePackages" \
+# Test builds get their own products folder. They rebuild the app with the
+# test host identity, and doing that in place would replace a running
+# Remy Dev.app (with an active keyboard tap) and freeze system input.
+derived_data="$build_root/DerivedData"
+if [[ "$action" == test || "$action" == build-for-testing ]]; then
+  derived_data="$build_root/TestDerivedData"
+fi
+
+mkdir -p "$derived_data" "$build_root/SourcePackages" \
   "$build_root/cache/packages" "$build_root/cache/clang" \
   "$build_root/cache/swift" "$build_root/tmp"
 
@@ -70,7 +78,7 @@ arguments=(
   -project "$project"
   -scheme "$scheme"
   -configuration "$configuration"
-  -derivedDataPath "$build_root/DerivedData"
+  -derivedDataPath "$derived_data"
   -clonedSourcePackagesDirPath "$build_root/SourcePackages"
   -packageCachePath "$build_root/cache/packages"
   -disablePackageRepositoryCache

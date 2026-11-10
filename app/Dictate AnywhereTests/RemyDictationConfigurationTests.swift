@@ -70,7 +70,7 @@ final class RemyDictationConfigurationTests: XCTestCase {
         ] {
             let config = RemyDictationConfiguration(capture: .init(), cleanup: .init(mode: mode,
                 baseURL: endpoint, contextPolicy: .init(isEnabled: true, shareCapturedTextRemotely: share,
-                    writingStyles: [.terminalAgent: .original])))
+                    writingStyles: [.terminalAgent: .builtIn(.original)])))
             var received: DictationPostProcessingContext?
             let runtime = RemyCleanupRuntime(configuration: config, contextualOperation: { text, context in
                 received = context
@@ -81,7 +81,7 @@ final class RemyDictationConfigurationTests: XCTestCase {
                 XCTAssertNil(received)
             } else {
                 XCTAssertEqual(received?.category, .terminalAgent)
-                XCTAssertEqual(received?.style, .original)
+                XCTAssertEqual(received?.style, .builtIn(.original))
                 XCTAssertEqual(received?.textBeforeCursor != nil, includesText, mode.rawValue)
                 XCTAssertEqual(received?.documentTitle != nil, includesText, mode.rawValue)
                 XCTAssertEqual(received?.appName, "Terminal")
@@ -134,7 +134,7 @@ final class RemyDictationConfigurationTests: XCTestCase {
         let providerContext = captured.runtime.postProcessingContext(from: context())
         XCTAssertNotNil(providerContext)
         XCTAssertNil(providerContext?.textBeforeCursor)
-        XCTAssertEqual(providerContext?.style, .original)
+        XCTAssertEqual(providerContext?.style, .builtIn(.original))
         XCTAssertEqual(captured.configuration.cleanup.contextPolicy.appRules.first?.category, .terminalAgent)
         XCTAssertEqual(captured.configuration.cleanup.contextPolicy.s1Styling(for: .terminalAgent, fallback: .semiFormal), .casual)
         XCTAssertNil(RemyCleanupRuntime.capture(settings: settings).runtime.postProcessingContext(from: context()))

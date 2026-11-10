@@ -526,3 +526,21 @@ enum OpenRouterPostProcessingService {
         baseURL.appending(path: path)
     }
 }
+
+extension OpenRouterPostProcessingService {
+    /// Transforms: one freeform request with the caller's system/user messages.
+    /// No cleanup schema, chunking or automatic retry.
+    static func transformCompletion(system: String, user: String, model: String, apiKey: String,
+                                    reasoningEnabled: Bool, session: URLSession = .shared) async throws -> String {
+        let trimmedModel = model.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmedModel.isEmpty else { throw ServiceError.missingModel }
+        let models = (try? await fetchModels(session: session)) ?? []
+        let availability = Availability(models: models,
+            apiKeyStatus: apiKeyStatus(apiKey: apiKey, apiKeyEnvironmentVariable: ""))
+        let reasoningControl = reasoningCapabilities(for: trimmedModel, in: availability)?
+            .requestControl(reasoningEnabled: reasoningEnabled)
+        return try await performChatCompletionRequest(model: trimmedModel, apiKey: apiKey, instructions: system,
+            prompt: user, options: CleanupChatOptions(structuredOutput: false),
+            reasoningControl: reasoningControl, session: session)
+    }
+}

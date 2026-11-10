@@ -27,6 +27,8 @@ struct OverlayPill: View {
         case .copiedOnly: "copiedOnly"
         case .cleanupFallback: "cleanupFallback"
         case .preparingModel: "preparingModel"
+        case .transforming: "transforming"
+        case .transformNotice: "transformNotice"
         }
     }
 
@@ -62,9 +64,9 @@ struct OverlayPill: View {
             return statusCircleDiameter
         case .copiedOnly:
             return 144
-        case .cleanupFallback:
+        case .cleanupFallback, .transformNotice:
             return min(settings.overlaySize.width + 20, 300)
-        case .preparingModel:
+        case .preparingModel, .transforming:
             return min(settings.overlaySize.width, 240)
         }
     }
@@ -81,9 +83,9 @@ struct OverlayPill: View {
             return statusCircleDiameter
         case .copiedOnly:
             return 38
-        case .cleanupFallback:
+        case .cleanupFallback, .transformNotice:
             return 54
-        case .preparingModel:
+        case .preparingModel, .transforming:
             return 38
         }
     }
@@ -192,6 +194,38 @@ struct OverlayPill: View {
                         .lineLimit(1)
                 }
                 .padding(.horizontal, OverlayMetrics.size(14))
+
+            case .transforming(let name):
+                HStack(spacing: OverlayMetrics.size(10)) {
+                    ProcessingStatusView(tint: palette.accent)
+                    Text("Transforming…")
+                        .font(DS.Fonts.display(12, .semibold))
+                        .foregroundStyle(overlayTextColor.opacity(0.9))
+                        .lineLimit(1)
+                }
+                .padding(.horizontal, OverlayMetrics.size(14))
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel("Transforming with \(name). Press the cancel shortcut to stop.")
+
+            case .transformNotice(let title, let detail):
+                HStack(spacing: 7) {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .font(.system(size: 13))
+                        .foregroundStyle(palette.warmSignal)
+                        .accessibilityHidden(true)
+                    VStack(alignment: .leading, spacing: 3) {
+                        Text(title)
+                            .font(DS.Fonts.ui(11.5, .semibold))
+                            .foregroundStyle(overlayTextColor)
+                        Text(detail)
+                            .font(DS.Fonts.ui(10.5))
+                            .foregroundStyle(palette.secondaryText)
+                    }
+                    .lineLimit(1)
+                }
+                .padding(.horizontal, 9)
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel("\(title). \(detail)")
             }
         }
     }

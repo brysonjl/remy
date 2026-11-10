@@ -66,6 +66,8 @@ final class DictationStartupContextTests: XCTestCase {
         capture: @escaping @Sendable (pid_t?) async -> DictationContext?,
         cleanupPreparation: ((TranscriptPostProcessingMode) async -> Bool)? = nil,
         historyController: RemyHistoryController? = nil,
+        cleanup: ((String, RemyDictationConfiguration) async throws -> String)? = nil,
+        screenNames: (@Sendable (DictationContext) async -> [String])? = nil,
         delivery: @escaping (String) async -> TextInsertionResult = { _ in .copiedOnly }
     ) -> AppState {
         let app = AppState(
@@ -74,7 +76,9 @@ final class DictationStartupContextTests: XCTestCase {
             historyController: historyController,
             engine: engine,
             transcriptDelivery: delivery,
+            transcriptCleanup: cleanup,
             contextCapture: capture,
+            screenNamesCapture: screenNames,
             cleanupModelPreparation: cleanupPreparation
         )
         app.permissions.micGranted = true
@@ -1259,6 +1263,137 @@ final class DictationStartupContextTests: XCTestCase {
     }
 
     #endif
+    // MARK: - Spell names from the active window
+
+    private func withScreenNameSettings(engine: TranscriptionEngineChoice = .appleSpeech, enabled: Bool = true,
+                                        _ body: () async throws -> Void) async rethrows {
+        let settings = Settings.shared
+        let saved = (settings.spellNamesFromActiveWindowEnabled, settings.dictationContextAwarenessEnabled,
+                     settings.shareDictationContextWithRemoteProviders, settings.historyEnabled)
+        defer {
+            settings.spellNamesFromActiveWindowEnabled = saved.0
+            settings.dictationContextAwarenessEnabled = saved.1
+            settings.shareDictationContextWithRemoteProviders = saved.2
+            settings.historyEnabled = saved.3
+        }
+        settings.engineChoice = engine
+        settings.spellNamesFromActiveWindowEnabled = enabled
+        settings.dictationContextAwarenessEnabled = true
+        settings.shareDictationContextWithRemoteProviders = false
+        try await body()
+    }
+
+    nonisolated private static func screenContext(category: DictationContextCategory = .email, excluded: Bool = false) -> DictationContext {
+        DictationContext(processIdentifier: 321, bundleIdentifier: "test.mail", appName: "Mail", category: category,
+            documentURL: nil, documentTitle: nil, fieldRole: "AXTextArea", fieldSubrole: nil, fieldPurpose: .unknown,
+            textBeforeCursor: "Hi ", selectedText: "", textAfterCursor: "",
+            isSecureField: false, isContextExcluded: excluded)
+    }
+
+    private func dictate(_ app: AppState, until condition: () -> Bool = { true }) async {
+        await app.startDictation()
+        let deadline = ContinuousClock.now + .seconds(2)
+        while !condition(), ContinuousClock.now < deadline { await Task.yield() }
+        await app.stopDictation()
+    }
+
+    func testScreenNamesReachAppleSpeechContextualStrings() async {
+        await withScreenNameSettings {
+            let engine = StartupContextEngine()
+            let walks = WalkCounter()
+            let app = app(engine: engine, capture: { _ in Self.screenContext() }, screenNames: { _ in
+                walks.increment()
+                return ["Okonkwo Adeyemi"]
+            })
+            await dictate(app, until: { engine.vocabulary.contains("Okonkwo Adeyemi") })
+            XCTAssertEqual(walks.count, 1)
+            XCTAssertTrue(engine.vocabularyAtFinalization.contains("Okonkwo Adeyemi"))
+            XCTAssertEqual(app.status, .idle)
+            await app.shutdown()
+        }
+    }
+
+    func testNoWalkWhenOffExcludedOrWithoutConsumer() async {
+        let cases: [(TranscriptionEngineChoice, Bool, DictationContext)] = [
+            (.appleSpeech, false, Self.screenContext()),                       // setting off
+            (.appleSpeech, true, Self.screenContext(category: .terminal)),     // category not allowed
+            (.appleSpeech, true, Self.screenContext(category: .browser)),
+            (.appleSpeech, true, Self.screenContext(excluded: true)),          // app rule / sensitive app
+            (.parakeet, true, Self.screenContext()),                           // no consumer: cleanup Off
+        ]
+        for (engineChoice, enabled, context) in cases {
+            await withScreenNameSettings(engine: engineChoice, enabled: enabled) {
+                Settings.shared.transcriptPostProcessingMode = .none
+                let engine = StartupContextEngine()
+                let walks = WalkCounter()
+                let app = app(engine: engine, capture: { _ in context }, screenNames: { _ in
+                    walks.increment()
+                    return ["Okonkwo Adeyemi"]
+                })
+                await dictate(app)
+                XCTAssertEqual(walks.count, 0, "\(engineChoice) enabled=\(enabled) \(context.category)")
+                XCTAssertFalse(engine.vocabularyAtFinalization.contains("Okonkwo Adeyemi"))
+                await app.shutdown()
+            }
+        }
+    }
+
+    func testStopAndDeliveryNeverWaitForAnUnfinishedWalk() async {
+        await withScreenNameSettings {
+            let walkStarted = expectation(description: "walk started")
+            let gate = StartupModelPreparationGate(started: walkStarted)
+            let engine = StartupContextEngine()
+            var delivered: [String] = []
+            let app = app(engine: engine, capture: { _ in Self.screenContext() }, screenNames: { _ in
+                await gate.wait()
+                return ["Okonkwo Adeyemi"]
+            }, delivery: { delivered.append($0); return .copiedOnly })
+            await app.startDictation()
+            await fulfillment(of: [walkStarted], timeout: 2)
+            await app.stopDictation()
+            XCTAssertEqual(delivered, ["Recorded words."], "Stop completed while the walk was still running")
+            XCTAssertFalse(engine.vocabularyAtFinalization.contains("Okonkwo Adeyemi"))
+            await gate.release()
+            for _ in 0..<20 { await Task.yield() }
+            XCTAssertFalse(engine.vocabulary.contains("Okonkwo Adeyemi"), "A late walk result is discarded")
+            await app.shutdown()
+        }
+    }
+
+    func testScreenNamesAreNeverWrittenToHistory() async throws {
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        try await withScreenNameSettings {
+            Settings.shared.historyEnabled = true
+            Settings.shared.transcriptPostProcessingMode = .appleIntelligence
+            let databaseURL = directory.appendingPathComponent("history.sqlite")
+            let history = RemyHistoryController(repository: try RemyHistoryRepository(url: databaseURL))
+            let engine = StartupContextEngine()
+            var cleanupCalls = 0
+            let app = app(engine: engine, capture: { _ in Self.screenContext() }, historyController: history,
+                cleanup: { text, _ in cleanupCalls += 1; return text + " Done." },
+                screenNames: { _ in ["Zyxwvutsrq Qponmlkj"] })
+            await dictate(app, until: { engine.vocabulary.contains("Zyxwvutsrq Qponmlkj") })
+            XCTAssertTrue(engine.vocabularyAtFinalization.contains("Zyxwvutsrq Qponmlkj"), "Names were captured")
+            XCTAssertEqual(cleanupCalls, 1)
+            await app.shutdown()
+            let files = try FileManager.default.subpathsOfDirectory(atPath: directory.path)
+            var scanned = 0
+            for file in files {
+                let url = directory.appendingPathComponent(file)
+                guard let data = try? Data(contentsOf: url) else { continue }
+                scanned += 1
+                XCTAssertNil(data.range(of: Data("Zyxwvutsrq".utf8)), "\(file) must not contain screen names")
+                XCTAssertNil(data.range(of: Data("Zyxwvutsrq".utf16BigEndianBytes)), "\(file) must not contain screen names")
+            }
+            XCTAssertGreaterThan(scanned, 0)
+            let sessionID = try XCTUnwrap(history.entries.first?.id)
+            let recorded = try await history.attempts(sessionID: sessionID)
+            XCTAssertEqual(recorded.count, 1)
+            XCTAssertFalse((recorded.first?.prompt ?? "").contains("Zyxwvutsrq"))
+            XCTAssertEqual(recorded.first?.output, "Recorded words. Done.")
+        }
+    }
+
     private static func context(pid: pid_t, word: String) -> DictationContext {
         DictationContext(
             processIdentifier: pid, bundleIdentifier: "test.\(pid)", appName: "Editor",
@@ -1312,6 +1447,17 @@ private actor StartupContextSequence {
     private var gates: [StartupContextGate]
     init(gates: [StartupContextGate]) { self.gates = gates }
     func capture() async -> DictationContext? { await gates.removeFirst().capture() }
+}
+
+nonisolated private final class WalkCounter: @unchecked Sendable {
+    private let lock = NSLock()
+    private var value = 0
+    var count: Int { lock.withLock { value } }
+    func increment() { lock.withLock { value += 1 } }
+}
+
+private extension String {
+    var utf16BigEndianBytes: [UInt8] { utf16.flatMap { [UInt8($0 >> 8), UInt8($0 & 0xff)] } }
 }
 
 private actor StartupModelPreparationGate {

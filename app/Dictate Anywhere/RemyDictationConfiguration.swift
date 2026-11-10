@@ -27,31 +27,38 @@ nonisolated struct RemyDictationConfiguration {
         let microphoneUID: String?
         let vocabulary: [String]
         let fillerRules: RemyFillerRules
+        let textRules: DictationTextRules
         let muteSystemAudio: Bool
         let boostMicrophoneVolume: Bool
         let preserveCancelledSessions: Bool
         let autoStopAfterSpeechEnds: Bool
         let historyEnabled: Bool
         let destination: RemyDictationDestination
+        /// Read names from the focused window for this session. Effective
+        /// only with context awareness and a consumer (see ScreenNamePolicy).
+        let spellNamesFromActiveWindow: Bool
 
         init(engine: TranscriptionEngineChoice = .parakeet, model: ParakeetModelChoice = .englishOnly,
              language: SupportedLanguage = .english, microphoneUID: String? = nil,
              vocabulary: [String] = [], fillerRules: RemyFillerRules = .init(isEnabled: false, words: []),
-             muteSystemAudio: Bool = false, boostMicrophoneVolume: Bool = false,
+             textRules: DictationTextRules = .init(), muteSystemAudio: Bool = false, boostMicrophoneVolume: Bool = false,
              preserveCancelledSessions: Bool = false, autoStopAfterSpeechEnds: Bool = false,
-             historyEnabled: Bool = true, destination: RemyDictationDestination = .originalField) {
+             historyEnabled: Bool = true, destination: RemyDictationDestination = .originalField,
+             spellNamesFromActiveWindow: Bool = false) {
             self.engine = engine
             self.model = model
             self.language = language
             self.microphoneUID = microphoneUID
             self.vocabulary = vocabulary
             self.fillerRules = fillerRules
+            self.textRules = textRules
             self.muteSystemAudio = muteSystemAudio
             self.boostMicrophoneVolume = boostMicrophoneVolume
             self.preserveCancelledSessions = preserveCancelledSessions
             self.autoStopAfterSpeechEnds = autoStopAfterSpeechEnds
             self.historyEnabled = historyEnabled
             self.destination = destination
+            self.spellNamesFromActiveWindow = spellNamesFromActiveWindow
         }
     }
 
@@ -87,6 +94,13 @@ nonisolated struct RemyDictationConfiguration {
             self.s1ModelURL = s1ModelURL
             self.contextPolicy = contextPolicy
         }
+
+        /// How captured text may reach this session's cleanup route. A
+        /// loopback Ollama/compatible/profile endpoint counts as local.
+        var contextSupport: DictationContextSupport {
+            mode.dictationContextSupport(isConfiguredServerLocal: RemyDictationContextPolicy.isLocalEndpoint(
+                baseURL: profile?.baseURL ?? baseURL, model: profile?.model ?? model))
+        }
     }
 }
 
@@ -95,12 +109,14 @@ nonisolated struct RemyDictationConfiguration {
 nonisolated struct RemyDictationContextPolicy {
     let isEnabled: Bool
     let shareCapturedTextRemotely: Bool
-    let writingStyles: [DictationContextCategory: DictationWritingStyle]
+    /// Resolved name and instruction text, so later style edits cannot
+    /// change an in-flight dictation.
+    let writingStyles: [DictationContextCategory: DictationResolvedWritingStyle]
     let s1Styles: [DictationContextCategory: S1MiniStyling]
     let appRules: [DictationAppRule]
 
     init(isEnabled: Bool = false, shareCapturedTextRemotely: Bool = false,
-         writingStyles: [DictationContextCategory: DictationWritingStyle] = [:],
+         writingStyles: [DictationContextCategory: DictationResolvedWritingStyle] = [:],
          s1Styles: [DictationContextCategory: S1MiniStyling] = [:],
          appRules: [DictationAppRule] = []) {
         self.isEnabled = isEnabled
@@ -110,8 +126,8 @@ nonisolated struct RemyDictationContextPolicy {
         self.appRules = appRules
     }
 
-    func writingStyle(for category: DictationContextCategory) -> DictationWritingStyle {
-        (writingStyles[category] ?? .original).sanitized(for: category)
+    func writingStyle(for category: DictationContextCategory) -> DictationResolvedWritingStyle {
+        (writingStyles[category] ?? .builtIn(.original)).sanitized(for: category)
     }
 
     func s1Styling(for category: DictationContextCategory?, fallback: S1MiniStyling) -> S1MiniStyling {
@@ -209,21 +225,24 @@ final class RemyCleanupRuntime {
         RemyDictationContextPolicy.isLocalEndpoint(baseURL: baseURL, model: model)
     }
 
-    func postProcessingContext(from context: DictationContext?) -> DictationPostProcessingContext? {
+    /// Screen names follow the captured-text rule: local routes receive them;
+    /// a remote route only with this session's surrounding-text opt-in.
+    func postProcessingContext(from context: DictationContext?,
+                               screenNames: [String] = []) -> DictationPostProcessingContext? {
         guard cleanup.contextPolicy.isEnabled, cleanup.mode.usesDictationContext,
               let context else { return nil }
-        let support = cleanup.mode.dictationContextSupport(isConfiguredServerLocal:
-            Self.isLocalContextEndpoint(baseURL: cleanup.profile?.baseURL ?? cleanup.baseURL,
-                model: cleanup.profile?.model ?? cleanup.model))
+        let support = cleanup.contextSupport
         guard support != .none else { return nil }
         return context.postProcessingContext(style: cleanup.contextPolicy.writingStyle(for: context.category),
             includeCapturedText: support.includesCapturedText(
-                remoteSharingEnabled: cleanup.contextPolicy.shareCapturedTextRemotely))
+                remoteSharingEnabled: cleanup.contextPolicy.shareCapturedTextRemotely),
+            screenNames: screenNames)
     }
 
-    func process(text: String, context capturedContext: DictationContext? = nil) async throws -> String {
+    func process(text: String, context capturedContext: DictationContext? = nil,
+                 screenNames: [String] = []) async throws -> String {
         try Task.checkCancellation()
-        let context = postProcessingContext(from: capturedContext)
+        let context = postProcessingContext(from: capturedContext, screenNames: screenNames)
         if case .boundedChunking(let budget) = remoteInputPolicy, let remotePrompt {
             let remoteInstructions = remotePostProcessingInstructions(prompt: remotePrompt,
                 vocabulary: remoteVocabulary, context: context)
@@ -280,11 +299,13 @@ final class RemyCleanupRuntime {
                 microphoneUID: settings.selectedMicrophoneUID, vocabulary: settings.customVocabulary,
                 fillerRules: .init(isEnabled: settings.isFillerWordRemovalEnabled, words: settings.fillerWordsToRemove,
                                    bareMatchCJKFillers: Settings.bareMatchCJKFillers),
+                textRules: .init(corrections: settings.vocabularyCorrections, snippets: settings.dictationSnippets),
                 muteSystemAudio: settings.muteSystemAudioDuringRecordingEnabled,
                 boostMicrophoneVolume: settings.boostMicrophoneVolumeEnabled,
                 preserveCancelledSessions: settings.preserveCancelledSessions,
                 autoStopAfterSpeechEnds: settings.autoStopAfterSpeechEndsEnabled,
-                historyEnabled: settings.historyEnabled, destination: destination ?? settings.dictationDestination),
+                historyEnabled: settings.historyEnabled, destination: destination ?? settings.dictationDestination,
+                spellNamesFromActiveWindow: settings.spellNamesFromActiveWindowEnabled),
             cleanup: .init(mode: mode, prompt: prompt, baseURL: baseURL, model: model, reasoningEnabled: reasoning,
                 s1Styling: settings.s1MiniStyling, s1Structure: settings.s1MiniStructure,
                 s1ContextSetting: settings.s1MiniContextSetting, s1ModelURL: s1ModelURL,
@@ -294,7 +315,7 @@ final class RemyCleanupRuntime {
                     shareCapturedTextRemotely: RemyFeaturePolicy.allowsRemoteDictationContextSharing
                         && settings.shareDictationContextWithRemoteProviders,
                     writingStyles: Dictionary(uniqueKeysWithValues: DictationContextCategory.allCases.map {
-                        ($0, settings.dictationWritingStyle(for: $0))
+                        ($0, settings.resolvedDictationWritingStyle(for: $0))
                     }),
                     s1Styles: Dictionary(uniqueKeysWithValues: DictationContextCategory.allCases.map {
                         ($0, settings.s1MiniStyling(for: $0))

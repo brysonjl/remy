@@ -28,6 +28,8 @@ enum OverlayState: Equatable {
     case copiedOnly
     case cleanupFallback(reason: String, delivery: CleanupFallbackDelivery)
     case preparingModel(name: String)
+    case transforming(name: String)
+    case transformNotice(title: String, detail: String)
 }
 
 enum CleanupFallbackDelivery: Equatable {
@@ -65,7 +67,7 @@ final class OverlayModel {
     var cancellationProgress: Double?
     private(set) var busyMessage: String?
 
-    func showBusy() { busyMessage = "Already working on your dictation" }
+    func showBusy(_ message: String? = nil) { busyMessage = message ?? "Already working on your dictation" }
     func resetBusy() { busyMessage = nil }
 
     /// Keep waveform updates independent of the transcript and pill layout.

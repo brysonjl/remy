@@ -117,6 +117,8 @@ Model three distinct mechanisms: deterministic corrections, cleanup hints, and r
 
 Apply enabled corrections exactly once to finalized raw text before cleanup. Do not run a second correction pass: even individually idempotent rules can cascade across passes (`A → B`, then `B → C`). Match Unicode word boundaries, longest phrases first, with explicit case handling and optional app/language scope. No regex by default, substring matches, chained cascading replacements, or automatic learning. Preserve raw text and record the rule-set snapshot/version and matches. A hint may affect ASR before the raw result exists; a deterministic correction must never rewrite the stored raw result.
 
+Implemented corrections attach heard-as spellings to custom vocabulary terms and match case-insensitively, whole words only, outputting the saved spelling. Snippets (spoken trigger → plain text) use the same matching but expand once after cleanup or its fallback, including “Use raw now,” so expansions never reach a provider; a correction never rewrites a snippet trigger.
+
 ## Starter text fixtures
 
 | Input | Required behavior |

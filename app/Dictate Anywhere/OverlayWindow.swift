@@ -108,15 +108,15 @@ final class OverlayWindow {
     /// Rejected-start feedback without replacing the active session's state,
     /// transcript or cancellation progress. No timer is scheduled: the next
     /// legitimate state update or hide clears this notice.
-    func showBusy() {
+    func showBusy(_ message: String? = nil) {
         hideTask?.cancel()
         hideTask = nil
-        if Thread.isMainThread { showBusyImpl() }
-        else { DispatchQueue.main.async { [weak self] in self?.showBusyImpl() } }
+        if Thread.isMainThread { showBusyImpl(message) }
+        else { DispatchQueue.main.async { [weak self] in self?.showBusyImpl(message) } }
     }
 
-    private func showBusyImpl() {
-        model.showBusy()
+    private func showBusyImpl(_ message: String?) {
+        model.showBusy(message)
         showImpl(state: model.overlayState, startsNewSession: false, updatesState: false)
     }
 

@@ -424,7 +424,7 @@ final class ModelAndModeTests: XCTestCase {
             SidebarPage.allCases.map(\.title),
             [
                 "Speech Model", "General", "Shortcuts", "Text & Overlay",
-                "Transcript Cleanup", "Internal Prompts", "History", "About",
+                "Transcript Cleanup", "Transforms", "Internal Prompts", "History", "About",
             ]
         )
     }

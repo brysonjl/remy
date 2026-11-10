@@ -91,7 +91,7 @@ import XCTest
                 let profile = try profile(adapter: adapter, credential: false, baseURL: endpoint)
                 let config = RemyDictationConfiguration(capture: .init(), cleanup: .init(mode: .profile,
                     profile: profile, contextPolicy: .init(isEnabled: true, shareCapturedTextRemotely: share,
-                        writingStyles: [.terminalAgent: .original])))
+                        writingStyles: [.terminalAgent: .builtIn(.original)])))
                 ProfileRuntimeHTTPStub.handler.withLock { $0 = { request in
                     let payload = try ProfileRuntimeHTTPStub.payload(request)
                     let body = String(decoding: try JSONSerialization.data(withJSONObject: payload), as: UTF8.self)
