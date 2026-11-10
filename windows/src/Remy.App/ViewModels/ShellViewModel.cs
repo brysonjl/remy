@@ -6,7 +6,7 @@ using CommunityToolkit.Mvvm.Input;
 namespace Remy.App.ViewModels;
 
 /// <summary>Sidebar pages in display order (parity/ui.md 2.3; Internal Prompts is dead/hidden and not ported).</summary>
-public enum AppPage { SpeechModel, General, Shortcuts, TextOverlay, TranscriptCleanup, History, About }
+public enum AppPage { SpeechModel, General, Shortcuts, TextOverlay, TranscriptCleanup, Transforms, History, About }
 
 public sealed record PageDescriptor(AppPage Page, string Title, string Glyph, string Subtitle);
 
@@ -44,6 +44,7 @@ public sealed partial class ShellViewModel : ObservableObject
         new(AppPage.Shortcuts, "Shortcuts", "", "Start and stop dictation from anywhere with a quick key press."),
         new(AppPage.TextOverlay, "Text & Overlay", "", "The floating overlay follows you while you dictate."),
         new(AppPage.TranscriptCleanup, "Transcript Cleanup", "", "Choose how your transcript is polished before it’s pasted."),
+        new(AppPage.Transforms, "Transforms", "", "Select text in any app and press a shortcut. Remy rewrites the selection in place with your Transcript Cleanup provider."),
         new(AppPage.History, "History", "", "Your recent dictations, kept on this PC."),
         new(AppPage.About, "About", "", "About Remy"),
     ];

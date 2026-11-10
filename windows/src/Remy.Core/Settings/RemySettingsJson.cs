@@ -20,25 +20,24 @@ public sealed partial class RemySettings
     /// <summary>All persisted keys (excluding the schema marker).</summary>
     public static IReadOnlyList<string> PersistedKeys => new RemySettings().Entries.Select(e => e.Key).ToArray();
 
-    private List<Entry> BuildEntries()
+    /// <summary>Adds typed entries. Feature partial files receive one through the hooks at the end of BuildEntries.</summary>
+    private sealed class EntryBuilder(List<Entry> l)
     {
-        var l = new List<Entry>();
-
-        void Bool(string key, Func<bool> get, Action<bool> set) => l.Add(new(key,
+        public void Bool(string key, Func<bool> get, Action<bool> set) => l.Add(new(key,
             n => { if (n is JsonValue v && v.TryGetValue<bool>(out var b)) set(b); }, () => get()));
 
-        void Str(string key, Func<string?> get, Action<string> set, bool omitWhenNull = false) => l.Add(new(key,
+        public void Str(string key, Func<string?> get, Action<string> set, bool omitWhenNull = false) => l.Add(new(key,
             n => { if (n is JsonValue v && v.TryGetValue<string>(out var s) && s is not null) set(s); },
             () => get() is { } s ? s : (omitWhenNull ? null : "")));
 
-        void Float(string key, Func<float> get, Action<float> set) => l.Add(new(key,
+        public void Float(string key, Func<float> get, Action<float> set) => l.Add(new(key,
             n => { if (n is JsonValue v && v.TryGetValue<double>(out var d) && double.IsFinite(d)) set((float)d); }, () => get()));
 
-        void Enum<T>(string key, EnumNameMap<T> map, Func<T> get, Action<T> set) where T : struct, Enum => l.Add(new(key,
+        public void Enum<T>(string key, EnumNameMap<T> map, Func<T> get, Action<T> set) where T : struct, System.Enum => l.Add(new(key,
             n => { if (n is JsonValue v && v.TryGetValue<string>(out var s) && map.TryParse(s, out var e)) set(e); },
             () => map.ToRaw(get())));
 
-        void StrList(string key, Func<IReadOnlyList<string>> get, Action<IReadOnlyList<string>> set) => l.Add(new(key,
+        public void StrList(string key, Func<IReadOnlyList<string>> get, Action<IReadOnlyList<string>> set) => l.Add(new(key,
             n =>
             {
                 if (n is not JsonArray a) return;
@@ -48,6 +47,26 @@ public sealed partial class RemySettings
                 set(list);
             },
             () => { var a = new JsonArray(); foreach (var s in get()) a.Add(s); return a; }));
+
+        /// <summary>Raw JSON entry: read gets the stored node (ignore what you can't parse), write returns the node to store (null omits the key).</summary>
+        public void Raw(string key, Action<JsonNode?> read, Func<JsonNode?> write) => l.Add(new(key, read, write));
+    }
+
+    // v0.2 feature hooks (v0.2-features.md §12): each lives in its own partial file.
+    partial void AddTextRuleEntries(EntryBuilder b);
+    partial void AddScreenNameEntries(EntryBuilder b);
+    partial void AddTransformEntries(EntryBuilder b);
+
+    private List<Entry> BuildEntries()
+    {
+        var l = new List<Entry>();
+        var b = new EntryBuilder(l);
+
+        void Bool(string key, Func<bool> get, Action<bool> set) => b.Bool(key, get, set);
+        void Str(string key, Func<string?> get, Action<string> set, bool omitWhenNull = false) => b.Str(key, get, set, omitWhenNull);
+        void Float(string key, Func<float> get, Action<float> set) => b.Float(key, get, set);
+        void Enum<T>(string key, EnumNameMap<T> map, Func<T> get, Action<T> set) where T : struct, System.Enum => b.Enum(key, map, get, set);
+        void StrList(string key, Func<IReadOnlyList<string>> get, Action<IReadOnlyList<string>> set) => b.StrList(key, get, set);
 
         // General
         Bool("launchAtLogin", () => LaunchAtLogin, v => LaunchAtLogin = v);
@@ -97,6 +116,7 @@ public sealed partial class RemySettings
         Bool("isFillerWordRemovalEnabled", () => IsFillerWordRemovalEnabled, v => IsFillerWordRemovalEnabled = v);
         StrList("fillerWordsToRemove", () => FillerWordsToRemove, v => FillerWordsToRemove = v);
         Bool("dictationContextAwarenessEnabled", () => DictationContextAwarenessEnabled, v => DictationContextAwarenessEnabled = v);
+        Bool("spellNamesFromActiveWindowEnabled", () => SpellNamesFromActiveWindowEnabled, v => SpellNamesFromActiveWindowEnabled = v);
         Bool("shareDictationContextWithRemoteProviders", () => ShareDictationContextWithRemoteProviders, v => ShareDictationContextWithRemoteProviders = v);
         Enum("emailDictationWritingStyle", RemyEnumNames.WritingStyle, () => EmailDictationWritingStyle, v => EmailDictationWritingStyle = v);
         Enum("workMessagingDictationWritingStyle", RemyEnumNames.WritingStyle, () => WorkMessagingDictationWritingStyle, v => WorkMessagingDictationWritingStyle = v);
@@ -159,6 +179,10 @@ public sealed partial class RemySettings
 
         // History
         Bool("remyHistoryEnabled", () => RemyHistoryEnabled, v => RemyHistoryEnabled = v);
+
+        AddTextRuleEntries(b);
+        AddScreenNameEntries(b);
+        AddTransformEntries(b);
         return l;
     }
 

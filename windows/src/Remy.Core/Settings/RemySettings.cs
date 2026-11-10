@@ -185,7 +185,10 @@ public sealed partial class RemySettings : INotifyPropertyChanged
     public string OpenRouterAPIKeyEnvironmentVariable { get => _openRouterAPIKeyEnvironmentVariable; set => Set(ref _openRouterAPIKeyEnvironmentVariable, value ?? ""); }
 
     private IReadOnlyList<string> _customVocabulary = Array.Empty<string>();
-    public IReadOnlyList<string> CustomVocabulary { get => _customVocabulary; set => SetList(ref _customVocabulary, value); }
+    public IReadOnlyList<string> CustomVocabulary { get => _customVocabulary; set { if (SetList(ref _customVocabulary, value)) OnCustomVocabularyChanged(); } }
+
+    /// <summary>Hook for v0.2 text rules (prunes corrections of removed terms).</summary>
+    partial void OnCustomVocabularyChanged();
 
     private bool _isFillerWordRemovalEnabled;
     public bool IsFillerWordRemovalEnabled { get => _isFillerWordRemovalEnabled; set => Set(ref _isFillerWordRemovalEnabled, value); }
@@ -195,6 +198,10 @@ public sealed partial class RemySettings : INotifyPropertyChanged
 
     private bool _dictationContextAwarenessEnabled = true;
     public bool DictationContextAwarenessEnabled { get => _dictationContextAwarenessEnabled; set => Set(ref _dictationContextAwarenessEnabled, value); }
+
+    private bool _spellNamesFromActiveWindowEnabled;
+    /// <summary>Spell names from the active window (v0.2-features.md §7). Off by default.</summary>
+    public bool SpellNamesFromActiveWindowEnabled { get => _spellNamesFromActiveWindowEnabled; set => Set(ref _spellNamesFromActiveWindowEnabled, value); }
 
     private bool _shareDictationContextWithRemoteProviders;
     public bool ShareDictationContextWithRemoteProviders { get => _shareDictationContextWithRemoteProviders; set => Set(ref _shareDictationContextWithRemoteProviders, value); }

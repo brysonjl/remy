@@ -10,7 +10,7 @@ namespace Remy.Platform.Destination;
 /// Foreground window + UIA focused element capture, focus restoration and bounded context capture
 /// (pipeline.md 5.3/5.4, cleanup.md 5.3/5.4). Never throws; UIA work is time-boxed.
 /// </summary>
-public sealed class DestinationService : IDestinationService
+public sealed partial class DestinationService : IDestinationService
 {
     public static readonly TimeSpan UiaBudget = TimeSpan.FromMilliseconds(45);
     public static readonly TimeSpan ContextBudget = TimeSpan.FromMilliseconds(250);

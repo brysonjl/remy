@@ -54,7 +54,7 @@ public sealed partial class DictationCoordinator
     /// <summary>Returns null on success (text copied to the clipboard and saved to history) or the user-facing failure message.</summary>
     public async Task<string?> RecoverTextAsync(Guid recoverySessionId)
     {
-        if (_session != null || _shutdown || _recoveryBusy) return SessionMessages.Busy;
+        if (_session != null || _shutdown || _recoveryBusy || TransformBusy) return SessionMessages.Busy;
         if (!_settings.RemyHistoryEnabled) return RecoveryMessages.RecoverNeedsHistory;
         var entry = _d.Recovery.List().FirstOrDefault(x => x.Id == recoverySessionId);
         if (entry == null) return RecoveryMessages.RecoveryFailed("The saved session was not found.");
@@ -92,6 +92,7 @@ public sealed partial class DictationCoordinator
 
     public async Task ContinueRecoverySessionAsync(Guid recoverySessionId)
     {
+        if (TransformBusy) { _ui.ShowBusy(SessionMessages.TransformBusy); return; }
         if (_session != null || _sleeping || _shutdown || _recoveryBusy) { _ui.ShowBusy(SessionMessages.Busy); return; }
         var entry = _d.Recovery.List().FirstOrDefault(x => x.Id == recoverySessionId);
         if (entry == null) return;

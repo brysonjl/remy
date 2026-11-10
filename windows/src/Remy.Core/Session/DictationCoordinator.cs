@@ -32,6 +32,8 @@ public sealed class DictationDependencies
     public IPowerEvents? Power { get; init; }
     /// <summary>True when the OS microphone privacy setting blocks access (registry consent store). Polled for the banner.</summary>
     public Func<bool>? MicrophoneDenied { get; init; }
+    /// <summary>True while a Transform runs (v0.2-features.md §8.7); dictation and recovery refuse to start.</summary>
+    public Func<bool>? IsTransformBusy { get; init; }
     public DictationOptions Options { get; init; } = new();
 }
 
@@ -191,6 +193,11 @@ public sealed partial class DictationCoordinator : IDictationController, IDispos
     }
 
     // ------------------------------------------------------------------ hotkeys (pipeline.md 1.3)
+
+    /// <summary>True while a dictation session or a recovery action runs (Transforms refuse to start).</summary>
+    public bool IsDictationBusy => _session != null || _recoveryBusy;
+
+    bool TransformBusy => _d.IsTransformBusy?.Invoke() == true;
 
     bool Current(DictationSession s) => ReferenceEquals(_session, s) && !s.Cts.IsCancellationRequested && !_shutdown;
 

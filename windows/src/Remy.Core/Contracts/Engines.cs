@@ -37,7 +37,8 @@ public sealed record CleanupRequest(
     Cleanup.CleanupRuntime Runtime,     // frozen mode, prompt, endpoint, model, credential, styles
     Context.DictationContextSnapshot? Context,
     IReadOnlyList<string> Vocabulary,
-    DateTimeOffset Deadline);           // hard 8 s budget (cleanup.md §3.5)
+    DateTimeOffset Deadline,            // hard 8 s budget (cleanup.md §3.5)
+    IReadOnlyList<string>? ScreenNames = null); // lower-trust spelling hints (v0.2-features.md §7); never stored
 
 public enum CleanupOutcome { Cleaned, Unchanged, FellBackToRaw, Skipped, Cancelled }
 

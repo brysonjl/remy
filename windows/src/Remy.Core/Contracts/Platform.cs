@@ -111,6 +111,32 @@ public interface IDestinationService
 
     /// <summary>Bounded context capture via UIA (timeout ~250 ms). Returns null on timeout, secure fields or sensitive apps.</summary>
     Task<CapturedContext?> CaptureContextAsync(DestinationTarget target, ContextCaptureLimits limits, CancellationToken ct);
+
+    /// <summary>Bounded accessibility-text walk of the target window for screen names (v0.2-features.md §7). Null when unavailable.</summary>
+    Task<ScreenTextWalkResult?> CaptureScreenTextAsync(DestinationTarget target, CancellationToken ct) =>
+        Task.FromResult<ScreenTextWalkResult?>(null);
+
+    /// <summary>Read the selected text in the target for a Transform (v0.2-features.md §8.9).</summary>
+    Task<SelectionReadResult> ReadSelectionAsync(DestinationTarget target, IReadOnlyList<Context.DictationAppRule> rules, CancellationToken ct) =>
+        Task.FromResult(new SelectionReadResult(SelectionReadKind.Unreadable, null));
+
+    /// <summary>Re-read the current selection just before replacing it (null when unreadable).</summary>
+    Task<string?> ReadCurrentSelectionAsync(DestinationTarget target, CancellationToken ct) =>
+        Task.FromResult<string?>(null);
+}
+
+public sealed record ScreenTextWalkResult(IReadOnlyList<string> Texts, int Nodes, bool BudgetHit, TimeSpan Elapsed, string Outcome);
+
+public enum SelectionReadKind { Text, Empty, Protected, Unreadable }
+
+public sealed record SelectionReadResult(SelectionReadKind Kind, string? Text);
+
+/// <summary>Transform shortcuts (v0.2-features.md §8.6). Implemented by the hotkey listener; press-once bindings.</summary>
+public interface ITransformHotkeys
+{
+    void ConfigureTransforms(IReadOnlyList<Hotkeys.HotkeyBinding> bindings);
+    /// <summary>Raised with the bound transform's id. Raised on the hook thread's queue, never inside the hook callback.</summary>
+    event EventHandler<Guid>? TransformPressed;
 }
 
 public sealed record ContextCaptureLimits(int CursorTextChars = 600, int MetadataChars = 300);

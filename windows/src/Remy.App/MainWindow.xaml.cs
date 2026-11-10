@@ -38,6 +38,7 @@ public partial class MainWindow : Window
         AppPage.Shortcuts => new ShortcutsPage(),
         AppPage.TextOverlay => new TextOverlayPage(),
         AppPage.TranscriptCleanup => new TranscriptCleanupPage(),
+        AppPage.Transforms => new TransformsPage(),
         AppPage.History => new HistoryPage(),
         _ => new AboutPage(),
     };

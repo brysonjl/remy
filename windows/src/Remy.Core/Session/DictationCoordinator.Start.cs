@@ -17,6 +17,7 @@ public sealed partial class DictationCoordinator
     {
         DictationSession s;
         bool showBusy = false;
+        if (TransformBusy) { _ui.ShowBusy(SessionMessages.TransformBusy); return; }
         lock (_gate)
         {
             if (_shutdown || _sleeping) return;

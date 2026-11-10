@@ -126,6 +126,7 @@ public static class SessionMessages
     public static string StillDownloading(string model) => $"{model} is still downloading. Try again when it finishes.";
     public static string NotReady(string model) => $"{model} is not ready. Download it from Speech Model settings.";
     public const string Busy = "Already working on your dictation";
+    public const string TransformBusy = "Already transforming";
     public const string UnknownAudioError = "Unknown audio startup error";
     public static string RecordingStartError(string message) => $"Could not start the microphone. {message}";
     public static string StartFailed(string message) => $"Failed to start recording: {message}";
