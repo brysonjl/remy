@@ -233,10 +233,11 @@ Remy Dev keeps its own data and permissions, separate from Remy. See the
 
 A Windows (x64) version lives in [`windows/`](windows/). It has the Mac
 app's main features: hold-to-talk dictation, the floating recorder, local
-Parakeet v2 speech recognition, S1-mini and remote cleanup, history and recovery.
+Parakeet v2 speech recognition, S1-mini and remote cleanup, spelling corrections,
+snippets, writing styles, Transforms, history and recovery.
 It is a preview.
 
-**[Download Remy for Windows 0.1.0 (preview)](https://github.com/brysonjl/remy/releases/tag/windows-v0.1.0)**: unzip it and run
+**[Download Remy for Windows 0.2.0 (preview)](https://github.com/brysonjl/remy/releases/tag/windows-v0.2.0)**: unzip it and run
 `Remy.exe`. The app isn't code-signed yet, so Windows may show "Windows protected
 your PC"; click **More info**, then **Run anyway**. See the
 [Windows README](windows/README.md) to build it yourself.

@@ -8,8 +8,8 @@ It is a preview, tested on one Windows 11 machine.
 
 ## Download
 
-[Remy for Windows 0.1.0 (preview)](https://github.com/brysonjl/remy/releases/tag/windows-v0.1.0): download
-`Remy-Windows-0.1.0-x64.zip`, unzip it anywhere and run `Remy.exe`. There is no
+[Remy for Windows 0.2.0 (preview)](https://github.com/brysonjl/remy/releases/tag/windows-v0.2.0): download
+`Remy-Windows-0.2.0-x64.zip`, unzip it anywhere and run `Remy.exe`. There is no
 installer; keep the folder together. Remy isn't code-signed yet, so Windows may
 show "Windows protected your PC": click **More info**, then **Run anyway**.
 Licenses are in the `Notices` folder. Please [report what you find](https://github.com/brysonjl/remy/issues).
@@ -21,11 +21,18 @@ Licenses are in the `Notices` folder. Please [report what you find](https://gith
 - **First run:** the Speech Model page downloads Parakeet v2 (about 660 MB).
   Transcript Cleanup can download S1-mini (about 480 MB) or use Ollama,
   OpenRouter or any OpenAI-compatible server.
+- **Transforms:** select text in any app and press a transform's shortcut to rewrite it
+  with your Transcript Cleanup provider (Polish and Prompt Engineer built in, up to 8 of
+  your own). Set them up on the Transforms page.
+- **Text rules:** on the Transcript Cleanup page, give vocabulary terms "heard as"
+  spellings, add snippets (say a trigger, get saved text), import vocabulary from CSV,
+  and edit or add writing styles. "Spell names from the active window" is off by default.
 - **Data:** settings in `%APPDATA%\Remy`, models, history, recovery audio and
   logs in `%LOCALAPPDATA%\Remy`.
 
-Not ported from the Mac: Apple Speech, AssemblyAI, Apple Intelligence cleanup,
-custom acoustic vocabulary and input-source switching.
+Not ported from the Mac: Apple Speech, AssemblyAI, Apple Intelligence cleanup and
+transforms, custom acoustic vocabulary and input-source switching. On-screen names
+help cleanup only (the Windows speech engine takes no hints).
 
 ## Build
 
