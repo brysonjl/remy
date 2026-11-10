@@ -2,7 +2,8 @@
 
 The initial binary release target is **Apple silicon (arm64), manual updates,
 DMG installation**. The first prerelease, 0.1.0, was published on 2026-11-07
-([release record](../validation/results/2026-11-07-release-0.1.0/README.md)). Intel support and
+([release record](../validation/results/2026-11-07-release-0.1.0/README.md)); the latest, 0.2.0, on
+2026-11-09 ([release record](../validation/results/2026-11-09-release-0.2.0/README.md)). Intel support and
 Sparkle update feeds are outside this first release scope. Existing development
 versions (`2.12.16`, build `58`) are inherited metadata, not Remy's release history.
 
