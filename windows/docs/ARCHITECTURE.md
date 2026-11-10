@@ -63,6 +63,9 @@ additive change and list it in your final report.
 | Single instance | Named mutex `Local\io.github.brysonjl.remy`; a second launch signals the first to show its main window and exits. |
 | Launch at login | `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`, value `Remy`. |
 | Logs | `%LOCALAPPDATA%\Remy\Logs\remy-YYYYMMDD.log`, metadata only (never transcript text), 7 days kept. |
+| 0.2 features | Spelling corrections, snippets, CSV import, writing styles, Transforms and screen names follow `parity/v0.2-features.md`; its §11 lists the Windows decisions (UIA-only selection read, screen names feed cleanup only, the spell-names toggle is hidden for S1-mini, word count by letter/digit runs). |
+| Transform notices | Busy notices (`alreadyRunning`, `dictationBusy`) show only when the overlay is hidden and hide after 2 s, so they can never stick. A cancel is honoured while the selection is still being read. |
+| Screen-name walk | Own `UIA3Automation` instance with per-read timeouts, one `CacheRequest` (Name, Value, HelpText, IsPassword) per node in the Control view, run on a worker and abandoned at budget + 25 ms. |
 
 ## Testing on the user's machine (hard rules)
 
