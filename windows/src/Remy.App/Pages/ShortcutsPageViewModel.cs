@@ -7,6 +7,7 @@ using CommunityToolkit.Mvvm.Input;
 using Remy.App.Services;
 using Remy.Core.Hotkeys;
 using Remy.Core.Settings;
+using Remy.Core.Transforms;
 
 namespace Remy.App.Pages;
 
@@ -228,13 +229,21 @@ public sealed partial class ShortcutsPageViewModel : ObservableObject, IDisposab
             var cancel = CancelRecorder.Value.HasBinding ? CancelRecorder.Value : null;
             var c = ConflictDetector.CheckRecording(cand, Rows.Where(r => r != row).Select(r => r.Binding), cancel);
             if (c is { Blocking: true }) { ValidateAll(); row.ErrorText = c.Message; return; }
+            if (TransformShortcutRules.TransformUsingShortcut(cand, _s.Settings.TextTransforms) is { } used)
+            { ValidateAll(); row.ErrorText = TransformShortcutRules.UsedByTransformMessage(used.DisplayName); return; }
             rec.Value = cand;
             Commit();
         }
         else
         {
             var cand = HotkeyRules.Canonicalize(captured with { Id = CancelRecorder.Value.Id, Mode = HotkeyMode.HandsFreeToggle });
-            var c = ConflictDetector.CheckCancel(cand, Rows.Select(r => r.Binding));
+            // order: recording overlap, transform overlap, then the system conflict
+            var recordings = Rows.Select(r => r.Binding).ToList();
+            HotkeyConflict? c = recordings.Any(r => ConflictDetector.RecordingOverlapsCancel(r, cand))
+                ? new HotkeyConflict(ConflictDetector.CancelVsRecordingMessage, true) : null;
+            if (c is null && TransformShortcutRules.TransformUsingShortcut(cand, _s.Settings.TextTransforms) is { } used)
+                c = new HotkeyConflict(TransformShortcutRules.CancelOverlapsTransformMessage(used.DisplayName), true);
+            c ??= ConflictDetector.CheckCancel(cand, recordings);
             if (c is { Blocking: true }) { ValidateAll(); CancelErrorText = c.Message; return; }
             rec.Value = cand;
             CommitCancel();

@@ -21,6 +21,8 @@ public enum OverlayState
     CopyOnly,
     /// <summary>Warning + <see cref="OverlayViewModel.ErrorMessage"/> (title) and <see cref="OverlayViewModel.ErrorDetail"/>.</summary>
     Error,
+    /// <summary>Spinner + "Transforming…" while a Transform runs (v0.2-features.md §8.8.1).</summary>
+    Transforming,
     /// <summary>"Hold to cancel" + determinate bar <see cref="OverlayViewModel.HoldProgress"/> 0..1.</summary>
     HoldToCancel,
 }
@@ -51,10 +53,13 @@ public sealed partial class OverlayViewModel : ObservableObject
     [ObservableProperty] private string _errorMessage = "";
     [ObservableProperty] private string _errorDetail = "";
     [ObservableProperty] private double _holdProgress;
+    /// <summary>Name of the running transform (automation text of the Transforming state).</summary>
+    [ObservableProperty] private string _transformName = "";
 
     public void ShowListening(double level, string transcript) { TranscriptText = transcript; Level = level; State = OverlayState.Listening; }
     public void Hide() => State = OverlayState.Hidden;
     public void ShowBusy(string? text = null) { NoticeText = text ?? DefaultBusyText; State = OverlayState.Busy; }
     public void ShowError(string message, string detail = "") { ErrorMessage = message; ErrorDetail = detail; State = OverlayState.Error; }
+    public void ShowTransforming(string name) { TransformName = name; State = OverlayState.Transforming; }
     public void ShowHoldToCancel(double progress) { HoldProgress = Math.Clamp(progress, 0, 1); State = OverlayState.HoldToCancel; }
 }

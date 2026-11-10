@@ -11,7 +11,7 @@ namespace Remy.Platform.Hotkeys;
 /// hold-to-cancel ticks, reconciles lost modifier key-ups and runs the hook watchdog.
 /// Events are raised on the consumer thread, never inside the hook callback.
 /// </summary>
-public sealed class LowLevelKeyboardHotkeyListener : IHotkeyListener
+public sealed class LowLevelKeyboardHotkeyListener : IHotkeyListener, ITransformHotkeys
 {
     const int VkNoOp = 0xFF;
     static readonly TimeSpan WatchdogInterval = TimeSpan.FromSeconds(15);
@@ -41,6 +41,9 @@ public sealed class LowLevelKeyboardHotkeyListener : IHotkeyListener
     public event EventHandler<HotkeyBinding>? BindingReleased;
     public event EventHandler<double?>? CancelProgressChanged;
     public event EventHandler? CancelRequested;
+    public event EventHandler<Guid>? TransformPressed;
+
+    public void ConfigureTransforms(IReadOnlyList<HotkeyBinding> bindings) => _matcher.ConfigureTransforms(bindings);
 
     public bool CancellationEnabled
     {
@@ -247,6 +250,7 @@ public sealed class LowLevelKeyboardHotkeyListener : IHotkeyListener
                 case HotkeyOutputKind.Released: BindingReleased?.Invoke(this, o.Binding!); break;
                 case HotkeyOutputKind.CancelProgress: CancelProgressChanged?.Invoke(this, o.Progress); break;
                 case HotkeyOutputKind.CancelRequested: CancelRequested?.Invoke(this, EventArgs.Empty); break;
+                case HotkeyOutputKind.TransformPressed: TransformPressed?.Invoke(this, o.Binding!.Id); break;
             }
         }
         catch { /* subscriber errors are theirs */ }

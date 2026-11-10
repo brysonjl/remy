@@ -16,6 +16,7 @@ using Remy.Core.Recovery;
 using Remy.Core.Session;
 using Remy.Core.Settings;
 using Remy.Core.Storage;
+using Remy.Core.Transforms;
 using Remy.Platform.Audio;
 using Remy.Platform.Delivery;
 using Remy.Platform.Destination;
@@ -102,10 +103,25 @@ public sealed class CompositionRoot
         var power = new PowerEvents();
         var presenter = new OverlayPresenter(root, dispatcher);
 
+        var destinations = new DestinationService();
+        var clipboard = new ClipboardDelivery();
+        var transformPresenter = new TransformPresenter(root, dispatcher);
+        var transformCompletion = new TransformCompletion(router.Transport, router.Caches);
+        var transforms = new TransformRunner(new TransformRunnerDependencies
+        {
+            Route = () => TransformProviderRoute.Resolve(settings, credentials, profiles, transformCompletion),
+            ReadSelection = ct => TransformSelectionReader.ReadAsync(destinations, settings, ct),
+            SelectionStillMatches = (sel, ct) => TransformSelectionReader.StillMatchesAsync(destinations, sel, ct),
+            IsFocusUnchanged = sel => destinations.IsStillFocused(sel.Target),
+            Deliver = (text, sel, paste, lease) => TransformDelivery.DeliverAsync(clipboard, destinations, text, sel, paste, lease),
+            OnEvent = transformPresenter.AsEventSink(),
+        });
+
         var coordinator = new DictationCoordinator(new DictationDependencies
         {
+            Transforms = transforms, TransformPresenter = transformPresenter, IsTransformBusy = () => transforms.IsBusy,
             Settings = settings, Hotkeys = hotkeys, Audio = audio, SystemAudio = new SystemAudioControl(),
-            Destinations = new DestinationService(), Clipboard = new ClipboardDelivery(), Sounds = sounds,
+            Destinations = destinations, Clipboard = clipboard, Sounds = sounds,
             Recognizer = new SherpaParakeetRecognizer(), Cleanup = router, S1Mini = s1, History = () => history.Current,
             Recovery = recovery, Models = new ModelsAdapter(models), Credentials = credentials, Profiles = profiles,
             Presenter = presenter, Power = power, MicrophoneDenied = MicrophonePrivacy.IsDenied,

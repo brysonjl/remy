@@ -87,7 +87,7 @@ public partial class OverlayPill : UserControl
             case OverlayState.Success: target = SuccessBadge; w = 31; h = 31; radius = 15.5; key = "s"; break;
             case OverlayState.CopyOnly: target = CopyPanel; w = 144; h = 38; key = "c"; break;
             case OverlayState.Error: target = ErrorPanel; w = Math.Min(m.Width + 20, 300); h = 54; key = "e"; break;
-            case OverlayState.Cleaning: case OverlayState.Preparing: target = SpinnerText; w = Math.Min(m.Width, 240); h = 38; key = "sp" + vm.State; break;
+            case OverlayState.Cleaning: case OverlayState.Preparing: case OverlayState.Transforming: target = SpinnerText; w = Math.Min(m.Width, 240); h = 38; key = "sp" + vm.State; break;
             case OverlayState.Busy: target = SpinnerText; w = Math.Min(m.Width, 260); h = 44; key = "b"; break;
             case OverlayState.HoldToCancel: target = CancelPanel; w = 169; h = 42; key = "h"; break;
             default: return; // Hidden: window handles fade-out, content stays as is
@@ -97,7 +97,7 @@ public partial class OverlayPill : UserControl
         CopyText.Text = vm.CopyHint;
         ErrorTitle.Text = vm.ErrorMessage; ErrorDetailText.Text = vm.ErrorDetail;
         ErrorDetailText.Visibility = string.IsNullOrEmpty(vm.ErrorDetail) ? Visibility.Collapsed : Visibility.Visible;
-        SpinnerLabel.Text = vm.State switch { OverlayState.Cleaning => vm.CleaningText, OverlayState.Preparing => vm.PreparingText, _ => vm.NoticeText };
+        SpinnerLabel.Text = vm.State switch { OverlayState.Cleaning => vm.CleaningText, OverlayState.Preparing => vm.PreparingText, OverlayState.Transforming => "Transforming…", _ => vm.NoticeText };
         SpinnerLabel.MaxWidth = Math.Max(0, w - 28 - 26);
         bool wrap = vm.State == OverlayState.Busy;
         SpinnerLabel.TextWrapping = wrap ? TextWrapping.Wrap : TextWrapping.NoWrap; SpinnerLabel.TextTrimming = wrap ? TextTrimming.None : TextTrimming.CharacterEllipsis;
@@ -120,6 +120,11 @@ public partial class OverlayPill : UserControl
             TranscriptBlock.LineHeight = m.LineHeight + m.LineSpacing;
             AutomationProperties.SetName(this, empty ? "Listening" : "Live transcript");
         }
+
+        if (vm.State == OverlayState.Transforming)
+            AutomationProperties.SetName(this, $"Transforming with {vm.TransformName}. Press the cancel shortcut to stop.");
+        else if (vm.State == OverlayState.Error)
+            AutomationProperties.SetName(this, string.IsNullOrEmpty(vm.ErrorDetail) ? vm.ErrorMessage : $"{vm.ErrorMessage}. {vm.ErrorDetail}");
 
         // geometry
         ContentGrid.Margin = pad;

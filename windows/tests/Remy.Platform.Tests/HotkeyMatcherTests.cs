@@ -346,4 +346,25 @@ public class HotkeyMatcherTests
         r.M.ReconcileModifiers(HotkeyModifiers.None);     // OS says released but we never saw the key-up
         Assert.Equal(1, r.Count(HotkeyOutputKind.Released));
     }
+
+    [Fact]
+    public void TransformShortcutFiresOnceOnPress()
+    {
+        var r = new Rig();
+        var b = Keyed(KeyA, HotkeyModifiers.Ctrl, HotkeyMode.HoldToRecord);   // hold mode is matched as press-once
+        r.M.Configure([], null, true);
+        r.M.ConfigureTransforms([b]);
+        r.Down(LCtrl);
+        Assert.True(r.Down(KeyA).Swallow);
+        Assert.Single(r.Out);
+        Assert.Equal(HotkeyOutputKind.TransformPressed, r.Out[0].Kind);
+        Assert.Equal(b.Id, r.Out[0].Binding!.Id);
+        Assert.True(r.Down(KeyA).Swallow);        // auto-repeat: swallowed, no fire
+        Assert.Single(r.Out);
+        Assert.True(r.Up(KeyA).Swallow);          // key-up swallowed, no release event
+        Assert.Single(r.Out);
+        Assert.Equal(0, r.Count(HotkeyOutputKind.Pressed) + r.Count(HotkeyOutputKind.Released));
+        r.Down(KeyA);                              // a fresh press fires again
+        Assert.Equal(2, r.Count(HotkeyOutputKind.TransformPressed));
+    }
 }

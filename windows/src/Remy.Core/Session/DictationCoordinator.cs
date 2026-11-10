@@ -6,6 +6,7 @@ using Remy.Core.Hotkeys;
 using Remy.Core.Models;
 using Remy.Core.Recovery;
 using Remy.Core.Settings;
+using Remy.Core.Transforms;
 
 namespace Remy.Core.Session;
 
@@ -34,6 +35,10 @@ public sealed class DictationDependencies
     public Func<bool>? MicrophoneDenied { get; init; }
     /// <summary>True while a Transform runs (v0.2-features.md §8.7); dictation and recovery refuse to start.</summary>
     public Func<bool>? IsTransformBusy { get; init; }
+    /// <summary>Runs Transforms (v0.2-features.md §8.7). Null disables the feature (tests, UI-only modes).</summary>
+    public TransformRunner? Transforms { get; init; }
+    /// <summary>Overlay sink used to restore the Transforming state after an aborted hold-to-cancel gesture.</summary>
+    public ITransformPresenter? TransformPresenter { get; init; }
     public DictationOptions Options { get; init; } = new();
 }
 
@@ -49,6 +54,7 @@ public sealed partial class DictationCoordinator : IDictationController, IDispos
     readonly DictationOptions _opt;
     readonly IDictationPresenter _ui;
     readonly CleanupRuntimeFactory _runtimeFactory;
+    readonly TransformStore _transformStore;
     readonly object _gate = new();
     readonly CancellationTokenSource _life = new();
 
@@ -72,11 +78,14 @@ public sealed partial class DictationCoordinator : IDictationController, IDispos
         _opt = d.Options;
         _ui = d.Presenter;
         _runtimeFactory = new CleanupRuntimeFactory(d.Settings, d.Credentials, d.Profiles);
+        _transformStore = new TransformStore(d.Settings);
 
         d.Hotkeys.BindingPressed += OnBindingPressed;
         d.Hotkeys.BindingReleased += OnBindingReleased;
         d.Hotkeys.CancelProgressChanged += OnCancelProgress;
         d.Hotkeys.CancelRequested += OnCancelRequested;
+        if (d.Hotkeys is ITransformHotkeys th) th.TransformPressed += OnTransformPressed;
+        if (d.Transforms != null) d.Transforms.PhaseChanged += OnTransformPhaseChanged;
         if (d.Power != null) { d.Power.Suspending += OnSuspending; d.Power.Resumed += OnResumed; }
     }
 
@@ -87,7 +96,7 @@ public sealed partial class DictationCoordinator : IDictationController, IDispos
     void RaiseStateChanged()
     {
         try { StateChanged?.Invoke(this, EventArgs.Empty); } catch (Exception ex) { RemyLog.Error("Session", "state listener failed", ex); }
-        try { _d.Hotkeys.CancellationEnabled = CanCancel; } catch { }
+        try { _d.Hotkeys.CancellationEnabled = CanCancel || TransformCanCancel; } catch { }
     }
 
     public DictationStatus Status
@@ -145,6 +154,7 @@ public sealed partial class DictationCoordinator : IDictationController, IDispos
     public void Initialize()
     {
         ConfigureHotkeys();
+        ConfigureTransformHotkeys();
         try { _d.Hotkeys.Start(); } catch (Exception ex) { RemyLog.Error("Session", "hotkey start failed", ex); }
         if (_settings.PrewarmEnginesAtStartup)
         {
@@ -177,6 +187,9 @@ public sealed partial class DictationCoordinator : IDictationController, IDispos
             case nameof(RemySettings.HoldToCancel):
                 if (!_shutdown) ConfigureHotkeys();
                 break;
+            case nameof(RemySettings.TextTransforms):
+                if (!_shutdown) ConfigureTransformHotkeys();
+                break;
             case nameof(RemySettings.TranscriptPostProcessingMode):
                 if (_settings.TranscriptPostProcessingMode == TranscriptPostProcessingMode.S1Mini && _d.Models.IsS1MiniInstalled)
                     _ = Guard(PrepareS1MiniAsync, "s1-load");
@@ -197,7 +210,7 @@ public sealed partial class DictationCoordinator : IDictationController, IDispos
     /// <summary>True while a dictation session or a recovery action runs (Transforms refuse to start).</summary>
     public bool IsDictationBusy => _session != null || _recoveryBusy;
 
-    bool TransformBusy => _d.IsTransformBusy?.Invoke() == true;
+    bool TransformBusy => _d.IsTransformBusy?.Invoke() ?? _d.Transforms?.IsBusy ?? false;
 
     bool Current(DictationSession s) => ReferenceEquals(_session, s) && !s.Cts.IsCancellationRequested && !_shutdown;
 
@@ -236,6 +249,8 @@ public sealed partial class DictationCoordinator : IDictationController, IDispos
     void OnCancelRequested(object? sender, EventArgs e)
     {
         _cancelProgress = null;
+        // A running transform owns the cancel gesture; otherwise it cancels dictation (v0.2-features.md §8.7).
+        if (TransformCanCancel) { _d.Transforms!.Cancel(); return; }
         _ = Guard(() => CancelAsync(), "cancel");
     }
 
@@ -244,7 +259,10 @@ public sealed partial class DictationCoordinator : IDictationController, IDispos
         var s = _session;
         switch (s?.Stage)
         {
-            case null: _ui.Hide(TimeSpan.Zero); break;
+            case null:
+                if (_d.Transforms is { Phase: TransformPhase.Processing or TransformPhase.Delivering } t && t.ActiveName is { } name && _d.TransformPresenter is { } tp) tp.ResumeProcessing(name);
+                else _ui.Hide(TimeSpan.Zero);
+                break;
             case SessionStage.Recording: _ui.ShowListening(_d.Audio.CurrentLevel, s.Transcript); break;
             case SessionStage.Cleaning: _ui.ShowCleaning(); break;
             case SessionStage.Preparing: break;
@@ -257,6 +275,7 @@ public sealed partial class DictationCoordinator : IDictationController, IDispos
         _sleeping = true;
         _holdKeyDown = false;
         try { _d.Hotkeys.Stop(); } catch { }
+        try { _d.Transforms?.Cancel(); } catch { }
         _ = Guard(() => CancelAsync(CancellationReason.InputUnavailable), "sleep-cancel");
     }
 
@@ -429,6 +448,7 @@ public sealed partial class DictationCoordinator : IDictationController, IDispos
         if (_shutdown) return;
         _shutdown = true;
         try { _d.Hotkeys.Stop(); } catch { }
+        try { _d.Transforms?.Cancel(); } catch { }
         var s = _session;
         if (s != null)
         {
@@ -456,6 +476,8 @@ public sealed partial class DictationCoordinator : IDictationController, IDispos
         _d.Hotkeys.BindingReleased -= OnBindingReleased;
         _d.Hotkeys.CancelProgressChanged -= OnCancelProgress;
         _d.Hotkeys.CancelRequested -= OnCancelRequested;
+        if (_d.Hotkeys is ITransformHotkeys th) th.TransformPressed -= OnTransformPressed;
+        if (_d.Transforms != null) _d.Transforms.PhaseChanged -= OnTransformPhaseChanged;
         if (_d.Power != null) { _d.Power.Suspending -= OnSuspending; _d.Power.Resumed -= OnResumed; }
         _life.Cancel();
     }

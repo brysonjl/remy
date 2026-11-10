@@ -2,7 +2,7 @@ using Remy.Core.Hotkeys;
 
 namespace Remy.Platform.Hotkeys;
 
-public enum HotkeyOutputKind { Pressed, Released, CancelProgress, CancelRequested }
+public enum HotkeyOutputKind { Pressed, Released, CancelProgress, CancelRequested, TransformPressed }
 
 public readonly record struct HotkeyOutput(HotkeyOutputKind Kind, HotkeyBinding? Binding = null, double? Progress = null);
 
@@ -35,6 +35,7 @@ public sealed class HotkeyMatcher
     readonly Func<long> _nowMs;
 
     IReadOnlyList<HotkeyBinding> _bindings = [];
+    IReadOnlyList<HotkeyBinding> _transforms = [];   // press-once bindings keyed to transform ids
     HotkeyBinding? _cancel;
     bool _holdToCancel = true;
     bool _cancelEnabled;
@@ -76,6 +77,16 @@ public sealed class HotkeyMatcher
             _cancelOwnsUp = false;
             ResetGestureLocked();
             _generation++;
+        }
+    }
+
+    /// <summary>Replace the transform bindings. They fire once on press whatever their Mode, never on release, and never drive dictation.</summary>
+    public void ConfigureTransforms(IReadOnlyList<HotkeyBinding> bindings)
+    {
+        lock (_gate)
+        {
+            foreach (var old in _transforms) _active.Remove(old.Id);
+            _transforms = bindings.Where(HasBinding).ToArray();
         }
     }
 
@@ -272,6 +283,20 @@ public sealed class HotkeyMatcher
             }
         }
 
+        foreach (var b in _transforms)
+        {
+            if (b.VirtualKey != null || b.Modifiers == HotkeyModifiers.None) continue;
+            bool active = GroupsMatch(_held, b.Modifiers, exact: true);
+            bool was = _active.Contains(b.Id);
+            if (active && !was)
+            {
+                _active.Add(b.Id);
+                if ((b.Modifiers & WinBits) != 0) _winSuppress = true;
+                _sink(new HotkeyOutput(HotkeyOutputKind.TransformPressed, b));
+            }
+            else if (!active && was) _active.Remove(b.Id);
+        }
+
         if (_cancel != null && _cancelEnabled)
         {
             bool matches = GroupsMatch(CancelEffectiveModifiers(), _cancel.Modifiers, exact: true);
@@ -294,6 +319,18 @@ public sealed class HotkeyMatcher
             {
                 _active.Add(b.Id);
                 _sink(new HotkeyOutput(HotkeyOutputKind.Pressed, b));
+                return true;
+            }
+        }
+
+        foreach (var b in _transforms)
+        {
+            if (b.VirtualKey != vk) continue;
+            if (_active.Contains(b.Id)) return true;   // auto-repeat: swallow, never retrigger
+            if (!repeat && GroupsMatch(_held, b.Modifiers, exact: false))
+            {
+                _active.Add(b.Id);
+                _sink(new HotkeyOutput(HotkeyOutputKind.TransformPressed, b));
                 return true;
             }
         }
@@ -324,6 +361,8 @@ public sealed class HotkeyMatcher
                 swallow = true;   // allowed even if modifiers were released first
             }
         }
+        foreach (var b in _transforms)
+            if (b.VirtualKey == vk && _active.Remove(b.Id)) swallow = true;   // press-once: no release event
         if (_cancel is { VirtualKey: { } cvk } && cvk == vk && (_cancelPressed || _cancelOwnsUp))
         {
             swallow |= _cancelOwnsUp;
