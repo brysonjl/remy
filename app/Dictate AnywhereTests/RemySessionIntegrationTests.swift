@@ -16,6 +16,8 @@ final class RemySessionIntegrationTests: XCTestCase {
         let language = settings.selectedLanguage
         let mode = settings.transcriptPostProcessingMode
         let vocabulary = settings.customVocabulary
+        let misspellings = settings.vocabularyMisspellings
+        let snippets = settings.dictationSnippets
         let fillerEnabled = settings.isFillerWordRemovalEnabled
         let fillers = settings.fillerWordsToRemove
         let history = settings.transcriptHistory
@@ -34,6 +36,8 @@ final class RemySessionIntegrationTests: XCTestCase {
             settings.selectedLanguage = language
             settings.transcriptPostProcessingMode = mode
             settings.customVocabulary = vocabulary
+            settings.vocabularyMisspellings = misspellings
+            settings.dictationSnippets = snippets
             settings.isFillerWordRemovalEnabled = fillerEnabled
             settings.fillerWordsToRemove = fillers
             settings.transcriptHistory = history
@@ -52,6 +56,8 @@ final class RemySessionIntegrationTests: XCTestCase {
         settings.selectedLanguage = .english
         settings.transcriptPostProcessingMode = .none
         settings.customVocabulary = []
+        settings.vocabularyMisspellings = [:]
+        settings.dictationSnippets = []
         settings.isFillerWordRemovalEnabled = false
         settings.fillerWordsToRemove = []
         settings.transcriptHistory = []
@@ -542,6 +548,51 @@ final class RemySessionIntegrationTests: XCTestCase {
         await app.startDictation()
         XCTAssertEqual(engine.startCount, 2)
         await app.cancelDictation()
+    }
+
+    func testCorrectionsReachCleanupButSnippetExpansionsStayLocal() async {
+        let settings = Settings.shared
+        settings.transcriptPostProcessingMode = .openAICompatible
+        settings.setVocabularyCorrection(term: "Wispr", misspellings: ["whisper"])
+        settings.dictationSnippets = [DictationSnippet(trigger: "my address", expansion: "1 Private Lane")]
+        let engine = SessionIntegrationEngine()
+        engine.finalText = "send whisper notes to my address"
+        var cleanupInputs: [String] = []
+        var delivered: [String] = []
+        let app = app(engine: engine, cleanup: { text, _ in
+            cleanupInputs.append(text)
+            return "Send Wispr notes to My Address."
+        }, delivery: { delivered.append($0); return .copiedOnly })
+        await app.startDictation()
+        await app.stopDictation()
+        XCTAssertEqual(cleanupInputs, ["send Wispr notes to my address"])
+        XCTAssertEqual(delivered, ["Send Wispr notes to 1 Private Lane."])
+        XCTAssertEqual(settings.transcriptHistory.map(\.text), delivered)
+        XCTAssertEqual(settings.transcriptHistory.map(\.rawText), [engine.finalText], "Raw text is never rewritten")
+    }
+
+    func testUseRawStillAppliesLocalCorrectionsAndSnippets() async {
+        let settings = Settings.shared
+        settings.transcriptPostProcessingMode = .openAICompatible
+        settings.setVocabularyCorrection(term: "Wispr", misspellings: ["whisper"])
+        settings.dictationSnippets = [DictationSnippet(trigger: "sig", expansion: "Best,\nAlex")]
+        let engine = SessionIntegrationEngine()
+        engine.finalText = "thanks whisper team sig"
+        let gate = IntegrationResultGate<String>(started: expectation(description: "provider suspended"))
+        defer { gate.resolve("Late unwanted output") }
+        var delivered: [String] = []
+        let app = app(engine: engine, cleanup: { _, _ in await gate.wait() },
+            delivery: { delivered.append($0); return .copiedOnly })
+        await app.startDictation()
+        let finished = expectation(description: "raw selected")
+        let stop = Task { await app.stopDictation(); finished.fulfill() }
+        await fulfillment(of: [gate.started], timeout: 2)
+        app.useRawCleanupNow()
+        await fulfillment(of: [finished], timeout: 2)
+        XCTAssertEqual(delivered, ["thanks Wispr team Best,\nAlex"])
+        gate.resolve("Late unwanted output")
+        await stop.value
+        await waitUntil { !app.isCleanupDraining }
     }
 
     func testCleanupTimeoutSelectsRawWithoutWaitingForProvider() async {

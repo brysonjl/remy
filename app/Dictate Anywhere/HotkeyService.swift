@@ -15,6 +15,8 @@ final class HotkeyService {
 
     var onKeyDown: ((HotkeyBinding) -> Void)?
     var onKeyUp: ((HotkeyBinding) -> Void)?
+    /// Fires on press of a transform shortcut with the transform's id.
+    var onTransform: ((UUID) -> Void)?
     var onCancel: (() -> Void)?
     var onCancelProgress: ((Double?) -> Void)?
     var isCancellationEnabled = false {
@@ -52,6 +54,9 @@ final class HotkeyService {
     /// Cached bindings snapshot — read from the CGEvent callback thread.
     /// Only updated at startMonitoring() / restartMonitoring() to avoid data races.
     fileprivate var cachedBindings: [HotkeyBinding] = []
+    /// Transform shortcuts, keyed by transform id; same snapshot rules.
+    fileprivate var cachedTransformBindings: [HotkeyBinding] = []
+    private var transformBindingIDs: Set<UUID> = []
 
     private let logger = Logger(
         subsystem: RemyDiagnostics.subsystem,
@@ -92,6 +97,7 @@ final class HotkeyService {
         runLoopSource = nil
         eventTap = nil
         cachedBindings = []
+        cachedTransformBindings = []
         isMonitoring = false
         activeBindingIDs.removeAll()
     }
@@ -107,12 +113,14 @@ final class HotkeyService {
         guard !isSuspendedForSleep else { return }
         let shouldResume = isMonitoring || retryWorkItem != nil
         let bindings = cachedBindings
+        let transformBindings = cachedTransformBindings
         isSuspendedForSleep = true
         isCancellationEnabled = false
         stopMonitoring()
         // Preserve the matching snapshot for a service configured without a tap
         // (deterministic tests); real monitoring refreshes it from settings on wake.
         cachedBindings = bindings
+        cachedTransformBindings = transformBindings
         resumeMonitoringAfterSleep = shouldResume
     }
 
@@ -139,7 +147,9 @@ final class HotkeyService {
         DispatchQueue.main.async { [weak self] in
             guard let self, !self.isSuspendedForSleep,
                   self.gestureGeneration == generation else { return }
-            if isDown { self.onKeyDown?(binding) }
+            if self.transformBindingIDs.contains(binding.id) {
+                if isDown { self.onTransform?(binding.id) }
+            } else if isDown { self.onKeyDown?(binding) }
             else { self.onKeyUp?(binding) }
         }
     }
@@ -150,8 +160,10 @@ final class HotkeyService {
         guard !isSuspendedForSleep, !isMonitoring else { return }
 
         let settings = Settings.shared
-        guard settings.hasHotkey || settings.cancelShortcut.hasBinding else {
+        let transformBindings = TransformStore.shared.activeShortcutBindings
+        guard settings.hasHotkey || settings.cancelShortcut.hasBinding || !transformBindings.isEmpty else {
             cachedBindings = []
+            cachedTransformBindings = []
             cancelRetry(resetAttempts: true)
             return
         }
@@ -164,7 +176,7 @@ final class HotkeyService {
 
         // Snapshot + normalize bindings so the callback thread never touches Settings
         configureBindings(recording: settings.hotkeyBindings, cancellation: settings.cancelShortcut,
-                          requiresHold: settings.holdToCancel)
+                          requiresHold: settings.holdToCancel, transforms: transformBindings)
 
         let eventMask: CGEventMask = (1 << CGEventType.keyDown.rawValue) | (1 << CGEventType.keyUp.rawValue) | (1 << CGEventType.flagsChanged.rawValue)
 
@@ -222,11 +234,19 @@ final class HotkeyService {
 
     // MARK: - Event Handling
 
-    func configureBindings(recording: [HotkeyBinding], cancellation: HotkeyBinding, requiresHold: Bool) {
+    func configureBindings(recording: [HotkeyBinding], cancellation: HotkeyBinding, requiresHold: Bool,
+                           transforms: [HotkeyBinding] = []) {
         gestureGeneration = UUID()
         activeBindingIDs.removeAll()
         resetCancellationGesture()
         cachedBindings = recording.map(canonicalBindingForMatching)
+        // Transforms fire once on press, like a toggle, never on release.
+        cachedTransformBindings = transforms.map {
+            var binding = canonicalBindingForMatching($0)
+            binding.mode = .handsFreeToggle
+            return binding
+        }
+        transformBindingIDs = Set(cachedTransformBindings.map(\.id))
         cancelBinding = canonicalBindingForMatching(cancellation)
         requiresCancelHold = requiresHold
     }
@@ -242,7 +262,7 @@ final class HotkeyService {
         let consumedByCancellation = handleCancellationEvent(type: type, event: event)
         if consumedByCancellation { return true }
 
-        let bindings = cachedBindings
+        let bindings = cachedBindings + cachedTransformBindings
         var shouldConsumeEvent = false
         for binding in bindings where binding.hasBinding {
             if binding.keyCode == nil {

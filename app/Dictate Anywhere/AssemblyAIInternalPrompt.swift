@@ -120,10 +120,10 @@ enum AssemblyAIInternalPrompt: String, CaseIterable, Identifiable, Sendable {
 
 extension DictationPostProcessingContext {
     func assemblyAIInstructions(promptOverrides: [String: String]) -> String {
-        let stylePrompt = AssemblyAIInternalPrompt.stylePrompt(
-            for: style,
-            overrides: promptOverrides
-        ).trimmingCharacters(in: .whitespacesAndNewlines)
+        // Built-ins keep AssemblyAI's own editable prompts; custom styles use their text.
+        let stylePrompt = (style.builtInStyle.map {
+            AssemblyAIInternalPrompt.stylePrompt(for: $0, overrides: promptOverrides)
+        } ?? style.instruction).trimmingCharacters(in: .whitespacesAndNewlines)
 
         var lines = [
             "DESTINATION RULES:",

@@ -1021,13 +1021,17 @@ final class Settings {
         static let aiPostProcessingEnabled = "aiPostProcessingEnabled"
         static let aiPostProcessingPrompt = "aiPostProcessingPrompt"
         static let customVocabulary = "customVocabulary"
+        static let vocabularyMisspellings = "vocabularyMisspellings"
+        static let dictationSnippets = "dictationSnippets"
         static let dictationContextAwarenessEnabled = "dictationContextAwarenessEnabled"
         static let shareDictationContextWithRemoteProviders = "shareDictationContextWithRemoteProviders"
+        static let spellNamesFromActiveWindowEnabled = "spellNamesFromActiveWindowEnabled"
         static let emailDictationWritingStyle = "emailDictationWritingStyle"
         static let workMessagingDictationWritingStyle = "workMessagingDictationWritingStyle"
         static let personalMessagingDictationWritingStyle = "personalMessagingDictationWritingStyle"
         static let otherDictationWritingStyle = "otherDictationWritingStyle"
         static let extendedDictationWritingStyles = "extendedDictationWritingStyles"
+        static let dictationWritingStyleLibrary = "dictationWritingStyleLibrary"
         static let dictationAppRules = "dictationAppRules"
         static let transcriptHistory = "transcriptHistory"
         static let transcriptPostProcessingMode = "transcriptPostProcessingMode"
@@ -1318,7 +1322,77 @@ final class Settings {
     var customVocabulary: [String] {
         didSet {
             UserDefaults.standard.set(customVocabulary, forKey: Keys.customVocabulary)
+            let terms = Set(customVocabulary)
+            if vocabularyMisspellings.keys.contains(where: { !terms.contains($0) }) {
+                vocabularyMisspellings = vocabularyMisspellings.filter { terms.contains($0.key) }
+            }
         }
+    }
+
+    /// Heard-as spellings keyed by their exact `customVocabulary` term. Kept
+    /// apart from the plain term list so existing vocabulary loads unchanged.
+    var vocabularyMisspellings: [String: [String]] {
+        didSet {
+            guard let data = try? JSONEncoder().encode(vocabularyMisspellings) else { return }
+            UserDefaults.standard.set(data, forKey: Keys.vocabularyMisspellings)
+        }
+    }
+
+    var dictationSnippets: [DictationSnippet] {
+        didSet {
+            guard let data = try? JSONEncoder().encode(dictationSnippets) else { return }
+            UserDefaults.standard.set(data, forKey: Keys.dictationSnippets)
+        }
+    }
+
+    /// Vocabulary terms that carry at least one heard-as spelling, in list order.
+    var vocabularyCorrections: [VocabularyCorrection] {
+        customVocabulary.compactMap { term in
+            guard let misspellings = vocabularyMisspellings[term], !misspellings.isEmpty else { return nil }
+            return VocabularyCorrection(term: term, misspellings: misspellings)
+        }
+    }
+
+    /// Adds the term to the vocabulary if needed and replaces its heard-as
+    /// spellings. Returns false when the term is invalid.
+    @discardableResult
+    func setVocabularyCorrection(term: String, misspellings: [String]) -> Bool {
+        let limit = DictationTextRules.maximumPhraseLength
+        let term = term.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !term.isEmpty, term.count <= limit else { return false }
+        var unique: [String] = []
+        for spelling in misspellings.map({ $0.trimmingCharacters(in: .whitespacesAndNewlines) })
+        where !spelling.isEmpty && spelling.count <= limit && spelling != term
+            && !unique.contains(where: { $0.caseInsensitiveCompare(spelling) == .orderedSame }) {
+            unique.append(spelling)
+        }
+        let stored = customVocabulary.first { $0.caseInsensitiveCompare(term) == .orderedSame } ?? term
+        if !customVocabulary.contains(stored) { customVocabulary.append(stored) }
+        vocabularyMisspellings[stored] = unique.isEmpty ? nil : unique
+        return true
+    }
+
+    /// Merges a parsed CSV into the vocabulary and returns imported/skipped counts.
+    func importVocabulary(_ parsed: VocabularyCSVImport.Parsed) -> (imported: Int, skipped: Int) {
+        let merged = VocabularyCSVImport.merge(parsed, terms: customVocabulary, misspellings: vocabularyMisspellings)
+        customVocabulary = merged.terms
+        vocabularyMisspellings = merged.misspellings
+        return (merged.imported, merged.skipped)
+    }
+
+    static func loadVocabularyMisspellings(from defaults: UserDefaults) -> [String: [String]] {
+        guard let data = defaults.data(forKey: Keys.vocabularyMisspellings),
+              let stored = try? JSONDecoder().decode([String: [String]].self, from: data) else { return [:] }
+        return stored.compactMapValues { spellings in
+            let valid = spellings.filter { !$0.isEmpty && $0.count <= DictationTextRules.maximumPhraseLength }
+            return valid.isEmpty ? nil : valid
+        }
+    }
+
+    static func loadDictationSnippets(from defaults: UserDefaults) -> [DictationSnippet] {
+        guard let data = defaults.data(forKey: Keys.dictationSnippets),
+              let stored = try? JSONDecoder().decode([DictationSnippet].self, from: data) else { return [] }
+        return stored.compactMap { $0.validated() }
     }
 
     var dictationContextAwarenessEnabled: Bool {
@@ -1339,40 +1413,59 @@ final class Settings {
         }
     }
 
-    var emailDictationWritingStyle: DictationWritingStyle {
+    /// Off by default: read names from the active window's accessibility text.
+    var spellNamesFromActiveWindowEnabled: Bool {
         didSet {
-            UserDefaults.standard.set(emailDictationWritingStyle.rawValue, forKey: Keys.emailDictationWritingStyle)
+            UserDefaults.standard.set(
+                spellNamesFromActiveWindowEnabled,
+                forKey: Keys.spellNamesFromActiveWindowEnabled
+            )
         }
     }
 
-    var workMessagingDictationWritingStyle: DictationWritingStyle {
+    // Selections persist as `DictationWritingStyleSelection.id`; built-in IDs
+    // are the raw values earlier releases stored.
+    var emailDictationWritingStyle: DictationWritingStyleSelection {
+        didSet {
+            UserDefaults.standard.set(emailDictationWritingStyle.id, forKey: Keys.emailDictationWritingStyle)
+        }
+    }
+
+    var workMessagingDictationWritingStyle: DictationWritingStyleSelection {
         didSet {
             UserDefaults.standard.set(
-                workMessagingDictationWritingStyle.rawValue,
+                workMessagingDictationWritingStyle.id,
                 forKey: Keys.workMessagingDictationWritingStyle
             )
         }
     }
 
-    var personalMessagingDictationWritingStyle: DictationWritingStyle {
+    var personalMessagingDictationWritingStyle: DictationWritingStyleSelection {
         didSet {
             UserDefaults.standard.set(
-                personalMessagingDictationWritingStyle.rawValue,
+                personalMessagingDictationWritingStyle.id,
                 forKey: Keys.personalMessagingDictationWritingStyle
             )
         }
     }
 
-    var otherDictationWritingStyle: DictationWritingStyle {
+    var otherDictationWritingStyle: DictationWritingStyleSelection {
         didSet {
-            UserDefaults.standard.set(otherDictationWritingStyle.rawValue, forKey: Keys.otherDictationWritingStyle)
+            UserDefaults.standard.set(otherDictationWritingStyle.id, forKey: Keys.otherDictationWritingStyle)
         }
     }
 
-    var extendedDictationWritingStyles: [String: DictationWritingStyle] {
+    var extendedDictationWritingStyles: [String: DictationWritingStyleSelection] {
         didSet {
-            guard let data = try? JSONEncoder().encode(extendedDictationWritingStyles) else { return }
+            guard let data = try? JSONEncoder().encode(extendedDictationWritingStyles.mapValues(\.id)) else { return }
             UserDefaults.standard.set(data, forKey: Keys.extendedDictationWritingStyles)
+        }
+    }
+
+    var dictationWritingStyleLibrary: DictationWritingStyleLibrary {
+        didSet {
+            guard let data = try? JSONEncoder().encode(dictationWritingStyleLibrary) else { return }
+            UserDefaults.standard.set(data, forKey: Keys.dictationWritingStyleLibrary)
         }
     }
 
@@ -1383,29 +1476,60 @@ final class Settings {
         }
     }
 
-    func dictationWritingStyle(for category: DictationContextCategory) -> DictationWritingStyle {
-        let style: DictationWritingStyle
+    /// The saved choice, with a deleted custom style reported as the category default.
+    func dictationWritingStyleSelection(for category: DictationContextCategory) -> DictationWritingStyleSelection {
+        let selection: DictationWritingStyleSelection
         switch category {
-        case .email: style = emailDictationWritingStyle
-        case .workMessaging: style = workMessagingDictationWritingStyle
-        case .personalMessaging: style = personalMessagingDictationWritingStyle
-        case .other: style = otherDictationWritingStyle
-        case .browser: style = extendedDictationWritingStyles[category.rawValue] ?? .neutral
-        case .terminal, .terminalAgent, .codingAgent, .aiChat:
-            style = extendedDictationWritingStyles[category.rawValue] ?? .original
+        case .email: selection = emailDictationWritingStyle
+        case .workMessaging: selection = workMessagingDictationWritingStyle
+        case .personalMessaging: selection = personalMessagingDictationWritingStyle
+        case .other: selection = otherDictationWritingStyle
+        case .terminal, .terminalAgent, .browser, .codingAgent, .aiChat:
+            selection = extendedDictationWritingStyles[category.rawValue] ?? .builtIn(.defaultStyle(for: category))
         }
-        return style.sanitized(for: category)
+        return dictationWritingStyleLibrary.sanitized(selection, for: category)
+    }
+
+    func setDictationWritingStyleSelection(
+        _ selection: DictationWritingStyleSelection,
+        for category: DictationContextCategory
+    ) {
+        let selection = dictationWritingStyleLibrary.sanitized(selection, for: category)
+        switch category {
+        case .email: emailDictationWritingStyle = selection
+        case .workMessaging: workMessagingDictationWritingStyle = selection
+        case .personalMessaging: personalMessagingDictationWritingStyle = selection
+        case .other: otherDictationWritingStyle = selection
+        case .terminal, .terminalAgent, .browser, .codingAgent, .aiChat:
+            extendedDictationWritingStyles[category.rawValue] = selection
+        }
+    }
+
+    /// Name and instruction text to freeze into a dictation's configuration.
+    func resolvedDictationWritingStyle(for category: DictationContextCategory) -> DictationResolvedWritingStyle {
+        dictationWritingStyleLibrary.resolved(dictationWritingStyleSelection(for: category), for: category)
+    }
+
+    /// Built-in style only, for the legacy AssemblyAI route. A custom
+    /// selection reports Original tone there.
+    func dictationWritingStyle(for category: DictationContextCategory) -> DictationWritingStyle {
+        dictationWritingStyleSelection(for: category).builtInStyle ?? .original
     }
 
     func setDictationWritingStyle(_ style: DictationWritingStyle, for category: DictationContextCategory) {
-        let style = style.sanitized(for: category)
-        switch category {
-        case .email: emailDictationWritingStyle = style
-        case .workMessaging: workMessagingDictationWritingStyle = style
-        case .personalMessaging: personalMessagingDictationWritingStyle = style
-        case .other: otherDictationWritingStyle = style
-        case .terminal, .terminalAgent, .browser, .codingAgent, .aiChat:
-            extendedDictationWritingStyles[category.rawValue] = style
+        setDictationWritingStyleSelection(.builtIn(style), for: category)
+    }
+
+    func categoriesUsingCustomWritingStyle(id: UUID) -> [DictationContextCategory] {
+        DictationContextCategory.allCases.filter { dictationWritingStyleSelection(for: $0) == .custom(id) }
+    }
+
+    /// Categories that used the deleted style return to their default style.
+    func deleteCustomWritingStyle(id: UUID) {
+        let affected = categoriesUsingCustomWritingStyle(id: id)
+        dictationWritingStyleLibrary.removeCustomStyle(id: id)
+        for category in affected {
+            setDictationWritingStyleSelection(.builtIn(.defaultStyle(for: category)), for: category)
         }
     }
 
@@ -1735,6 +1859,22 @@ final class Settings {
         return enabled
     }
 
+    /// Accepts the raw values earlier releases stored. A missing or unknown ID
+    /// uses the category default.
+    nonisolated static func storedWritingStyleSelection(
+        _ id: String?, for category: DictationContextCategory
+    ) -> DictationWritingStyleSelection {
+        id.flatMap(DictationWritingStyleSelection.init(id:)) ?? .builtIn(.defaultStyle(for: category))
+    }
+
+    /// Decodes per entry, so one unknown ID cannot discard the other choices.
+    nonisolated static func storedExtendedWritingStyleSelections(
+        _ data: Data?
+    ) -> [String: DictationWritingStyleSelection] {
+        let ids = data.flatMap { try? JSONDecoder().decode([String: String].self, from: $0) } ?? [:]
+        return ids.compactMapValues(DictationWritingStyleSelection.init(id:))
+    }
+
     private init() {
         let defaults = UserDefaults.standard
 
@@ -1854,6 +1994,8 @@ final class Settings {
 
         // Custom Vocabulary
         customVocabulary = defaults.object(forKey: Keys.customVocabulary) as? [String] ?? []
+        vocabularyMisspellings = Self.loadVocabularyMisspellings(from: defaults)
+        dictationSnippets = Self.loadDictationSnippets(from: defaults)
 
         // Application awareness is available by default; preserve an explicit
         // saved choice. Remote surrounding-text sharing remains a separate opt-in.
@@ -1863,20 +2005,25 @@ final class Settings {
         shareDictationContextWithRemoteProviders = defaults.object(
             forKey: Keys.shareDictationContextWithRemoteProviders
         ) as? Bool ?? false
-        emailDictationWritingStyle = DictationWritingStyle(
-            rawValue: defaults.string(forKey: Keys.emailDictationWritingStyle) ?? ""
-        ) ?? .formal
-        workMessagingDictationWritingStyle = DictationWritingStyle(
-            rawValue: defaults.string(forKey: Keys.workMessagingDictationWritingStyle) ?? ""
-        ) ?? .formal
-        personalMessagingDictationWritingStyle = DictationWritingStyle(
-            rawValue: defaults.string(forKey: Keys.personalMessagingDictationWritingStyle) ?? ""
-        ) ?? .casual
-        otherDictationWritingStyle = DictationWritingStyle(
-            rawValue: defaults.string(forKey: Keys.otherDictationWritingStyle) ?? ""
-        ) ?? .formal
-        extendedDictationWritingStyles = defaults.data(forKey: Keys.extendedDictationWritingStyles)
-            .flatMap { try? JSONDecoder().decode([String: DictationWritingStyle].self, from: $0) } ?? [:]
+        spellNamesFromActiveWindowEnabled = defaults.object(
+            forKey: Keys.spellNamesFromActiveWindowEnabled
+        ) as? Bool ?? false
+        emailDictationWritingStyle = Self.storedWritingStyleSelection(
+            defaults.string(forKey: Keys.emailDictationWritingStyle), for: .email
+        )
+        workMessagingDictationWritingStyle = Self.storedWritingStyleSelection(
+            defaults.string(forKey: Keys.workMessagingDictationWritingStyle), for: .workMessaging
+        )
+        personalMessagingDictationWritingStyle = Self.storedWritingStyleSelection(
+            defaults.string(forKey: Keys.personalMessagingDictationWritingStyle), for: .personalMessaging
+        )
+        otherDictationWritingStyle = Self.storedWritingStyleSelection(
+            defaults.string(forKey: Keys.otherDictationWritingStyle), for: .other
+        )
+        extendedDictationWritingStyles = Self.storedExtendedWritingStyleSelections(
+            defaults.data(forKey: Keys.extendedDictationWritingStyles)
+        )
+        dictationWritingStyleLibrary = .loaded(from: defaults.data(forKey: Keys.dictationWritingStyleLibrary))
         if let rulesData = defaults.data(forKey: Keys.dictationAppRules),
            let decodedRules = try? JSONDecoder().decode([DictationAppRule].self, from: rulesData) {
             dictationAppRules = decodedRules

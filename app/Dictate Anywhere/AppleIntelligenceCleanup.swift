@@ -53,7 +53,8 @@ actor AppleIntelligenceCleanupEngine {
 
     func discardPreparedSession() { prepared = nil; preparationID = nil }
 
-    func process(text: String, instructions: String, prefix: String) async throws -> String {
+    func process(text: String, instructions: String, prefix: String,
+                 suffix: String = "</transcript>") async throws -> String {
         let ready = prepared.flatMap { item in
             item.instructions == instructions && item.prefix == prefix ? item : nil
         }
@@ -67,7 +68,7 @@ actor AppleIntelligenceCleanupEngine {
         let fixedTokens = instructionTokens + 256
         let model = self.model
         let fits: (String) async throws -> Bool = { candidate in
-            let request = prefix + candidate + "</transcript>"
+            let request = prefix + candidate + suffix
             // Small dictations fit even using the conservative UTF-8 bound.
             // Avoid tokenizer round trips on this common, already safe path.
             let estimatedInput = TranscriptCleanupPlan.estimatedTokens(candidate)
@@ -102,7 +103,7 @@ actor AppleIntelligenceCleanupEngine {
                 : LanguageModelSession(model: model, instructions: instructions)
             let response = try await PerfTrace.measure("cleanup.appleIntelligenceSchema") {
                 try await session.respond(
-                    to: prefix + chunk.text + "</transcript>",
+                    to: prefix + chunk.text + suffix,
                     generating: AppleCleanupResult.self,
                     // Natural completion; an arbitrary output cap can
                     // silently truncate. Planning reserves input AND output.
@@ -171,7 +172,8 @@ enum AIPostProcessingService {
         defer { trace.end() }
         return try await AppleIntelligenceCleanupEngine.shared.process(
             text: text, instructions: instructions(prompt: prompt, vocabulary: vocabulary, context: context),
-            prefix: requestPrefix(vocabulary: vocabulary, context: context)
+            prefix: requestPrefix(vocabulary: vocabulary, context: context),
+            suffix: requestSuffix(vocabulary: vocabulary, context: context)
         )
     }
 
@@ -207,7 +209,14 @@ enum AIPostProcessingService {
 
     private static func requestPrefix(vocabulary: [String], context: DictationPostProcessingContext?) -> String {
         // The same prefix as the proven remote/guided production request.
-        let empty = remotePostProcessingRequestPrompt(text: "", vocabulary: vocabulary, context: context)
+        // Window names follow the transcript, so prewarm keeps its prefix.
+        let empty = remotePostProcessingRequestPrompt(text: "", vocabulary: vocabulary,
+            context: context?.withoutScreenNames)
         return String(empty.dropLast("</transcript>".count))
+    }
+
+    static func requestSuffix(vocabulary: [String], context: DictationPostProcessingContext?) -> String {
+        guard let section = context?.screenNamesSection(excluding: vocabulary) else { return "</transcript>" }
+        return "</transcript>\n" + section
     }
 }

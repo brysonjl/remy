@@ -343,3 +343,19 @@ enum OpenAICompatiblePostProcessingService {
         }
     }
 }
+
+extension OpenAICompatiblePostProcessingService {
+    /// Transforms: one freeform request with the caller's system/user messages.
+    /// No cleanup schema, chunking or automatic retry. Error bodies are dropped.
+    static func transformCompletion(system: String, user: String, baseURL: String, model: String,
+                                    apiKey: String, timeoutSeconds: Double = 60,
+                                    session: URLSession = .shared) async throws -> String {
+        let trimmedModel = model.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmedModel.isEmpty else { throw ServiceError.missingModel }
+        return try await RemoteCleanupProcessing.$inputPolicy.withValue(.singleRequestOnly(conservativeContextBudget: 8_192)) {
+            try await performChatCompletionRequest(baseURL: baseURL, model: trimmedModel,
+                apiKey: apiKey.trimmingCharacters(in: .whitespacesAndNewlines), instructions: system, prompt: user,
+                options: CleanupChatOptions(structuredOutput: false), session: session, timeoutSeconds: timeoutSeconds)
+        }
+    }
+}

@@ -13,6 +13,7 @@ enum SidebarPage: String, CaseIterable, Identifiable {
     case shortcuts
     case textOverlay
     case aiPostProcessing
+    case transforms
     case internalPrompts
     case history
     case about
@@ -26,6 +27,7 @@ enum SidebarPage: String, CaseIterable, Identifiable {
         case .shortcuts: return "Shortcuts"
         case .textOverlay: return "Text & Overlay"
         case .aiPostProcessing: return "Transcript Cleanup"
+        case .transforms: return "Transforms"
         case .internalPrompts: return "Internal Prompts"
         case .history: return "History"
         case .about: return "About"
@@ -39,6 +41,7 @@ enum SidebarPage: String, CaseIterable, Identifiable {
         case .shortcuts: return "command"
         case .textOverlay: return "textformat"
         case .aiPostProcessing: return "wand.and.stars"
+        case .transforms: return "sparkles"
         case .internalPrompts: return "text.bubble"
         case .history: return "clock.arrow.circlepath"
         case .about: return "info.circle"
@@ -179,6 +182,8 @@ struct MainWindow: View {
             TextOverlayView()
         case .aiPostProcessing:
             AIPostProcessingView()
+        case .transforms:
+            TransformsView()
         case .internalPrompts:
             // A restored/direct navigation value cannot expose disabled cloud
             // speech settings even if it bypasses the sidebar's filtering.

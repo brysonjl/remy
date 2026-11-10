@@ -547,3 +547,49 @@ enum OllamaPostProcessingService {
         return DetailsKey(endpoint: try endpointURL(baseURL: baseURL, endpoint: .show), model: canonicalModel)
     }
 }
+
+extension OllamaPostProcessingService {
+    /// Transforms: one freeform /api/generate request. The context window is
+    /// sized for the selection; a request that cannot fit is rejected rather
+    /// than letting the server silently truncate the selected text.
+    static func transformCompletion(system: String, user: String, baseURL: String, model: String,
+                                    reasoningEnabled: Bool, thinkingControl: Bool = true, apiKey: String = "",
+                                    timeoutSeconds: Double = 120, discovery: Bool = true,
+                                    session: URLSession = .shared) async throws -> String {
+        let trimmedModel = model.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmedModel.isEmpty else { throw ServiceError.missingModel }
+        let details = discovery ? try? await modelDetails(baseURL: baseURL, model: trimmedModel, session: session) : nil
+        let contextLength = try transformContextLength(system: system, user: user,
+            modelContextLength: details?.modelInfo?.contextLength)
+
+        var request = URLRequest(url: try endpointURL(baseURL: baseURL, endpoint: .generate))
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = timeoutSeconds
+        if !apiKey.isEmpty { request.setValue("Bearer " + apiKey, forHTTPHeaderField: "Authorization") }
+        var payload: [String: Any] = [
+            "model": trimmedModel, "system": system, "prompt": user,
+            "stream": false, "keep_alive": "10m", "options": ["num_ctx": contextLength]
+        ]
+        if thinkingControl, let think = details?.reasoningOffOverride(enabled: reasoningEnabled, model: trimmedModel) {
+            payload["think"] = think.jsonValue
+        }
+        request.httpBody = try JSONSerialization.data(withJSONObject: payload)
+        return try await RemoteCleanupProcessing.$inputPolicy.withValue(.singleRequestOnly(conservativeContextBudget: 8_192)) {
+            try await performGenerateRequest(request, session: session)
+        }
+    }
+
+    /// Roughly 3 UTF-8 bytes per token plus an output reserve, rounded to 1K,
+    /// at least 8K and at most the model's (or a 32K) window. Unknown models
+    /// are assumed to have 8K.
+    nonisolated static func transformContextLength(system: String, user: String,
+                                                   modelContextLength: Int?) throws -> Int {
+        let input = (system.utf8.count + user.utf8.count) / 3 + 64
+        let needed = input + max(512, user.utf8.count * 2 / 3)
+        let limit = min(modelContextLength ?? 8_192, 32_768)
+        let contextLength = min(limit, max(8_192, (needed + 1_023) / 1_024 * 1_024))
+        guard needed <= contextLength else { throw RemyCleanupFailure.inputTooLong }
+        return contextLength
+    }
+}

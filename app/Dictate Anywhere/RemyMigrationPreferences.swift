@@ -43,8 +43,10 @@ nonisolated enum RemyMigrationPreferences {
         result["hotkeyModifiers"] = .integer(maximum: UInt64.max)
         result["customVocabulary"] = .strings(maximumCount: 10_000, maximumElementBytes: 4_096, maximumBytes: 4 * 1_024 * 1_024)
         result["fillerWordsToRemove"] = .strings(maximumCount: 1_000, maximumElementBytes: 256, maximumBytes: 256 * 1_024)
-        for key in ["hotkeyBindings", "cancelShortcut", "s1MiniAppStyling", "extendedDictationWritingStyles"] { result[key] = .data(maximumBytes: 256 * 1_024) }
+        for key in ["hotkeyBindings", "cancelShortcut", "s1MiniAppStyling", "extendedDictationWritingStyles",
+                    "dictationWritingStyleLibrary"] { result[key] = .data(maximumBytes: 256 * 1_024) }
         for key in ["dictationAppRules", "inputSourceMappings"] { result[key] = .data(maximumBytes: 1_024 * 1_024) }
+        for key in ["vocabularyMisspellings", "dictationSnippets"] { result[key] = .data(maximumBytes: 4 * 1_024 * 1_024) }
         result["transcriptHistory"] = .data(maximumBytes: 64 * 1_024 * 1_024)
         return result
     }()

@@ -140,6 +140,36 @@ Default compatible endpoints use HTTPS. Loopback HTTP is allowed for local serve
 
 Versioned settings use atomic writes; allow import/export without secrets and validate imported endpoint/protocol/timeout values. Keep an immutable session copy. Default updates are manual; app binaries, runtime packages, model bundles and cleanup model digests are independently versioned. Do not pull upstream main or change model tags silently. Rollback must account for database schema compatibility; retain pre-upgrade backup and block unsupported downgrades.
 
+## Screen names
+
+"Spell names from the active window" (`ScreenNameCapture.swift`,
+`ScreenNameTerms.swift`) runs on the hotkey-down context worker after the
+destination is classified, gated by `ScreenNamePolicy` (setting + awareness + a
+consumer + allowed category). A breadth-first walk of the focused window uses one
+batched `AXUIElementCopyMultipleAttributeValues` per node behind the
+`ScreenNameNode` protocol, capped at 75 ms, 400 nodes and depth 40, with each
+read's timeout bounded by the remaining budget. Its result is applied only to the
+same live capture; stop never waits for it. Terms are held in `AppState` memory,
+passed to Apple Speech contextual strings and to `RemyCleanupRuntime.process` as
+`DictationPostProcessingContext.screenNames`, which follows the captured-text
+local/remote rule and is rendered after the transcript so Apple Intelligence's
+prewarmed instructions and prompt prefix are unchanged.
+
+## Transforms
+
+`TransformRunner` (`app/Dictate Anywhere/Transforms/`) owns one foreground
+selection rewrite: read the full selection (`TransformSelectionReader`, same
+secure/sensitive/app-rule exclusions as context capture) → one freeform request
+through the configured cleanup provider (`TransformProviderRoute`; system = core
+rules + saved prompt, user = selection; no cleanup schema, chunking or retry) →
+guarded delivery through `TextInserter` with a revocable
+`RemyDeliveryAuthorization`. Before pasting it rechecks the frontmost app and the
+live selection; a change, unproven target or terminal multiline result is
+copy-only. AppState only wires the hotkey callback, Esc and overlay events. A
+transform never starts while dictation is active, and dictation refuses to start
+while a transform runs. The runner takes a `TransformInstruction`, so command
+mode can later supply a spoken instruction. Transforms have no history records.
+
 ## Future seams
 
 Wake detection emits normal start events, shares coordinated microphone ownership, and passes bounded preroll without duplicate samples. Add false-accept/reject, power and permission tests before always-on operation.

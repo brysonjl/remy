@@ -70,6 +70,8 @@ final class AppState {
     let assemblyAIEngine = AssemblyAIEngine()
     let s1MiniModelManager = S1MiniModelManager()
     let inputSourceMonitor = InputSourceMonitor()
+    let transforms = TransformStore.shared
+    let transformRunner: TransformRunner
     let recoveryStore: DictationRecoveryStore
     private(set) var history: RemyHistoryController?
     private(set) var cleanupProfiles: CleanupProfileController?
@@ -140,7 +142,7 @@ final class AppState {
     var canStopDictation: Bool { status == .recording && !isTransitioning }
 
     private func updateCancellationAvailability() {
-        hotkeyService.isCancellationEnabled = canCancelDictation
+        hotkeyService.isCancellationEnabled = canCancelDictation || transformRunner.canCancel
     }
     var appleSpeechSupportedLanguages: [SupportedLanguage] = []
     var appleSpeechInstalledLanguages: [SupportedLanguage] = []
@@ -171,6 +173,11 @@ final class AppState {
     private var contextApplicationTask: Task<Void, Never>?
     private weak var contextCaptureEngine: (any TranscriptionEngine)?
     private let contextCaptureOverride: (@Sendable (pid_t?) async -> DictationContext?)?
+    /// Names read from the active window for the current session only.
+    /// Memory only: never persisted, logged, or added to the configuration.
+    private var sessionScreenNames: [String] = []
+    private var screenNamesTask: Task<Void, Never>?
+    private let screenNamesCaptureOverride: (@Sendable (DictationContext) async -> [String])?
 
     /// Engine pinned for the active dictation session (start -> stop/cancel).
     private var sessionEngine: TranscriptionEngine?
@@ -357,15 +364,18 @@ final class AppState {
         authorizedTranscriptDelivery: ((String, RemyDeliveryAuthorization) async -> TextInsertionResult)? = nil,
         destinationResolution: DestinationResolution? = nil,
         contextCapture: (@Sendable (pid_t?) async -> DictationContext?)? = nil,
+        screenNamesCapture: (@Sendable (DictationContext) async -> [String])? = nil,
         insertionTargetCapture: ((NSRunningApplication?) async -> RemyInsertionTarget)? = nil,
         cleanupTimeout: Duration = .seconds(8),
         inputSourceID: (() -> String?)? = nil,
         profileModelAvailable: ((ParakeetModelChoice) -> Bool)? = nil,
         appleSpeechAssetSnapshot: (() async -> (supported: [SupportedLanguage], installed: [SupportedLanguage]))? = nil,
         appleSpeechAssetInstaller: ((SupportedLanguage) async throws -> Void)? = nil,
-        cleanupModelPreparation: ((TranscriptPostProcessingMode) async -> Bool)? = nil
+        cleanupModelPreparation: ((TranscriptPostProcessingMode) async -> Bool)? = nil,
+        transformRunner: TransformRunner? = nil
     ) {
         self.permissions = permissions ?? Permissions()
+        self.transformRunner = transformRunner ?? TransformRunner()
         self.textInserter = TextInserter(permissions: self.permissions)
         self.microphonePermissionRequester = microphonePermissionRequester
         self.recoveryStore = recoveryStore ?? DictationRecoveryStore()
@@ -396,6 +406,7 @@ final class AppState {
         self.authorizedTranscriptDeliveryOverride = authorizedTranscriptDelivery
         self.destinationResolutionOverride = destinationResolution
         self.contextCaptureOverride = contextCapture
+        self.screenNamesCaptureOverride = screenNamesCapture
         self.insertionTargetCaptureOverride = insertionTargetCapture
         self.cleanupTimeout = cleanupTimeout
         self.inputSourceIDOverride = inputSourceID
@@ -406,6 +417,7 @@ final class AppState {
         setupHotkeyCallbacks()
         setupPermissionCallbacks()
         setupInputSourceCallbacks()
+        setupTransformRunner(usesLiveDependencies: transformRunner == nil && !AppDelegate.isRunningTests)
     }
 
     // MARK: - Hotkey Callbacks
@@ -447,17 +459,55 @@ final class AppState {
             }
         }
 
+        hotkeyService.onTransform = { [weak self] id in
+            guard let self else { return }
+            let generation = self.activationGeneration
+            Task { @MainActor [weak self] in
+                guard let self, !self.isSystemSleeping, self.activationGeneration == generation else { return }
+                await self.runTransform(id: id)
+            }
+        }
+
         hotkeyService.onCancel = { [weak self] in
             guard let self else { return }
             let generation = self.activationGeneration
             Task { @MainActor [weak self] in
                 guard let self, !self.isSystemSleeping, self.activationGeneration == generation else { return }
+                if self.transformRunner.canCancel {
+                    self.transformRunner.cancel()
+                    return
+                }
                 await self.cancelDictation()
             }
         }
         hotkeyService.onCancelProgress = { [weak self] progress in
             self?.overlay.setCancellationProgress(progress)
         }
+    }
+
+    // MARK: - Transforms
+
+    private func setupTransformRunner(usesLiveDependencies: Bool) {
+        if usesLiveDependencies {
+            transformRunner.dependencies = .live(settings: settings, permissions: permissions,
+                textInserter: textInserter, profile: { [weak self] in self?.cleanupProfiles?.selectedProfile },
+                credentials: cleanupProfileCredentials)
+        }
+        transformRunner.onPhaseChange = { [weak self] in self?.updateCancellationAvailability() }
+        transformRunner.onEvent = { [weak self] event in self?.overlay.present(event) }
+    }
+
+    /// Any dictation activity blocks a transform; a busy transform blocks dictation.
+    var isDictationBusy: Bool {
+        if status == .recording || status == .processing { return true }
+        return isTransitioning || startingRequestID != nil || isCleanupDraining
+            || recoveringEntryID != nil || continuingEntryID != nil
+    }
+
+    func runTransform(id: UUID) async {
+        guard !isShuttingDown, !isSystemSleeping,
+              let transform = transforms.transform(id: id), transform.isEnabled else { return }
+        await transformRunner.run(transform.instruction, dictationBusy: isDictationBusy)
     }
 
     private func setupPermissionCallbacks() {
@@ -650,6 +700,7 @@ final class AppState {
         hotkeyService.suspendForSystemSleep()
         isHoldToRecordKeyDown = false
         pendingHoldRelease = false
+        transformRunner.cancel()
         await cancelDictation(reason: .inputUnavailable)
     }
 
@@ -673,6 +724,7 @@ final class AppState {
         startingRequestID = nil
         if let sessionToken { sessions.revoke(sessionToken, reason: .shutdown) }
         deliveryAuthorization?.revoke()
+        transformRunner.cancel()
         invalidateContextCapture()
         startupTask?.cancel()
         startupTask = nil
@@ -1764,6 +1816,7 @@ final class AppState {
     func startDictation(mode: HotkeyMode? = nil) async {
         guard !isShuttingDown, !isSystemSleeping, !isInstallingAppleSpeech, !isPreparingHistory, !isDeletingStoredHistory else { return }
         guard !isCleanupDraining else { overlay.showBusy(); return }
+        guard !transformRunner.isBusy else { overlay.showBusy(TransformNotice.alreadyRunning.title); return }
         recordingStartError = nil
         logger.info("startDictation: entry, status=\(self.status.diagnosticLabel, privacy: .public), isTransitioning=\(self.isTransitioning, privacy: .public), engineChoice=\(String(describing: self.settings.engineChoice), privacy: .public)")
         if case .error = status {
@@ -1961,7 +2014,8 @@ final class AppState {
                   startingRequestID == request else { return }
             sessionHistoryContext = context
         }
-        engine.setSessionContextualVocabulary(sessionDictationContext?.lexicalHints ?? [])
+        engine.setSessionContextualVocabulary(
+            ScreenNameTerms.merged(sessionDictationContext?.lexicalHints ?? [], sessionScreenNames))
         engine.setSessionDictationContext(sessionDictationContext)
 
         isTransitioning = true
@@ -2187,6 +2241,8 @@ final class AppState {
                 ? nil : CancelledDictation.joining(transcriptPrefix, newTranscript)
         }
         guard !Task.isCancelled, sessions.isCurrent(token) else { return }
+        // Use whatever names the walk produced by now; never wait for it.
+        let cleanupScreenNames = sessionScreenNames
         invalidateContextCapture()
 
         let usesAssemblyAI = engine === assemblyAIEngine
@@ -2219,7 +2275,11 @@ final class AppState {
         if usesAssemblyAI {
             finalText = transcript.trimmingCharacters(in: .whitespacesAndNewlines)
         } else {
-            finalText = configuration.capture.fillerRules.removingFillers(from: transcript).trimmingCharacters(in: .whitespacesAndNewlines)
+            // Spelling corrections run once here, so cleanup, "Use Raw Now"
+            // and every fallback start from the same locally corrected text.
+            finalText = configuration.capture.textRules.applyingCorrections(
+                to: configuration.capture.fillerRules.removingFillers(from: transcript)
+            ).trimmingCharacters(in: .whitespacesAndNewlines)
         }
         normalizeTrace.end()
 
@@ -2275,7 +2335,8 @@ final class AppState {
                 await preparation?.value
                 try Task.checkCancellation()
                 if let operation { return try await operation(finalText, configuration) }
-                return try await cleanupRuntime.process(text: finalText, context: cleanupContext)
+                return try await cleanupRuntime.process(text: finalText, context: cleanupContext,
+                    screenNames: cleanupScreenNames)
             } catch {
                 // Normalize provider/runtime failures before the dependency-free
                 // deadline primitive sees them; never retain private error details.
@@ -2319,11 +2380,24 @@ final class AppState {
         if cleanupFailure == nil, postProcessingMode != .none,
            postProcessingMode != .fluidAudioVocabulary {
             processedText = normalizePostProcessedTranscript(processedText)
+            let guarded = TranscriptCleanupIntegrity.revertingUnsupportedTerms(source: finalText, output: processedText,
+                terms: configuration.capture.vocabulary + cleanupScreenNames)
+            if guarded.reverted > 0 {
+                processedText = guarded.text
+                PerfTrace.event("cleanup.unsupportedTermReverted", counts: ["regions": guarded.reverted])
+            }
         }
         if let cleanupFailure {
             logger.warning("postProcessing: rawFallback reason=\(cleanupFailure, privacy: .public), elapsedMs=\(attempt.durationMilliseconds ?? 0, privacy: .public)")
         } else {
             logger.info("postProcessing: completed mode=\(postProcessingMode.rawValue, privacy: .public), changed=\(processedText != finalText, privacy: .public), elapsedMs=\(attempt.durationMilliseconds ?? 0, privacy: .public)")
+        }
+        if !usesAssemblyAI {
+            // Snippets expand after cleanup (or its fallback), so expansions are
+            // never sent to a provider. A dictation that would expand to nothing
+            // is delivered unchanged rather than as an empty insertion.
+            let expanded = configuration.capture.textRules.expandingSnippets(in: processedText)
+            if !expanded.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { processedText = expanded }
         }
 
         guard !Task.isCancelled, sessions.isCurrent(token) else { historyTrace.end(); return }
@@ -2369,7 +2443,10 @@ final class AppState {
         let insertionContext = configuration.capture.destination == .originalField
             ? await insertionContextForDelivery() : nil
         guard !Task.isCancelled, sessions.isCurrent(token) else { return }
-        let insertionStyle = insertionContext.map { configuration.cleanup.contextPolicy.writingStyle(for: $0.category) }
+        // Local insertion formatting only knows built-ins; custom styles behave like Original tone.
+        let insertionStyle = insertionContext.map {
+            configuration.cleanup.contextPolicy.writingStyle(for: $0.category).builtInStyle ?? .original
+        }
         // Encoding overlaps target/context preparation, but history is saved
         // before delivery can discard the recording's recovery copy.
         await settings.flushTranscriptHistory()
@@ -2834,7 +2911,7 @@ final class AppState {
 
     func recoverCancelledDictation(_ entry: CancelledDictation) async {
         guard !isDeletingStoredHistory else { return }
-        guard status == .idle, !isTransitioning else { return }
+        guard status == .idle, !isTransitioning, !transformRunner.isBusy else { return }
         guard settings.historyEnabled else {
             recoveryStore.errorMessage = "Turn on Save new dictations in History before recovering this recording. The saved audio is unchanged."
             return
@@ -2842,7 +2919,8 @@ final class AppState {
         let capture = RemyDictationConfiguration(capture: .init(engine: settings.engineChoice,
             model: settings.parakeetModelChoice,
             language: settings.engineChoice == .appleSpeech ? settings.appleSpeechLanguage : settings.selectedLanguage,
-            fillerRules: .init(isEnabled: settings.isFillerWordRemovalEnabled, words: settings.fillerWordsToRemove)),
+            fillerRules: .init(isEnabled: settings.isFillerWordRemovalEnabled, words: settings.fillerWordsToRemove),
+            textRules: .init(corrections: settings.vocabularyCorrections, snippets: settings.dictationSnippets)),
             cleanup: .init())
         let trace = PerfTrace.begin("recovery.transcribe")
         defer { trace.end() }
@@ -2863,7 +2941,11 @@ final class AppState {
                 configuration: Self.historyConfiguration(capture))
             let text = try await restoredTranscript(for: entry, engine: activeEngine)
             guard !isShuttingDown, !Task.isCancelled else { return }
-            let cleaned = capture.capture.fillerRules.removingFillers(from: text).trimmingCharacters(in: .whitespacesAndNewlines)
+            // Recovery never runs cleanup, so both local text passes apply here.
+            let rules = capture.capture.textRules
+            let cleaned = rules.expandingSnippets(in: rules.applyingCorrections(
+                to: capture.capture.fillerRules.removingFillers(from: text)
+            )).trimmingCharacters(in: .whitespacesAndNewlines)
             guard !cleaned.isEmpty else {
                 recoveryStore.errorMessage = "No speech was recovered. The recording is still available; try a different speech model."
                 return
@@ -3009,6 +3091,9 @@ final class AppState {
         contextApplicationTask?.cancel()
         contextApplicationTask = nil
         contextCaptureEngine = nil
+        screenNamesTask?.cancel()
+        screenNamesTask = nil
+        sessionScreenNames = []
     }
 
     private func captureInsertionTarget(_ target: NSRunningApplication?) async -> RemyInsertionTarget {
@@ -3040,6 +3125,12 @@ final class AppState {
         // what we read. Local `none` and FluidAudio Vocabulary never see it.
         let activeModelUsesContext = configuration.capture.engine == .assemblyAI
             || configuration.cleanup.mode.usesDictationContext
+        // Window names have their own consumer gate. When they are the only
+        // reason to capture, the classified context is used just to gate the
+        // walk and is not published to the session.
+        let walksScreenNames = ScreenNamePolicy.shouldCapture(configuration)
+        let publishesContext = contextCaptureOverride != nil
+            || (configuration.cleanup.contextPolicy.isEnabled && activeModelUsesContext)
         let capture: @Sendable () async -> DictationContext?
         if let contextCaptureOverride {
             let pid = insertionTargetApp?.processIdentifier
@@ -3047,7 +3138,8 @@ final class AppState {
         } else {
             guard RemyFeaturePolicy.allowsDictationContextGathering,
                   let frontmost = insertionTargetApp,
-                  configuration.cleanup.contextPolicy.isEnabled, activeModelUsesContext else { return }
+                  configuration.cleanup.contextPolicy.isEnabled,
+                  activeModelUsesContext || walksScreenNames else { return }
 
             let processIdentifier = frontmost.processIdentifier
             let bundleIdentifier = frontmost.bundleIdentifier
@@ -3058,7 +3150,9 @@ final class AppState {
                     processIdentifier: processIdentifier,
                     bundleIdentifier: bundleIdentifier,
                     appName: appName,
-                    rules: rules
+                    rules: rules,
+                    // Never enable Chromium/Electron accessibility for names alone.
+                    requestsWebAccessibility: publishesContext
                 )
             }
         }
@@ -3082,10 +3176,18 @@ final class AppState {
                 guard let self, !Task.isCancelled, !self.isShuttingDown,
                       self.contextCaptureID == id, self.sessionToken == token,
                       self.sessions.isCurrent(token) else { return }
+                // Starts after context so classification gates it; the stop
+                // path waits for this task, never for the walk.
+                if walksScreenNames, let context, ScreenNamePolicy.allowsWalk(in: context) {
+                    self.startScreenNameWalk(context: context, engine: engine,
+                        updatesSpeechVocabulary: configuration.capture.engine == .appleSpeech, token: token, id: id)
+                }
+                guard publishesContext else { return }
                 self.sessionDictationContext = context
                 self.updatePerformanceContextLabels()
                 engine.setSessionDictationContext(context)
-                await engine.updateSessionContextualVocabulary(context?.lexicalHints ?? [])
+                await engine.updateSessionContextualVocabulary(
+                    ScreenNameTerms.merged(context?.lexicalHints ?? [], self.sessionScreenNames))
                 guard !Task.isCancelled, self.contextCaptureID == id,
                       self.sessionToken == token, self.sessions.isCurrent(token) else { return }
                 if context != nil, self.status == .recording, !self.isTransitioning,
@@ -3097,6 +3199,37 @@ final class AppState {
         }
     }
 
+    /// Bounded walk on a detached worker. Its result applies only to the same
+    /// live capture; a late result after stop/cancel is discarded.
+    private func startScreenNameWalk(
+        context: DictationContext,
+        engine: TranscriptionEngine,
+        updatesSpeechVocabulary: Bool,
+        token: SessionCoordinator.Token,
+        id: UUID
+    ) {
+        let walk: @Sendable () async -> [String]
+        if let screenNamesCaptureOverride {
+            walk = { await screenNamesCaptureOverride(context) }
+        } else {
+            let processIdentifier = pid_t(context.processIdentifier)
+            walk = { ScreenNameCapture.capture(processIdentifier: processIdentifier) }
+        }
+        screenNamesTask?.cancel()
+        screenNamesTask = Task { [weak self] in
+            let names = await Task.detached(priority: .userInitiated) { await walk() }.value
+            guard let self, !Task.isCancelled, !self.isShuttingDown, !names.isEmpty,
+                  self.contextCaptureID == id, self.sessionToken == token,
+                  self.sessions.isCurrent(token) else { return }
+            self.sessionScreenNames = names
+            // Apple Speech takes contextual strings mid-session. Names landing
+            // after stop but before recognition ends still reach cleanup.
+            guard updatesSpeechVocabulary, self.status != .processing else { return }
+            await engine.updateSessionContextualVocabulary(
+                ScreenNameTerms.merged(self.sessionDictationContext?.lexicalHints ?? [], names))
+        }
+    }
+
     private func postProcessingContext(includeCapturedText: Bool) -> DictationPostProcessingContext? {
         if let token = sessionToken, sessions.isCurrent(token), let runtime = sessionCleanupRuntime {
             return runtime.postProcessingContext(from: sessionDictationContext)
@@ -3105,7 +3238,7 @@ final class AppState {
               settings.dictationContextAwarenessEnabled,
               let context = sessionDictationContext else { return nil }
         return context.postProcessingContext(
-            style: settings.dictationWritingStyle(for: context.category),
+            style: settings.resolvedDictationWritingStyle(for: context.category),
             includeCapturedText: includeCapturedText
         )
     }

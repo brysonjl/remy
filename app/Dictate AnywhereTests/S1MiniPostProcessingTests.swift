@@ -573,7 +573,7 @@ final class S1MiniPostProcessingTests: XCTestCase {
     private func context(category: DictationContextCategory) -> DictationPostProcessingContext {
         DictationPostProcessingContext(
             category: category,
-            style: .neutral,
+            style: .builtIn(.neutral),
             cursorPlacement: .emptyField,
             continuesExistingSentence: false,
             appName: nil,

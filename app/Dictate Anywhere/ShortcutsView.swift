@@ -59,6 +59,13 @@ struct ShortcutsView: View {
                                 )
                                 return
                             }
+                            if let transform = ConflictDetector.transformUsingShortcut(candidate, in: appState.transforms.transforms) {
+                                shortcutError = ShortcutFieldError(
+                                    target: .binding(binding.id),
+                                    message: "Already used by the \u{201C}\(transform.displayName)\u{201D} transform."
+                                )
+                                return
+                            }
                             if shortcutError?.target == .binding(binding.id) { shortcutError = nil }
                             settings.updateBindingHotkey(
                                 id: binding.id, keyCode: keyCode,
@@ -133,6 +140,13 @@ struct ShortcutsView: View {
                                 shortcutError = ShortcutFieldError(
                                     target: .cancellation,
                                     message: "The cancel shortcut overlaps a start/stop shortcut. Choose another combination."
+                                )
+                                return
+                            }
+                            if let transform = ConflictDetector.transformUsingShortcut(candidate, in: appState.transforms.transforms) {
+                                shortcutError = ShortcutFieldError(
+                                    target: .cancellation,
+                                    message: "The cancel shortcut overlaps the \u{201C}\(transform.displayName)\u{201D} transform shortcut."
                                 )
                                 return
                             }

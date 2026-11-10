@@ -29,6 +29,7 @@ struct AIPostProcessingView: View {
     @State private var openAICompatibleCheckID: UUID?
     @State private var isConfirmingS1MiniDeletion = false
     @State private var s1MiniActionError: String?
+    @State private var isManagingWritingStyles = false
     private let shouldAutoRefreshProviderAvailability: Bool
 
     init(
@@ -125,6 +126,10 @@ struct AIPostProcessingView: View {
             if supportedFeatures.contains(.localFillerWordRemoval) {
                 localFillerWordCleanupContent(settings: settings)
             }
+
+            // Local text rules apply with every cleanup method, including Off.
+            VocabularyCorrectionsSection()
+            SnippetsSection()
         }
         .task(id: Self.providerTaskID(
             settings: settings,
@@ -160,6 +165,9 @@ struct AIPostProcessingView: View {
             }
         } message: {
             Text("This will remove \(ollamaPendingDeletionModel ?? "this model") from the configured Ollama server.")
+        }
+        .sheet(isPresented: $isManagingWritingStyles) {
+            WritingStylesSheet(settings: appState.settings)
         }
         .alert("Delete S1-mini by Superwhisper?", isPresented: $isConfirmingS1MiniDeletion) {
             Button("Delete", role: .destructive) {
@@ -256,6 +264,12 @@ struct AIPostProcessingView: View {
             )
 
             if settings.dictationContextAwarenessEnabled {
+                DSDivider()
+                DSStackedRow(
+                    label: "Spell names from the active window",
+                    caption: "Off by default. When you start dictating in email, chat, coding-agent or AI chat apps, Remy reads the visible text of the front window to pick out names and identifiers, uses them for that dictation only, and never saves them. Remote providers receive them only when surrounding-text sharing is on.",
+                    isOn: $settings.spellNamesFromActiveWindowEnabled
+                )
                 if contextSupport.offersRemoteTextSharing {
                     DSDivider()
                     DSStackedRow(
@@ -277,6 +291,14 @@ struct AIPostProcessingView: View {
                         writingStyleRow(settings: settings, category: category)
                         DSDivider()
                     }
+                    DSDetailRow(
+                        label: "Styles",
+                        caption: "Edit built-in style instructions or add your own. Custom styles are available for every destination."
+                    ) {
+                        Button("Manage Styles…") { isManagingWritingStyles = true }
+                            .buttonStyle(.dsSecondary)
+                    }
+                    DSDivider()
                     DSCardCaption(text: "\(mode.displayName) receives the app name, destination category and selected style. Terminal and AI destinations preserve technical terms and prompt wording.")
                 }
             }
@@ -405,16 +427,52 @@ struct AIPostProcessingView: View {
         settings: Settings,
         category: DictationContextCategory
     ) -> some View {
-        DSDetailRow(
+        let library = settings.dictationWritingStyleLibrary
+        let selection = settings.dictationWritingStyleSelection(for: category)
+        let title = library.displayName(for: selection)
+        return DSDetailRow(
             label: category.displayName,
             caption: styleCaption(for: category)
         ) {
-            DSDropdown(
-                selection: writingStyleBinding(settings: settings, category: category),
-                options: DictationWritingStyle.options(for: category),
-                title: \.displayName,
-                accessibilityName: "Writing style for \(category.displayName)"
-            )
+            // Built-in styles, then custom styles after a divider.
+            Menu {
+                ForEach(DictationWritingStyle.options(for: category)) { style in
+                    writingStyleMenuItem(.builtIn(style), selection: selection, library: library,
+                                         settings: settings, category: category)
+                }
+                if !library.customStyles.isEmpty {
+                    Divider()
+                    ForEach(library.customStyles) { style in
+                        writingStyleMenuItem(.custom(style.id), selection: selection, library: library,
+                                             settings: settings, category: category)
+                    }
+                }
+            } label: {
+                DSDropdownLabel(text: title)
+            }
+            .menuStyle(.button)
+            .buttonStyle(.plain)
+            .fixedSize(horizontal: false, vertical: true)
+            .accessibilityLabel("Writing style for \(category.displayName)")
+            .accessibilityValue(title)
+        }
+    }
+
+    private func writingStyleMenuItem(
+        _ option: DictationWritingStyleSelection,
+        selection: DictationWritingStyleSelection,
+        library: DictationWritingStyleLibrary,
+        settings: Settings,
+        category: DictationContextCategory
+    ) -> some View {
+        Button {
+            settings.setDictationWritingStyleSelection(option, for: category)
+        } label: {
+            if option == selection {
+                Label(library.displayName(for: option), systemImage: "checkmark")
+            } else {
+                Text(library.displayName(for: option))
+            }
         }
     }
 
@@ -513,18 +571,6 @@ struct AIPostProcessingView: View {
         }
         .padding(.vertical, 12)
         .padding(.horizontal, DS.Spacing.rowHorizontal)
-    }
-
-    private func writingStyleBinding(
-        settings: Settings,
-        category: DictationContextCategory
-    ) -> Binding<DictationWritingStyle> {
-        Binding(
-            get: { settings.dictationWritingStyle(for: category) },
-            set: { value in
-                settings.setDictationWritingStyle(value, for: category)
-            }
-        )
     }
 
     private func appRuleCategoryBinding(settings: Settings, index: Int) -> Binding<DictationContextCategory> {
