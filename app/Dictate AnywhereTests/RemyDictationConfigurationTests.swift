@@ -49,7 +49,7 @@ final class RemyDictationConfigurationTests: XCTestCase {
         XCTAssertFalse(snapshot.cleanup.contextPolicy.isEnabled)
     }
 
-    private func context(text: String = "Private preceding words") -> DictationContext {
+    private func context(text: String = "Private preceding words.") -> DictationContext {
         .init(processIdentifier: 7, bundleIdentifier: "com.apple.Terminal", appName: "Terminal",
             category: .terminalAgent, documentURL: "file:///private/project", documentTitle: "Claude Code — project",
             fieldRole: "AXTextArea", fieldSubrole: nil, fieldPurpose: .unknown,
@@ -89,6 +89,23 @@ final class RemyDictationConfigurationTests: XCTestCase {
         }
         let disabled = RemyCleanupRuntime.make(configuration: configuration(mode: .appleIntelligence))
         XCTAssertNil(disabled.postProcessingContext(from: context()))
+    }
+
+    func testRemoteMidSentenceDictationSendsPlacementWithoutSurroundingText() {
+        let midSentence = context(text: "I'm going through my notes and I'm trying")
+        XCTAssertTrue(midSentence.continuesExistingSentence)
+        let remote = RemyCleanupRuntime.make(configuration: .init(capture: .init(), cleanup: .init(mode: .openRouter,
+            baseURL: "https://openrouter.ai/api/v1", contextPolicy: .init(isEnabled: true, shareCapturedTextRemotely: true))))
+        let sent = remote.postProcessingContext(from: midSentence)
+        XCTAssertEqual(sent?.cursorPlacement, .replacingSelection)
+        XCTAssertTrue(sent?.continuesExistingSentence == true)
+        XCTAssertNil(sent?.textBeforeCursor)
+        XCTAssertNil(sent?.selectedText)
+        XCTAssertNil(sent?.textAfterCursor)
+        // A local model keeps the full context.
+        let local = RemyCleanupRuntime.make(configuration: .init(capture: .init(), cleanup: .init(mode: .ollama,
+            baseURL: "http://127.0.0.1:11434", contextPolicy: .init(isEnabled: true, shareCapturedTextRemotely: false))))
+        XCTAssertEqual(local.postProcessingContext(from: midSentence)?.textBeforeCursor, "I'm going through my notes and I'm trying")
     }
 
     func testOnlyValidatedLoopbackRoutesReceiveFullContextWithoutOptIn() {
@@ -149,7 +166,7 @@ final class RemyDictationConfigurationTests: XCTestCase {
             return text
         })
         do {
-            _ = try await runtime.process(text: "short", context: context(text: String(repeating: "private ", count: 2_000)))
+            _ = try await runtime.process(text: "short", context: context(text: String(repeating: "private. ", count: 2_000)))
             XCTFail("Actual context must fit the same request budget as the transcript")
         } catch {
             XCTAssertEqual(error as? RemoteCleanupInputPolicyError, .singleRequestBudgetExceeded)

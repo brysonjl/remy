@@ -233,8 +233,12 @@ final class RemyCleanupRuntime {
               let context else { return nil }
         let support = cleanup.contextSupport
         guard support != .none else { return nil }
+        // Remote models given mid-sentence surrounding text rewrite the dictation
+        // to bridge into it ("to find out if …"). Insertion already fixes the
+        // boundary casing and punctuation, so they get only the placement.
+        let remoteMidSentence = support == .remoteCategoryWithOptionalText && context.continuesExistingSentence
         return context.postProcessingContext(style: cleanup.contextPolicy.writingStyle(for: context.category),
-            includeCapturedText: support.includesCapturedText(
+            includeCapturedText: !remoteMidSentence && support.includesCapturedText(
                 remoteSharingEnabled: cleanup.contextPolicy.shareCapturedTextRemotely),
             screenNames: screenNames)
     }

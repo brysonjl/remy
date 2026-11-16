@@ -510,9 +510,15 @@ private struct TranscriptProcessingDetails: View {
                 Text("No AI output recorded.")
                     .foregroundStyle(DS.Colors.textSecondary)
             }
+            if let writingContext = attempt.writingContext {
+                textDisclosure("App context sent", text: writingContext,
+                               caption: "Cursor placement and any surrounding text the AI received with this dictation.")
+            }
             if let prompt = attempt.prompt {
                 textDisclosure("Saved cleanup instructions", text: prompt,
-                               caption: "Generated formatting instructions and app context aren't fully captured in this log.")
+                               caption: attempt.writingContext == nil
+                                   ? "Generated formatting instructions and app context aren't fully captured in this log."
+                                   : "Generated formatting instructions aren't fully captured in this log.")
             } else {
                 Text("AI instructions not recorded.")
                     .foregroundStyle(DS.Colors.textSecondary)

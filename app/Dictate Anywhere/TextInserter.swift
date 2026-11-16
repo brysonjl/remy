@@ -1139,7 +1139,8 @@ final class TextInserter {
         }
 
         let word = String(text[wordStart..<wordEnd])
-        guard word != "I",
+        // The pronoun stays capitalized, including contractions (I'm, I’ll).
+        guard word != "I", !word.hasPrefix("I'"), !word.hasPrefix("I’"),
               word.first?.isUppercase == true,
               !word.dropFirst().contains(where: \Character.isUppercase) else {
             return text

@@ -67,15 +67,19 @@ nonisolated struct RemyHistoryAttempt: Equatable, Sendable {
     /// Nil for older records; never infer AI duration from recording/session time.
     let startedAt: Date?
     let durationMilliseconds: Int?
+    /// The writing-context block sent to the provider (cursor placement and any
+    /// captured text it was allowed to receive). Nil for older records.
+    let writingContext: String?
 
     init(id: UUID, sessionID: UUID, createdAt: Date, input: String, output: String?,
          provider: String?, model: String?, instructionVersion: Int?, failureCategory: String?, prompt: String? = nil, status: Status? = nil, index: Int = 1, profile: RemyHistoryProfileSnapshot? = nil,
-         startedAt: Date? = nil, durationMilliseconds: Int? = nil) {
+         startedAt: Date? = nil, durationMilliseconds: Int? = nil, writingContext: String? = nil) {
         self.id = id; self.sessionID = sessionID; self.createdAt = createdAt
         self.input = input; self.output = output; self.provider = provider; self.model = model
         self.instructionVersion = instructionVersion; self.failureCategory = failureCategory; self.prompt = prompt
         self.status = status ?? (output == nil ? .failed : .succeeded); self.index = index; self.profile = profile
         self.startedAt = startedAt; self.durationMilliseconds = durationMilliseconds
+        self.writingContext = writingContext
     }
 }
 
