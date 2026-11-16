@@ -1,6 +1,6 @@
 # Open source release readiness
 
-Remy's source is public, and 0.2.0 is available as an early beta prerelease DMG.
+Remy's source is public, and 0.2.1 is available as an early beta prerelease DMG.
 The public name is Remy, with bundle identifier `io.github.brysonjl.remy`
 (Dev: `.dev`). The first binary scope is Apple silicon with manual updates;
 Intel support and an automatic update feed require separate validation.
@@ -48,6 +48,8 @@ remaining gates below are open; see the
 [0.1.0 release record](../validation/results/2026-11-07-release-0.1.0/README.md).
 0.2.0 was published the same way on 2026-11-09; see the
 [0.2.0 release record](../validation/results/2026-11-09-release-0.2.0/README.md).
+0.2.1 followed on 2026-11-16; see the
+[0.2.1 release record](../validation/results/2026-11-16-release-0.2.1/README.md).
 
 | Gate | Required result |
 | --- | --- |

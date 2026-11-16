@@ -3,6 +3,24 @@
 Remy's version numbers start at 0.1.0. Historical Dictate Anywhere release notes
 describe the upstream application.
 
+## 0.2.1 — 2026-11-16 (early beta prerelease)
+
+- **ChatGPT dictation is no longer rewritten.** ChatGPT's empty message box
+  exposes its placeholder text to other apps. Remy read it as a sentence you
+  were in the middle of, so cleanup lowercased your first word, dropped your
+  question mark and sometimes added words you never said. A box that only shows
+  its placeholder now counts as empty, and spaces or blank lines around the
+  cursor no longer count as text.
+- **Cloud cleanup no longer sees text around a mid-sentence cursor.** Cloud
+  providers get only the cursor position; Remy fixes the first word's
+  capitalization and the end punctuation itself. Local models keep full context.
+- "I'm", "I'll", "I'd" and "I've" stay capitalized when inserted mid-sentence.
+- **App context sent:** each cleanup attempt in History shows the context the
+  model received. The history database is backed up before its upgrade.
+
+See the [0.2.1 release record](validation/results/2026-11-16-release-0.2.1/README.md)
+for the published artifact and checks.
+
 ## 0.2.0 — 2026-11-09 (early beta prerelease)
 
 - **Spelling corrections:** give a vocabulary term the spellings recognition
