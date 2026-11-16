@@ -59,7 +59,7 @@ enum AssemblyAIInternalPrompt: String, CaseIterable, Identifiable, Sendable {
             return "Preserve the speaker's tone, register, and wording while adapting layout to the destination."
         case .midSentence:
             return """
-                - The insertion is inside an existing sentence. Start an ordinary leading word with lowercase, but preserve proper nouns, names, acronyms, and known terms.
+                - The insertion is inside an existing sentence. Start an ordinary leading word with lowercase, but preserve the pronoun I, proper nouns, names, acronyms, and known terms.
                 - Do not add terminal sentence punctuation to this insertion. Let punctuation already adjacent to the cursor delimit it.
                 """
         case .searchQuery:

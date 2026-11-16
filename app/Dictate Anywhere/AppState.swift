@@ -2243,6 +2243,9 @@ final class AppState {
         guard !Task.isCancelled, sessions.isCurrent(token) else { return }
         // Use whatever names the walk produced by now; never wait for it.
         let cleanupScreenNames = sessionScreenNames
+        // The same writing-context block the provider receives, kept in history
+        // so odd cleanup output can be traced to what the model was told.
+        let cleanupWritingContext = cleanupRuntime.postProcessingContext(from: cleanupContext)?.requestSection
         invalidateContextCapture()
 
         let usesAssemblyAI = engine === assemblyAIEngine
@@ -2365,7 +2368,8 @@ final class AppState {
                postProcessingMode != .fluidAudioVocabulary {
                 _ = await history.recordAttempt(historyContext, input: finalText, output: nil,
                     status: .cancelled, failureCategory: "cancelled", selectOutput: false,
-                    startedAt: attempt.startedAt, durationMilliseconds: attempt.durationMilliseconds)
+                    startedAt: attempt.startedAt, durationMilliseconds: attempt.durationMilliseconds,
+                    writingContext: cleanupWritingContext)
                 _ = await history.interruptSession(historyContext)
             }
             return
@@ -2415,7 +2419,8 @@ final class AppState {
             } else if let cleanupFailure {
                 let attempt = await history.recordAttempt(historyContext, input: finalText, output: nil,
                     status: .failed, failureCategory: cleanupFailure, selectOutput: false,
-                    startedAt: attempt.startedAt, durationMilliseconds: attempt.durationMilliseconds)
+                    startedAt: attempt.startedAt, durationMilliseconds: attempt.durationMilliseconds,
+                    writingContext: cleanupWritingContext)
                 guard !Task.isCancelled, sessions.isCurrent(token) else { historyTrace.end(); return }
                 if Self.permitsDelivery(attempt) {
                     saved = await history.selectFallback(historyContext, text: processedText)
@@ -2423,7 +2428,8 @@ final class AppState {
             } else {
                 saved = await history.recordAttempt(historyContext, input: finalText, output: processedText,
                     status: .succeeded, selectOutput: true,
-                    startedAt: attempt.startedAt, durationMilliseconds: attempt.durationMilliseconds)
+                    startedAt: attempt.startedAt, durationMilliseconds: attempt.durationMilliseconds,
+                    writingContext: cleanupWritingContext)
             }
             guard !Task.isCancelled, sessions.isCurrent(token) else { historyTrace.end(); return }
             guard Self.permitsDelivery(saved) else {

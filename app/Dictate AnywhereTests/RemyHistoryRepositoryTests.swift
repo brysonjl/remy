@@ -58,8 +58,8 @@ final class RemyHistoryRepositoryTests: XCTestCase {
             input: "synthetic input", output: nil, provider: "fixture", model: "fixture",
             instructionVersion: 1, failureCategory: "providerFailure")
         _ = await repository.commitFinal(original, selectOutput: false)
-        // Strip just the additive v2 fields to recreate a real schema-1 database.
-        try execute(url, "ALTER TABLE attempts DROP COLUMN started; ALTER TABLE attempts DROP COLUMN duration_ms; PRAGMA user_version=1;")
+        // Strip the additive v2 and v3 fields to recreate a real schema-1 database.
+        try execute(url, "ALTER TABLE attempts DROP COLUMN started; ALTER TABLE attempts DROP COLUMN duration_ms; ALTER TABLE attempts DROP COLUMN writing_context; PRAGMA user_version=1;")
         let upgraded = try RemyHistoryRepository(url: url)
         let oldAttempts = try await upgraded.attempts(sessionID: value.id)
         XCTAssertEqual(oldAttempts, [original])
@@ -91,6 +91,31 @@ final class RemyHistoryRepositoryTests: XCTestCase {
         defer { sqlite3_finalize(version) }
         XCTAssertEqual(sqlite3_step(version), SQLITE_ROW)
         XCTAssertEqual(sqlite3_column_int(version, 0), 1)
+    }
+    func testSchemaTwoUpgradeAddsWritingContextAndBacksUp() async throws {
+        let (directory, url) = try fixture()
+        let repository = try RemyHistoryRepository(url: url)
+        let value = session()
+        _ = await repository.commitRaw(value, generation: 0)
+        let original = RemyHistoryAttempt(id: UUID(), sessionID: value.id, createdAt: value.createdAt,
+            input: "synthetic input", output: nil, provider: "fixture", model: "fixture",
+            instructionVersion: 1, failureCategory: "providerFailure", startedAt: value.createdAt, durationMilliseconds: 10)
+        _ = await repository.commitFinal(original, selectOutput: false)
+        try execute(url, "ALTER TABLE attempts DROP COLUMN writing_context; PRAGMA user_version=2;")
+        let upgraded = try RemyHistoryRepository(url: url)
+        let oldAttempts = try await upgraded.attempts(sessionID: value.id)
+        XCTAssertEqual(oldAttempts, [original])
+        let withContext = RemyHistoryAttempt(id: UUID(), sessionID: value.id, createdAt: value.createdAt.addingTimeInterval(2),
+            input: "retry", output: "clean", provider: "fixture", model: "fixture", instructionVersion: 1,
+            failureCategory: nil, index: 2, writingContext: "<writing_context>\n<cursor_placement>empty_field</cursor_placement>\n</writing_context>")
+        let saved = await upgraded.commitFinal(withContext, selectOutput: true)
+        XCTAssertEqual(saved, .saved)
+        let reopened = try RemyHistoryRepository(url: url, readOnly: true)
+        let all = try await reopened.attempts(sessionID: value.id)
+        XCTAssertEqual(all, [original, withContext])
+        let backups = try FileManager.default.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil)
+            .filter { $0.lastPathComponent.hasPrefix("history-before-v3-") }
+        XCTAssertEqual(backups.count, 1)
     }
     func testFutureSchemaRejectedWithoutDowngrade() throws {
         let (_, url) = try fixture()

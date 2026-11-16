@@ -519,6 +519,46 @@ final class DictationContextTests: XCTestCase {
         XCTAssertFalse(context.continuesExistingSentence)
     }
 
+    func testWhitespaceAfterCursorIsNotFollowingText() {
+        // Empty rich composers (ChatGPT) can report a trailing newline after the caret.
+        let context = makeContext(category: .aiChat, before: "Ask anything", after: "\n")
+        XCTAssertFalse(context.continuesExistingSentence)
+        XCTAssertEqual(context.cursorPlacement, .endOfText)
+        let instructions = context.postProcessingContext(style: .original, includeCapturedText: true).instructions
+        XCTAssertFalse(instructions.contains("The insertion is inside an existing sentence"))
+    }
+
+    func testWhitespaceOnlyFieldIsEmpty() {
+        XCTAssertEqual(makeContext(category: .aiChat, before: "\n", after: " \n").cursorPlacement, .emptyField)
+    }
+
+    func testMidSentenceInsertionKeepsPronounIContractions() {
+        let output = TextInserter.contextualizedForInsertion(
+            "I'm late.",
+            context: makeContext(category: .other, before: "Hello", after: "world"),
+            style: .formal
+        )
+        XCTAssertEqual(output, " I'm late ")
+    }
+
+    func testFieldShowingOnlyItsPlaceholderIsEmpty() {
+        let labels = ["Work with ChatGPT"]
+        XCTAssertTrue(DictationContextCapture.isPlaceholderOnly(("Work with ChatGPT", "", "\n"), labels: labels))
+        XCTAssertTrue(DictationContextCapture.isPlaceholderOnly(("", "", "Work with ChatGPT\n"), labels: labels))
+        XCTAssertFalse(DictationContextCapture.isPlaceholderOnly(("Work with ChatGPT on this", "", ""), labels: labels))
+        XCTAssertFalse(DictationContextCapture.isPlaceholderOnly(("", "", "\n"), labels: labels))
+        XCTAssertFalse(DictationContextCapture.isPlaceholderOnly(("Work with ChatGPT", "", ""), labels: []))
+    }
+
+    func testBoundaryFittingNeverRewordsTheTranscript() {
+        let context = makeContext(category: .aiChat, before: "Hello", after: "world")
+            .postProcessingContext(style: .original, includeCapturedText: true)
+        let instructions = remotePostProcessingInstructions(prompt: "", vocabulary: [], context: context)
+        XCTAssertTrue(instructions.contains("Never add, remove, or reword words to connect the transcript to surrounding text."))
+        XCTAssertTrue(instructions.contains("Boundary fitting changes only capitalization, spacing, and punctuation."))
+        XCTAssertTrue(instructions.contains("preserve the pronoun I"))
+    }
+
     func testNativeBulletInsertionMatchesCapitalizedNeighborsWithoutExtraSpace() {
         let context = makeContext(
             category: .other,

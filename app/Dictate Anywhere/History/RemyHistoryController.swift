@@ -127,7 +127,8 @@ nonisolated struct RemyHistorySessionContext: Sendable {
     @discardableResult func recordAttempt(_ context: RemyHistorySessionContext, input: String, output: String?,
                                           status: RemyHistoryAttempt.Status, failureCategory: String? = nil,
                                           selectOutput: Bool, at date: Date = Date(),
-                                          startedAt: Date? = nil, durationMilliseconds: Int? = nil) async -> RemyHistoryAcknowledgement {
+                                          startedAt: Date? = nil, durationMilliseconds: Int? = nil,
+                                          writingContext: String? = nil) async -> RemyHistoryAcknowledgement {
         guard context.enabled else { return .historyOff }
         guard valid(context) else { return observe(.notSaved(.deleted)) }
         let config = context.configuration
@@ -136,7 +137,7 @@ nonisolated struct RemyHistorySessionContext: Sendable {
         let attempt = RemyHistoryAttempt(id:UUID(),sessionID:context.id,createdAt:date,input:input,output:output,
             provider:config.provider,model:config.cleanupModel,instructionVersion:config.instructionVersion,
             failureCategory:failureCategory,prompt:config.prompt,status:status,index:index,profile:config.profile,
-            startedAt:startedAt,durationMilliseconds:durationMilliseconds)
+            startedAt:startedAt,durationMilliseconds:durationMilliseconds,writingContext:writingContext)
         if selectOutput, status == .succeeded, let output { selectMemory(context.id,text:output,kind:.attempt,attemptID:attempt.id,at:date) }
         unsavedAttempts.append(attempt)
         guard let repository, savedRaw.contains(context.id) else { return observe(.notSaved(unavailable)) }

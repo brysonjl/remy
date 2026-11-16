@@ -5,7 +5,7 @@ import CryptoKit
 /// One actor owns one SQLite connection. No preferences, credential or audio access.
 /// Successful writes have committed with synchronous=FULL; failures are observable.
 actor RemyHistoryRepository {
-    static let schemaVersion = 2
+    static let schemaVersion = 3
     private var database: OpaquePointer?
     private let enabled: Bool
     private let transient = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
@@ -52,12 +52,21 @@ actor RemyHistoryRepository {
                 """)
             }
             if version < 2 {
-                if version == 1 { try Self.backupBeforeMigration(handle, url: url) }
+                if version == 1 { try Self.backupBeforeMigration(handle, url: url, targetVersion: 2) }
                 try Self.execute(handle, """
                 BEGIN IMMEDIATE;
                 ALTER TABLE attempts ADD COLUMN started REAL;
                 ALTER TABLE attempts ADD COLUMN duration_ms INTEGER;
                 PRAGMA user_version=2;
+                COMMIT;
+                """)
+            }
+            if version < 3 {
+                if version == 2 { try Self.backupBeforeMigration(handle, url: url, targetVersion: 3) }
+                try Self.execute(handle, """
+                BEGIN IMMEDIATE;
+                ALTER TABLE attempts ADD COLUMN writing_context TEXT;
+                PRAGMA user_version=3;
                 COMMIT;
                 """)
             }
@@ -110,6 +119,7 @@ actor RemyHistoryRepository {
         write {
             try requireSession(attempt.sessionID)
             guard attempt.index > 0, (attempt.prompt?.utf8.count ?? 0) <= 65_536,
+                  (attempt.writingContext?.utf8.count ?? 0) <= 65_536,
                   attempt.profile?.isBounded != false,
                   (attempt.provider?.utf8.count ?? 0) <= 256, (attempt.model?.utf8.count ?? 0) <= 256,
                   (attempt.failureCategory?.utf8.count ?? 0) <= 128,
@@ -117,7 +127,7 @@ actor RemyHistoryRepository {
                   attempt.startedAt?.timeIntervalSince1970.isFinite != false,
                   (attempt.status == .succeeded) == (attempt.output != nil) else { throw RemyHistoryFailure.invalidRecord }
             let profile = try attempt.profile.map { try JSONEncoder().encode($0) }
-            try run("INSERT INTO attempts(id,session_id,created,input,output,provider,model,instruction_version,failure,prompt,status,attempt_index,profile,started,duration_ms) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", [.text(attempt.id.uuidString),.text(attempt.sessionID.uuidString),.real(attempt.createdAt.timeIntervalSince1970),.text(attempt.input),.optional(attempt.output),.optional(attempt.provider),.optional(attempt.model),.integer(attempt.instructionVersion),.optional(attempt.failureCategory),.optional(attempt.prompt),.text(attempt.status.rawValue),.integer(attempt.index),profile.map(Value.blob) ?? .integer(nil),attempt.startedAt.map { .real($0.timeIntervalSince1970) } ?? .integer(nil),.integer(attempt.durationMilliseconds)])
+            try run("INSERT INTO attempts(id,session_id,created,input,output,provider,model,instruction_version,failure,prompt,status,attempt_index,profile,started,duration_ms,writing_context) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", [.text(attempt.id.uuidString),.text(attempt.sessionID.uuidString),.real(attempt.createdAt.timeIntervalSince1970),.text(attempt.input),.optional(attempt.output),.optional(attempt.provider),.optional(attempt.model),.integer(attempt.instructionVersion),.optional(attempt.failureCategory),.optional(attempt.prompt),.text(attempt.status.rawValue),.integer(attempt.index),profile.map(Value.blob) ?? .integer(nil),attempt.startedAt.map { .real($0.timeIntervalSince1970) } ?? .integer(nil),.integer(attempt.durationMilliseconds),.optional(attempt.writingContext)])
             if selectOutput {
                 guard attempt.status == .succeeded, let output = attempt.output else { throw RemyHistoryFailure.invalidRecord }
                 try run("UPDATE sessions SET selected=?,selected_attempt=?,selection_kind='attempt',status='completed',finished=? WHERE id=?", [.text(output),.text(attempt.id.uuidString),.real(attempt.createdAt.timeIntervalSince1970),.text(attempt.sessionID.uuidString)])
@@ -194,14 +204,14 @@ actor RemyHistoryRepository {
 
     func attempts(sessionID: UUID) throws -> [RemyHistoryAttempt] {
         guard enabled else { return [] }
-        let stmt = try statement("SELECT id,created,input,output,provider,model,instruction_version,failure,prompt,status,attempt_index,profile,started,duration_ms FROM attempts WHERE session_id=? ORDER BY attempt_index,created,id", [.text(sessionID.uuidString)])
+        let stmt = try statement("SELECT id,created,input,output,provider,model,instruction_version,failure,prompt,status,attempt_index,profile,started,duration_ms,writing_context FROM attempts WHERE session_id=? ORDER BY attempt_index,created,id", [.text(sessionID.uuidString)])
         defer { sqlite3_finalize(stmt) }
         var results: [RemyHistoryAttempt] = []
         while true {
             let code = sqlite3_step(stmt)
             if code == SQLITE_DONE { return results }
             guard code == SQLITE_ROW, let id = columnText(stmt, 0).flatMap(UUID.init(uuidString:)), let input = columnText(stmt, 2) else { throw failure() }
-            results.append(.init(id: id, sessionID: sessionID, createdAt: Date(timeIntervalSince1970: sqlite3_column_double(stmt,1)), input: input, output: columnText(stmt,3), provider: columnText(stmt,4), model: columnText(stmt,5), instructionVersion: sqlite3_column_type(stmt,6) == SQLITE_NULL ? nil : Int(sqlite3_column_int64(stmt,6)), failureCategory: columnText(stmt,7), prompt: columnText(stmt,8), status: columnText(stmt,9).flatMap(RemyHistoryAttempt.Status.init(rawValue:)), index: Int(sqlite3_column_int64(stmt,10)), profile: try columnData(stmt,11).map { try JSONDecoder().decode(RemyHistoryProfileSnapshot.self,from:$0) }, startedAt: sqlite3_column_type(stmt,12) == SQLITE_NULL ? nil : Date(timeIntervalSince1970: sqlite3_column_double(stmt,12)), durationMilliseconds: sqlite3_column_type(stmt,13) == SQLITE_NULL ? nil : Int(sqlite3_column_int64(stmt,13))))
+            results.append(.init(id: id, sessionID: sessionID, createdAt: Date(timeIntervalSince1970: sqlite3_column_double(stmt,1)), input: input, output: columnText(stmt,3), provider: columnText(stmt,4), model: columnText(stmt,5), instructionVersion: sqlite3_column_type(stmt,6) == SQLITE_NULL ? nil : Int(sqlite3_column_int64(stmt,6)), failureCategory: columnText(stmt,7), prompt: columnText(stmt,8), status: columnText(stmt,9).flatMap(RemyHistoryAttempt.Status.init(rawValue:)), index: Int(sqlite3_column_int64(stmt,10)), profile: try columnData(stmt,11).map { try JSONDecoder().decode(RemyHistoryProfileSnapshot.self,from:$0) }, startedAt: sqlite3_column_type(stmt,12) == SQLITE_NULL ? nil : Date(timeIntervalSince1970: sqlite3_column_double(stmt,12)), durationMilliseconds: sqlite3_column_type(stmt,13) == SQLITE_NULL ? nil : Int(sqlite3_column_int64(stmt,13)), writingContext: columnText(stmt,14)))
         }
     }
 
@@ -342,9 +352,9 @@ actor RemyHistoryRepository {
     private func failure() -> RemyHistoryFailure { .storage(code: sqlite3_errcode(database)) }
     /// Preserve an untouched schema-1 snapshot for an explicit rollback. The
     /// database is never downgraded automatically by an older application.
-    private static func backupBeforeMigration(_ source: OpaquePointer, url: URL) throws {
+    private static func backupBeforeMigration(_ source: OpaquePointer, url: URL, targetVersion: Int) throws {
         let backupURL = url.deletingLastPathComponent()
-            .appendingPathComponent("history-before-v2-\(UUID().uuidString).sqlite")
+            .appendingPathComponent("history-before-v\(targetVersion)-\(UUID().uuidString).sqlite")
         guard FileManager.default.createFile(atPath: backupURL.path, contents: nil,
                                             attributes: [.posixPermissions: 0o600]) else {
             throw RemyHistoryFailure.storage(code: SQLITE_CANTOPEN)
